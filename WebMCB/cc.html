@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div class="box">
+      <div>
+
+      </div>
+  </div>
+  <br>
+  <div class="box1">
+      <div>
+          <div></div>
+      </div>
+      <div>
+          <div></div>
+      </div>
+  </div>
+  <br>
+  <div class="box2">
+      <div>
+          <div></div>
+          <div></div>
+      </div>
+      <div>
+          <div></div>
+          <div></div>
+      </div>
+
+  </div>
+  <br>
+<div class="box3">
+
+        <div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+        </div>
+
+</div>
+  <br>
+  <div class="box4">
+      <div>
+          <div></div>
+          <div></div>
+      </div>
+      <div>
+          <div></div>
+      </div>
+      <div>
+          <div></div>
+          <div></div>
+      </div>
+
+  </div>
+  <br>
+  <div class="box5">
+      <div>
+          <div></div>
+          <div></div>
+      </div>
+      <div>
+          <div></div>
+          <div></div>
+      </div>
+      <div>
+          <div></div>
+          <div></div>
+      </div>
+
+  </div>
+</body>
+<style>
+    .box {
+        width: 300px;
+        height: 300px;
+        border-radius: 50px;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*display: flex;!*设置flex属性*!*/
+        /*flex-wrap: wrap;*/
+        /*align-content:space-evenly;!*交叉轴的对齐方式*!*/
+    }
+    .box>div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color:black ;
+
+    }
+    /*第二面样式*/
+    .box1 {
+        width: 300px;
+        height: 300px;
+        border-radius: 50px;
+        border: 1px solid #000;
+        display: flex;/*设置flex属性*/
+        justify-content: space-around;/*主轴对齐方式*/
+        /*flex-wrap: wrap;*/
+
+    }
+    .box1>div{
+        /*width: 150px;*/
+        /*height: 150px;*/
+        display: flex;
+
+        align-items: center/*交叉轴的对齐方式*/
+    }
+    .box1>div>div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: black;
+    }
+    /*第四面*/
+    .box2{
+        width: 300px;
+        height: 300px;
+        border-radius: 50px;
+        border: 1px solid #000;
+        display: flex;/*设置flex属性*/
+        flex-wrap: wrap;
+        /*justify-content: center;!*主轴对齐方式*!*/
+        align-items: center;
+    }
+    .box2>div{
+        width: 300px;
+        height: 150px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center/*交叉轴的对齐方式*/
+    }
+    .box2>div>div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: black;
+    }
+    /*第三面*/
+    .box3{
+        width: 300px;
+        height: 300px;
+        border-radius: 50px;
+        border: 1px solid #000;
+        display: flex;/*设置flex属性*/
+        flex-wrap: wrap;
+        /*justify-content: center;!*主轴对齐方式*!*/
+        align-items: center;
+    }
+    .box3>div{
+        width: 300px;
+        height: 100px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center/*交叉轴的对齐方式*/
+    }
+    .box3>div>div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: black;
+    }
+    .box3>div:nth-child(3){
+        display: flex;
+        justify-content: flex-end;
+        /*align-content: flex-end;*/
+    }
+    .box3>div:nth-child(1){
+        display:flex;
+        justify-content:flex-start;
+    }
+    .box4{
+        width: 300px;
+        height: 300px;
+        border-radius: 50px;
+        border: 1px solid #000;
+        display: flex;/*设置flex属性*/
+        flex-wrap: wrap;
+        /*justify-content: center;!*主轴对齐方式*!*/
+        align-items: center;
+    }
+    .box4>div{
+        width: 300px;
+        height: 100px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center/*交叉轴的对齐方式*/
+    }
+    .box4>div>div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: black;
+    }
+
+    .box5{
+        width: 300px;
+        height: 300px;
+        border-radius: 50px;
+        border: 1px solid #000;
+        display: flex;/*设置flex属性*/
+        flex-wrap: wrap;
+        /*justify-content: center;!*主轴对齐方式*!*/
+        align-items: center;
+    }
+    .box5>div{
+        width: 300px;
+        height: 100px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center/*交叉轴的对齐方式*/
+    }
+    .box5>div>div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: black;
+    }
+</style>
+</html>

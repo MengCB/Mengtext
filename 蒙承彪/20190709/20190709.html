@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- <meta http-equiv="refresh" content="5"> <!-- 页面每5秒刷新一次 --> -->
+		<title></title>
+		<style type="text/css">
+			.center {
+				height: 200px;
+			}
+
+			.center img {
+				width: 160px;
+				display: block;
+			}
+
+			.withId {
+				display: block;
+				padding-left: 40px;
+				height: 200px;
+				width: 160px;
+				background-color: beige;
+			}
+
+			.center div {
+				float: left;
+				padding-left: 40px;
+				height: 100%;
+				width: 160px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+			<p class="note">1.0 关于DOM(document object model) document</p>
+			<p class="note">文档对象模型 文档->对象模型</p>
+		<div class="center">
+			<div>
+				<img src="img/3.png" />
+			</div>
+			<div>
+				<img src="img/4.png" />
+			</div>
+
+			<div class="withId" id="d1">
+				sdaasd
+			</div>
+			<div class="withId" id="d2">
+				id = d2
+			</div>
+		</div>
+
+
+		<div>
+			<h2>一些 DOM 对象方法</h2>
+
+			<p>这里提供一些您将在本教程中学到的常用方法：</p>
+
+			<table class="dataintable">
+				<tbody>
+					<tr>
+						<th>方法</th>
+						<th>描述</th>
+					</tr>
+
+					<tr>
+						<td>getElementById()</td>
+						<td>返回带有指定 ID 的元素。</td>
+					</tr>
+
+					<tr>
+						<td>getElementsByTagName()</td>
+						<td>返回包含带有指定标签名称的所有元素的节点列表（集合/节点数组）。</td>
+					</tr>
+
+					<tr>
+						<td>getElementsByClassName()</td>
+						<td>返回包含带有指定类名的所有元素的节点列表。</td>
+					</tr>
+
+					<tr>
+						<td>appendChild()</td>
+						<td>把新的子节点添加到指定节点。</td>
+					</tr>
+
+					<tr>
+						<td>removeChild()</td>
+						<td>删除子节点。</td>
+					</tr>
+
+					<tr>
+						<td>replaceChild()</td>
+						<td>替换子节点。</td>
+					</tr>
+
+					<tr>
+						<td>insertBefore()</td>
+						<td>在指定的子节点前面插入新的子节点。</td>
+					</tr>
+
+					<tr>
+						<td>createAttribute()</td>
+						<td>创建属性节点。</td>
+					</tr>
+
+					<tr>
+						<td>createElement()</td>
+						<td>创建元素节点。</td>
+					</tr>
+
+					<tr>
+						<td>createTextNode()</td>
+						<td>创建文本节点。</td>
+					</tr>
+
+					<tr>
+						<td>getAttribute()</td>
+						<td>返回指定的属性值。</td>
+					</tr>
+
+					<tr>
+						<td>setAttribute()</td>
+						<td>把指定属性设置或修改为指定的值。</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	//认识 document 
+	console.info(document.images);
+
+	//document.images[0].src = "2.png"; 通过document检索标签(节点)
+	//document.title; 取到页面的title节点并返回其内容
+
+	// document.images[1].style.filter = "grayscale(100%)"; //节点的样式操作
+
+	//课堂练习 使用计时器逐渐改变一张图片的灰度
+	// var plusFlag = false;//标志位
+	// var filter = 100;
+	// var imgTimer = setInterval(function(){
+	// 	
+	// 	if( filter < 0 ){
+	// 		plusFlag = true;
+	// 	}
+	// 	if( filter > 100 ){
+	// 		plusFlag = false;
+	// 	}
+	// 	if( plusFlag ){
+	// 		filter +=10;
+	// 	}else{
+	// 		filter -=10;
+	// 	}
+	// 	document.images[1].style.filter = "grayscale(" + filter + "%)";
+	// 	document.images[0].style.filter = "grayscale(" + (100 - filter) + "%)";
+	// 	console.info("图片灰度" + filter );
+	// },400)
+
+	// var allImages = document.images;
+	// for (var i = 0; i < allImages.length; i++) {
+	// 	document.images[i].style.filter = "grayscale(100%)";
+	// 	// document.images[i].src = "https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2017-09-26/352f1d243122cf52462a2e6cdcb5ed6d.png"
+	// }
+	var allImages = document.images;
+	for (var i = 0; i < allImages.length; i++) {
+		document.images[i].style.filter = "grayscale(100%)";
+	}
+	// dom方法 document.getElementById()
+	document.getElementById("d1").style.background = "#00ff00";
+	document.getElementById("d1").style.borderColor = "black";
+
+
+	var timer02 = setInterval(function() {
+		var size = document.getElementById("d1").style.fontSize || "16px";
+		size.replace("px", ""); //虽然可以省略,但是我们要保持逻辑的完整性
+		size = parseInt(size);//size = parseInt(size);
+		size += 4;
+		// size = size + "px";
+		document.getElementById("d1").style.fontSize = size + "px";
+		if (size > 32) {
+			clearInterval(timer02);
+		}
+	}, 500);
+
+	document.getElementById("d2").style.background = "#345579";
+	// document.getElementById("d1").style.display = "none";
+	// document.getElementById("d1").style.display = "";
+	//不存在的ID 程序报错,无法读取 null 的 style 属性
+	// document.getElementById("d3333").style.background = "#00ff00";
+
+	// dom方法2  getElementByTagName()
+	// var allDiv =  document.getElementsByName("div");//取到所有div 节点
+	// for(var i = 0; i < allDiv.length; i++){
+	// 	if( i%2 ){
+	// 		allDiv[i].style.backgroundColor = "gold";
+	// 	}else{
+	// 		allDiv[i].style.backgroundColor = "red";
+	// 	}
+	// }
+
+	// dom方法  getElementByTagName()
+	var allDiv = document.getElementsByTagName("tr"); //取到所有tr 节点 getElement后面有s 说明取到的是一个数组或集合
+	for (var i = 0; i < allDiv.length; i++) {
+		if (i % 2) {
+			allDiv[i].style.backgroundColor = "gold";
+		} else {
+			allDiv[i].style.backgroundColor = "lightgray";
+		}
+	}
+
+	// document.getElementsByClassName()
+	var notes = document.getElementsByClassName("note");
+	for (var i = 0; i < notes.length; i++) {
+		notes[i].style.color = "cyan";
+		notes[i].style.opacity = 1;
+		notes[i].style.fontSize = "32px";
+		notes[i].style.border = "2px solid yellow";
+	}
+	
+	var noteOpacity = 0;
+	var timerNotes = setInterval(function(){
+		noteOpacity += 0.1;
+		notes[0].style.opacity = noteOpacity;
+		notes[1].style.opacity = noteOpacity;
+	},400)
+</script>

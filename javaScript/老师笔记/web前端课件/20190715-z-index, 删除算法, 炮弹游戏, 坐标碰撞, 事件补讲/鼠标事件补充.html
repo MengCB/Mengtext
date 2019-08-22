@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标事件补充</title>
+
+		<style type="text/css">
+			.longStick {
+				width: 400px;
+				height: 100px;
+				background: url("200.png") right no-repeat;
+				background-size: 74%;
+				position: absolute;
+				left: 50%;
+				margin-left: -300px;
+				top: 20%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="longStick" id="stick1">
+
+		</div>
+
+	</body>
+</html>
+<script type="text/javascript">
+	document.getElementById("stick1").onmousedown = function(e) {
+		// onmousemove 事件
+		e.target.onmousemove = function(ev) {
+			setBomAngle(ev);
+		}
+	}
+	document.getElementById("stick1").onmouseup = function(e) {
+		console.info("停止监听");
+		e.target.onmousemove = null; // 事件解绑
+	}
+	// 容错 onmouseout 
+	document.getElementById("stick1").onmouseout = function(e) {
+		console.info("停止监听");
+		e.target.onmousemove = null;
+	}
+	
+	
+	
+	// 设定炮口的角度(响应鼠标move事件)
+	function setBomAngle(e) {
+		// 取出当前角度, 排除掉字符串取角度数字 "rotate(-25deg)" => -25
+		var currAngle = document.getElementById("stick1").style.transform;
+		if (!currAngle) {
+			currAngle = 0;
+		} else {
+			currAngle = currAngle.replace("rotate(", "");
+			currAngle = currAngle.replace("deg)", "");
+			currAngle = parseInt(currAngle);
+		}
+		// 鼠标y方向的变化, 小于0代表向上, 反之亦然
+		if (e.movementY < 0) {
+			currAngle -= 1;
+		} else {
+			currAngle += 1;
+		}
+		//限制角度,超过角度不操作
+		if(  currAngle > -30 &&  currAngle < 0 ){
+			document.getElementById("stick1").style.transform = "rotate(" + currAngle + "deg)";
+		}
+		
+		
+	}
+
+
+	// 通过滚轮调整炮口
+	window.onmousewheel = function(e) {		
+		console.info(e);			
+		// WheelEvent.deltaX： 数值， 表示滚轮的水平滚动量。
+		// WheelEvent.deltaY： 数值， 表示滚轮的垂直滚动量。像素
+		// WheelEvent.deltaZ： 数值， 表示滚轮的 Z 轴滚动量。
+		// WheelEvent.deltaMode： 数值， 表示上面三个属性的单位， 0 是像素， 1 是行， 2 是页。
+		// e.shiftKey 为true时, 标示按住了shift键
+		
+		var currAngle = document.getElementById("stick1").style.transform;
+		if (!currAngle) {
+			currAngle = 0;
+		} else {
+			currAngle = currAngle.replace("rotate(", "");
+			currAngle = currAngle.replace("deg)", "");
+			currAngle = parseInt(currAngle);
+		}
+		
+		if( e.shiftKey ){
+			if( e.deltaY < 0 ){
+				// 滚轮向上
+				console.info( "滚轮向上");
+				currAngle -= 1;
+			}else{
+				//滚轮向下
+				console.info( "滚轮向下");
+				currAngle += 1;
+			}
+		}
+		
+		if(  currAngle > -30 &&  currAngle < 0 ){
+			document.getElementById("stick1").style.transform = "rotate(" + currAngle + "deg)";
+		}
+	
+	}
+</script>

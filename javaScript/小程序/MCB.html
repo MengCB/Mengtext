@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<style type="text/css">
+			body{
+				text-align: center;
+				position: relative;
+			}
+			.clock{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				background-color: blueviolet;
+				left: 50%;
+				top:50%;
+			}
+		</style>
+	</head>
+	<body>
+		电子时钟：
+		<div class="clock" id="now">
+			
+		</div>
+	</body>
+</html>
+<script>
+
+	//*****立即执行函数()();第一个括号表示要执行的函数,
+	// 放函数体，可以是匿名的函数，第二个括号,放参数列表
+ //    (	function foo(a,b){
+	// 	alert(a);//笔记: alert()是阻塞的,如果没有人点击确定,后面的代码不会执行.
+	// 	console.info(b);
+	// 	b = {a:1};
+	// 	return b;
+	// })("121231","444444");
+	// foo("hello");
+	
+	/******定时器 setIntterval();是一个函数,他接受两个参数,
+      参数1: 一个函数体(要做的事情)
+	  参数2：int值， 表示毫秒，即间隔多少毫秒，去执行一次参数1函数
+	  */
+	// var timer032 = setInterval(function(){
+	// 	var now = new Date();
+	// 	// var timeTemp = new Date().getTime();
+	// 	// console.info( timeTemp )
+	// 	// var year = now.getFullYear();
+	// 	// var month = now.getMonth();
+	// 	console.info(now.toLocaleString());
+	// 	
+	// 	// 关于DOM的操作
+	// 	document.getElementById("now").innerText = now.toLocaleString();
+	// },1000);
+	
+	//定时器setInterval()
+	   var kkk = setInterval(function(){
+		   $("#now").animate({
+			   top: "+=66px"
+		   });
+		   var nowTop = document.getElementById("now").style.top;
+		   nowTop = nowTop.replace("px","");
+		   nowTop = parseInt(nowTop);
+		   // console.info(nowTop);
+		   if( nowTop >800 ){
+			   alert("你是不是傻子???");
+			   $("#now").animate({
+				   top:"20%"
+			   },10,function(){});
+		      //clearInterval(kkk);点击确定之后就停止不动
+		   }  
+	   },600);
+		document.getElementById("now").onclick = function(){
+			 //回到距离顶部20%
+			 $("#now").animate({
+				top: "20%"
+			},10,function(){});
+		}
+</script>

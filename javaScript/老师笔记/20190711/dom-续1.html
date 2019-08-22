@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom续1 - 鼠标事件 </title>
+		<style type="text/css">
+			.main {
+				background-color: cadetblue;
+			}
+		</style>
+	</head>
+	<!-- <body onmousedown="whichButton(event)"> -->
+	<body>
+		<table class="dataintable">
+			<tbody>
+				<tr>
+					<th style="width:30%">属性</th>
+					<th>此事件发生在何时...</th>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onabort.asp">onabort</a></td>
+					<td>图像的加载被中断。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onblur.asp">onblur</a></td>
+					<td>元素失去焦点。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onchange.asp">onchange</a></td>
+					<td>域的内容被改变。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onclick.asp">onclick</a></td>
+					<td>当用户点击某个对象时调用的事件句柄。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_ondblclick.asp">ondblclick</a></td>
+					<td>当用户双击某个对象时调用的事件句柄。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onerror.asp">onerror</a></td>
+					<td>在加载文档或图像时发生错误。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onfocus.asp">onfocus</a></td>
+					<td>元素获得焦点。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onkeydown.asp">onkeydown</a></td>
+					<td>某个键盘按键被按下。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onkeypress.asp">onkeypress</a></td>
+					<td>某个键盘按键被按下并松开。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onkeyup.asp">onkeyup</a></td>
+					<td>某个键盘按键被松开。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onload.asp">onload</a></td>
+					<td>一张页面或一幅图像完成加载。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onmousedown.asp">onmousedown</a></td>
+					<td>鼠标按钮被按下。</td>
+				</tr>
+
+				<tr>
+					<td><a href="event_onmousemove.asp">onmousemove</a></td>
+					<td>鼠标被移动。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onmouseout.asp">onmouseout</a></td>
+					<td>鼠标从某元素移开。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onmouseover.asp">onmouseover</a></td>
+					<td>鼠标移到某元素之上。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onmouseup.asp">onmouseup</a></td>
+					<td>鼠标按键被松开。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onreset.asp">onreset</a></td>
+					<td>重置按钮被点击。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onresize.asp">onresize</a></td>
+					<td>窗口或框架被重新调整大小。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onselect.asp">onselect</a></td>
+					<td>文本被选中。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onsubmit.asp">onsubmit</a></td>
+					<td>确认按钮被点击。</td>
+				</tr>
+
+				<tr>
+					<td><a target="_top" href="event_onunload.asp">onunload</a></td>
+					<td>用户退出页面。</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+
+</html>
+<script type="text/javascript">
+	// 
+	// 	Javascript:
+	// 
+	// 网页可见区域宽： document.body.clientWidth
+	// 网页可见区域高： document.body.clientHeight
+	// 网页可见区域宽： document.body.offsetWidth (包括边线的宽)
+	// 网页可见区域高： document.body.offsetHeight (包括边线的高)
+	// 网页正文全文宽： document.body.scrollWidth
+	// 网页正文全文高： document.body.scrollHeight
+	// 网页被卷去的高： document.body.scrollTop
+	// 网页被卷去的左： document.body.scrollLeft
+	// 网页正文部分上： window.screenTop
+	// 网页正文部分左： window.screenLeft
+	// 屏幕分辨率的高： window.screen.height
+	// 屏幕分辨率的宽： window.screen.width
+	// 屏幕可用工作区高度： window.screen.availHeight
+	// 屏幕可用工作区宽度： window.screen.availWidth
+	// 
+
+	//document.getElementsByClassName("main")[0].style.width = window.innerWidth + "px";
+	//document.getElementsByClassName("main")[0].style.height = window.innerHeight + "px" ;
+
+	// 对整个窗口执行事件注册
+
+	// document.oncontextmenu // 页面上右键事件
+	document.oncontextmenu = function(e) {
+		return false; // 禁用右键菜单
+		return true; // 启用右键菜单
+	}
+	
+	//window.onresize
+
+	//window.onmousedown = function(e){console.info(e)};
+	window.onclick = function(e) {
+		//console.info("onclick");
+	}
+	window.onmousedown = function(e) {
+		//whichButton(e);
+		//console.info("onmousedown");
+	}
+	window.onmouseup = function(e) {
+		//whichButton(e);
+		//console.info("onmouseup");
+	}
+
+
+	//  插播广告 - 关于全局变量
+	var fangXX = "伟大的杰出农民企业家";
+
+	function fangWT() {
+		fangXX = "主任";
+		console.info("2");
+	}
+
+	var counter1 = 0;
+	window.onmousemove = function( e ){
+		counter1 ++
+		//console.info(e);
+		// if( e.movementX <0 ){
+		// 	console.info( "左移 <------")
+		// }else{
+		// 	console.info( "向右移 --->")
+		// }
+		if( e.movementY <0 ){
+			console.info( "上移 ^^^^^^")
+		}else{
+			console.info( "下移 ``")
+		}
+		
+		//console.info( counter1 );
+	}
+		
+	// 课堂练习1:  对body 写一个鼠标监听事件, 控制台输出按下了鼠标的哪个按键
+	function whichButton(event) {
+
+
+		var btnNum = event.button;
+		if (btnNum == 2) {
+			alert("您点击了鼠标右键！")
+		} else if (btnNum == 0) {
+			alert("您点击了鼠标左键！")
+		} else if (btnNum == 1) {
+			alert("您点击了鼠标中键！");
+		} else {
+			alert("您点击了" + btnNum + "号键，我不能确定它的名称。");
+		}
+	}
+	
+	{
+		console.info("我单独在大括号里");
+		console.info("我单独在大括号里dddd");
+		console.info("我单独在大括号里ccccccccccccccccccccc");
+	}
+</script>

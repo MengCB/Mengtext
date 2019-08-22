@@ -1,0 +1,66 @@
+浏览器模型
+
+浏览器的核心是两部分：渲染引擎和 JavaScript 解释器（又称 JavaScript 引擎）。
+渲染引擎的主要作用是，将网页代码渲染为用户视觉可以感知的平面文档。
+JavaScript 引擎的主要作用是，读取网页中的 JavaScript 代码，对其处理后运行。
+
+JavaScript 是浏览器的内置脚本语言。也就是说，浏览器内置了 JavaScript 引擎，
+并且提供各种接口，让 JavaScript 脚本可以控制浏览器的各种功能。
+一旦网页内嵌了 JavaScript 脚本，浏览器加载网页，就会去执行脚本，
+从而达到操作浏览器的目的，实现网页的各种动态效果。
+
+<script charset="utf-8" src="https://www.example.com/script.js"></script>
+
+网页中嵌入 javascript 代码，主要有三种方法
+
+<script>元素直接嵌入代码。
+<script>标签加载外部脚本 <script src="jquery,js"></script>
+
+script 元素 // 原则-- js 对 dom 的操作，一定要等待dom渲染完毕。
+
+浏览器加载 JavaScript 脚本，主要通过<script>元素完成。
+正常的网页加载流程是这样的。
+
+浏览器一边下载 HTML 网页，一边开始解析。也就是说，不等到下载完，就开始解析。
+解析过程中，浏览器发现<script>元素，就暂停解析，把网页渲染的控制权转交给 JavaScript 引擎。
+如果<script>元素引用了外部脚本，就下载该脚本再执行，否则就直接执行代码。
+JavaScript 引擎执行完毕，控制权交还渲染引擎，恢复往下解析 HTML 网页。
+
+加载外部脚本时，浏览器会暂停页面渲染，等待脚本下载并执行完成后，再继续渲染。
+原因是 JavaScript 代码可以修改 DOM，所以必须把控制权让给它，
+否则会导致复杂的线程竞赛的问题。
+
+如果外部脚本加载时间很长（一直无法完成下载），那么浏览器就会
+一直等待脚本下载完成，造成网页长时间失去响应，浏览器就会呈现“假死”状态，
+这被称为“阻塞效应”。
+
+-- defer 属性
+
+为了解决脚本文件下载阻塞网页渲染的问题，一个方法是对<script>元素
+加入defer属性。它的作用是延迟脚本的执行，等到 DOM 加载生成后，再执行脚本。
+
+defer属性的运行流程如下。
+
+浏览器开始解析 HTML 网页。
+解析过程中，发现带有defer属性的<script>元素。
+浏览器继续往下解析 HTML 网页，同时并行下载<script>元素加载的外部脚本。
+浏览器完成解析 HTML 网页，此时再回过头执行已经下载完成的脚本。
+
+不同的浏览器有不同的渲染引擎。
+
+Firefox：Gecko 引擎
+Safari：WebKit 引擎
+Chrome：Blink 引擎
+IE: Trident 引擎
+Edge: EdgeHTML 引擎
+
+最常见的一些 JavaScript 虚拟机：
+
+Chakra (Microsoft Internet Explorer)
+Nitro/JavaScript Core (Safari)
+Carakan (Opera)
+SpiderMonkey (Firefox)
+V8 (Chrome, Chromium)
+
+
+获取URL参数的方法： window.location.search

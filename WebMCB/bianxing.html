@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+</body>
+<style>
+    body{
+        background-color: #333333;
+    }
+    div{
+        width: 150px;
+        height: 150px;
+        background-color: orange;
+        float: left;/*左浮动 竖排列变横排列*/
+        margin: 100px;
+        transition: 2s;
+    }
+    body>div:nth-child(1):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: translateX(100px);
+        /*水平方向的平移 正值右平移 ，负值左平移 */
+    }
+    body>div:nth-child(2):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: translateY(100px);
+        /*垂直方向的平移 正值下平移 ，负值上平移 */
+    }
+    body>div:nth-child(3):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: translate(100px,50px);
+    }
+    body>div:nth-child(4):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: scaleX(5);
+        /*水平方向缩放*/
+    }
+    body>div:nth-child(5):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: scaleY(0.5);
+        /*垂直方向缩放*/
+    }
+    body>div:nth-child(6):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: scale(2);
+        /*整体的缩放 字体最小是12px 小于12px时只有缩放能实现*/
+    }
+    body>div:nth-child(7):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: rotateX(240deg);
+        /*绕着X轴旋转*/
+    }
+    body>div:nth-child(8):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: rotateY(240deg);
+        /*绕着Y轴旋转*/
+    }
+    body>div:nth-child(9){
+        transform-origin: 0 0;
+        /*更改旋转基点默认0 0*/
+    }
+    body>div:nth-child(9):hover{/*鼠标悬浮在元素上时发生的样式变换*/
+        transform: rotate(360deg);
+        /*绕着几何中心旋转*/
+        transform-origin: 50% 50%;
+        /*更改旋转基点默认50% 50%*/
+    }
+</style>
+</html>

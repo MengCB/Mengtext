@@ -1,0 +1,19 @@
+什么是模块化 http://www.ruanyifeng.com/blog/2012/10/javascript_module.html
+排序：
+	
+// 笔记1 判断一个对象是否具有某个属性 hasOwnProperty(attr) --true/false
+	// 笔记2 判断一个对象是否是数组 变量名 instanceof Array --true/false
+	// 笔记3 判断一个变量是否是对象 --typeof(policeArr[x]) == 'object'
+
+递归函数：// 递归函数 用在对象的查找 --递归函数的一个重要特性就是自己调用自己,层层展开
+
+碰撞检测：
+ if( domA.left > domB.right 
+        || domA.top > domB.bottom
+        || domA.right < domB.left
+        || domA.bottom < domB.top )
+    {
+        return false // 未碰撞
+    } else {
+        return true // 碰撞
+    }

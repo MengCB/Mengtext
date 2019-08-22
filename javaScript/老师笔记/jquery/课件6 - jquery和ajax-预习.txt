@@ -1,0 +1,30 @@
+
+https://www.runoob.com/jquery/jquery-ajax-intro.html
+
+
+ajax - 参考手册 https://www.runoob.com/jquery/ajax-ajax.html
+AJAX = 异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
+
+
+
+$("#bt10").click(function() {
+	$.ajax({
+		url: "student.json",
+		data: {},
+		type: "get",
+		success: function(res){
+			alert("Y");
+			// console.info(typeof(res));
+			console.info(res);
+		},
+		error: function(res){
+			alert("!");
+			console.info( res );
+		},
+		dataType: "json"
+		//dataType: "text"
+	});
+	
+});
+
+

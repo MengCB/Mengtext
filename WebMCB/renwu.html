@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>火柴人</title>
+</head>
+<body>
+      <div class="box">
+          <div class="box1">
+              <div class="mao">
+                  <div class="maozi"></div>
+                  <div class="maozi1"></div>
+              </div>
+          <div class="tou"></div>
+              <div class="shen"></div>
+          <div class="shou1"></div>
+          <div class="shou2"></div>
+          <div class="jiao1"></div>
+          <div class="jiao2"></div>
+          </div>
+      </div>
+</body>
+<style>
+    .box{
+        width: 1500px;
+        height: 800px;
+        background-color: #1c1e1e;
+    }
+    .box1{
+        width: 350px;
+        height: 450px;
+        position: relative;
+        top: 100px;
+    }
+    .mao{
+        width: 90px;
+        height: 40px;
+    }
+    .maozi{
+        width: 30px;
+        height: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+        position: relative;
+        top: 14px;
+        left: 150px;
+    }
+    .maozi1{
+        width: 90px;
+        height: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        position: relative;
+        top: 12px;
+        left: 122px;
+    }
+    .tou{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 5px solid #ffffff;
+        position: absolute;
+        right: 155px;
+
+    }
+    .shen{
+        width: 7px;
+        height: 150px;
+        background-color: #fff;
+        position: relative;
+        top: 62px;
+        left: 163px;
+    }
+    .shou1,.shou2,.jiao1,.jiao2{
+        width: 76px;
+        height: 75px;
+        border: 6px solid #ffffff;
+        border-radius: 5px;
+    }
+    .shou1,.shou2{
+        border-top: none;
+        border-right: none;
+        position: absolute;
+        top: 95px;
+        left: 160px;
+    }
+    .jiao1,.jiao2{
+        border-left: none;
+        border-top: none;
+        position: absolute;
+        top: 248px;
+        left: 90px;
+    }
+    .shou1{
+        animation: a 0.5s 0.5s linear alternate infinite;
+    }
+    @keyframes a  {
+        0%{
+            transform: rotate(45deg);
+            transform-origin: 0 0;
+        }
+        100%{
+            transform: rotate(-45deg);
+            transform-origin: 0 0;
+        }
+    }
+    .shou2{
+        animation: b 0.5s 0.5s linear alternate infinite;
+    }
+    @keyframes b {
+        0%{
+            transform: rotate(-45deg);
+            transform-origin: 0 0;
+        }
+        100%{
+            transform: rotate(45deg);
+            transform-origin: 0 0;
+        }
+    }
+    .jiao1{
+       animation: c 0.5s 0.5s linear alternate infinite;
+    }
+    @keyframes c {
+        0%{
+            transform: rotate(30deg);
+            transform-origin: 76px 0;
+        }
+        100%{
+            transform: rotate(-75deg);
+            transform-origin: 76px 0;
+        }
+    }
+    .jiao2{
+        animation: d 0.5s 0.5s linear alternate infinite;
+    }
+    @keyframes d {
+        0%{
+            transform: rotate(-75deg);
+            transform-origin: 76px 0;
+        }
+        100%{
+            transform: rotate(30deg);
+            transform-origin: 76px 0;
+        }
+    }
+    .mao{
+      animation: jj 0.5s 0.5s linear alternate infinite;
+    }
+    @keyframes jj {
+        0%{
+            transform: rotate(-30deg);
+            transform-origin: 160px 40px ;
+        }
+         100%{
+             transform: rotate(30deg);
+             transform-origin: 160px 40px;
+         }
+    }
+    .box1{
+     animation: g 5s 0.5s linear infinite;
+    }
+    @keyframes g {
+        100%{
+            transform: translateX(1000px);
+        }
+    }
+</style>
+</html>

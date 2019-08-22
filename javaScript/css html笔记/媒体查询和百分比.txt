@@ -1,0 +1,108 @@
+遇到浏览器不兼容的时候使用media.js在线地址：
+https://html5media.info/
+--------------------------------------------------
+要使HTML5视频和音频标签适用于所有主流浏览器，
+只需在文档的<head>中的某处添加以下代码行即可
+<script src="//api.html5media.info/1.2.2/html5media.min.js"></script>
+
+HTML5中，<meta>标签可以用于配置视口属性
+<meta name="viewport" content="user-scalable=no, 
+width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+user-scalable=no 用于设置用户是否可以缩放，默认为yes。
+width=device-width 用于设置视窗视口的宽度，这里表示与可见视口宽度相同。
+initial-scale=1.0 用于设置初始缩放比例，取值为0~10.0。
+maximum-scale=1.0 用于设置最大缩放比例，取值为0~10.0。
+
+媒体查询：
+---------------------
+@media  screen  and  (max-width: 960px) {	
+/*样式设置*/
+}
+表示媒体类型为screen并且屏幕宽度小于等于960px时的样式。
+
+--------------------------------
+固定布局转变为百分比布局：
+
+----------------------------
+图标库：下在之后直接引用本地地址
+http://fontawesome.dashgame.com/#basic
+图标旋转添加一个fa-spin类
+
+----------------
+弹性盒子布局：
+---------------
+flex-flow 是属性 flex-direction 和 flex-wrap 的简写，
+用于排列弹性子元素。
+flex-direction ：
+row	弹性盒子元素按轴方向顺序排列，默认值。
+row-reverse	弹性盒子元素按轴方向逆序排列。
+column	弹性盒子元素按纵轴方向顺序排列。
+column-reverse	弹性盒子元素按纵轴方向逆序排列。
+
+flex-wrap：
+nowrap	flex容器为单行，该情况下flex子项可能会溢出容器。
+wrap	flex容器为多行，flex子项溢出的部分会被放置到新行。
+wrap-reverse	反转 wrap 排列。
+
+order:
+order属性用于设置子元素出现的顺序。order值分别改为2、3、1
+--------------------------------------------
+在使用弹性盒布局时，以下属性不起作用：
+
+弹性容器的每一个子元素变为一个弹性子元素，
+弹性容器直接包含的文本变为匿名的弹性子元素。
+多列布局中的column-*属性对弹性子元素无效。
+float 和 clear 对弹性子元素无效。
+使用 float 会导致 display属性计算为 block.。
+vertical-align属性对弹性子元素的对齐无效。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

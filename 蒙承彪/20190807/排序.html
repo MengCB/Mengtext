@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>冒泡排序</title>
+		<script type="text/javascript" src="jquery-2.js"></script>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+
+			.studentTable {
+				width: 500px;
+				min-height: 200px;
+			}
+
+			.studentTable th {
+				color: chocolate;
+				height: 30px;
+			}
+
+			.studentTable tr {
+				color: cadetblue;
+				height: 35px;
+			}
+
+			th:hover {
+				cursor: pointer;
+				background: gray;
+			}
+
+			td:hover {
+				background: bisque;
+			}
+
+			.police {
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="studentList">
+			<table id="table1" class="studentTable" border="2" cellpadding="" cellspacing="">
+				<tr>
+					<th onclick="sortBy('name')">姓名</th>
+					<th onclick="sortBy('age')">年龄</th>
+					<th onclick="sortBy('grade')">级别</th>
+					<th>排序</th>
+				</tr>
+			</table>
+		</div>
+
+		<br>
+		<p>
+			请选择一个警员，查看信息
+		</p>
+		<select class="police" id="police">
+
+		</select>
+		警衔 + 警号:
+		<input type="text" name="" id="xxx" value="二级警监/910035" />
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		_allMember = [];
+		_allPolice = [];
+		loadDate();
+
+	})
+
+	// 使用ajax请求date.json文件的所有数据,并将其保存到全局中
+	function loadDate() {
+		$.ajax({
+			url: "date.json",
+			type: "get",
+			dataType: "json",
+			success: function(res) {
+				console.info(res);
+				_date = res;
+				fillStudents(_date.allStudent);
+				fillMusicList(_date.allStudent); // 缓存student
+				sorrArrByParm(_date.allStudent, _date.age);
+				countPoliceFromArray(_date.department); // 加载警员
+				// 初始化我的select标签
+				fillPOliceSelect();
+			},
+			error: function(a, b) {
+				console.info("error");
+			},
+			complete: function() {
+
+			}
+		});
+	}
+	// 信息存到全局变量中
+	function fillMusicList(allStudent) {
+		_allSongs = allStudent;
+	}
+
+
+	// 对某个对象数组进行排序 - 依据其某个属性,返回值 - 排序后的数组
+	function sorrArrByParm(arr, attr) {
+		// 测试代码
+		arr = arr || _date.allStudent;
+		attr = attr || "age";
+		var newArr = [];
+		// 冒泡排序
+		for (var i = 0; i < arr.length - 1; i++) {
+			for (var j = 0; j < arr.length - 1 - i; j++) {
+				if (arr[j][attr] > arr[j + 1][attr]) {
+					// 互换
+					var temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+			// return new attay
+		}
+		_date.allStudents = arr; // 改变全局变量(student的顺序)
+		fillStudents(_date.allStudents);
+	}
+	// 将排序后的数据,呈现到页面上
+	function fillStudents(students) {
+		$(".tr1").remove();
+		for (var i = 0; i < students.length; i++) {
+			var trString = "<tr class='tr1'><td>" + students[i].name +
+				"</td><td>" + students[i].age +
+				"</td><td>" + students[i].grade +
+				"</td><td>" + (i + 1) + "</td></tr>";
+			$("#table1").append($(trString));
+		}
+	}
+
+	// 姓名,年龄,级别的排序
+	function sortBy(attr) {
+		sorrArrByParm(null, attr);
+	}
+
+
+	// 笔记1 判断一个对象是否具有某个属性 hasOwnProperty(attr) --true/false
+	// 笔记2 判断一个对象是否是数组 变量名 instanceof Array --true/false
+	// 笔记3 判断一个变量是否是对象 --typeof(policeArr[x]) == 'object'
+
+	// 递归函数 用在对象的查找 --递归函数的一个重要特性就是自己调用自己,层层展开
+	function countPoliceFromArray(policeArr) {
+		for (var x in policeArr) {
+			if (policeArr[x].hasOwnProperty("id")) {
+				_allPolice.push(policeArr[x]);
+			}
+			if (typeof(policeArr[x]) == 'object') {
+				countPoliceFromArray(policeArr[x]);
+			}
+		}
+	}
+	// 回调函数--常见的有ajax的successbeforeSend、error、dataFilter、success、complete,
+	// beforeSend,hide()/show(),animation
+
+	// 课堂练习: 点选select标签,在右边的input中显示该警员的信息
+	function fillPOliceSelect() {
+		for (var i = 0; i < _allPolice.length; i++) {
+			document.getElementById("police").innerHTML +=
+				'<option id="op" value="' + _allPolice[i].rank + '/' + _allPolice[i].id + '">' +
+				_allPolice[i].name + '</option>';
+			$("#police").change(function() {
+				var temp = $("#police").val();
+				document.getElementById("xxx").value = temp;
+			});
+		}
+
+	}
+</script>

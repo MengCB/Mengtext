@@ -1,0 +1,45 @@
+jQuery 效果 https://www.runoob.com/jquery/jquery-hide-show.html
+
+
+1. 效果 
+-------------------------------------------
+隐藏、显示、切换，滑动，淡入淡出，以及动画
+
+jQuery hide() 和 show()
+
+$("#bt1").click(function() {
+	$("#targetID").hide(1000);
+});
+
+$("#bt2").click(function() {
+	$("#targetID").show(1000);
+});
+
+$("#bt3").click(function() {
+	$("#targetID").toggle(1000);
+});
+
+// 向下展开 - 针对隐藏的元素
+$("#bt6").click(function() {
+	$("#targetID").slideDown(1000);
+});
+
+// 向上收起 - 针对非隐藏元素
+$("#bt7").click(function() {
+	$("#targetID").slideUp();
+});
+
+$("#bt8").click(function() {
+	$("#targetID").slideToggle(200);
+
+});
+
+
+// 淡入淡出 fadeIn() fadeOut() fadeToggle()  fadeTo()不消失 // 接收的参数  -- 空, slow, fast, 毫秒数
+
+
+jQuery fadeIn()
+演示 jQuery fadeIn() 方法。
+jQuery fadeOut()
+演示 jQuery fadeOut() 方法。
+jQuery fadeToggle()

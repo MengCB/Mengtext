@@ -1,0 +1,4 @@
+
+
+变ak;salkdfa;lskdjflaskjdf;lask就
+var fang = 'fang';

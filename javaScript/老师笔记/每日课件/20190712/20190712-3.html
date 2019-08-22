@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>转盘</title>
+
+		<style type="text/css">
+			body {
+				text-align: center;
+				position: relative;
+			}
+
+			.rollingpan {
+				width: 600px;
+				height: 600px;
+				border-radius: 50%;
+				border: 20px solid #8A2BE2;
+			}
+
+			.stick0001 {
+				width: 320px;
+				height: 60px;
+				position: absolute;
+				margin-left: 300px;
+				margin-top: -350px;
+				background-color: #FFFF00;
+				opacity: 0.6;
+				/* transform: rotate(120deg); */
+
+			}
+
+			.itemX {
+				width: 600px;
+				height: 80px;
+				/* border: 1px solid #5F9EA0; */
+				margin-top: 260px;
+				position: absolute;
+				text-align: right;
+				line-height: 80px;
+				font-size: 24px;
+				/* font-family: "blackadder itc"; */
+				font-weight: 900;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="抽奖" id="doRollingBt" />
+		<!-- <input type="button" value="停!!" id="stopRolling" />
+		<input type="button" value="转!!" id="startRolling" /> -->
+
+		<div class="rollingpan" id="rollingpan1111">
+			<!-- <div class="itemX" id="item1" style="transform: rotate(0deg);">
+				杨庆文
+			</div> -->
+		</div>
+	<!-- 	<div class="stick0001" style="transform: rotate(0deg);">
+
+		</div> -->
+	</body>
+</html>
+<script type="text/javascript">
+	var timerPan = 0;
+	// 转动 或者停止转盘
+	function doRolling(flag) {
+		if (timerPan) {
+			clearInterval(timerPan);
+		}
+		var allstudentsDVI = document.getElementsByClassName("itemX");
+		var range = 360 / allstudentsDVI.length;
+		var currAngle = document.getElementById("rollingpan1111").style.transform;
+		if (!currAngle) {
+			currAngle = 0;
+		} else {
+			currAngle = currAngle.replace("rotate(", "");
+			currAngle = currAngle.replace("deg)", "");
+			currAngle = parseFloat(currAngle);
+		}
+
+		for (var i = 0; i < allstudentsDVI.length; i++) {
+			allstudentsDVI[i].style.color = "#000000" ;
+			allstudentsDVI[i].style.fontSize = "24px" ;
+			
+			var hisTransform = allstudentsDVI[i].style.transform;
+			if (!hisTransform) {
+				hisTransform = 0;
+			} else {
+				hisTransform = hisTransform.replace("rotate(", "");
+				hisTransform = hisTransform.replace("deg)", "");
+				hisTransform = parseFloat(hisTransform);
+			}
+			// 当前盘子的角度应该在两个同学的角度之间
+			if (360 - currAngle - range / 2 < hisTransform && hisTransform < 360 - currAngle + range / 2) {
+				allstudentsDVI[i].style.color = "greenyellow" ;
+				allstudentsDVI[i].style.fontSize = "32px" ;
+				console.info(allstudentsDVI[i].innerText);
+			}
+		}
+		if (flag) {
+			timerPan = setInterval(function() {
+				currAngle += range; // 每次转动的角度( 等分 )
+				if (currAngle > 360) {
+					currAngle = 0;
+				}
+				document.getElementById("rollingpan1111").style.transform = "rotate(" + currAngle + "deg)";
+			}, 100);
+		}
+
+	}
+
+	// document.getElementById("stopRolling").onclick = function(e) {
+	// 	doRolling(false);
+	// }
+	// document.getElementById("startRolling").onclick = function(e) {
+	// 	doRolling(true);
+	// }
+
+	var _isRollong = false; // 转盘状态标志位
+	document.getElementById("rollingpan1111").onclick = function(e) {
+
+		if (_isRollong == false) {
+			_isRollong = true;
+		} else {
+			_isRollong = false;
+		}
+		doRolling(_isRollong); //
+	}
+
+
+	var allStudents = [{
+			name: "曾敏",
+			id: 1
+		},
+		{
+			name: "黄盛玺",
+			id: 2
+		},
+		{
+			name: "杨庆文",
+			id: 300
+		},
+		{
+			name: "李春朋",
+			id: 4
+		},
+		{
+			name: "赵珊",
+			id: 5
+		},
+		{
+			name: "孙蒙",
+			id: 6
+		},
+		{
+			name: "高原",
+			id: 7
+		},
+		{
+			name: "雷雪煜",
+			id: 8
+		},
+		{
+			name: "王文金",
+			id: 9
+		},
+		{
+			name: "韦清源",
+			id: 10
+		},
+		{
+			name: "高佳骏",
+			id: 11
+		},
+		{
+			name: "董青林",
+			id: 12
+		},
+		{
+			name: "刘伟业",
+			id: 13
+		},
+		{
+			name: "陈艺宇",
+			id: 14
+		},
+		{
+			name: "李烜铖",
+			id: 15
+		},
+		{
+			name: "满春发",
+			id: 16
+		},
+		{
+			name: "蒙承彪",
+			id: 17
+		},
+		{
+			name: "苏壮晖",
+			id: 18
+		},
+		{
+			name: "施一航",
+			id: 19
+		},
+		{
+			name: "王程鑫",
+			id: 20
+		},
+		{
+			name: "骆明睿",
+			id: 21
+		},
+		{
+			name: "梁鸿标",
+			id: 22
+		},
+		{
+			name: "黄伟洪",
+			id: 23
+		},
+		{
+			name: "黄河源",
+			id: 24
+		},
+		{
+			name: "杨昊",
+			id: 25
+		},
+		{
+			name: "李旭昊",
+			id: 26
+		},
+		{
+			name: "黄春惠",
+			id: 27
+		},
+		{
+			name: "尚冉",
+			id: 28
+		},
+		{
+			name: "袁鑫",
+			id: 29
+		}
+	];
+
+
+	// 课堂作业, 数据分离, 
+	function fillRollingPan(studentsArr) {
+		//<div class="rollingpan" id="rollingpan1111">
+		//	<div class="itemX" id="item1" style="transform: rotate(0deg);">
+		//		杨庆文
+		//	</div>/
+		//</div>
+
+		// 对360度进行等分
+		var oneAngle = 360 / studentsArr.length;
+		for (var i = 0; i < studentsArr.length; i++) {
+			var oneStudent = document.createElement("div");
+			oneStudent.setAttribute("class", "itemX");
+			oneStudent.id = "item" + studentsArr[i].id;
+			oneStudent.innerText = studentsArr[i].name;
+			var currAngle = oneAngle * i;
+			oneStudent.style.transform = "rotate(" + currAngle + "deg)";
+
+			document.getElementById("rollingpan1111").appendChild(oneStudent);
+		}
+
+	}
+
+	fillRollingPan(allStudents);
+</script>

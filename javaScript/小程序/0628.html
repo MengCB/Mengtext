@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="jquery/jQuery-3.1.1.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		20190628
+
+	</body>
+</html>
+<script type="text/javascript">
+	//实现输入两个数字,返回比较大的数字,
+	//如果任意一个参数不是数字,提示错误,不作比较
+// 	meng(3, "sada")
+// 
+// 	function meng(a, b) {
+// 		if (isNaN(a) || isNaN(b)) {
+// 			console.info("参数必须是数字！");
+// 			return;
+// 		} else {
+// 			return a > b ? a : b;
+// 		}
+// 	}
+	
+	// var a = [1,2,3,4,5,6];
+	// for( var i=0 ; i < a.length-1 ; i++ ){
+	// 	for( var j=0 ; j < a.length-i ; j++ ){
+	// 		if( a[j] > a[j+1] ){
+	// 			var temp = a[j];
+	// 			a[j] = a[j+1];
+	// 			a[j+1] = temp;
+	// 		}
+	// 	}
+	// }
+	
+	//编写函数,实现输出一个字符串,一个数组,
+	//返回 字符串是否在数组中,如果在,返回其在数组中的下标.
+	// function searchArry ( string1, arry1 ){
+	// 	//遍历
+	// 	for( var i=0 ; i < arry1.length; i++ ){
+	// 		if( string1 == arry1[i] ){
+	// 			return i;
+	// 		}
+	// 	}
+	// 	return "no - match";
+	// }
+	// var str = "meng";
+	// var ourClass = ["zhangsan","lisi","wangwu","asan","dage" ,"meng"];
+ //    var result = searchArry( str , ourClass );
+	// console.info(result);
+	
+    //编写一个函数,参数为a,b两个数字,
+	//返回值为两个数之间的随机数
+	function getRan( a,b ){
+		// var ranDate;//undifine
+ 		// ranDate = Math.floor( Math.random()*a + b );
+		//return Math.floor( Math.random()*(b-a+1) + a );
+		// if(a>b){
+		// 	return Math.floor( Math.random()*(a-b+1) + b );
+		// }else{
+		// 	return Math.floor( Math.random()*(b-a+1) + a );
+		// }
+	      return Math.floor(Math.random()*(Math.abs(a-b)+1) + (a<b?a:b) );
+	}
+	//测试
+	// var r1 = getRan(3,9);
+	console.info(getRan(3,5));
+	
+	//编写一个函数,实现交换数组中两个元素的位置( a=["tomy", "peter"] );
+	var a001 = [ "red", "blue" ];
+	//要求输出["peter"，"tomy"]
+	(function arr1(){
+		var cup;
+		cup = a001[0];
+		a001[0] = a001[1];
+		a001[1] = cup;
+	})();
+	
+</script>

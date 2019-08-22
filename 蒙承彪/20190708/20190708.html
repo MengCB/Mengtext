@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+	</head>
+	<body>
+
+	</body>
+	<script type="text/javascript">
+		//js面相对象第一步
+		function Song(index, name, type, auther, total) {
+			this.index = index;
+			this.name = name;
+			this.type = type;
+			this.auther = auther;
+			this.total = total;
+			//
+			this.perfect = function() {
+				if (this.total > 80) {
+					this.auther += "******";
+				} else {
+					//李春鹏******
+					this.auther = this.auther.replace("******", "");
+				}
+			}
+			this.setTotal = function(pTotal) {
+				this.total = pTotal;
+				this.perfect();
+				console.info(this.auther);
+			}
+			this.perfect(); //初始化动作 int();
+		}
+		var song1 = new Song(0, "十七岁", "pop", "刘德华", 100);
+		var song2 = new Song(1, "老鼠爱大米", "pop", "李春鹏", 98);
+
+		console.info(song2); //初始化的时候自动评优
+		song2.total = 70;
+		song2.perfect();
+		console.info(song2); //分数被改变以后重新评优
+
+		//课堂练习 完善构造函数,当分数发生改变时,自动更新auther的星号
+
+
+		//4S店的库存,以车的牌子CarList建立,新增库存表的时候,算一下总价
+		var prices = {
+			//车子价格
+			ford: 12,
+			Benz: 40,
+			changan: 10,
+			haval: 15,
+			suzuki: 14,
+			volvo: 20
+		}
+
+		function CarList(brand, count) {
+			this.brand = brand;
+			this.count = count;
+			//修改这里,自动计算总价
+			this.getTotalPrice = function() {
+				//去价格表查询当前的单价
+				var singlePrice = prices[this.brand];
+				//单价乘以数量
+				if (singlePrice) {
+					this.totalPrice = singlePrice * this.count;
+				} else {
+					this.totalPrice = 0;
+				}
+				//返回总价
+			}
+			this.getTotalPrice(); //执行它
+		}
+		//今天入库奔驰 10辆,福特20辆,哈弗 5辆, 长安 4辆,铃木 6辆,Volvo 18辆
+		// 		var fordPrice = new CarList("ford", 20);
+		// 		var BenzPrice = new CarList("Benz", 10);
+		// 		var changanPrice = new CarList("changan", 4);
+		// 		var havalPrice = new CarList("haval", 5);
+		// 		var suzukiPrice = new CarList("suzuki", 6);
+		// 		var volvoPrice = new CarList("volvo", 18);
+		// 
+		// 		var allPrice = fordPrice.totalPrice + BenzPrice.totalPrice + changanPrice.totalPrice +
+		// 			havalPrice.totalPrice + suzukiPrice.totalPrice + volvoPrice.totalPrice;
+		
+		var all = [];
+		all.push(new CarList("ford", 20));
+		all.push(new CarList("Benz", 10));
+		all.push(new CarList("changan", 4));
+		all.push(new CarList("haval", 5));
+		all.push(new CarList("suzuki", 6));
+		all.push(new CarList("volvo", 18));
+
+		var allPrice = 0;
+		for (var i = 0; i < all.length; i++) {
+			allPrice += all[i].totalPrice; //总价累加
+
+			console.info("小计" + allPrice);
+		}
+
+		console.info("库存总价格" + allPrice + "万");
+	</script>
+</html>

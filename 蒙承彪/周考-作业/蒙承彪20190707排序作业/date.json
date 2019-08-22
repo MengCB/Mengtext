@@ -1,0 +1,105 @@
+{
+	"allStudent": [{
+			"name": "meng",
+			"age": 28,
+			"grade": "prof"
+		},
+		{
+			"name": "li",
+			"age": 22,
+			"grade": "ex"
+		},
+		{
+			"name": "tom",
+			"age": 24,
+			"grade": "nor"
+		},
+		{
+			"name": "zhang",
+			"age": 30,
+			"grade": "ex"
+		},
+		{
+			"name": "wang",
+			"age": 20,
+			"grade": "prof"
+		},
+		{
+			"name": "Jamse",
+			"age": 16,
+			"grade": "ex"
+		},
+		{
+			"name": "wangba",
+			"age": 18,
+			"grade": "prof"
+		},
+		{
+			"name": "Jamselw",
+			"age": 40,
+			"grade": "ex"
+		},
+		{
+			"name": "Kuli",
+			"age": 31,
+			"grade": "prof"
+		},
+		{
+			"name": "fage",
+			"age": 23,
+			"grade": "ex"
+		}
+	],
+
+	"department": [
+		{
+			"depName": "办公室",
+			"leader": {
+				"name": "邓主任",
+				"rank": "二级警监",
+				"id": 910035
+			},
+			"members": [
+				{
+					"name": "陈警官",
+					"rank": "文职警员",
+					"id": 910036
+				},
+				{
+					"name": "张茂",
+					"rank": "警司",
+					"id": 910011
+				}
+			]
+		},
+		{
+			"depName": "治安支队",
+			"leader": {
+				"name": "陆支队",
+				"rank": "二级警监",
+				"id": 910012
+			}
+		},
+		{
+			"depName": "刑侦支队",
+			"leader": {
+				"name": "刘支队",
+				"rank": "一级警督",
+				"id": 910016
+			},
+			"members": [{
+					"name": "罗警官",
+					"rank": "警司",
+					"id": 910017
+				},
+				{
+					"name": "张三",
+					"rank": "警司",
+					"id": 910015
+				}	
+				]
+			}
+		],
+		
+		"songs": []
+	}

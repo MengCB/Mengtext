@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.monster{
+			width: 60px;
+			height: 60px;
+			border: 1px solid #FF0000;
+			border-radius: 50%;
+			background-color: #FF0000;
+		}
+	</style>
+	<body style="text-align: center;">
+		//appendCjild() // 这个函数，得先去找爹
+	    <!-- <div class="monster"></div> -->
+		<br>
+		//removeChild() //也得找爹
+	</body>
+</html>
+<script type="text/javascript">
+	var divE = document.createElement('div');//创建div
+	//设置这个div的class属性
+	// var divClass = document.createAttribute("class");//创建属性
+	// divE.setAttributeNode(divClass);//给div添加属性
+	divE.setAttribute("class","monster");
+	// divE.setAttribute("id","meng01");
+	
+	divE.id = "fang01";//id 及其他属性可以直接点
+	divE.innerText = "你是猪吧";//innerText表示标签里的文本可以直接点
+	divE.style.fontSize = "24px";
+	
+	
+	document.body.appendChild(divE);
+	
+	document.getElementById("fang01").innerText = "我不是";
+	document.getElementsByClassName("monster")[0].innerText = "我是你爹";
+	//innerHTML 表示标签里的html文本
+	document.getElementById("fang01").innerHTML = "我厉害";
+	document.getElementById("fang01").innerHTML = "我<br>是<br>小猪<br>佩奇";
+	document.getElementById("fang01").innerText = "我<br>是<br>小猪<br>佩奇";
+	
+	
+	//删除节点
+	// document.getElementById("fang01").remove();
+	
+	// 父节点 .removeChild() , bodyNode.childNodes[0]
+	//var bodyNode = document.body;
+	//bodyNode.removeChild(bodyNode.childNodes[0]); //删掉某个儿子
+	
+	
+	
+</script>

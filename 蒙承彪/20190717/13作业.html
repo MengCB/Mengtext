@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="" id="bt3" value="停止报时" />
+		<input type="button" name="" id="bt4" value="继续报时" />
+	</body>
+</html>
+<script type="text/javascript">
+	document.getElementById("bt3").onclick = function(e) {
+		timerControl(false);
+	}
+	document.getElementById("bt3").onclick = function(e) {
+		timerControl(true);
+	}
+	
+     // 设定一个计时器,没个一秒在控制台输出一个当前时间的毫秒数
+	 
+	 // 控制输出
+	 _timer01 = 0;
+	function timerControl(flag) {
+		if( _timer01 ){ // 容错
+			console.info("关掉句柄" + _timer01);
+			clearInterval(_timer01);
+		}
+		if (flag) {
+			_timer01 = setInterval(function() {
+				console.info(new Date().getTime() + " 句柄 " + _timer01);
+			}, 1000);
+		} else {
+			// clearInterval(_timer01);
+		}
+	}
+</script>

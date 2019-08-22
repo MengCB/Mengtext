@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>透明度</title>
+		<style type="text/css">
+			#div1 {
+				position: absolute;
+				width: 400px;
+				height: 600px;
+				border-radius: 40px 40px;
+				background-image: url(img/ht.PNG);
+				/* 动画名 */
+				/* animation-name: opChange; */
+				/* 动画执行时间 */
+				/* animation-duration: 5s; */
+				/* 过渡方式 */
+				/* animation-timing-function: ease-in-out; */
+				/* 延迟多久执行 */
+				/* animation-delay: 0.3s; */
+				/* 执行次数 */
+				/* animation-iteration-count: 3; */
+				/* 无限循环 */
+				/* animation-direction: alternate; */
+
+
+				/* 可以用animation代替上面 先持续时间，后延迟时间，其他无序 */
+				/* animation: opChange infinite 5s 0.3s ease-out reverse; */
+			}
+
+			.opChange {
+				animation: opChange infinite 5s 0.3s ease-out reverse;
+			}
+
+			.posiChange {
+				animation: posiChange 4s ease-in-out;
+			}
+
+			@keyframes opChange {
+				from {
+					opacity: 1;
+				}
+
+				to {
+					opacity: 0;
+				}
+			}
+
+			@keyframes posiChange {
+
+				0% {
+					left: 0%;
+					transform: rotateY(0deg);
+				}
+
+				50% {
+					left: 100%;
+					transform: rotateY(360deg);
+				}
+
+				100% {
+					left: 0%;
+					transform: rotateY(0deg);
+				}
+
+/* 				from {
+					left: 0%;
+					transform: translate(180deg);
+				}
+
+				to {
+					left: 100%;
+					transform: translate(360deg);
+				} */
+			}
+		</style>
+	</head>
+	<body>
+		<br>
+		<input type="button" name="" id="bt1" value="透明度变化" />
+		<input type="button" name="" id="bt2" value="向右翻滚" />
+		<br><br>
+		<div id="div1" class=""></div>
+	</body>
+</html>
+<script type="text/javascript">
+	document.getElementById("bt1").onclick = function(e) {
+		document.getElementById("div1").setAttribute("class", "opChange");
+	}
+	document.getElementById("bt2").onclick = function(e) {
+		document.getElementById("div1").setAttribute("class", "posiChange");
+	}
+</script>

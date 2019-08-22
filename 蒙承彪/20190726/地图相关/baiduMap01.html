@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=E4805d16520de693a3fe707cdc962045&services=&t=20190622163250"></script>
+		<!-- 开启地图测距的插件 -->
+		<script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+		<!-- <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script> -->
+		<script type="text/javascript" src="jquery-2.js"></script>
+		<style type="text/css">
+			.map01 {
+				width: 800px;
+				height: 700px;
+				border: 2px solid skyblue;
+			}
+		</style>
+	</head>
+	<div id="map01" class="map01"></div>
+	<br><br>
+	<input type="text" id="city" />
+	<input type="button" name="" id="bt1" value="开启鼠标测距" />
+	<input type="button" name="" id="bt2" value="关闭鼠标测距" />
+	<input type="button" name="" id="bt3" value="标注地图" />
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		// 创建Map实例
+		var map = new BMap.Map("map01");
+		map.centerAndZoom("南宁");
+		var myDis = new BMapLib.DistanceTool(map);
+		map.enableScrollWheelZoom(true); // 允许鼠标移动地图
+
+		// 事件  在输入框按回车一样会触发change事件
+		$("#city").change(function() {
+			map.centerAndZoom($("#city").val());
+		});
+
+		// 鼠标测距功能
+		$("#bt1").click(function() {
+			myDis.open(); // 开启鼠标测距
+			map.addEventListener("load", function() {});
+		});
+		// 关闭
+		$("#bt2").click(function() {
+			myDis.close(); // 关闭鼠标测距 
+		});
+
+		// 添加标注点
+		$("#bt3").click(function() {
+			// var point = new BMap.Point(108.404, 22.915);
+			// map.centerAndZoom(point, 15);
+			// var marker = new BMap.Marker(e.point); // 创建标注
+			// map.addOverlay(marker); // 将标注添加到地图中
+
+			//创建小人物
+			map.addEventListener("click", function(e) {
+				var pt = new BMap.Point(e.point.lng, e.point.lat);
+				var myIcon = new BMap.Icon("2.png", new BMap.Size(80, 120));
+				var marker2 = new BMap.Marker(pt, {
+					icon: myIcon
+				}); // 创建标注
+				// map.addOverlay(marker2); // 将标注添加到地图中
+				marker2.addEventListener("click", function() {
+					var lableString = "我的位置坐标是：" + e.point.lng + ',' + e.point.lat;
+					var label = new BMap.Label(lableString, {
+						offset: new BMap.Size(-10, -20)
+					});
+					marker2.setLabel(label);
+					setTimeout(function() {
+						label.hide();
+					}, 2000);
+					});
+					marker2.enableDragging();
+					map.addOverlay(marker2);
+					
+					});
+					});
+				
+			// 1. 一张地图
+			// 2. 一张地图 2. 地图切换到城市的功能--input回车之后移动到该城市
+			// 3. 鼠标测距功能 - 要求: 可以反复使用,测距多条距离,
+			// 4. 在地图上画一个坐标点,用自定义图标替换地图的标记点图标
+			// 5. 点击标记点的时候,有额外信息提示
+		
+
+	});
+</script>

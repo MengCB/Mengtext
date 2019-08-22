@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script> <!-- 引用jquery -->
+		<script>
+			i = 0;
+			$(document).ready(function(){
+				$("input").keypress(function(){
+					$("span").text(i+=1);
+				});
+			});
+			$(function(){
+				$("button").click(function(){
+					// $("p").hide(); // 选取p标签隐藏
+					// $("#test").hide(); // 选取id名进行隐藏
+					// $(".test").hide(); // 选取class 名进行隐藏
+					// $("*").hide(); // 隐藏所有元素
+				});
+			});
+			
+			$(document).ready(function(){
+				$("input").focus(function(){  // focus 获取焦点
+					$("span").css("display","inline").fadeOut(2000); // fadeOut 淡入淡出效果延时
+				});
+			});
+			// 调整窗口大小
+			x = 0;
+			$(document).ready(function(){
+				$(window).resize(function(){
+					$("span").text(x+=1);
+				});
+			});
+			
+			// 显示与隐藏
+			$(function(){
+				$("#hide").click(function(){
+					$("#Me").hide(1000);
+				});
+				$("#show").click(function(){
+					$("#Me").show(1000);
+				});
+			});
+			$(function(){
+				console.info("蒙承彪");
+			})
+		</script>
+		<style type="text/css">
+		  /*    span {
+				  display: none;
+			  } */	
+		</style>
+	</head>
+	<body>
+		<p id="Me">让我消失</p>
+		<button id="hide">隐藏</button>
+		<button id="show">显示</button>
+		<br>
+		<p>窗口重置了 <span>0</span> 次大小。</p>
+		<p>尝试重置窗口大小</p>
+		
+		<input>
+		<span>请输入你的名字</span>
+		<p>点击输入框获取焦点。</p>
+		<br>
+		<br>
+		输入你的名字：<input type="text" />
+		<p>按键的次数：<span>0</span> </p>
+		<br>
+		<p>全部隐藏</p>
+		<p>来干哈</p>
+		<p id="test" class="test">这是一个段落</p>
+		<button type="button">点我</button>
+		
+	</body>
+</html>

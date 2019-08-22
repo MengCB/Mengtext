@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>复习课</title>
+		<style type="text/css">
+			.reds {
+				color: red
+			}
+		</style>
+	</head>
+	<body>
+		<h2>第一章节</h2>
+		<h3>js从弱语言开始</h3>
+		<p>js 两个关键词 : 脚本语言(不需要编译,解释运行), 弱类型 (数据类型的弱化,不是说没有
+			数据类型的概念,typeof(parameter) , 一个变量的值可以是任何数据类型, 任何大小;
+			--boolean, number, string ,object, function, )
+
+		</p>
+		<p>第一个坑: 数字/字符串 之坑 ---- "0" == 0 <br/> "0"+ 1 = "01" <br/> 0 + 1 = 1; (++例外,不可靠 )</p>
+		<p>第二个坑: 布尔之坑 -- if(0) if(false) if("") if(null)
+			<span class="reds"> <br/> if( undifinde)</span>
+			<br/> if(true) if(1) if(-1) if("xxx") if(object)
+		</p>
+		<p>第三个坑: 变量之坑 -- 没有 用 var 声明的变量, 自动被转成全局变量 <br/> var const let</p>
+
+		<h4>关于数字1:</h4>
+		<p> isNaN(parameter) - 判断变量不是数字 <br/>
+
+			parseInt(parameter) 把变量强制转换成整型 <br/> parseInt("101只猪") => 101
+
+			<br/> parseInt("有101只猪") => NaN <br/> 关于NaN 标志,表示运算结果非数字
+		</p>
+
+		<h4>关于数字2 :</h4>
+		<p> Math -- 全局对象, 不可以new, 它包含的强大的对象方法, 专门处理数字计算 <br/>
+			Math.random() ---> 3~5之间的随机数字 Math.random() *( 5-3) + 3　<br/>
+			Math.floor() -----> 舍弃小数,取出整数部分 1.1 -> 1 <br/> 1.9 ->1 <br/>
+			Math.ceil() ----> 舍弃小数, +1 , 向上取整, 1.1 -> 2 <br/> 1.9 ->2 <br/>
+			Math.round() --> 四舍五入 <br/>
+			Math.abs() -----> 取绝对值 <br/> 这些函数的参数可以是变量, 也可以是表达式, 所以他们是可以互相嵌套的
+
+		</p>
+
+		<h4>关于字符串:</h4>
+		<p> http:<br/>www.w3school.com.cn/jsref/jsref_obj_string.asp </p>
+		<p>
+			1. 字符串查找 indexOf() <br/> "xxxxx".indexOf() 返回值? 下标, 注意 参数可以使字符串,
+			字符串也有下标, 可以通过下标访问其中的字符 "xxxxx"[index] , 不能通过下标修改 <br/>
+			lastIndexOf(); 表示查询最后出现的位置
+		</p>
+		<p>
+			2. length 属性, 表示字符串的长度 "fang".length 不是 "fang".length()
+		</p>
+		<p>
+			3. "" + '' <br/> "fan'wen' g" <br/> '"fang" ' <br/> " \"fang \""
+		</p>
+		<p>
+			4. slice() 方法 var res = str.slice(7,13); <br/>
+		</p>
+		<p>
+			5. var a = "fang"; a.toUpperCase();将字符串的每个字符转成大写返回, 不改变原字符串 <br/>
+			toLowerCase() 小写
+		</p>
+		<p>
+			6. replace() <br/> "fang".replace( "ang", ""); -> "f" 不改变原字符串, 除非重新赋值
+		</p>
+		<p>
+			7. trim() 把字符串两头的空字符去掉, 注意,中间的不管
+		</p>
+		<p>
+			8. split()把字符串转换为数组 var txt = "a-b-c-d-e"; var arr = txt.split(",");
+		</p>
+
+		<h4>关于数组</h4>
+		<p>
+			1. 数组的定义 var arr = []; <br/> 数组是一组有序排列的变量, 内容的数据格式不要求统一
+		</p>
+		<p>
+			2. 遍历 (有序 ) -- 遍历删除算法(dom) -- while(arr.length > 0 ){ 删除arr[0]}
+		</p>
+		<p>
+			3. 数组操作 : join() 把数组转成字符串
+			<br/> pop()删除最后一位() 出栈
+			<br/> push()末尾增加一位 (压栈)
+			<br/> concat() var myChildren = myGirls.concat(myBoys); <br/> 连接 myGirls 和 myBoys
+		</p>
+		<p>
+			4. 排序算法 https:<br/>www.cnblogs.com/beli/p/6297741.html - 冒泡 (要求能默写)
+		</p>
+		<p>
+			5. 关联数组 - 下标有字符串下标的数组 -- 对象
+			<br/> 正常遍历, 遍历不到字符串下标, 这时候要有 for in 来遍历, for in 是遍历对象的方式
+			<br/> for( var x in arr){ } <br/> x 是字符串下标, arr[x] 是值
+		</p>
+
+		<h4>关于对象 : var ob = { key- value , ....} </h4>
+		<p>
+			1. 对象是一组无序的 key-value 结构 , 键值对
+			<br/> 相对于数组, 它是一组无序的变量
+			<br/> 变量名 - 属性名(确定的字符串) 变量值 - 属性值(任意数据类型)
+		</p>
+		<p>
+			2. 对象的属性可以任意增删, 不需要声明
+			<br/> 增加属性 ob.a = "xxxx";
+			<br/> 删除属性 delete ob.a ;
+			<br/> 修改属性 ob.a = "yyyyy"; ob["a"] = "yyyyy";
+			<br/> 删除对象 ob = null ;
+			<br/> 对象的属性值可以是函数,也可以是其他对象 ob.old = function(){ ... }
+			<br/> ob.old(); <br/> Math.random()
+		</p>
+		<p>
+			3.遍历对象 for( var x in ob){ }
+		</p>
+
+
+		<h4>关于函数</h4>
+		<p>
+			1. 函数声明 function 函数名(参数1, 参数2 ,参数3 ...... ) { 使用参数1 .... <br/> 使用参数2 ..}
+			<br/> var a = 0 ; function getMax( a , b ) { <br/> 返回a, b 中较大的那个}
+		</p>
+		<p>
+			2. 函数名: 通过函数名 + ()的方式,执行/调用 该函数 getMax( 3, 5);
+			<br/> 没有函数名的函数, 匿名函数 ,
+			<br/> var a = function(...){....} -> a();
+		</p>
+		<p>
+			3. 函数的参数列表 (形参) 形参的名字只在函数体内部使用
+			<br/> 声明的形参可以不使用 , 如果使用, 必须在调用函数的时候传递值,默认UNDIFNI ,
+			<br/> 参数列表放的都是形参, 叫什么名字不重要,(只要函数体保持一致), 顺序重要! 不能跳过
+			<br/> function do(a, b, c ){ .....} -> do( a1, , c1 ); 报错, do( a1, null , c1 );
+		</p>
+		<p>
+			4.函数返回值 function(){ <br/> do........ <br/> return X; }
+			<br/> 返回值 - 是函数的执行结果
+			<br/> 函数不一定有返回值 , 如果有 使用 return 语句返回. 返回值可以使任何数据类型
+			<br/> 函数? 执行固定逻辑的一组程序, 输入->计算->输出, 功能模块
+			<br/> return 语句 - 一个函数, 遇到return x 语句 , 立刻无条件结束.
+		</p>
+		<p>
+			5. 特殊的函数1: ()(); <br/> 立即执行函数,自调用函数 <br/> 立刻执行
+			<br/> ( function( p1,p2,p3 ){ } )( p1, p2, p3 );
+		</p>
+		<p>
+			6. 特殊函数2: 对象构造器
+			<br/> http:<br/>www.w3school.com.cn/js/js_object_constructors.asp
+		</p>
+		<h4>
+			补充基础内容:
+		</h4>
+		<p>
+			1. 计时器 setInterval() <br/> 周期性的执行一段代码/一个函数,
+			<br/> 句柄 var timer1 = setIntaval( function(){}, 1000);
+			<br/> clearIntaval( timer1 );
+			<br/> setIntervale( function(){} , 1000 )
+			<br/> 问题: 控制一个计时器只执行10次
+		</p>
+		<p>
+			2. 定时器 setTimeout( function(){}, 1000)
+			<br/> 延迟执行
+		</p>
+		<p>
+			3. Date() <br/> 日期相关 new Date().getTime(); -- 日期毫秒
+			<br/> 时间间隔计算
+			<br/> 小坑 new Date().getMonth 月份从 0 开始, 取当前月份要 +1
+		</p>
+		<p>
+			4. 代码规范
+		</p>
+
+		<h2>dom相关</h2>
+		<h4>文档-对象-模型</h4>
+		<p>
+			1. 引擎将文本转化成对象 - document object model
+			<br/> http:<br/>www.w3school.com.cn/js/js_htmldom.asp
+			<br/> http:<br/>www.w3school.com.cn/js/js_htmldom.asp
+		</p>
+		<p>
+			2. document 对象 <span class="reds">element</span>
+			
+			<br/> document.images - > []
+			<br/> element = document.getElementById()
+			<br/> elements = document.getElementsByTagName("div")
+			<br/> elements = document.getElementsByClassName()
+		</p>
+		<p>
+			3.dom节点和节点操作
+			<br/> element.innerHTM
+			<br/> element.innerText
+			<br/> element.attribute = new value
+		</p>
+		<p>
+			4. 节点增删
+			<br/> document.createElement(element) 创建 HTML 元素
+			<br/> document.removeChild(element) 删除 HTML 元素
+			<br/> document.appendChild(element) 添加 HTML 元素
+			<br/> document.replaceChild(element) 替换 HTML 元素
+			<br/> document.write(text)
+		</p>
+		
+		<h4>
+			事件
+		</h4>
+		<p>
+			1.事件对象 - 在声明/注册 事件函数的时候,隐式的传递给函数 
+			<span class="reds">e</span>
+			<br> document.getElementById("xxxx").onclcik = function(e){
+				
+				
+			}
+			<br> 事件对象的几个重要属性
+			<br/> e.target -- 事件源 , 代表触发事件的dom节点对象client
+			<br/> e.x / e.y / e.clientX / e.clientY ---事件源的坐标,
+			<br/> x -距离窗口的左边框的像素
+			<br/> y - 距离窗口的上边框的像素
+			<br/> e.shiftKey = false - 事件发生时, 是否按下了shift按键
+			<br/> e.altKey = false - 事件发生时, 是否按下了alt按键
+		</p>
+		
+		<p>
+			2.事件源 - 节点对象, 也就是说, 对该节点的所有属性和方法都可以调用
+		</p>
+		<p>
+			3.鼠标事件
+			<br/>onmousedown - e.which -- 1,2,3  <br/> e.button 0-左 1中,2右,3
+			<br/>onmouseup
+			
+			<br/>onclick -- 仅限左键!
+			<br> ondblclick -- 双击事件 -- 仅限左键
+			
+			<br/>onmouseover
+			<br/>onmouseleave
+			<br/>onmouseout
+			<br/>onmousewheel - 滚轮 
+			<br/>onmousemove - 鼠标移动
+			<br/>oncontextmenu - 鼠标右键菜单 -- 
+		</p>
+		<p>
+			4.键盘事件
+			<br/>onkeypress
+		</p>
+		<p>
+			5.浏览器事件 (挂在document上的事件)
+			<br>onload - 页面加载
+			<br>onunload - 页面关闭
+			<br> DOMContentLoaded  - 页面渲染完毕
+		</p>
+		
+		<h4>BOM浏览器对象模型</h4>
+		<p>
+			1. window 对象  - 注册时间, 对浏览器的操作
+		</p>
+		<p>
+			2.
+			<br/> window.open() 
+			<br/> window.close() 
+			<br/> window.location.reload()
+			<br/> window.location = "url"
+			<br/> window.location.search  关于ulr -- 参数传递
+		</p>
+	</body>
+</html>

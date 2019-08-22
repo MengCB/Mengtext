@@ -1,0 +1,24 @@
+{
+	"page": 2,
+	"pageCount": 40,
+	"currList":[
+		{
+			"songId": "001",
+			"songName":"东方红",
+			"songUrl":"myAUdio/东方红.mp3",
+			"songImg":"myImage/0.jpg"
+		},
+		{
+			"songId": "002",
+			"songName":"级你太美",
+			"songUrl":"myAUdio/级你太美.mp3",
+			"songImg":"myImage/1.jpg"
+		},
+		{
+			"songId": "003",
+			"songName":"小河弯弯",
+			"songUrl":"myAUdio/小河弯弯.mp3",
+			"songImg":"myImage/timg.jpg"
+		}
+	]
+}

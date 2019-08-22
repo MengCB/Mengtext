@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				position: relative;
+			}
+
+			.redBak {
+				background-color: red;
+			}
+
+			.greenBak {
+				background-color: greenyellow;
+			}
+
+			.countdonw {
+				position: absolute;
+				width: 400px;
+				height: 400px;
+				top: 50%;
+				left: 50%;
+				margin-left: -200px;
+				background: #e6e6e6;
+				border: 1px solid ffffff;
+				border-radius: 50%;
+				font-size: 48px;
+				text-align: center;
+				line-height: 400px;
+				/* display: none; */
+			}
+
+			.countdonw div {
+				font-size: 80px;
+				/* display: none; */
+			}
+
+			.consoleBord {
+				width: 600px;
+				height: 180px;
+				position: fixed;
+				top: 0;
+				left: 50%;
+				margin-left: -300px;
+				background-color: chocolate;
+				padding-top: 20px;
+			}
+
+			.consoleButton {
+				width: 140px;
+				height: 140px;
+				border: 1px solid aqua;
+				border-radius: 50%;
+				font-size: 24px;
+				margin-left: 40px;
+				display: inline-block;
+			}
+			body img{
+				filter: grayscale(100%);
+			}
+		</style>
+	</head>
+	<body onload="loadDo()">
+		<p class="p1" id="line1">我是你爸爸</p>
+		<p class="p2" id="line2">我从来也不骑</p>
+
+		<p class="span1" id="span1">山雨欲来风满楼</p>
+		<p class="span2" id="span2">月满西楼</p>
+
+
+		<div class="consoleBord">
+			<input type="button" class="consoleButton greenBak" id="bt1" value="开始倒计时" />
+			<input type="button" class="consoleButton greenBak" id="bt2" value="改变灰度" />
+			<input type="button" class="consoleButton greenBak" id="bt2" value="待定" />
+		</div>
+
+
+		<img style="width:300px;height:300px;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561973334712&di=5da7447c541e2187c430598ae0847a37&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201305%2F25%2F20130525153450_nHVaH.thumb.700_0.jpeg">
+		<img style="width:300px;height:300px;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561973334710&di=42fddde42ff1e18dc4c4e8c893837607&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fe5e412935609e24ae7b4810f4854f093954d763c3ae64-PYNHXF_fw658">
+		<div class="countdonw" id="countdonw1">
+			<div id="countNum">5</div>
+		</div>
+	</body>
+	<script>
+		//document 页面上所有元素的集合
+		document.getElementById("line1"); //查找
+
+		document.getElementById("line1").innerText = "风<br>萧萧<br>兮易水寒"; //仅仅改变文本
+
+		document.getElementById("line2").innerHTML = "壮<br>士<br>一<br>去<br>兮<br>不<br>复<br>还"; //改变内部的html文件
+        document.getElementById("line2").innerHTML = "";
+		document.getElementsByTagName("p"); //试一下,运行返回值是一个数组
+
+		//获取标签的属性 line1.getAttribute("class")
+		//修改标签的属性 line1.setAttribute("class","")
+
+		//事件-预热
+		//页面加载完成事件
+		function loadDo() {
+			document.getElementById("countdonw1").style.display = "none";
+		}
+		//点击(开始倒计时按钮)
+		document.getElementById("bt1").onclick = function(e) {
+			//取出按钮的class // "consoleButton greenBak"
+			//如果class中含有greenBak,才能点击倒计时,否则不进行倒计时动作
+			if( document.getElementById("bt1").getAttribute("class").indexOf("greenBak") >= 0 ){
+				//重新赋值给元素(按钮)
+				document.getElementById("bt1").setAttribute("class","consoleButton redBak");
+				doCountDown();
+			}else{
+				console.info("正在倒计时，不能重复点击");
+			}
+		};
+		//实现一个倒数数的画面 //句柄-非常抽象的概念 
+		function doCountDown() {
+			document.getElementById("countdonw1").style.display = "block"; //显示底图
+			var counter01 = 5;
+			var kkk = setInterval(function() {
+				document.getElementById("countNum").style.display = "none";
+				counter01 -= 1;
+				if (counter01 >= 0) {
+					document.getElementById("countNum").innerText = counter01;                  
+				} else {
+					//倒数数结束后做的事情,做完后,清空计时 同时还原按钮的class greenBak,才能开启下次倒数
+					document.getElementById("bt1").setAttribute("class","consoleButton greenBak");
+					document.getElementById("countNum").innerText = "开始";
+					clearInterval(kkk); //关闭定时器
+				}
+				//延迟执行 （ 定时器)
+				setTimeout(function() {
+					document.getElementById("countNum").style.display = "block";
+				}, 600); //过了600毫秒以后再执行匿名函数
+
+			}, 1000);
+		}
+		
+		
+		// //使用计时器,逐渐改变页面上图片的颜色
+		// var cpounter002 = 1;
+		// var timerForImg = setInterval(function() {
+		// 	if (cpounter002 <= 10) {
+		// 		for (var i = 0; i < document.images.length; i++) {
+		// 			document.images[i].style.filter = "grayscale(" + cpounter002 + "0%)"; //逐渐改变图片灰度
+		// 		}
+		// 		cpounter002 += 1;
+		// 	} else {
+		// 		clearInterval(timerForImg);
+		// 	}
+		// }, 400);
+		
+		//  作业 : 实现点击按钮后, 图片逐渐变亮
+		// step1 . 修改样式, 让图片的 grayscale css属性 为 100% 
+		// step2 . 修改以下函数 , 让灰度逐渐变成 0% 
+		document.getElementById("bt2").onclick = function(){
+			offLight();
+		}
+		
+		function offLight(){
+			// 使用计时器, 逐渐改变图片灰度
+			var cpounter002 = 10; 
+			var timerForImg = setInterval( function(){
+				if( cpounter002 >= 1 ){
+					for(var i=0; i< document.images.length; i++){
+						document.images[i].style.filter = "grayscale("+ cpounter002  +"0%)";   // 逐渐改变图片灰度
+					}
+					cpounter002 -=1 ; 
+				}else{
+					clearInterval( timerForImg );
+				}
+			},  400 );
+		}
+	</script>
+</html>

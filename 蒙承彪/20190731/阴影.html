@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>对象阴影</title>
+		<style type="text/css">
+			
+			p {
+				color: aqua;
+			}
+
+			.box {
+				width: 200px;
+				height: 200px;
+				box-shadow: 10px 4px 10px salmon inset;
+			}
+
+			.box1 {
+				position: absolute;
+				left: 40%;
+				width: 200px;
+				height: 200px;
+				box-shadow: #FFFFFF 0px 0px 10px 20px;
+				border-radius: 50%;
+				background-color: yellow;
+				opacity: 1;
+			}
+			
+			.Mask{
+				width: 100%;
+				height: 100%;
+				background-color: #000000;
+			}
+		</style>
+	</head>
+	<body>
+
+		<p>内阴影</p>
+		<div class="box"></div>
+		<p>外阴影</p>
+		<div class="box1" id="box1"></div>
+		<div class="Mask" id="Mask"></div>
+		<input type="button" value="开灯" onclick="Open()" />
+		<input type="button" value="关灯" onclick="Stop()" />
+	</body>
+</html>
+<script type="text/javascript">
+	var timer;
+	var timer1;
+	var bg = 8;
+	var upFlag = false;
+
+	function Open() {
+		timer = setInterval(function() {
+			if (bg > 200) {
+				upFlag = false;
+			}
+			if (bg < 10) {
+				upFlag = true;
+			}
+			if (upFlag) {
+				bg += 12;
+				document.getElementById("box1").style.opacity = "1";
+			}else{
+				clearInterval(timer);
+				
+			}
+			console.info(bg);
+			document.getElementById("box1").style.boxShadow = "yellow 0px 0px " + bg + "px " + bg + "px";
+		}, 500);
+		
+	};
+	
+	function Stop() {
+		timer1 = setInterval(function() {
+			if (bg > 120) {
+				upFlag = false;
+			}
+			if (bg < 10) {
+				upFlag = true;
+			}
+			if (upFlag) {
+				clearInterval(timer1);
+				document.getElementById("box1").style.opacity = "0";
+			} else {
+				bg -= 12;
+			}
+			console.info(bg);
+			document.getElementById("box1").style.boxShadow = "yellow 0px 0px " + bg + "px " + bg + "px";
+		}, 500);
+	}
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body onload="timer()">
+		<input type="button" id="bt1" value="禁用你" />
+		<input type="button" id="bt2" value="不关我的事啊" />
+
+		<input type="button" id="bt3" value="停止报时" />
+		<input type="button" id="bt4" value="继续报时" />
+	</body>
+</html>
+s<script type="text/javascript">
+	// 1. 已知页面上有两个按钮, 写一段代码, 当点击bt1的时候, 禁用bt2, 并且按钮上的文字改成 "已经禁用"
+	// 提示: 禁用按钮可以修改它的disabled属性 = true;
+	document.getElementById("bt1").onclick = function(e) {
+		document.getElementById("bt2").value = "已经禁用";
+		document.getElementById("bt2").disabled = true;
+	}
+
+
+	// 设定一个计时器, 每隔1秒在控制台输出一次当前时间的毫秒数, 
+	// 当按钮 bt3被点击的时候, 停止控制台的输出.
+	// 当按钮bt4 被点击的时候, 继续控制台的输出
+	function timer(){
+	var time = setInterval(function() {
+		var House = new Date();
+		console.info(House.getMilliseconds());
+		document.getElementById("bt3").onclick = function(e) {
+			clearInterval(time);
+		}
+		document.getElementById("bt4").onclick = function(e) {
+			timer();
+		}
+	}, 1000);
+	}
+</script>

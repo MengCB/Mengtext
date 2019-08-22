@@ -1,0 +1,144 @@
+:focus {
+	outline: none;
+}
+
+.contact_form {
+	width: 70%;
+	position: absolute;
+	top: 20%;
+	left: 30%;
+}
+
+.tree {
+	position: absolute;
+	top: 420px;
+	left: 260px;
+}
+
+.contact_form h2,
+.contact_form span {
+	font-family: georgia, times, "times new roman", serif;
+}
+
+.form_hint {
+	font-size: 11px;
+}
+
+.contact_form ul {
+	width: 750px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.contact_form li {
+	padding: 12px;
+	border-buttom: 1px solid #eee;
+	position: relative;
+}
+
+/* 给类名为contact_form的元素的第一个子元素li和最后一个子元素li加底边框 */
+.contact_form li:first-child,
+.contact_form li:last-child {
+	border-bottom: 1px solid #777;
+}
+
+.contact_form h2 {
+	margin: 0;
+}
+
+.contact_form span {
+	width: 150px;
+	margin-top: 3px;
+	display: inline-block;
+	/* 把块级元素转换成行内元素 */
+	padding: 3px;
+}
+
+/* 给类名为usually的元素下的input标签定义框高和内边距 */
+.usually input {
+	height: 20px;
+	width: 220px;
+	padding: 5px 8px;
+}
+
+.contact_form textarea {
+	padding: 8px;
+	width: 300px;
+}
+
+.contact_form button {
+	margin-left: 156px;
+}
+
+.special input {
+	height: 15px;
+	width: 40px;
+	padding: 5px 8px;
+}
+
+/* 给类名为usually的元素下的input和textarea标签设置背景颜色，背景图，边框，外阴影，内阴影，
+边框圆角和边距的过渡效果 */
+.usually input,
+.usually textarea {
+	background: #fff url(../img/attention.png) no-repeat 98% center;
+	border: 1px solid #aaa;
+	box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+	border-radius: 2px;
+	transition: padding .25s;
+}
+
+/* 当块级元素获取焦点时,社会资背景颜色,背景图，边框，外阴影，内阴影，和右边距 */
+.usually input:focus,
+.usually textarea:focus {
+	background: #fff;
+	border: 1px solid #555;
+	box-shadow: 0 0 3px #aaa;
+	padding-right: 70px;
+}
+
+/* button style */
+button.submit {
+	background-color: #68b12f;
+	/* 背景颜色线性渐变:有上之下 #68b12f到#50911e */
+	background: linear-gradient(top, #68b12f, #50911e);
+	border: 1px solid #509111;
+	border-bottom: 1px solid #5b992b;
+	border-radius: 3px;
+	box-shadow: inset, 0 1px 0 0 #9fd574;
+	/* 设置向下1px内阴影 */
+	color: white;
+	font-weight: bold;
+	padding: 6px 20px;
+	text-align: center;
+	text-shadow: 0 -1px 0 #396715;
+}
+
+/* 当鼠标悬停在"提交"按钮上时,该按钮背景颜色透明度为85%,光标变为小手形状*/
+button.submit:hover {
+	opacity: 0.85;
+	cursor: pointer;
+	/*鼠标样式*/
+}
+
+/* 当鼠标单击在"提交"按钮上时,出现1px的#20911e色的实线边框，同时出现阴影*/
+button.submit:active {
+	border: 1px solid #20911e;
+	box-shadow: 0 0 10px 15px #356b0b inset;
+}
+
+/* 当元素获取焦点填写内容无效时, *没有背景颜色，背景图片，盒子阴影以及边框颜色*/
+.usually input:focus:invalid,
+.usually textarea:focus:invalid {
+	background: #fff url(../img/warn.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #d45252;
+	border-color: #b03535;
+}
+/* 表单校验通过时 required:valid 校验不通过时 focus:invalid */
+/* 当元素获取到内容时,设置背景颜色，背景图片，盒子阴影以及边框颜色 */
+.usually input:required:valid,
+.usually textarea:required:valid {
+	background: #fff url(../img/right.png) no-repeat 98% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+}

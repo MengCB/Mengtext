@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="bt1" value="禁用你" />
+		<input type="button" id="bt2" value="不关我的事啊" />
+		<br>
+		<input type="button" id="bt3" value="停止报时" />
+		<input type="button" id="bt4" value="继续报时" />
+	</body>
+</html>
+<script type="text/javascript">
+	document.getElementById("bt1").onclick = function(e) {
+		document.getElementById("bt2").disabled = true;
+		//document.getElementById("bt2").value = "已经禁用";
+	}
+	
+	// 当按钮 bt3被点击的时候, 停止控制台的输出.
+	document.getElementById("bt3").onclick = function(e){
+		timerControl(false);
+	}
+	// 当按钮bt4 被点击的时候, 继续控制台的输出
+	document.getElementById("bt4").onclick = function(e){
+		timerControl(true);
+	}
+	
+	// 设定一个计时器, 每隔1秒在控制台输出一次当前时间的毫秒数, 
+	
+	// 控制输出
+	_timer01 = 0;
+	function timerControl( flag ){
+		if( _timer01 ){
+			console.info( "关掉的句柄" + _timer01);
+			clearInterval( _timer01 );
+		}
+		if( flag ){
+			_timer01 = setInterval(function(){
+				console.info( new Date().getTime() + "   句柄 = " +　_timer01 );
+			},1000);
+		}else{
+			//
+		}
+	}
+	
+</script>

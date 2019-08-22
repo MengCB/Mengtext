@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script type="text/javascript" src="jquery.js"></script>
+	<title></title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<script type="text/javascript">
+	//数组去重(重复的元素去掉)
+	var arr009 = [1,4,4,3,2,4,7,6];
+	var temp = [];
+	temp.push(arr009[0]);
+	for(var i = 0; i < arr009.length; i++){
+		for(var j = 0; j < temp.length; j++){
+			
+			if( temp.indexOf(arr009[i]) < 0 ){
+				temp.push(arr009[i]);
+			}
+		}
+	}
+	//数组是对象  变量的属性是无序的
+	//对象是一组无序的 key-value 结构,键-值 对
+	//属性名-属性值
+	//严格的说:属性名是固定的,且是字符串
+	//对象的属性可以随意增删
+	var ob01 = {
+		"name": "meng",
+		"age":22,
+		"long":"3.6inc",
+		"weigth":"65kg",
+		"title":"广西十大杰出码农",
+		"secTitle":"优秀隔壁老王"
+	};
+	ob01.fullName = "蒙承彪";//对象的属性可以随意增删
+	delete ob01.secTitle ;//删除对象的属性 使用关键字delete
+	
+	
+	//遍历对象 for in
+	//遍历自己
+	for(var x in ob01 ){
+		console.info(x+": "+ob01[x]);
+	}
+	
+	
+	var student1 = {
+		name: "李",
+		id:16060219,
+		grade:"大三",
+		unint:"二系一专业",
+		total:70
+	};
+		var student2 = {
+		name: "王",
+		id:16060220,
+		grade:"大三",
+		unint:"三系一专业",
+		total:75
+	};
+		var student3 = {
+		name: "张三",
+		id:16060221,
+		grade:"大三",
+		unint:"二系二专业",
+		total:82
+	};
+		var student4 = {
+		name: "李四",
+		id:16060222,
+		grade:"大三",
+		unint:"三系一专业",
+		total:79
+	};
+	//输出分数大于80的同学
+	var student = [student1,student2,student3,student4];
+	for (var i = 0; i < student.length; i++) {
+		if( student[i].total > 80 ){
+			console.info(student[i]);
+		}
+	}
+	//检索出二系的同学,输出其学号
+	for (var i = 0; i < student.length; i++) {
+		if(student[i].unint.indexOf("二系") >=0 ){
+			console.info(student[i]);
+		}
+	}
+</script>

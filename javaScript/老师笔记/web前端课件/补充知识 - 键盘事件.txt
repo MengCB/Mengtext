@@ -1,0 +1,24 @@
+﻿一.keypress,keydown,keyup的区别:
+
+ 1.keydown：在键盘上按下某键时发生,一直按着则会不断触发（opera浏览器除外）, 它返回的是键盘代码;
+ 2.keypress：在键盘上按下一个按键，并产生一个字符时发生, 返回ASCII码。注意: shift、alt、ctrl等键按下并不会产生字符，所以监听无效 ,换句话说, 只有按下能在屏幕上输出字符的按键时keypress事件才会触发。若一直按着某按键则会不断触发。
+ 3.keyup：用户松开某一个按键时触发, 与keydown相对, 返回键盘代码.
+ 
+ 
+ 
+ 关于获取触发事件的说明：
+1. 获取事件对象
+$(document).ready(function(){
+    $(window).keypress(function(event){    
+        //获取事件对象，里面包含各种有用的信息。
+        console.log(event);
+        //console.log(event.which);
+    });
+});
+2. keypress事件获取键入字符
+$(window).keypress(function(event){
+    //event.which是获取ASCII码，前面的函数是将ASCII码转换成字符，空格键和Enter键输出均为空白。
+    console.log(String.fromCharCode(event.which));
+    //从event对象中key属性获取字符，但是Enter键的key值为"Enter"，空白键还是空白" "。
+    console.log(event.key);
+});

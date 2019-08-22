@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>布局</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1243351_emdpn6p9chk.css">
+</head>
+<style>
+    .box{
+        width: 1100px;
+        height: 140px;
+        margin: auto;
+        margin-top: 70px;
+    }
+    .a,.b,.c,.d,.e{
+        width: 200px;
+        height: 100px;
+        float: left;
+        padding: 5px 5px 18px 0;
+        border-right: 1px solid #f1e5c5;
+    }
+    .f{
+        width: 50px;
+        float: left;
+        padding-bottom: 0;
+        padding: 5px 5px 18px 0;
+    }
+    .f:last-child{
+        border-right: none;
+    }
+    .a ul,.b ul,.c ul,.d ul,.e ul{
+        width: 150px;
+        height:20px;
+    }
+    .g{
+        width: 50px;
+        line-height: 18px;
+        /*height: 20px;*/
+    }
+    ul{
+        list-style-type: none;/*去掉ul列表前的标记*/
+    }
+     .a li,.b li,.c li,.d li,.e li{
+         width: 37px;
+         float: left;
+         color: #333333;
+         font: 15px "Microsoft YaHei";
+         line-height: 18px;
+         text-align: center;
+         white-space: nowrap; /*强制在同一行内显示所有文本，合并文本间的多余空白，直到文本结束或者遭遇br对象*/
+     }
+    .f li{
+        width: 37px;
+        float: left;
+        color: #333333;
+        font: 15px "Microsoft YaHei";
+        line-height: 18px;
+        text-align: center;
+    }
+     li:hover{
+         color: #ff8400;
+     }
+     .h{
+         width: 20px;
+         height: 140px;
+         background-color: #ffffff;
+         position: relative;
+         right: 10px;
+         display: none;
+     }
+    .h li{
+        width: 70px;
+        height: 34px;
+        border: 1px solid #f6b957;
+        border-top: none;
+        position: relative;
+        right: 45px;
+    }
+     .i:hover>.h{
+         display: block;
+     }
+    .h2:hover,.h1:hover,.h3:hover,.h4:hover,.h5:hover,.h6:hover,.h7:hover{
+        background-color: #f1e5c5;
+    }
+    .p{
+        font-size: 25px;
+        color: #ff8400;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="a">
+            <ul>
+                <li><b>新闻</b></li>
+                <li>军事</li>
+                <li>国内</li>
+                <li>国际</li>
+            </ul>
+            <ul>
+                <li><b>财经</b></li>
+                <li>股票</li>
+                <li>基金</li>
+                <li>外汇</li>
+            </ul>
+            <ul>
+                <li><b>科技</b></li>
+                <li>手机</li>
+                <li>探索</li>
+                <li>众测</li>
+            </ul>
+        </div>
+        <!--<div class="x" style="float:left;width: 1px;height: 25px; background: #f1e5c5;"></div>-->
+        <div class="b">
+            <ul>
+                <li><b>体育</b></li>
+                <li>NBA</li>
+                <li>英超</li>
+                <li>中超</li>
+            </ul>
+            <ul>
+                <li><b>娱乐</b></li>
+                <li>明星</li>
+                <li>电影</li>
+                <li>星座</li>
+            </ul>
+            <ul>
+                <li><b>汽车</b></li>
+                <li>报价</li>
+                <li>买车</li>
+                <li>新车</li>
+            </ul>
+        </div>
+        <div class="c">
+            <ul>
+                <li><b>博客</b></li>
+                <li>专栏</li>
+                <li>历史</li>
+                <li>天气</li>
+            </ul>
+            <ul>
+                <li><b>视频</b></li>
+                <li>综艺</li>
+                <li>VR</li>
+                <li>直播</li>
+            </ul>
+            <ul>
+                <li><b>房产</b></li>
+                <li>二手房</li>
+                <li>家居</li>
+                <li>收藏</li>
+            </ul>
+        </div>
+        <div class="d">
+            <ul>
+                <li><b>时尚</b></li>
+                <li>女性</li>
+                <li>医药</li>
+                <li>育儿</li>
+            </ul>
+            <ul>
+                <li><b>教育</b></li>
+                <li>高考</li>
+                <li>公益</li>
+                <li>佛学</li>
+            </ul>
+            <ul>
+                <li><b>图片</b></li>
+                <li>读书</li>
+                <li>黑猫</li>
+                <li>司法</li>
+            </ul>
+        </div>
+        <div class="e">
+            <ul>
+                <li><b>微博</b></li>
+                <li>城市</li>
+                <li>广西</li>
+                <li>学投资</li>
+            </ul>
+            <ul>
+                <li><b>旅游</b></li>
+                <li>文化</li>
+                <li>彩票</li>
+                <li>高尔夫</li>
+            </ul>
+            <ul>
+                <li><b>游戏</b></li>
+                <li>手游</li>
+                <li>邮箱</li>
+                <li>English</li>
+            </ul>
+        </div>
+        <div class="f">
+            <ul class="g">
+                <li>交易</li>
+                <li>理财</li>
+                <li class="i">更多<i class="iconfont icon-xia p"></i>
+             <ul class="h">
+                <li class="h1">政务</li>
+                <li class="h2">车险</li>
+                <li class="h3">页游</li>
+                <li class="h4">SHOW</li>
+                <li class="h5">搜索</li>
+                <li class="h6">客服</li>
+                <li class="h7">导航</li>
+             </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

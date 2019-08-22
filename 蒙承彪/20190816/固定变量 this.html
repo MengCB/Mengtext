@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	var songs = [{
+			name: "忘情水",
+			singner: "刘德华",
+			total: 80
+		},
+		{
+			name: "鸡你太美",
+			singner: "蔡徐坤",
+			total: 2
+		},
+		{
+			name: "双节棍",
+			singner: "周杰伦",
+			total: 82
+		},
+		{
+			name: "少时诵诗书是",
+			singner: "刘德华",
+			total: 66
+		}
+	];
+	// 从这个数组里边,找出蔡徐坤的歌名
+	for (var i = 0; i < songs.length; i++) {
+		if (songs[i].singner == "蔡徐坤") {
+			console.info(songs[i].name);
+		}
+	}
+
+
+
+	var song01 = {
+		name: "少时诵诗书是",
+		singner: "刘德华",
+		total: 99,
+		old: function() {
+			console.info(this);
+		},
+		perfect: {
+			ok: function() {
+				if (song01.total >= 80) {
+					console.info("优秀");
+				} else {
+					console.info("不优秀");
+				}
+			},
+			avrage: function() {
+				//
+			}
+		}
+	}
+
+	$.mui.ajax({
+		url:
+		data:
+		dataType: 
+		type: 'post', //HTTP请求类型
+		timeout: 10000, //超时时间设置为10秒；
+		success: function(data) {
+			this.xxx // 这时候this指向window
+		},
+		error: function(xhr, type, errorThrown) {
+
+		}
+	});
+
+
+
+
+	// a = song01.old;
+	// a为全局变量,他的上层对象是window
+	a = function() {
+		console.info(this);
+	}
+
+
+	var song02 = Object.create(song01); // create做了一次继承
+
+
+
+	// 固化 this
+	var o = {
+		f1: function() {
+			console.log(this);
+			var that = this; // 固化 固定变量
+			var f2 = function() {
+				console.log(that);
+			}();
+		},
+	}
+</script>

@@ -1,0 +1,71 @@
+今日课程安排： 
+
+0： 数组补充--  arr.push() 以及fruits[fruits.length] = "Lemon";     数组的插入 fruits.splice(2, 0, "Lemon", "Kiwi");   2表示插入的位置， 0 表示删除多少个元素
+fruits.splice(0, 1);        从第0个位置，删除1个元素
+
+数组的拼接： 
+concat() 方法不会更改现有数组。它总是返回一个新数组。
+concat() 方法可以使用任意数量的数组参数：
+var myGirls = ["Cecilie", "Lone"];
+var myBoys = ["Emil", "Tobias", "Linus"];
+var myChildren = myGirls.concat(myBoys);   // 连接 myGirls 和 myBoys
+
+数组的裁剪
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+	var citrus = fruits.slice(2); 
+
+
+,  arr.sort(), 排序，  
+points.sort(function(a, b){return a - b});
+
+points.sort(function(a, b){return b - a});
+
+
+例程0： 对象数组的排序
+reverse() 方法反转数组中的元素。
+
+1. 程序的结构 IF else , while(){}, for in ,  switch case
+
+switch(表达式) {
+     case n:
+        代码块
+        break;
+     case n:
+        代码块
+        break;
+     default:
+        默认代码块
+} 
+
+关于 break 和continue (break 跳出片段， continue 停止本次计算继续循环)
+
+
+2. 函数与对象：
+ 构造器函数： 描述一个对象的构造， 用来生成新的对象。 
+// Person 对象的构造器函数
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+
+// 您不能将新属性添加到构造函数 Person.prototype.nationality = "English"; // 请使用原型
+Person.nationality = "English";
+
+// 创建两个 Person 对象
+var myFriend = new Person("Bill", "Gates", 62, "blue");
+var myBrother = new Person("Steve", "Jobs", 56, "green");
+
+// 显示国籍
+document.getElementById("demo").innerHTML =
+"The nationality of my friend is " + myFriend.nationality; 
+
+var arr1 = [1.2.4,56,77,3,6,7,8,44,5,2,44,5] ==> 去掉重复的元素
+作业： 
+1. 数组去重， 把一个数组中的重复元素去掉
+
+
+
+2. 一个student 数组， 对分数进行排序， 并且将自己的排名加入到属性中。 编写一个函数， 输入姓名， 返回其排名信息。
+

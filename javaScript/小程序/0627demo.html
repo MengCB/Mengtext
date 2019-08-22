@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="jquery/jQuery-3.1.1.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		20190627
+
+	</body>
+</html>
+<script type="text/javascript">
+	// alert("慢慢跑");弹出窗口
+	//练习: 在数组 [ 'fang' , 'yang' , 'li' ,'liu' ] 的最后一位添加
+	//一个"lin"
+	//2.在yang后面加入两个人"tom"， "jim",并替换li 和 liu 的位置
+	//[ "fang" , "yang" , "tom" , "jim,"lin" ]
+
+	//3.把li 和liu还原回来["fang" , "yang" , "li" ,"liu" , "lin"]
+	var arr1 = ["fang", "yang", "li", "liu"];
+	arr1[arr1.length] = "lin";
+	arr1.splice(2, 2, "tom", "jim");
+	arr1.splice(2, 2, "li", "liu");
+
+	// 数组的拼接 a1.concat(a2)
+	//var a1 = [0,1,2,3]; var a2 = [4,5,6,7];
+	var arr1 = ["fang", "yang", "li", "liu", "lin"];
+	var arr1 = arr1.concat(arr1.splice(2, 2, "tom", "jim"));
+
+	// splice 替换原素,会改变原数组
+	// slice 截取数组的一段出来用,不会改变原数组,截取的片段应该用新变量接收
+
+
+	// Student 对象的构造函数(看做是student类)
+	function Student(name, grade, id, classId, house, total) {
+		this.name = name;
+		this.id = id;
+		this.classId = classId;
+		this.house = house;
+		this.total = total;
+
+		this.pingjia = function() {
+			var tempTotal = this.total;
+			if (tempTotal >= 90) {
+				console.info("优秀");
+			} else if (tempTotal < 60) {
+				alert("通知家长！");
+			}
+		}
+	}
+	//实例化一个Student
+	var student01 = new Student("meng", "大三", 16060219, "信息计科2班", "20#104", 95);
+
+	//例程,在while中使用random 随机取0~100之间的数字,直到取到你自定义的数字
+	//则跳出循环   不要break关键字
+	var counter = 1; //计数执行了多少次
+	varluckyNum = "93";
+	var tempRan = 0; //随机取到的数
+	while (tempRan != varluckyNum) {
+		tempRan = Math.floor(Math.random() * 100);
+		console.info(tempRan + " " + counter++);
+	};
+	console.info("执行了" + counter + "次");
+
+
+	var ran001 = Math.floor(Math.random() * 6);
+	console.info(ran001);
+	switch (ran001) {
+
+		case 5:
+			{
+				console.info("优秀");
+				break;
+			}
+		case 4:
+			{
+				console.info("及格");
+				break;
+			}
+		default:
+			{
+				console.info("不及格");
+			}
+	}
+
+	//数组里所有的元素都是整数
+	//写一个函数,将这个数组里,重复的元素去掉
+	var arr1 = [1, 2, 4, 56, 77, 3, 6, 7, 8, 44, 5, 2, 44, 5];
+	// console.info(arr2);
+	function match01(arr1) {
+		var arr2 = [];
+		arr2.push(arr1[0]);
+		for (var i = 0; i < arr1.length; i++) {
+
+			for (var j = 0; j < arr2.length; j++) {
+				
+				if (arr2[j] == arr1[i]) {
+					break;
+				}
+				if (j == arr2.length - 1) {
+					arr2.push(arr1[i]);
+				}
+			}
+		}
+		return arr2;
+	}
+	
+	var arr1=[1,2,1,3,4,5,3];
+	function match(arr1){
+		var arr2 = [];
+		arr2.push(arr1[0]);
+		for( var i=0 ; i < arr1.length ; i++ ){
+			
+			for( var j = 0; j < arr2.length; j++ ){
+				if( arr2[j] == arr1[i] ){
+					break;
+				}
+				if( j == arr2.length - 1 ){
+					arr2.push(arr1[i]);
+				}
+			}
+			return arr2;
+		}
+	}
+	//一个student数组,对分数进行排序,并且将自己的排名加入到属性中.
+	//编写一个函数,输入姓名,返回其排名信息.
+		
+	
+	
+</script>

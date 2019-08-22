@@ -1,0 +1,89 @@
+﻿
+1. 第一件事
+// 复杂写法
+jquery的第一段代码 - this - 关于事件源和$(this)
+$(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+});
+
+//简化写法
+$(function(){
+  // 文档就绪
+});
+
+2. jQuery API 手册 : https://www.runoob.com/manual/jquery/
+
+3. jQuery 参考手册 : https://www.runoob.com/jquery/jquery-ref-selectors.html
+
+4. jQuery 事件 方法: https://www.runoob.com/jquery/jquery-ref-events.html
+
+5. jQuery 效果方法 :  https://www.runoob.com/jquery/jquery-ref-effects.html
+
+6. jQuery HTML / CSS 方法 : https://www.runoob.com/jquery/jquery-ref-html.html
+
+7. jQuery 遍历方法 : https://www.runoob.com/jquery/jquery-ref-traversing.html
+
+
+
+
+什么是 jQuery ？
+--------------------------------------------------------------------------
+jQuery是一个JavaScript函数库。
+jQuery是一个轻量级的"写的少，做的多"的JavaScript库。
+jQuery库包含以下功能：
+HTML 元素选取
+HTML 元素操作
+CSS 操作
+HTML 事件函数
+JavaScript 特效和动画
+HTML DOM 遍历和修改
+AJAX
+Utilities
+提示： 除此之外，Jquery还提供了大量的插件。
+
+
+安装jquery/ 引用jquery (尽量使用1.11 ~ 1.20 之间的版本 , 最新的浏览器没有限制, 目前最高版本是 1.3.1)
+----------------------------------------------------------------------
+1. 参考网址 https://www.runoob.com/jquery/jquery-install.html
+本地引用: 
+ <script src="jquery-1.10.2.min.js"></script>
+
+其他在线引用
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+
+<script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js">
+<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+
+
+jquery基本语法
+jQuery 使用的语法是 XPath 与 CSS 选择器语法的组合。
+---------------------------------------------------------------------
+Query 语法是通过选取 HTML 元素，并对选取的元素执行某些操作。
+基础语法： $(selector).action()
+美元符号定义 jQuery
+选择符（selector）"查询"和"查找" HTML 元素
+jQuery 的 action() 执行对元素的操作
+
+实例:
+$(this).hide() - 隐藏当前元素
+$("p").hide() - 隐藏所有 <p> 元素
+$("p.test").hide() - 隐藏所有 class="test" 的 <p> 元素
+$("#test").hide() - 隐藏所有 id="test" 的元素
+
+// 请回顾本文档开头的文档就绪事件
+
+
+
+关于就绪事件补充 注意. onload和load的区别 , 这讲的是onload
+------------------------------------------------
+jQuery 入口函数与 JavaScript 入口函数的区别：
+jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行。
+JavaScript 的 window.onload 事件是等到所有内容，包括外部图片之类的文件加载完后，才会执行。
+
+

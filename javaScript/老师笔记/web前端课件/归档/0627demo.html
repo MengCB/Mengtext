@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="jquery-3.1.1.min.js"></script>
+	</head>
+
+	<body>
+		20190627
+	</body>
+
+</html>
+<script type="text/javascript">
+	// 练习1:　在数组　[ 'fang' , "yang", "li" , "liu"] 的 最后一位添加
+	// 一个"lin"  ---> [ 'fang' , "yang", "li" , "liu"，"lin"]
+
+	// 2. 在yang 后面加入两个人 "tom", "jim" , 并替换li 和liu 的位置 
+	//    [ 'fang' , "yang", "tom", "jim","lin"]
+
+	// 3. 把li 和 liu 还原回来 [ 'fang' , "yang", "li" , "liu"，"lin"]
+	var arr1 = ['fang', "yang", "li", "liu"];
+	arr1.push("lin");
+
+	// 数组的拼接 arr1.concat(arr2); 不会改变原有数组,　而是返回一个新的数组.
+	// var a1 = [0,1,2,3]; var a2 = [4,5,6,7]
+
+	// [ 'fang' , "yang", "li" , "liu", "lin"] ->  
+	// [ 'fang' ,"yang" ,"tom", "jim" ,"lin", "li" , "liu"]
+
+	var arr1 = ["fang", "yang", "li", "liu", "lin"];
+
+	//arr1.push("lin");
+	// arr1 = arr1.concat( arr1.splice(2,2,"tom","jim") ) ;
+
+	var arr2 = arr1.splice(2, 2, "tom", "jim");
+
+	arr1 = arr1.concat(arr2);
+
+	//console.info(arr1);
+
+	// 要求, 用数组拼接来做 , splice语句执行后的返回值要接收, 然后拼接到数组后面
+
+	// splice 替换元素, 会改变原数组
+	// slice 截取数组的一段出来用, 不会改变原数组, 截取的片段应该用新变量接收
+
+	// 对象的构造函数
+	var student03 = {
+		name: "zeng",
+		grade: "大三",
+		id: 160310410,
+		"classIn": "计算机科学与技术1班",
+		"house": "17#105",
+		total: 88
+	}
+	// Student 对象的构造器函数(看作是student类)
+	function Student(name, grade, id, classIn, house, total) {
+		this.name = name;
+		this.grade = grade;
+		this.id = id;
+		this.classIn = classIn;
+		this.house = house;
+		this.total = total;
+
+		this.pingjia = function() {
+			var tempTotal = this.total;
+			if (tempTotal >= 80) {
+				console.info("这是个栋梁之才啊~~");
+			} else if (tempTotal < 60) {
+				alert("！");
+			}
+		}
+	}
+
+	// 实例化一个student
+	var student01 = new Student("fang", "", 0400310409, "三系一专也4班", "20#104", 80);
+
+	/*构造器函数本身只做声明， 
+	如果想要使用，必先实例化一个对象。
+	 Math是一个全局对象！ 它不可以new，因为它不是一个构造器函数。 
+	 --> 全局对象，意思是，直接就可以拿来用的对象，
+	  一般指工具类型（对象）
+	  window的子集 -- > dom / document / BOM
+	 
+	 构造器函数的扩展 ， 使用 .prototype 来修改其原型 
+	*/
+
+	var counter = 0 ; // 执行了多少次
+	var luckyNum = "1" ;
+	var tempRan = 0; // 随机取到的数字
+	while ( tempRan != luckyNum ) {
+		tempRan = Math.floor( Math.random()*100 ); // 随机取  0 ~ 100 之间的数字
+		console.info(tempRan + "-------" + counter++ );
+		
+		
+		
+	};
+	console.info("经过了多少次 -- " + counter);
+	
+	// 例程, 在 while 中使用random 
+	// 随机取  0 ~ 100 之间的数字, 直到取到你自定义的幸运数字,则跳出循环
+	// 不用 break 关键字
+	
+	var ran001 = Math.floor( Math.random()*5 );
+	console.info(ran001);
+	switch( ran001 ){
+		
+		case  5 : {
+			console.info("优秀");
+			break;
+		}
+		case  4 : {
+			console.info("及格");
+			break;
+		}
+		default: {
+			console.info("小于4")
+		}	
+	}
+	
+	
+</script>

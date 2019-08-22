@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//冒泡排序 //固定格式
+	var a = [3, 5, 7, 8, 9, 33, 44, 55];
+	for (var i = 0; i < a.length - 1; i++) {
+		for (var j = 0; j < a.length - 1 - i; j++) {
+
+			if (a[j] > a[j + 1]) {
+				var temp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = temp;
+			}
+		}
+	}
+	console.info(a);
+
+	//例程：5  一个student 数组， 对分数进行排序， 
+	//并且将自己的排名加入到属性中。 编写一个函数，
+	//输入姓名， 返回其排名信息。
+	var students = [];
+	students.push( new Student("方文山", 90 ) ); 
+	students.push( new Student("大哥", 60 ));
+	students.push( new Student("二哥", 70 ));
+	students.push( new Student("三哥", 80 ) );
+	students.push( new Student("四哥", 73 ) );
+	students.push( new Student("五哥", 12 ) );
+	
+	function Student(name, total) {
+		this.name = name;
+		this.total = total;
+		}
+		for (var i = 0; i < students.length - 1; i++) {
+			for (var j = 0; j < students.length - 1 - i; j++) {
+
+				if (students[j].total < students[j + 1].total) {
+					var temp = students[j];
+					students[j] = students[j + 1];
+					students[j + 1] = temp;
+				}
+			}
+		}
+	console.info(students);
+	//实现了将自己的排名记录到属性中
+	for( var x = 0; x < students.length; x++ ){
+		students[x].index = x+1;
+	}
+	console.info(students);
+	//输入姓名， 返回其排名信息。
+	function searchIndex( nameString ){
+		if(!nameString){
+			console.info("请输入参数");
+			return;
+		}
+		for( var i=0;i < students.length; i++ ){
+			if( nameString == students[i].name ){
+				return students[i].index;
+			}
+		}
+		return "没有找到";
+	}
+	
+	//排序以后,得到的结果应该是{name:"方文山"，total:80,index:1}
+</script>

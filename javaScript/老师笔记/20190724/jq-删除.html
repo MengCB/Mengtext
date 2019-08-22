@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title>删除元素</title>
+		<style type="text/css">
+			.content{
+				width: 100%;
+				height: 100px;
+				background-color: antiquewhite;
+				overflow-y: scroll;
+				overflow-x: hidden;
+			}
+			.innerDiv{
+				width: 100%;
+				height: 40px;
+				border: 1px solid cadetblue;
+				margin-top: 10px;
+				/* position: relative; */
+				/* display: flex;
+				flex-wrap:wrap;
+				justify-content: space-between; */
+			}
+			.hideButton{
+				opacity: 0;
+				float:right;
+				height: 100%;
+				margin-left: 10px;
+			}
+			.hideButton:hover{
+				opacity: 1;
+			}
+			
+			.selected{
+				background-color: chartreuse;
+			}
+			
+			.cssDemo{
+				position: absolute;
+				width: 40px;
+				background-color: darkgreen;
+				border: 100px solid gold;
+				border-radius: 20% 100% 20% 10%;
+				transform: rotate(-45deg);
+				margin-left: 100px;
+			}
+			.consoleBord{
+				width: 340px;
+				height: 200px;
+				background-color: #5F9EA0;
+				position: fixed;
+				right: 0%;
+				top: 30%;
+				padding-top: 20px;
+			}
+			.cssH{
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<input  type="text" id="text1" />
+		<input type="button" name="" id="bt1" value="增加" />
+		<input type="button" name="" id="bt2" value="清空" />
+		<br><br><hr ><br><br>
+		<div class="content" id="content" >
+			<!-- <div class="innerDiv">
+				asdfasdfjlasdjf;lasjdf;lasjdflasjdf
+			<input type="button" value="删除" class="hideButton" /> 
+			<input type="button" value="删除" class="hideButton" /> 
+			</div> -->
+		</div>
+		
+		<div class="cssDemo" id="cssDemo">
+			cssDemo
+		</div>
+		
+		<div class="consoleBord" id="consoleBord">
+			CSS样式名: <input type="text" id="cssName" class="cssH" />
+			<br>
+			CSS样式值: <input type="text" id="cssValue"  class="cssH" />
+			<br>
+			<input type="button" value="提交修改"  id="changeCss"/>
+			<br>
+			<br>
+			说明: 输入样式名, 可以修改样式内容, 点击提交修改后生效.
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		// 按钮1点击事件, 向目标div增加一行, 并带有自删除的按钮
+		$("#bt1").click(function(){
+			var inputValue = $("#text1").val();
+			inputValue = inputValue.trim();
+			if(!inputValue){
+				alert("没有输入!!!");
+			}else{
+				var divPre = "<div class='innerDiv'>";
+				var divEnd = "<input type='button' value='删除' class='hideButton' /></div>"
+				var divReal = divPre + inputValue + divEnd;
+				$("#content").append( $(divReal)  );
+				$("#text1").val("");
+			}
+		});
+		
+		// 按钮2点击事件 , 清空目标 元素 的内容(删除所有子节点)
+		$("#bt2").click(function(){
+			$("#content").empty(); 
+		});
+		
+		// 未来元素事件处理 - 点击删除按钮 - 删除他爹
+		$("#content").delegate(".hideButton" , "click", function(){
+			console.info( $(this).parent().remove()  );
+		});
+		
+		// 课堂练习 - 1. 选中某一个新增的行时(click), 2.背景高亮,  使用addClass()函数解决
+		// 要求 - 点击其他行的时候, 3.别的行要取消高亮背景( removeClass() )
+		$("#content").delegate(".innerDiv" , "click", function(){
+			//$(".innerDiv").removeClass("selected"); // 全部检查一遍
+			$(".selected").removeClass("selected");  // 百分百命中
+			$(this).addClass( "selected" );
+		});
+		
+		// css() 方法
+		// "css样式输入框的变化事件响应 - 取出具体的CSS值, 显示下一个input中
+		$("#cssName").change(function(){
+			var thisVale = $(this).val();
+			var cssValue = $("#cssDemo").css( thisVale ); 
+			$("#cssValue").val( cssValue );
+		});
+		
+		$("#changeCss").click(function(){
+			var changeCss = $("#cssName").val();
+			var changeCssValue = $("#cssValue").val();
+			$("#cssDemo").css(changeCss,changeCssValue);
+		});
+		// animate() 方法
+		// 请看下一页
+		
+	});
+</script>

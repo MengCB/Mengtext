@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class=""></div>
+		<div class=""></div>
+	</body>
+</html>
+<script type="text/javascript">
+	 // 假设 矩形为 Box, 圆的半径为 R
+    var distance
+    if (x1 < Box.left && y1 > Box.top && y1 < Box.bottom) {
+        // 位于上图中 圆 A 的 位置
+        distance = Box.left - x1
+    } else if ( x1 > Box.Right && y1 < Box.top ) {
+        // 位于 上图中 圆 B 的位置
+        distance = Math.sqrt(Math.pow(x1 - Box.right) + Math.pow(y1 - Box.top))
+    }
+    // 其他几种情况类似...按着顺/逆时针的顺序，总共八个区域就能全覆盖
+    
+    if (distance < R) {
+        return true // 碰撞
+    } else {
+        return false // 未碰撞
+    }
+</script>

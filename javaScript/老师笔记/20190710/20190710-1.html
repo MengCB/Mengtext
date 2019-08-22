@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件</title>
+		<style type="text/css">
+			body {
+				position: relative;
+				background-color: cadetblue
+			}
+
+			.eventShow {
+				position: absolute;
+				right: 2%;
+				top: 2%
+			}
+
+			.rain {
+				position: absolute;
+				background-color: red;
+				border: 1px solid azure;
+				border-radius: 50%;
+				width: 40px;
+				height: 40px;
+				background: url("xuehua1.png") no-repeat;
+				background-size: 100%;
+			}
+
+			.myButton {
+				width: 120px;
+			}
+
+			/* 	.myButton:hover{
+				width: 100px;
+			} */
+			
+			.total{
+				position: absolute;
+				text-align: center;
+				width: 120px;
+				height: 120px;
+				background-color: #FF0000;
+				left: 50%;
+				margin-left: -60px;
+				font-size: 82px;
+			}
+		</style>
+	</head>
+	<body>
+		事件
+		<ul>
+			<li>当用户点击鼠标时 onclick / ondblclick</li>
+			<li>当网页已加载时 onload </li>
+			<li>当图片已加载时 *</li>
+			<li>当鼠标移动到元素上时 onmouseover / </li>
+			<li>当输入字段被改变时 onchange</li>
+			<li>当 HTML 表单被提交时 onsubmit</li>
+			<li>当用户触发按键时 onkeydown / onkeypress / onkeyup</li>
+		</ul>
+
+		<br />
+		<span style="color: red;"> 课堂作业: 1.速度和数量可调</span>
+		<br />
+		<span style="color: red;"> 课堂作业: 2.每个雪花被点击的时候都销毁</span>
+		<br />
+		下落速度:<input id="text1" type="text" style="width: 200px;" value="100" />
+		<br />
+		产生频率:<input id="text2" type="text" style="width: 200px;" value="400" />
+		<br />
+
+		<br />
+		修改动画:<input id="button3" class="myButton" type="button" value="修改动画" onclick="getTextValue()" />
+		<br>
+		<br>
+		<br>
+		开始:<input id="button1" class="myButton" type="button" value="按钮1" />
+		清空:<input id="button2" class="myButton" type="button" value="按钮2" />
+		
+		<div class="total" id="total"></div>
+
+
+
+		<img src="eventOB.png" class="eventShow" />
+	</body>
+</html>
+
+
+<script type="text/javascript">
+	//当鼠标移动到元素上时onmouseover
+	// 先认识一下 - 事件源 - (事件对象)
+	document.getElementById("button1").onmouseover = function(e) {
+		return; // 测试代码
+		//alert(1);
+		console.info(e);
+		//  就是这个按钮本身-- 事件源
+		document.getElementById("button2").value = "不管我的事啊";
+		e.target.style.color = "red";
+		e.target.value = "我被划过了";
+	}
+	// onmouseout 
+	document.getElementById("button1").onmouseout = function(e) {
+		document.getElementById("button2").value = "按钮2";
+		e.target.style.color = "";
+		e.target.value = "按钮1";
+	}
+
+	document.getElementById("text1").onchange = function(e) {
+		//console.info( e.target.value);
+		// if( e.target.value.indexOf("shit") >=0  ){
+		// 	e.target.value = "";
+		// }
+	}
+
+	// 得到焦点的时候触发 onfocus
+	document.getElementById("text2").onfocus = function(e) {
+		//console.info("onfocus");
+		// 自定义
+	}
+	// 失去焦点的时候触发 
+	document.getElementById("text2").onblur = function(e) {
+		// 自定义
+	}
+
+	// 下午
+	// 1. 获取input的值(传进来目标input标签的id值)
+	// 取到页面输入的参数 修改动画, 需要两个参数 1, 下落熟读, 2 产生频率
+	function getTextValue() {
+		var fallSpeed = document.getElementById("text1").value;
+		var createHZ = document.getElementById("text2").value;
+		// 容错
+		if (!fallSpeed ||
+			isNaN(fallSpeed) ||
+			!createHZ ||
+			isNaN(createHZ)) {
+			console.info("参数非数字");
+			return;
+		} else {
+			settingAnimate(fallSpeed, createHZ);
+		}
+	}
+</script>
+
+<!-- 以下是rain的部分-->
+<script type="text/javascript">
+	var rainCount = 0; // 当前雨滴数量
+	var rainMax = 200; // 雨滴总数量
+
+	var yourTotal = 0 ;
+	
+	document.getElementById("total").innerText = yourTotal;
+	
+	// 每执行一次, 一个雨滴产生和消亡
+	function doRainFall(fallingSpeed) {
+		if (rainCount >= rainMax) {
+			return;
+		}
+		if (!fallingSpeed) {
+			fallingSpeed = 100;
+		}
+		var rainFall = document.createElement('div'); //创建div
+		rainFall.setAttribute("class", "rain");
+
+		rainFall.style.background = "url(\"xuehua2.png\")no-repeat";
+		rainFall.style.top = "0px";
+		rainFall.style.left = Math.random() * 100 + "%";
+		
+		
+		rainFall.onclick = function(){
+			rainCount -= 1;
+			rainFall.remove();
+			yourTotal += 1;
+			document.getElementById("total").innerText = yourTotal;
+		};
+		
+		document.body.appendChild(rainFall);
+		rainCount += 1;
+
+		var rainTimer = setInterval(function() {
+			var newTop = rainFall.style.top.replace("px", "");
+			newTop = parseFloat(newTop);
+			//newTop += 10;
+			newTop += Math.floor(Math.random() * 15 + 5);
+			// 落到地面的时候让它消失
+			if (newTop >= 800) {
+
+				rainFall.remove();
+				rainCount -= 1;
+				clearInterval(rainTimer);
+			}
+			rainFall.style.top = newTop + "px";
+		}, fallingSpeed);
+	}
+
+	var doRain = setInterval(function() {
+		doRainFall(100); // 下落频率
+	}, 400); // 产生的频率
+
+
+	// 调整动画的函数
+	function settingAnimate(fallSpeed, createHZ) {
+		clearInterval(doRain);
+		doRain = setInterval(function() {
+			doRainFall(fallSpeed); // 下落频率
+		}, createHZ);
+	}
+</script>

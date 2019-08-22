@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图标库的使用</title>
+		<link href="font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+		
+		<style type="text/css">
+			a{
+				height: 40px;
+				font-size: 48px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>
+			仅一个Font Awesome字库，就包含了与网页相关的所有形象图标
+		</p>
+		<p>
+			Font Awesome完全不依赖JavaScript，因此无需担心兼容性。
+		</p>
+		<p>
+			无论在任何尺寸下，可缩放的矢量图形都会为您呈现出完美的图标。
+		</p>
+		<p>
+			Font Awesome完全免费，哪怕是商业用途。
+		</p>
+		<br><i class="fa fa-camera-retro"></i> fa-camera-retro
+		<br><i class="fa fa-camera-retro fa-lg"></i> fa-lg
+		<br><i class="fa fa-camera-retro fa-2x"></i> fa-2x
+		<br><i class="fa fa-camera-retro fa-3x"></i> fa-3x
+		<br><i class="fa fa-camera-retro fa-4x"></i> fa-4x
+		<br><i class="fa fa-camera-retro fa-5x"></i> fa-5x
+		<div class="list-group">
+  <a class="list-group-item" href="#"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
+  <a class="list-group-item" href="#"><i class="fa fa-book fa-fw"></i>&nbsp; Library</a>
+  <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw"></i>&nbsp; Applications</a>
+  <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
+</div>
+
+<ul class="fa-ul">
+  <li><i class="fa-li fa fa-check-square"></i>List icons</li>
+  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+  <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+  <li><i class="fa-li fa fa-square"></i>in lists</li>
+</ul>
+		<!-- 查询图标库 -->
+		<br><i class="fa fa-windows fa-1g"></i> fa-5x
+	</body>
+</html>

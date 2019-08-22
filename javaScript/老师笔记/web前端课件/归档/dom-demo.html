@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				position: relative;
+			}
+			.redBak{
+				background-color:  red;
+			}
+			.greenBak{
+				background-color:  greenyellow;
+			}
+			.countdown{
+				position: absolute;
+				width : 400px;
+				height:  400px;
+				top: 50%;
+				left: 50%;
+				margin-left: -200px;
+				background: #e6e6e6;
+				border: 1px solid ffffff;
+				border-radius: 50%;
+				text-align: center;
+				font-size: 98px;
+				
+			}
+			.countdown div{
+				/* border: 1px solid green; */
+				/* width:  80%; */
+				margin-top: 34%;
+				/* margin-left: 40%; */
+				
+			}
+			.consoleBord{
+				width: 600px;
+				height:  180px;
+				position: fixed;
+				top : 0;
+				left: 50%;
+				margin-left:  -300px;
+				background-color: chocolate;
+				padding-top: 20px;
+			}
+			.consoleButton{
+				width: 140px;
+				height: 140px;
+				border: 1px solid aqua;
+				border-radius: 50%;
+				font-size: 24px;
+				margin-left: 40px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body onload="loadDo()">
+		<p class="p1" id = "line1" >我有一只小毛驴</p>
+		
+		<p class="p1" id="line2">我从来也不骑</p>
+		
+		<span class="span1", in="span1"> 山雨欲来风满楼</span>
+		<br>
+		<span class="span2", in="span2"> 月满西楼</span>
+		
+		
+		<div class="consoleBord">
+			<input type="button" class="consoleButton greenBak"  id="bt1"  value="开始倒计时"/>
+			<input type="button" class="consoleButton greenBak"  id="bt2"  value="点亮"/>
+			<input type="button" class="consoleButton greenBak"  id="bt2"  value="待定"/>
+		</div>
+		
+		<img  style="width: 140px;" src="022.png" />
+		<img src="5201.png" />
+		<div class="countdown" id="countdonw1">
+			<div id="countNum" >5</div>
+		</div>
+	</body>
+	
+	
+	<script>
+		
+		
+		document.getElementById("line2"); // 查找
+		
+		var lin1 = document.getElementById("line1"); 
+		line1.innerText = "风萧萧兮易水寒";  // 仅仅改变文本
+		
+		document.getElementById("line2").innerHTML = "壮 <br>士<br>一<br>去<br>兮<br>不<br>复<br>还";  // 改变内部的html文本
+		
+		document.getElementsByTagName("p"); // 试一下, 这行代码返回值是一个数组 //TODO
+		// 获取标签的属性 line1.getAttribute("class")
+		// 修改标签的属性 line1.setAttribute("class" , "")
+		
+		
+		
+		// //　　document.images　取到了页面上所有的图片
+		// document.images[0].style.filter = "grayscale(100%)";  
+		
+		// 所有图片变黑白
+		// var imges = [];
+		// imges = document.images; 
+		// for(var i=0; i< imges.length; i++){
+		// 	imges[i].style.filter = "grayscale(100%)";  
+		// }
+		// 以上代码可以改成下面的样子
+		// for(var i=0; i< document.images.length; i++){
+		// 	document.images[i].style.filter = "grayscale(0%)";  
+		// }
+		
+		
+		
+		// 事件 ~ 预热
+		// 页面加载完成事件
+		function loadDo(){
+			document.getElementById("countdonw1").style.display = "none";
+		}
+		
+		// 点击(开始倒计时按钮)
+		document.getElementById("bt1").onclick = function(e){
+			// 取出按钮的class  // "consoleButton greenBak"
+			// 如果class中 含有 greenBak ,才能点击倒计时, 否则不进行倒计时动作
+			if( document.getElementById("bt1").getAttribute("class").indexOf("greenBak") >=0){
+				document.getElementById("bt1").setAttribute("class" , "consoleButton redBak");
+				doCountDown();
+			}else{
+				console.info("正在倒计时, 不能重复点");
+			}
+		}
+		
+		// 实现一个倒数数的画面!  // 句柄 - 非常抽象的概念
+		function doCountDown(){
+			document.getElementById("countdonw1").style.display = ""; // 显示底图
+			var counter01 =  5 ; 
+			var kkk = setInterval( function(){
+				document.getElementById("countNum").style.display = "none";
+				counter01 -= 1 ;
+				if(  counter01 >= 0 ){
+					document.getElementById("countNum").innerText  = counter01;
+				}else{
+					// 倒数数结束后, 清空计时器, 同时还原按钮的class greenBak , 才能开启下次倒数
+					document.getElementById("bt1").setAttribute("class" , "consoleButton greenBak");
+					document.getElementById("countNum").innerText = "开始";
+					clearInterval(kkk)	; // 关闭定时器
+				}
+				
+				// 延时执行 (定时器)
+				setTimeout(function(){
+					document.getElementById("countNum").style.display = "block";
+				}, 600);  // 过了600毫秒以后再执行匿名函数
+				
+			} , 1000);
+		}
+		
+		//  作业 : 实现点击按钮后, 图片逐渐变亮
+		// step1 . 修改样式, 让图片的 grayscale css属性 为 100% 
+		// step2 . 修改以下函数 , 让灰度逐渐变成 0% 
+		document.getElementById("bt2").onclick = function(){
+			offLight();
+		}
+		
+		function offLight(){
+			// 使用计时器, 逐渐改变图片灰度
+			var cpounter002 = 1; 
+			var timerForImg = setInterval( function(){
+				if( cpounter002 <= 10 ){
+					for(var i=0; i< document.images.length; i++){
+						document.images[i].style.filter = "grayscale("+ cpounter002  +"0%)";   // 逐渐改变图片灰度
+					}
+					cpounter002 +=1 ; 
+				}else{
+					clearInterval( timerForImg );
+				}
+			},  400 );
+		}
+		
+		// Int a = 0 ; 
+		// var a ;  
+	</script>
+</html>

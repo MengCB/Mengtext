@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1243351_ztnc7i3bmik.css">
+</head>
+<body>
+<div class="box">
+    <div class="a"><img src="https://img.zcool.cn/community/014c415d09af86a801213ec23145b4.jpg@260w_195h_1c_1e_1o_100sh.jpg" alt=""></div>
+    <div>
+        <div class="wen" title="雨颂">雨颂</div>
+        <div class="wen1" title="平面-包装">平面-包装</div>
+        <div class="tu" title="共76人气"><i class="iconfont icon-yanjing bb"></i>76</div>
+        <div class="tu1" title="共0评论"><i class="iconfont icon-xiaoxi cc"></i>0</div>
+        <div class="tu2" title="共6推荐"><i class="iconfont icon-chakandianzan dd"></i>6</div>
+    </div>
+    <div>
+        <div class="logo">
+            <img src="https://img.zcool.cn/community/0189b15bbc4a10a8012099c81c944d.jpg@80w_80h_1c_1e_1o_100sh.jpg" alt="">
+            <div class="img-1" title="甲骨文创意">甲骨文创意</div>
+            <div class="img-2">1小时前</div>
+        </div>
+    </div>
+</div>
+</body>
+<style>
+    /*大框*/
+    .box{
+        width: 260px;
+        height: 350px;
+        display:flex;
+        border: 1px solid rgba(226, 220, 220, 0.86);
+        margin: 100px auto;
+        border-radius: 5px;
+        flex-direction: column;/*主轴从上到下*/
+        justify-content: flex-start;
+    }
+    /*大框下的第二个框*/
+    .box>div:nth-child(2){
+        background-color: #fff;
+        border: 1px solid #bbbbbb;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        height: 100px;
+        position: relative;
+    }
+    /*小图标*/
+     .bb,.cc,.dd{
+         font-size: 20px;
+     }
+     /*包小图标的盒子*/
+    .tu{
+        position: absolute;
+        top: 62px;
+        left: 10px;
+    }
+    .tu,.tu1,.tu2{
+        color: #bbb;
+    }
+    .tu1{
+        position: absolute;
+        top: 62px;
+        left: 72px;
+    }
+    .tu2{
+        position: absolute;
+        top: 61px;
+        left: 120px;
+    }
+    /*包logo的盒子*/
+    .box>div:nth-child(3){
+        background-color: #fff;
+        height: 60px;
+    }
+    /*大图片*/
+    .a{
+        
+        flex-grow: 1;
+    }
+    .wen{
+        width: 260px;
+        height: 15px;
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        font-size: 15px;
+        color: black;
+    }
+    .wen1{
+        position: absolute;
+        top: 30px;
+        left: 10px;
+        font-size: 13px;
+        color: #bbb;
+    }
+    .logo>img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: relative;
+        top: 11px;
+        left: 14px;
+    }
+    .img-1{
+        font-size: 15px;
+        position: relative;
+        top: -18px;
+        left: 52px;
+    }
+    .img-2{
+        font-size: 13px;
+        color: #bbb;
+        position: relative;
+        top: -37px;
+        left: 186px;
+    }
+    .a:hover{
+        cursor: pointer;
+        filter: opacity(0.8);
+    }
+    .img-1:hover,.wen:hover{
+        cursor: pointer;
+        color: #fc7f11;
+    }
+</style>
+</html>

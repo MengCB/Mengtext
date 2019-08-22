@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="jquery-3.1.1.min.js"></script>
+		<title>class运用</title>
+		<style type="text/css">
+			
+			.bgRed{
+				background-color: red;
+			}
+			
+			.bgBlue{
+				background-color: blue;
+			}
+			.bigFont{
+				font-size: 48px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="heihei">嘿嘿</div>
+		<br>
+		<input type="button"  value="变化" id="bt1"/>
+	</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#heihei").addClass("bgRed");
+		
+	});
+	
+	$("#bt1").click(function(e){
+		// if( $("#heihei").hasClass("bgRed") ){
+		// 	$("#heihei").removeClass("bgRed");
+		// 	$("#heihei").addClass("bgBlue");
+		// 	$("#heihei").addClass("bigFont");
+		// }else{
+		// 	$("#heihei").removeClass("bgBlue");
+		// 	$("#heihei").addClass("bgRed");
+		// 	$("#heihei").removeClass("bigFont");
+		// }
+		
+		// 方法2 $("#heihei").attr( ) // 接收两个参数,
+		if( $("#heihei").hasClass("bgRed") ){
+			$("#heihei").attr("class" , "bgBlue bigFont");
+		}else{
+			$("#heihei").attr("class" , "bgRed");
+		}
+		
+	});
+	
+</script>

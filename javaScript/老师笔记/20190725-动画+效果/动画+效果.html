@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title>jq-动画+效果</title>
+		<style type="text/css">
+			body{
+				background: url(3434.png)no-repeat;
+				background-size: 100%;
+			}
+			#targetID {
+				width: 120px;
+				height: 220px;
+				border: 100px solid chocolate;
+				border-radius: 100% 100% 80% 80%;
+				background-color: darkorange;
+				/* display:none; */
+				position: absolute;
+				left: 60%;
+			}
+
+			#menu1 input {
+				width: 160px;
+			}
+
+			#menu1 li {
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu1">
+			<ul>
+				<li><input type="button" name="" id="bt1" value="hide" /></li>
+				<li><input type="button" name="" id="bt2" value="show" /></li>
+				<li><input type="button" name="" id="bt3" value="toggle" /></li>
+				<li>
+					<input type="button" name="" id="bt4" value="blink" />
+					<input type="text" name="" id="text1" value="500" />
+					<input type="text" name="" id="text2" value="" />
+				</li>
+				<li><input type="button" name="" id="bt5" value="stop" /></li>
+				<li><input type="button" name="" id="bt6" value="slideDown" /></li>
+
+				<li><input type="button" name="" id="bt7" value="slideUp" /></li>
+				<li><input type="button" name="" id="bt8" value="slideToggle" /></li>
+				<li><input type="button" name="" id="bt9" value="相对动画" /></li>
+				<li><input type="button" name="" id="bt10" value="ajax" /></li>
+			</ul>
+		</div>
+
+		<div class="target" id="targetID">^_^</div>
+
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+
+		// jQuery hide() 和 show() 可以带参数,表示执行这个动画的毫秒数
+		$("#bt1").click(function() {
+			$("#targetID").hide(1000);
+		});
+
+		$("#bt2").click(function() {
+			$("#targetID").show(1000);
+		});
+
+		$("#bt3").click(function() {
+			$("#targetID").toggle(1000);
+		});
+
+		// 课堂练习 - 实现闪烁 --- 在hide和show之间切换, 产生一个闪烁的效果
+		// 计时器 - 至少有三种方法  
+		// css动画不就可以了吗? 
+		// 闪烁5次以后,移动到页面中间, 并且变成一张笑脸 ,然后上面显示文字
+
+		var timer01 = null;
+		$("#bt4").click(function() {
+			if (timer01) {
+				$("#targetID").stop();
+				clearInterval(timer01);
+			}
+			var HZ = $("#text1").val();
+			HZ = parseInt(HZ);
+			var proc = $("#text2").val();
+			proc = parseInt(proc);
+			if (!HZ) {
+				HZ = 500;
+			}
+
+			timer01 = setInterval(function() {
+				$("#targetID").toggle(proc);
+			}, HZ);
+		});
+
+
+		$("#bt5").click(function() {
+			if (timer01) {
+				$("#targetID").stop();
+				clearInterval(timer01);
+			}
+		});
+
+		// 向下展开 - 针对隐藏的元素
+		$("#bt6").click(function() {
+			$("#targetID").slideDown(1000);
+		});
+
+		// 向上收起 - 针对非隐藏元素
+		$("#bt7").click(function() {
+			$("#targetID").slideUp();
+		});
+
+		$("#bt8").click(function() {
+			$("#targetID").slideToggle(200);
+
+		});
+
+		// 关于动画的补充 - 使用相对值
+		$("#bt9").click(function() {
+			$("#targetID").animate({
+				left: "-=300px",
+				top: "+=100px"
+			}, 200, function() {});
+		});
+
+		
+		// 引起error分支的原因是目标json文件中, 属性名没加""
+		$("#bt10").click(function() {
+			$.ajax({
+				url: "student.json", // 请求地址
+				data: {},	// 向后台传送的数据
+				type: "get", // 请求方法 *　get/post/put/delete/
+				dataType: "json",  // text/html/xml....
+				//timeout: 
+				success: function(res){
+					alert("Y");
+					// console.info(typeof(res));
+					console.info(res);
+				},
+				error: function(res){
+					alert("!");
+					console.info( res );
+				},
+				// 
+				complete: function(){
+					
+				}
+				//dataType: "text"
+			});
+			
+		});
+	
+		
+		// 要求, 数据正确请回完毕, 在页面上显示出以下内容 : 
+		// 姓名 : xxx   编号: xxx // 点中以后, 高亮
+		// 你自己的名字高亮
+		//
+	});
+</script>

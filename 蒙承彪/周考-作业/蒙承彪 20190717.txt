@@ -1,0 +1,92 @@
+
+
+1. $的ready函数的写法, 并在函数中,输出你的名字
+
+   $(document).ready(function(){
+          console.info("蒙承彪");
+    })
+
+2. 列举jquery的选择器,给出代码
+
+--元素选择器
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide();
+  });
+});
+
+--#id选择器
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#test").hide();
+  });
+});
+
+--.class选择器
+$(document).ready(function(){
+  $("button").click(function(){
+    $(".test").hide();
+  });
+});
+
+3. jquery的事件的绑定方法, 给出代码,包含 - click  - hover - 等等至少5个,并且要求,
+	事件源含有window
+
+--click()方法
+
+$("p").click(function(){
+  $(this).hide();
+});
+
+--dblclick()方法
+
+$("p").dblclick(function(){
+  $(this).hide();
+});
+
+--mouseenter()方法
+
+$("#p1").mouseenter(function(){
+    alert('您的鼠标移到了 id="p1" 的元素上!');
+});
+
+--mouseleave()方法
+
+$("#p1").mouseleave(function(){
+    alert("再见，您的鼠标离开了该段落。");
+});
+
+--resize()方法
+
+x=0;
+$(document).ready(function(){
+  $(window).resize(function(){
+    $("span").text(x+=1);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

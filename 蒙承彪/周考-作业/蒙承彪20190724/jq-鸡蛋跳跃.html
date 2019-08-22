@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title></title>
+		<style type="text/css">
+			body {
+				position: absolute;
+			}
+
+			.egg {
+				width: 120px;
+				height: 120px;
+				background-color: #FAEBD7;
+				border-radius: 50%;
+				float: left;
+				margin: 70px;
+				position: relative;
+				top: 400px;
+				opacity: 1;
+			}
+
+			.Line {
+				width: 800px;
+				height: 1px;
+				background-color: black;
+				position: relative;
+				top: 600px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="egg" id="0"></div>
+		<div class="egg" id="1"></div>
+		<div class="egg" id="2"></div>
+		<div class="Line"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$(".egg").click(function() {
+			$(this).animate({
+				position: "relative",
+				top: "200px",
+			}, 1000, function() {
+				$(this).animate({
+					position: "relative",
+					top: "400px",
+				});
+				$(this).animate({
+					position: "relative",
+					top: "300px",
+				});
+				$(this).animate({
+					position: "relative",
+					top: "400px",
+				});
+			});
+			var eggId = $(this).attr("id");
+			var ranDom = Math.floor(Math.random()*3);
+			console.info(eggId);
+			console.info(ranDom);
+			if(eggId == ranDom){
+				$(this).css({
+					opacity: 0
+				});
+			}
+		});
+	});
+</script>

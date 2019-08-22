@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+  菜单
+<div class="content" id="biu">
+    <div>内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+</div>
+</div>
+
+<div class="a1">
+    <div class="a2">
+        <div>图标一</div>
+        <div>图标二</div>
+    </div>
+</div>
+
+<div style="height: 3000px;width: 50px;background-color: red;"></div>
+
+<div class="aaa">
+    <a href="#biu">回到顶部</a>
+</div>
+</body>
+<style>
+    .aaa{
+        position: fixed;/*固定定位，不随着滚动条的滚动而滚动，脱离文档流*/
+        bottom: 50px;
+        right: 50px;
+        border: 1px solid #000;
+
+    }
+    a{
+        width: 100px;
+        height: 50px;
+        display: inline-block;/*设置为行内块级元素*/
+        text-align: center;
+        line-height: 50px;/*行高*/
+        text-decoration: none;
+    }
+    .a1{
+        width: 200px;
+        height: 50px;
+        border: 1px solid #000;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .a2{
+        width: 200px;
+        height: 100px;
+        background-color: #eee;
+        display: flex;
+        flex-direction: column;/*确定主轴的方向*/
+        position: relative;
+        transition: 1s;
+        top: 0;
+    }
+    .a1:hover>.a2{
+        top: -50px;
+    }
+    .a2>div{
+        height: 0;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box{
+        width: 200px;
+        height: 50px;
+        background-color: greenyellow;
+        line-height: 50px;/*行高*/
+        text-align: center;/*文本对齐方式*/
+    }
+    .box:hover>.content{
+        /*display: flex;!*显示属性由原来的隐藏 改变成现在的flex*!*/
+        /*height: 150px;*/
+        opacity: 1;
+    }
+    .content{
+        width: 200px;
+        height: 150px;
+        /*border: 1px solid #000;*/
+        display: flex;
+        flex-direction: column;
+
+        /*第一种*/
+        /*display: none;!*隐藏 不保留物理空间*!*/
+        /*visibility: hidden;!*隐藏 保留物理空间*!*/
+
+        /*第二种*/
+        /*height: 0;*/
+        /*overflow: hidden;!*溢出影藏*!*/
+        transition: 1s;/*过渡效果*/
+
+        /*第三种*/
+        opacity: 0;/*隐藏 能达到淡入淡出的效果*/
+    }
+    .content>div{
+        height: 0;
+        flex-grow: 1;
+        border: 1px solid #000;
+        box-sizing: border-box;/*设置为怪异盒子*/
+
+
+    }
+</style>
+</html>

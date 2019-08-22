@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>选择器</title>
+		<style type="text/css">
+			/* 类选择器 nav 表示导航*/
+			nav {
+				width: 300px;
+				height: 400px;
+			}
+			/* 类选择器 a 表示链接*/
+			a {
+				text-decoration: none; /* 干掉文本样式*/
+				display: block;
+				color: #fff;
+				height: 35px;
+				padding: 0 38px 0;
+			}
+			li {
+				background-color: rgba(0,0,0,0.7);/* 背景颜色透明度为0.7 */
+				height: 35px;
+				line-height: 35px; /* 行高 */
+				overflow: hidden;
+			}
+			/* 偶数行背景颜色透明度为0.9  伪类选择器, 第n个子元素, 2n 代表偶数 
+				试试看, 改变2n 看看效果
+			*/ 
+			li:nth-of-type(2n) {
+				background-color: rgba(0,0,0,0.9);
+			}
+			/* 鼠标悬停时背景颜色为#0099E5 */
+			li:hover {
+				background: #0099E5;
+			}
+			/* 伪类选择器 - 第一个字母 */
+			li:first-letter{
+				font-size: 36px;
+				color: #E15016;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li><a href="#"><span>JavaEE培训</span></a></li>
+				<li><a href="#"><span>Android培训</span></a></li>
+				<li><a href="#"><span>PHP培训</span></a></li>
+				<li><a href="#"><span>UI培训</span></a></li>
+				<li><a href="#"><span>iOS培训</span></a></li>
+				<li><a href="#"><span>前端与移动开发培训</span></a></li>
+				<li><a href="#"><span>C/C++培训</span></a></li>
+				<li><a href="#"><span>网络营销培训</span></a></li>
+				<li><a href="#"><span>游戏开发培训</span></a></li>
+				<li><a href="#"><span>云计算之大数据培训</span></a></li>
+			</ul>
+		</nav>
+	</body>
+</html>

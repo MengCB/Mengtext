@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>window相关2</title>
+	</head>
+	<body>
+		我是页面3333333333333333333333333333
+		
+		<input id="bt001" type="button" value="关闭窗口" />
+		<br>
+		<br>
+		<input id="goBack" type="button" value="回上一页<<<<<<" />
+	</body>
+</html>
+
+<script type="text/javascript">
+	window.name = "window333333333";
+	
+	document.getElementById("bt001").onclick = function(e){
+		window.opener.close(); // 敢关老子?不给
+	}
+	
+	document.getElementById("goBack").onclick = function(e){
+		// window.history.go(-1); // 返回上一页 (bus)
+		window.history.back(); // 返回上一页 方法2
+	}
+	
+	function getUrlP(){
+		var parObj = {};
+		var parameters = window.location.search;
+		if( !parameters){
+			return parObj;
+		}
+		// "?name=fangwentao & age=34"
+		parameters = parameters.replace("?", "");
+		// "name=fangwentao&age=34"
+		var pars = [];
+		pars = parameters.split("&");
+		//pars =  ["name=fangwentao", "age=34"]
+		
+		for(var i=0; i<pars.length; i++ ){
+			//"name=fangwentao", // pars[0]
+			//"age=34" // pars[1]
+			var temp1 =  pars[i].split("=");
+			parObj[ temp1[0] ] = temp1[1];
+		}
+		console.info(parObj);
+		return parObj;
+	}
+	var parametersFromURL =  getUrlP();
+	console.info( parametersFromURL.name);
+	//document.write( "<br />欢迎您" + parametersFromURL.age)
+	 
+	 
+	// function getUrlParam(name) {
+	// 	var reg = new ("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	// 	var r = window.location.search.substr(1).match(reg); //匹配目标参数
+	// 	//if (r != null) return unescape(r[2]);
+	// 	if (r != null) {
+	// 		var para = decodeURI(r[2]);
+	// 		return para;
+	// 	}else{
+	// 		return ''; 
+	// 	}
+	// 	
+	// }
+	
+</script>

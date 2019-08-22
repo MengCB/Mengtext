@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	// var arr1 = [1, 2, 4,56,77,3,6,7,8,44,5,2,44,5] ;
+	// var arr2 = [1,2,4]; // 双层循环, 
+	// 降低要求 : 数组里所有的元素都是整数;
+	// 要求, 写一个函数, 将这个数组里,重复的元素去掉.  // 考察了一部分算法的思路
+	
+	// 用到循环 !  
+	// step 1 :　创建一个新的空数组,　用来装匹配后的结果
+	
+	// step2 先将原数组的第一个元素装到 新数组中, 做循环, 如果循环原数组，与该数组, 没有相同的,就push
+	var arr1 = [1,2,3,2,1,5] ;
+	function match01( arr1 ){
+		var arr2 =[];
+		arr2.push(arr1[0]);
+		for(var i=0; i<arr1.length; i++){
+			for(var j=0; j<arr2.length; j++){
+				if( arr2[j] == arr1[i]){
+					break;
+				}
+				if( j == arr2.length-1 ){
+					arr2.push(arr1[i]);
+				}
+			}
+		}
+		return arr2;
+	}
+	
+	// 1.数组的排序 sort(), 2, 数组的反转 reverse() 
+</script>

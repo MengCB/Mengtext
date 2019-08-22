@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>裁剪</title>
+</head>
+<body>
+
+<div class="a"></div>
+
+</body>
+<style>
+    .a{
+        width: 1000px;
+        height: 300px;
+        background-color: grey;
+        /*clip-path:circle(50% at 50% 50%);*/
+        /*clip-path: ellipse(100px 200px at 50% 50%);!*第一个值为水平半径 第二个为垂直半径*!*/
+        /* inset() 矩形裁剪 circle()圆形裁剪 ellipse椭圆裁剪 polygon多边形裁剪*/
+        clip-path: polygon(0 0,100% 0,100% 100%,55% 100%,60% 0,40% 0,35% 100%,0 100%);/*多边形裁剪坐标点的依次连接形成的闭合路径就是裁剪区域*/
+    }
+</style>
+</html>

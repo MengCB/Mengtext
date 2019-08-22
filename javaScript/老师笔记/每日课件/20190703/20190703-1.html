@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> 数字,字符串, 数组</title>
+	</head>
+	<body>
+		// css - 布局 - 样式 - 动画 - 响应式 - bootstrap<br>
+
+		// js - 脚本语言 - 弱类型 - 3坑 - 变量(布尔) - 数字 - 字符串 - <br>
+		// 数组 -定时器和计时器 - 对象 - 函数 - 排序,定时器和计时器 ,函数构造<br>
+		// - dom - dom操作 - dom事件 - 小游戏 - 事件补充(监听-鼠标和键盘) <br>
+
+		// JQUERY (您辛苦了, 我其实等你很久了, 我能让你少些很多代码)<br>
+		// 做了更多的思考, 开始封装插件, 做网页特效 jq22.com<br>
+		
+		// webServer - 网站和交互 <br>
+		// node.js ---- 后台(庞大)<br>
+		// egg.js --- 后台(交互)<br>
+		// vue框架 (庞大!)<br>
+		
+		// 补充营养 - react - 响应式的高级应用<br>
+		// 应用阶段 - pc端 - 微信程序 - 移动端程序 - WPF桌面应用 等<br>
+	</body>
+</html>
+
+<script type="text/javascript">
+	// 取 a ~ b 之间的随机数
+	// Math.random() * ( |a-b| ) + a/b //
+
+	var a = 9,
+		b = 3;
+	var c = Math.random() * (Math.abs(a - b)) + Math.min(a, b);
+	console.info(c);
+
+	// 1. 取a-b的绝对值  2. a和b 取小的那一个
+
+	// 写函数实现 , 或使用math的api
+	// 取a-b的绝对值
+	function abSO(a, b) {
+		// 容错  // 不确定的 就是不可靠的  Uncertain means unreliable !!!
+		if (isNaN(a) || isNaN(b)) {
+			console.info("参数必须是数字");
+			return 0;
+		}
+
+		if (a > b) {
+			return a - b;
+		} else {
+			return b - a;
+		}
+	}
+
+	// 取a,b两个数的最小值
+	function abMin(a, b) {
+		//
+		if (isNaN(a) || isNaN(b)) {
+			console.info("参数必须是数字");
+			return 0;
+		}
+		if (a > b) {
+			return b;
+		} else {
+			return a;
+		}
+	}
+
+	// 课堂作业, 
+	//在0~100之间选取你的幸运数字, 
+	//写一个while循环, 每次取一个 0~100的随机数, 
+	// 看看循环执行了多少次,才碰到你的幸运数字
+	var myLuckyNum = 27;
+	var counter01 = 0;
+	var ranNum = "1";
+	while (myLuckyNum != ranNum) {
+		counter01++; // 计总共执行了多少次循环
+		ranNum = Math.floor(Math.random() * 100); // 0~100的随机整数
+		if (myLuckyNum == ranNum) {
+			//console.info(counter01);
+			console.info("抽到了你的幸运号码，期间执行了　" + counter01 + "次 !");
+			break;
+		}
+	}
+
+	// 字符串 // js - 内存泄漏 
+	var str01 = "fangwentao";
+	// 字符串有没有下标??? 有
+	// var array01 = [0,1,2,3,4,5]; 
+	// console.info( array01[1 ]);
+
+	// 字符串检索 indexOf()  //  lastIndexOf()
+	console.info(str01.indexOf("w")); //  4 单个字符的位置
+	// 字符串检索, 可以匹配字符串
+	console.info(str01.indexOf("tao")); // 7 如果匹配,返回首个匹配的位置(下标)
+	console.info(str01.indexOf("xxxx")); // -1 表示未找到
+
+	// 判断字符串的长度 str01.length  // 注意: length是属性, 不能用 str01.length()
+	console.info("字符串 " + str01 + "  的长度为" + str01.length);
+
+	// 去掉字符串首尾的空字符( 如 换行符, 空格 , ) trim() , 
+	//注意,只是首尾, 字符串中间的空字符无法被trim()函数处理
+	var str02 = "      我有一只    小毛驴      \n";
+	console.info(str02);
+	console.info("进行trim() 操作后\n" + str02.trim());
+
+	// 字符串转换成小写 toLowerCase();   toUpperCase()
+	// "\n\r" 在wndows环境中,表示换行
+	var str03 = "abcDeFGHijk";
+	console.info(
+		"原来的字符串 " + str03 + "\n\r" +
+		"转换成大写后 " + str03.toUpperCase() + "\n\r" +
+		"转换成小写后 " + str03.toLowerCase()
+	);
+
+	// 课堂练习, 在下面的数组中, 筛选出带有特殊标记的元素
+	var array002 = ["joun-pro",
+		"smith-ex", "fang-NEW", "wang-New",
+		"prter-new",
+		"ady-pro",
+		"jimy-new"
+	];
+	console.info(array002);
+	// 写一个循环, 从这几个人中, 筛选出 new 级别的人 , 返回它 // 用字符串检索
+	for (var i = 0; i < array002.length; i++) {
+
+		var upperCaseString = array002[i].toLowerCase(); // 转换成小写字母
+
+		if (upperCaseString.indexOf("new") >= 0) {
+			console.info(array002[i] + " 下标 " + i);
+		}
+	}
+
+	// 数组  // 在js中,数组是邪恶的!
+	var arr03 = [0, 1, 2, 3, 4, 5]; // Int[] arro3 = new Int[6] ;
+	// 在js中,数组的元素不要求数据类型一致.  有序的一组变量
+	var arr04 = [0, "fang", true, "li", "张"];
+
+	// 字符串转数组 "1,2,3,4,5,6,7".split(",") => (7) ["1", "2", "3", "4", "5", "6", "7"]
+	// 数组转字符串 arr04.join(",");
+	var string004 = "1,2,3,4,5,6,7";
+
+	// 数组的下标 , 坑, 数字下标超出长度也可以赋值,  但会造成几个empty位置
+	var arr005 = [0, 1, 2, 3, 4, 5];
+	arr005[8] = 8;
+	for (var i = 0; i < arr005.length; i++) {
+		console.info(arr005[i] + "----" + i);
+	}
+
+	console.info("分割线----------------------------------------------------")
+	// 关联数组 - 对象
+	// 数组的下标可以是字符串! - 关联数组!!
+	// for in 循环 ( 用遍历对象的方式来遍历它 )
+	arr005["fang"] = "fangwentao";
+	arr005["li"] = "lichunpeng";
+	arr005["yang"] = "yangqingwen";
+	for (var x in arr005) {
+		console.info(arr005[x]);
+	}
+
+	// 数组的排序 - 数组去重 - 数组对比
+	// 课堂练习 数组1 :  对数组进行排序 , 降序????
+	var arr006 = [8, 13, 11, 21, 33, 42, 9, 23]; // 请有小到大(升序)排序后输出
+
+	var arr007 = [2, 5, 1, 4, 8, 9];
+
+	function sortNumber(a, b) {
+		return a - b
+	}
+	console.info(arr006.sort(function(a, b) {
+		return b - a
+	}));
+
+	console.info(arr006.reverse());
+
+	var arr007 = [2, 3, 4, 6, 8, 4, 4, 4];
+	var arr008 = [9, 1, 0, 3, 7, 4];
+	var temp01 = [];
+	// 输出这两个数组中共有的元素
+	for (var i = 0; i < arr007.length; i++) {
+		for (var j = 0; j < arr008.length; j++) {
+			if (arr007[i] == arr008[j]) {
+				temp01.push(arr008[j])
+			}
+		}
+	}
+	console.info(temp01);
+
+	// 数组去重 (重复的元素去掉)
+	var arr009 = [1, 4, 4, 3, 2, 4,  7, 6];
+	var temp = [];
+	// [1, 4,3 2, 6]
+	// lingchen991@163.com // 交作业的时候 全名+日期  , html / js / txt
+
+	// 思路 :　定义一个空数组 temp02, 遍历arr009, 每次匹配temp02里边是否存在
+	temp.push(arr009[0])
+	for(var i = 0; i < arr009.length; i++) {
+		for (var j = 0; j < temp.length; j++) {
+			// 如果遇到相同的元素就break
+			// if (arr009[i] == temp[j]) {
+			// 	break;
+			// }
+			// if (j == temp.length - 1) {
+			// 	temp.push(arr009[i]);
+			// }
+			
+			// 已知目标数组内容为非对象的情况下可用, 推荐
+			if(  temp.indexOf( arr009[i] ) < 0   ){
+				temp.push(arr009[i]);
+			}
+			
+		}
+	}
+	console.info(temp);
+</script>

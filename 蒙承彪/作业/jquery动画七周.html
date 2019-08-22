@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>圆动画</title>
+		<script src="jquery-2.js"></script>
+		<style type="text/css">
+			.box {
+				width: 200px;
+				height: 200px;
+				position: relative;
+				top: 500px;
+				left: 200px;
+				border-radius: 50%;
+				background: yellowgreen;
+			}
+			input{
+				position: fixed;
+				top: 50px;
+				left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box1"></div>
+		<input type="button" name="" id="bt1" value="点击开始" />
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#bt1").click(function() {
+			// clearInterval(temp);
+			$("#box1").animate({
+				width: "100px",
+				height: "100px",
+			}, "normal", function() {
+				$("#box1").animate({
+					position: "relative",
+					top: "100px",
+				});
+				$("#box1").fadeOut(500); // 淡出
+			});
+
+			// var temp = setInterval(function() {
+			// 	$("#box1").css({"width":'100px',"height":'100px'});
+			// 	setTimeout(function(){
+			// 			$("#box1").animate({
+			// 		top: "-=400px"
+			// 	}, 100, function() {});
+			// 	},500);
+			// 	
+			// 	
+			// 	setInterval(function(){
+			// 		$("#box1").fadeOut(500);
+			// 	},800);
+			// }, 1000);
+
+
+		});
+	});
+</script>

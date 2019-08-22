@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style type="text/css">
+			#div1,
+			#div2 {
+				float: left;
+				width: 198px;
+				height: 66px;
+				margin: 10px;
+				padding: 10px;
+				border: 1px solid #aaaaaa;
+			}
+		</style>
+		<script type="text/javascript">
+			function allowDrop(ev) {
+				ev.preventDefault(); // 固定写法, 还原其默认行为
+			}
+
+			function drag(ev) {
+				ev.dataTransfer.setData("Text", ev.target.id);
+			}
+
+			function drop(ev) {
+				console.info(ev.target.id)
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("Text");
+				ev.target.appendChild(document.getElementById(data));
+			}
+			// document.getElementById("div2").appendChild(  document.getElementById("drag1") );
+			// 将页面上的某节点搬运到目标节点下
+			
+			// ondragend 事件函数/ 事件响应
+			function end( e ){
+				// ev.preventDefault(); // 固定写法, 还原其默认行为
+				// console.info(e.clientX );
+				e.target.style.left = e.clientX + "px";
+				e.target.style.top = e.clientY + "px";
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<img style="width: 80px; position: absolute;" src="022.png"  draggable="true" 
+				ondragstart="drag(event)" ondragend="end(event)" id="drag1" />
+		</div>
+		
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+		</div>
+	</body>
+</html>

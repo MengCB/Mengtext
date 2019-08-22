@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单的前导知识</title>
+		<!-- <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"> -->
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+		</style>\
+	</head>
+	<body>
+		<!--form表单标签 autocomplete 属性规定输入字段是否应该启用自动完成功能,on 默认。规定启用自动完成功能。
+off	规定禁用自动完成功能。action指定提交到一个网页 method提交的方式-->
+		<form action="https://www.baidu.com/s" method="get" autocomplete="no" name="form01">
+			<p>
+				密码框:<input type="password" name="密码框" value="666666" />
+			</p>
+			<p>
+				性别:(单选)
+				<br>
+				<!-- checked="checked" 默认选择 -->
+				<!-- 单选框 -->
+				男：<input type="radio" name="性别" value="男" checked="checked" />
+				&nbsp;
+				女：<input type="radio" name="性别" value="女" />
+			</p>
+			<p>
+				兴趣爱好：(多选)
+				唱<input type="checkbox" name="复选框" value="唱" />
+				跳<input type="checkbox" name="复选框" value="跳" />
+				rap<input type="checkbox" name="复选框" value="rap" />
+				篮球<input type="checkbox" name="复选框" value="篮球" />
+			</p>
+			<p>
+				复选框:<input type="checkbox" name="" value="复选框" />
+			</p>
+			<p>
+				email:<input type="email" name="邮件" value="" />
+			</p>
+			<p>
+				滑轮range: <input type="range" name="" id="" value="range" />
+			</p>
+			<p>
+				隐藏域：<input type="hidden" name="隐藏域" id="" value="隐藏域" />
+			</p>
+			<p>
+				选择文件：<input type="file" name="file" id="" value="" />
+			</p>
+
+			textarea:<textarea name="textarea">type的其他类型： url, email, 
+			number, image, file, hidden,range
+			</textarea>
+
+			<p>
+				百度一下:<input type="text" name="wd" value="MCB" />
+			</p>
+
+			<p>
+				<input type="submit" value="提交" />
+				<input type="reset" value="重置" />
+			</p>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	// setInterval(function(){
+	// 	var xsx = $.ajax({
+	// 		url: "https://www.baidu.com/s",
+	// 		data:{
+	// 			wd: new Date().getTime() 
+	// 		},
+	// 		dataType:'json',//服务器返回json格式数据
+	// 		type:'get',//HTTP请求类型
+	// 		timeout:10000,//超时时间设置为10秒；
+	// 		success:function(data){
+	// 			
+	// 		},
+	// 		error:function(xhr,type,errorThrown){
+	// 			
+	// 		}
+	// 	});
+	// }, 1000);
+</script>

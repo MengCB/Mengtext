@@ -1,0 +1,109 @@
+
+https://www.runoob.com/jquery/jquery-ref-html.html
+
+jQuery HTML / CSS 方法 -----------文档操作
+-------------------------------------------------------
+
+
+1. 读取内容
+-------------------------------
+text() - 设置或返回所选元素的文本内容
+html() - 设置或返回所选元素的内容（包括 HTML 标记）
+val() - 设置或返回表单字段的值
+
+
+
+2. attr()函数  -  设置或返回属性
+-------------------------------
+
+3. 一个坑
+------------------------------
+prop()函数的结果:
+      1.如果有相应的属性，返回指定属性值。
+      2.如果没有相应的属性，返回值是空字符串。
+attr()函数的结果:
+      1.如果有相应的属性，返回指定属性值。
+      2.如果没有相应的属性，返回值是 undefined。
+对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。
+对于HTML元素我们自己自定义的DOM属性，在处理时，使用 attr 方法。
+具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop()
+
+
+4.添加新内容的四个 jQuery 方法：
+-------------------------------------
+append() - 在被选元素的结尾插入内容
+prepend() - 在被选元素的开头插入内容
+after() - 在被选元素之后插入内容
+before() - 在被选元素之前插入内容
+
+
+
+5.删除元素的两个方法
+-------------------------------------
+remove() - 删除被选元素（及其子元素）
+empty() - 从被选元素中删除子元素
+
+6.jQuery 操作 CSS
+--------------------------------------
+addClass() - 向被选元素添加一个或多个类
+removeClass() - 从被选元素删除一个或多个类
+toggleClass() - 对被选元素进行添加/删除类的切换操作
+css() - 设置或返回样式属性
+
+
+
+7.CSS()方法 https://www.runoob.com/jquery/jquery-css.html
+--------------------------------------------
+方法设置或返回被选元素的一个或多个样式属性。
+
+
+8. animate()
+---------------------------------------------------------
+$(selector).animate({params},speed,callback);  // speed - "normal" ,"fast", "slow"
+
+
+手册对照表
+-------------------------------------------------------------
+addClass()                     	向被选元素添加一个或多个类名
+after()                     	在被选元素后插入内容
+append()                     	在被选元素的结尾插入内容
+appendTo()                     	在被选元素的结尾插入 HTML 元素
+attr()                     	设置或返回被选元素的属性/值
+before()                     	在被选元素前插入内容
+clone()                     	生成被选元素的副本
+css()                     	为被选元素设置或返回一个或多个样式属性
+detach()                     	移除被选元素（保留数据和事件）
+empty()                     	从被选元素移除所有子节点和内容
+hasClass()                     	检查被选元素是否包含指定的 class 名称
+height()                     	设置或返回被选元素的高度
+html()                     	设置或返回被选元素的内容
+innerHeight()                     	返回元素的高度（包含 padding，不包含 border）
+innerWidth()                     	返回元素的宽度（包含 padding，不包含 border）
+insertAfter()                     	在被选元素后插入 HTML 元素
+insertBefore()                     	在被选元素前插入 HTML 元素
+offset()                     	设置或返回被选元素的偏移坐标（相对于文档）
+offsetParent()                     	返回第一个定位的祖先元素
+outerHeight()                     	返回元素的高度（包含 padding 和 border）
+outerWidth()                     	返回元素的宽度（包含 padding 和 border）
+position()                     	返回元素的位置（相对于父元素）
+prepend()                     	在被选元素的开头插入内容
+prependTo()                     	在被选元素的开头插入 HTML 元素
+prop()                     	设置或返回被选元素的属性/值
+remove()                     	移除被选元素（包含数据和事件）
+removeAttr()                     	从被选元素移除一个或多个属性
+removeClass()                     	从被选元素移除一个或多个类
+removeProp()                     	移除通过 prop()                      方法设置的属性
+replaceAll()                     	把被选元素替换为新的 HTML 元素
+replaceWith()                     	把被选元素替换为新的内容
+scrollLeft()                     	设置或返回被选元素的水平滚动条位置
+scrollTop()                     	设置或返回被选元素的垂直滚动条位置
+text()                     	设置或返回被选元素的文本内容
+toggleClass()                     	在被选元素中添加/移除一个或多个类之间切换
+unwrap()                     	移除被选元素的父元素
+val()                     	设置或返回被选元素的属性值（针对表单元素）
+width()                     	设置或返回被选元素的宽度
+wrap()                     	在每个被选元素的周围用 HTML 元素包裹起来
+wrapAll()                     	在所有被选元素的周围用 HTML 元素包裹起来
+wrapInner()                     	在每个被选元素的内容周围用 HTML 元素包裹起来
+$.escapeSelector()                     	转义CSS选择器中有特殊意义的字符或字符串
+$.cssHooks	提供了一种方法通过定义函数来获取和设置特定的CSS值

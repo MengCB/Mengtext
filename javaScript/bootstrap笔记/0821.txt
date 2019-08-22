@@ -1,0 +1,5 @@
+bootstrap的依赖有html,jq,js
+
+bootstrap主要做弹性页面、自适应
+
+bootstrap模块化是从复用代码开始的

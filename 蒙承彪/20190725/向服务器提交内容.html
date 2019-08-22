@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title></title>
+		<style type="text/css">
+			#demo {
+				width: 500px;
+				height: 2000px;
+				border: 1px solid #FF8C00;
+			}
+
+			#bt10 {
+				width: 200px;
+			}
+
+			.Me {
+				background-color: peachpuff;
+			}
+			.Her:hover{
+				background-color: #FFE4C4;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="bt10" value="ajax" />
+		<div id="demo"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		// 引起error分支的原因是目标json文件中,属性名没加""
+		$("#bt10").click(function() {
+			$.ajax({
+				url: "student.json", // 请求地址
+				data: {}, // 向后台传送的数据
+				type: "get", // 请求方法 * get/post        put/delete仅部分浏览器支持
+				dataType: "json", // 预期的服务器响应的数据类型text/html/xml...
+				// timeout:
+				success: function(res) {
+					alert("获取成功");
+					console.info(res);
+					// hand(res);
+					// $("#demo").html(res);
+				},
+				error: function(res) {
+					alert("!");
+					console.info(res);
+				},
+				complete: function() {
+
+				}
+
+			});
+		});
+
+		// 要求:数据正确请回完毕,在页面上显示出以下内容:
+		// 姓名: xxx 编号: xxx  点中以后，高亮自己(自己的名字)
+// 		function hand(res) {
+// 			var student = res.all;
+// 			var Name = "蒙承彪";
+// 			for (var i = 0; i < student.length; i++) {
+// 				if (student[i].name == Name) {
+// 					$("#demo").append("<br><div class='Me'>" + student[i].name + "   " + student[i].id + "</div>");
+// 				} else {
+// 					$("#demo").append("<br><div class='Her'>" + student[i].name + "   " + student[i].id + "</div>");
+// 				}
+// 
+// 			}
+// 		}
+// 
+	});
+</script>

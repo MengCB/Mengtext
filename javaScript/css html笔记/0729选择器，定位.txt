@@ -1,0 +1,80 @@
+jquery两种扩展方法
+1.类方法 （$.extend()）
+2.对象方法（$.fn.extend()）
+
+
+http://css.cuishifeng.cn/ css样式表
+
+demo1 ---
+1. 使用position：absolute; 将div转化成浮动元素，此时 top 属性，
+left属性才会生效，div的位置相对于body的上，左边距定位
+
+2. 使用transform：skewY（-15deg）;使用div做x,y轴的切变，也可以使用
+skew{xdeg, ydeg}来替换上面的方法，
+第一个参数是x切变，可以同时使用两个参数
+
+3. overflow：hidden/ scroll/ 表示div中的内容超出边框后的处理方法，
+hidden表示溢出的部分隐藏，scroll表示溢出的部分用滚动条浏览
+
+4. html5 - 的语义化标签结构
+<div> <p> <ul><li> <span> <a>
+
+语义化 - 见名知意
+<header> -- 页面头部
+<section> -- 内容模块的头，页眉等
+<article> -- 独立的文本区域，例如文章
+<aside> -- 跟article相关的边角内容，或辅助信息
+<hgroup> -- 标题组合
+<figure> -- 独立的流内容
+<figcaption> -- figure的标题
+<nav> -- 导航相关
+<footer> -- 脚注
+
+
+
+
+5. css中的选择器
+--------------------
+选择器 - 用来定位标签
+
+通用选择器 --- *{}           --- 选择所有元素
+标签选择器 --- a{} / div{}   --- 选择所有该标签
+类选择器   --- .className{}  --- 根据类名选择
+id选择器   --- #id{}         --- 根据id名选择
+属性选择器 --- [attr='']     --- 属性符合的元素
+并集合(选择器拼凑) ---div, .className ---条件拼凑
+后代选择器 --- .className li{} ---选择后代所有li
+子代选择器 --- ,className>li   --- 仅限于第一层，子元素
+兄弟选择器 --- p+a{}           --- 跟p同级别紧跟着的a
+
+伪类选择器 ---p::first{}       ---第一个p标签
+
+
+6. 关于颜色
+----------------
+#ff 00 99
+红 绿 蓝
+rgba(0, 0, 0, 0.9); //0.9为透明度
+
+7. 偶数行背景颜色透明度为0.9 伪类选择器，2n代表偶数
+	li:nth-of-type(2n) {
+	      background-color: rgba(0,0,0,0.9);
+			}
+
+8. 响应式的表现形式-媒体查询 
+    @media (min-width:320px){ }
+
+
+9. text-decoration: none; /*去掉文本样式a标签的下划线*/
+
+
+移动端：
+移动端的单页不要太复杂
+一个页面上的关注点不能超过七个
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 回调函数:(前置条件) - 自调用/立即执行函数
+			// document.addEventListener("DOMContentLoaded",function(e){
+			// 	console.info("打断点");
+			//     document.getElementById("div1").innerHTML = "<p>我是猪</p>";
+	  //       // alert("21");
+			// });
+			console.info("我先来！！");
+		</script>
+		
+		<div class="" id="div1">你是猪</div>
+		
+		<div class="" id="div2">你是猪</div>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	// 向页面添加script标签,则script标签里边语句会立即执行
+	var newScript = document.createElement("script");
+	newScript.innerText = "console.log('你好');";
+	document.head.appendChild(newScript);
+	
+	// requir.js sea.js
+</script>

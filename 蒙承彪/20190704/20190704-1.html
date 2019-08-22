@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	var song1 = {
+		name: "十年",
+		type: "pop",
+		auther: "陈奕迅"
+	};
+	var song2 = {
+		name: "小白",
+		type: "pop",
+		auther: "李克强"
+	};
+	var song3 = {
+		name: "青花瓷",
+		type: "pop",
+		auther: "周杰伦"
+	};
+	var song4 = {
+		name: "海阔天空",
+		type: "pop",
+		auther: "beyond"
+	};
+	var song5 = {
+		name: "老鼠爱大米",
+		type: "pop",
+		auther: "程坤"
+	};
+	var song6 = {
+		name: "两只老虎",
+		type: "pop",
+		auther: "你爹"
+	};
+	var song7 = {
+		name: "为你我受冷风吹",
+		type: "pop",
+		auther: "林忆莲"
+	};
+	var song8 = {
+		name: "等你下课",
+		type: "pop",
+		auther: "周杰伦"
+	};
+	var song9 = {
+		name: "鸡你太美",
+		type: "pop",
+		auther: "蔡徐坤"
+	};
+	var song10 = {
+		name: "冬天里的一把火",
+		type: "pop",
+		auther: "费翔"
+	};
+
+	var songsList = [];
+	songsList.push(song1);
+	songsList.push(song2);
+	songsList.push(song3);
+	songsList.push(song4);
+	songsList.push(song5);
+	songsList.push(song6);
+	songsList.push(song7);
+	songsList.push(song8);
+	songsList.push(song9);
+	songsList.push(song10);
+	//写一个函数.随机听歌,打乱这个列表的顺序,输出新数组(随机播放列表)
+	var newArr = [];
+	var flags = [];//这里放下标,0,1,2,...
+	//这个新的列表长度为10的时候,表示所有的歌都装进来了
+	while( newArr.length < 10 ){
+		var ran = Math.floor(Math.random()*10);
+		if( flags.indexOf(ran) >= 0 ){
+			continue;
+		}else{
+			flags.push(ran);
+			newArr.push(songsList[ran]);
+		}
+	}
+	console.info(newArr);
+	
+	// songsList.sort(function() {
+	// 	return Math.random() > 0.5 ? -1 : 1;
+	// });
+	// console.info(songsList);
+	
+	//交换数组两个元素的位置
+	var arr05 = ["fang","wang"];
+	var temp03 ;
+	temp03 = arr05[0];
+	arr05[0] = arr05[1];
+	arr05[1] = temp03;
+	// arr05[0] = arr05[0].replace("fang","wang");
+	// arr05[1] = arr05[1].replace("wang","fang");
+	// console.info(arr05);
+	
+	//时区的概念
+	// setInterval(function(){
+	// 	console.info( new Date().getSeconds() );
+	// }, 1000);
+</script>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>转盘</title>
+
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+			.rollingpan {
+				width: 600px;
+				height: 600px;
+				border-radius: 50%;
+				border: 20px solid #8A2BE2;
+			}
+			.itemX {
+				width: 600px;
+				height: 80px;
+				/* border: 1px solid #5F9EA0; */
+				margin-top: 260px;
+				position: absolute;
+				text-align: right;
+				line-height: 80px;
+				font-size: 24px;
+				/* font-family: "blackadder itc"; */
+				font-weight: 900;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="停!!" id="stopRolling" />
+		<input type="button" value="转!!" id="startRolling" />
+
+		<div class="rollingpan" id="rollingpan1111">
+			<div class="itemX" id="item1" style="transform: rotate(0deg);">
+				杨庆文
+			</div>
+			<div class="itemX" id="item2" style="transform: rotate(15deg);">
+				苏壮晖
+			</div>
+			<div class="itemX" id="item3" style="transform: rotate(30deg);">
+				李春朋
+			</div>
+			<div class="itemX" id="item4" style="transform: rotate(45deg);">
+				曾敏
+			</div>
+			<div class="itemX" id="item5" style="transform: rotate(60deg);">
+				黄盛玺
+			</div>
+			<div class="itemX" id="item6" style="transform: rotate(75deg);">
+				杨庆文
+			</div>
+			<div class="itemX" id="item7" style="transform: rotate(90deg);">
+				苏壮晖
+			</div>
+			<div class="itemX" id="item8" style="transform: rotate(105deg);">
+				李春朋
+			</div>
+			<div class="itemX" id="item9" style="transform: rotate(120deg);">
+				曾敏
+			</div>
+			<div class="itemX" id="item10" style="transform: rotate(135deg);">
+				黄盛玺
+			</div>
+		
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	
+	var timerPan = 0;
+	// 转动 或者停止转盘
+	function doRolling(flag) {
+		if (timerPan) {
+			console.info(document.getElementById("rollingpan1111").style.transform)
+			clearInterval(timerPan);
+		}
+		if( flag ){
+			// 每次都从当前位置继续转
+			var currAngle = document.getElementById("rollingpan1111").style.transform;
+			if (!currAngle) {
+				currAngle = 0;
+			} else {
+				currAngle = currAngle.replace("rotate(", "");
+				currAngle = currAngle.replace("deg)", "");
+				currAngle = parseInt(currAngle);
+			}
+			// 不再用这个变量, 因为它会让转盘复位(角度总是从0开始)
+			//var currAngle = 0;
+			timerPan = setInterval(function() {
+				currAngle += 5; // 每次转动的角度
+				if (currAngle > 360) {
+					currAngle = 0;
+				}
+				document.getElementById("rollingpan1111").style.transform = "rotate(" + currAngle + "deg)";
+			}, 10);
+		}
+		
+	}
+
+	document.getElementById("stopRolling").onclick = function(e) {
+		doRolling(false);
+	}
+	document.getElementById("startRolling").onclick = function(e) {
+		doRolling(true);
+	}
+	
+</script>

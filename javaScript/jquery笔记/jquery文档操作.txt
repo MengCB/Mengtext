@@ -1,0 +1,100 @@
+典型的css库： https://daneden.github.io/animate.css/
+
+
+如需删除元素和内容，一般可使用以下两个 jQuery 方法：
+
+remove() - 删除被选元素（及其子元素）
+empty() - 从被选元素中删除子元素
+-------------------------------------------------------
+
+jQuery 拥有若干进行 CSS 操作的方法：
+
+addClass() - 向被选元素添加一个或多个类
+removeClass() - 从被选元素删除一个或多个类
+toggleClass() - 对被选元素进行添加/删除类的切换操作
+css() - 设置或返回样式属性  $("#cssDemo").css();第一个参数为空报错
+
+
+animate() 方法用于创建自定义动画
+--------------------------------------
+$(selector).animate({styles},speed,easing,callback)
+
+必需的 params 参数定义形成动画的 CSS 属性。
+
+可选的 speed 参数规定效果的时长。它可以取以下值：默认值为normal  "slow"、"fast" 或毫秒。
+
+
+可选的 callback 参数是动画完成后所执行的函数名称。
+
+
+
+添加 新内容的四个 jQuery 方法：
+----------------------------------------
+append() - 在被选元素的结尾插入内容
+prepend() - 在被选元素的开头插入内容
+after() - 在被选元素之后插入内容
+before() - 在被选元素之前插入内容
+--------------------------------------------------------------------------
+
+元素上创建滑动效果。
+------------------
+jQuery 拥有以下滑动方法：
+
+slideDown() 向下出现 - 针对隐藏的元素
+slideUp()    向上收起 - 针对非隐藏元素
+slideToggle()
+
+// 关于动画的补充,使用相对值
+		$("#bt9").click(function(){
+			$("#targetID").animate({
+				left: "-=300px";
+				top: "+=200px"
+			},100,function(){});
+		});
+
+----------------------------------------------------------
+使用 hide() 和 show() 方法来隐藏和显示 HTML 元素
+
+语法：
+$(selector).hide(speed,callback);
+
+$(selector).show(speed,callback);
+可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+可选的 callback 参数是隐藏或显示完成后所执行的函数名称。
+jquery hide() 和 show() 可以带参数,表示执行这个动画的毫秒数
+
+--------------------------------------------------------------------
+什么是 AJAX？
+AJAX = 异步 JavaScript 和 XML（一种数据格式）（Asynchronous JavaScript and XML）。
+
+简短地说，在不重载整个网页的情况下，AJAX 通过后台加载数据，并在网页上进行显示。
+
+使用 AJAX 的应用程序案例：谷歌地图、腾讯微博、优酷视频、人人网等等。
+
+------------------------------------------------------------
+关于 jQuery 与 AJAX
+jQuery 提供多个与 AJAX 有关的方法。
+----
+通过 jQuery AJAX 方法，您能够使用 HTTP Get 和 HTTP Post 从远程服务器上请求文本、
+HTML、XML 或 JSON - 同时您能够把这些外部数据直接载入网页的被选元素中。
+
+
+jQuery - AJAX get() 和 post() 方法
+---------------------------------------------
+jQuery get() 和 post() 方法用于通过 HTTP GET 或 POST 请求从服务器请求数据。
+
+两种在客户端和服务器端进行请求-响应的常用方法是：GET 和 POST。
+GET - 从指定的资源请求数据
+POST - 向指定的资源提交要处理的数据
+GET 基本上用于从服务器获得（取回）数据。注释：GET 方法可能返回缓存数据。
+
+POST 也可用于从服务器获取数据。不过，POST 方法不会缓存数据，并且常用于连同请求一起发送数据
+
+---------------------------------------------------
+淡入淡出 fadeIn()用于淡入已隐藏的元素--fadeOut()用于淡出可见元素。
+--fadeToggle()可以在 fadeIn() 与 fadeOut() 方法之间进行切换。
+--fadeTo()允许渐变为给定的不透明度（值介于 0 与 1 之间）
+-- 接收的参数 -- 空，show, fast, 毫秒数
+
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=E4805d16520de693a3fe707cdc962045&services=&t=20190622163250"></script>
+

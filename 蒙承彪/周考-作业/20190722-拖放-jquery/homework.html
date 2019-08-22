@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style type="text/css">
+			#div1,
+			#div2,
+			#div3 {
+				float: left;
+				width: 200px;
+				height: 200px;
+				margin: 100px;
+				padding: 10px;
+				border: 1px solid #aaaaaa;
+			}
+
+			.blueB {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background-color: blue;
+				display: inline-block;
+			}
+
+			.redB {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background-color: red;
+				display: inline-block;
+			}
+		</style>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	</head>
+	<body>
+
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<!-- <div class="blueB" draggable="true" id="drag222" ondragstart="drag(event)">
+
+			</div>
+
+			<img src="022.png" style="width: 30px;" draggable="true" ondragstart="drag(event)" id="drag1" />
+ -->
+		</div>
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+		<div id="div3">
+			<span>计时器</span>
+			<span id="counter">000</span>
+			<br>
+			<br>
+			<input id="finishBT" type="button" value="完成" 
+				style="width: 100px; height: 100px;" />
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("Text", ev.target.id);
+	}
+
+	function drop(ev) {
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("Text");
+		ev.target.appendChild(document.getElementById(data));
+	}
+	
+	$(function() {
+		// 随机生成20个球,分别为红色,蓝色
+		for (var i = 0; i < 20; i++) {
+			var tempB = document.createElement("div");
+			// 随机1 生成球的颜色
+			var ranBcolor = Math.floor(Math.random() * 2); // 要么是0要么是1
+			if (ranBcolor == 0) {
+				tempB.setAttribute("class", "blueB");
+			} else {
+				tempB.setAttribute("class", "redB");
+			}
+			tempB.id = i + "服不服";
+			tempB.ondragstart =  drag;
+			tempB.draggable = true;
+			// 随机2, 放到div1或者div2 中
+			var ranDiv = Math.floor(Math.random() * 2); // 要么是0要么是1
+			if (ranDiv == 0) {
+				document.getElementById("div1").appendChild(tempB);
+			} else {
+				document.getElementById("div2").appendChild(tempB);
+			}
+		}
+		
+		// 开始计时
+		var startTime = new Date().getTime();
+		var timerCount = setInterval(function(){
+			var timeNow = new Date().getTime();
+			// 间隔毫秒
+			//var useTime = (timeNow - startTime)/1000 ;
+			document.getElementById("counter").innerText =   (timeNow - startTime)/1000 ;
+			
+		}, 530);
+		
+		
+		document.getElementById("finishBT").onclick = function( e ){
+			clearInterval( timerCount );
+			alert( "您用时" + document.getElementById("counter").innerText + "秒");
+			location.reload();
+		}
+
+	});
+</script>

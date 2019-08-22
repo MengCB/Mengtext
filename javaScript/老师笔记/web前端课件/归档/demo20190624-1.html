@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		2019年6月24日
+	</body>
+</html>
+
+<script type="text/javascript">
+	// 写一段代码, 存取两个学生的信息
+	var student01 = {
+		name: "li",
+		grade: "大三",
+		id: 160310408,
+		"class": "计算机科学与技术1班",
+		"house": "17#104",
+		total: 70
+	}
+
+	var student02 = {
+		name: "wang",
+		grade: "大三",
+		id: 160310409,
+		"class": "计算机科学与技术1班",
+		"house": "17#105",
+		total: 90
+	}
+
+	var student03 = {
+		name: "zeng",
+		grade: "大三",
+		id: 160310410,
+		"class": "计算机科学与技术1班",
+		"house": "17#105",
+		total: 88
+	}
+
+	var arrayTemp = [student01, student02, student03];
+	// 编写一段代码,找出total分数最高的学生的姓名和id
+	// step 1 声明变量, 用来存最高分的信息, 每次匹配,都赋值
+	var topOne = {
+		name: "",
+		id: 0,
+		total: 0
+	};
+	// 不要污染源数据
+	// step 2 遍历数组, 每次对比分数
+	for (var i = 0; i < arrayTemp.length; i++) {
+		if (arrayTemp[i].total > topOne.total) {
+			topOne.total = arrayTemp[i].total;
+			topOne.name = arrayTemp[i].name;
+			topOne.id = arrayTemp[i].id;
+		}
+	}
+	// step 3 输出最高分的学生信息(step1 声明的变量,它已经被重新改变)
+	console.info(topOne);
+	// 最终的结果
+	//console.info ( "等分最高的学生 姓名:     id"    );
+	
+	
+	// 1. 对象的属性, 也可以是对象 2.对象的属性,也可以是函数(方法)
+	
+	var personA = {
+		"name": "fang",
+		"age": 20,
+		"brothers": [ 60,123,23,43,65,56],
+		"father": {
+			name: "fang-father"
+		},
+		getFather: function(){
+			return this.father
+		},
+		getBigBrother : function(){
+			// 取这个人的所有兄弟
+			var tempArray = this.brothers;
+			// 找出最大的那一个
+			var tempBrother = 0;
+			for( var i=0; i< tempArray.length; i++  ){
+				if( tempArray[i] > tempBrother ){
+					tempBrother = tempArray[i];
+				}
+			}
+			return tempBrother;
+		},
+		doaaa: function( ){
+			var _this = this;
+			test01( _this );
+			//return _this.name;
+		}
+	};
+	
+	function test01( _this ){
+		return _this.name;
+	}
+	
+	// 运行
+	console.info( "test01的输出是 : " + personA.doaaa() );
+	
+	// 笔记: 调试方法 -- 1.找到代码的位置 2.打断点 3. 使用F10逐步运行, 使用F11进入函数
+</script>

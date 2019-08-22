@@ -1,0 +1,14 @@
+
+<textarea>标签用于定义多行文本输入框，
+可以通过cols和rows属性来规定文本区域内可见的列数和行数，
+具体的尺寸可以通过width和height来设置。
+-------------------------------------------
+name	由用户自定义	控件的名称
+readonly	readonly	该控件内容为只读（不能编辑修改）
+disabled	disabled	第一次加载页面时禁用该控件（显示为灰色）
+maxlength	正整数	控件允许输入的最多字符数
+autofocus	autofocus	指定页面加载后是否自动获取焦点
+placeholder	字符串	为input类型的输入框提供一种提示
+required	required	规定输入框填写的内容不能为空
+cols	number	规定文本区内的可见宽度。
+rows	number	规定文本区内的可见行数。

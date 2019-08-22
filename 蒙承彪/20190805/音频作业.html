@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>音乐播放器</title>
+		<style type="text/css">
+			.direct {
+				width: 150px;
+				height: 300px;
+				float: left;
+				margin-left: 30%;
+				background-color: mediumaquamarine;
+				position: relative;
+			}
+
+			audio {
+				position: relative;
+				top: 204px;
+				width: 100%;
+			}
+
+			.direct li {
+				list-style: none;
+			}
+
+			.direct a {
+				text-decoration: none;
+			}
+
+			.play1 {
+				width: 400px;
+				height: 300px;
+				margin-left: 41%;
+				background-color: thistle;
+			}
+
+			.contralBord {
+				min-width: 400px;
+				height: 40px;
+				width: 100%;
+				background: navajowhite;
+				margin-top: 201px;
+				bottom: 20px;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+			}
+
+			a:hover {
+				font-size: 30px;
+				color: coral;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="direct">
+			<ul>
+				<li onclick="changeMusic(1)"><a id="direct-a" href="#">音乐1</a></li>
+				<li onclick="changeMusic(2)"><a id="direct-a" href="#">音乐2</a></li>
+				<li onclick="changeMusic(3)"><a id="direct-a" href="#">音乐3</a></li>
+				<li onclick="changeMusic(4)"><a id="direct-a" href="#">音乐4</a></li>
+				<li onclick="changeMusic(5)"><a id="direct-a" href="#">音乐5</a></li>
+				<li onclick="changeMusic(6)"><a id="direct-a" href="#">音乐6</a></li>
+				<li onclick="changeMusic(1)"><a id="direct-a" href="#">音乐7</a></li>
+				<li onclick="changeMusic(2)"><a id="direct-a" href="#">音乐8</a></li>
+				<li onclick="changeMusic(3)"><a id="direct-a" href="#">音乐9</a></li>
+			</ul>
+
+		</div>
+		<div class="play1">
+			<audio src="music/001.MP3" id="audio01" width="100%" height="40px" controls="controls" preload="preload" autoplay="autoplay">
+				
+			</audio>
+			<div class="contralBord">
+				<div class="cbSon">
+					<input type="button" value="上一首" />
+					<input onclick="playContral('pause')" type="button" value="暂停" />
+					<input onclick="playContral('play')" type="button" value="播放" />
+					<input type="button" value="下一首" />
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+ <script type="text/javascript">
+	function changeMusic(audioSrc) {
+		if (!audioSrc) {
+			return;
+		}
+		switch (audioSrc) {
+			case 1:
+				{
+					audioSrc = "music/001.MP3";
+					break;
+				}
+			case 2:
+				{
+					audioSrc = "music/cc.mp3";
+					break;
+				}
+			case 3:
+				{
+					audioSrc = "music/wo99.net_20171128230229445.mp3";
+					break;
+				}
+			case 4:
+				{
+					audioSrc = "music/001.MP3";
+					break;
+				}
+			case 5:
+				{
+					audioSrc = "music/cc.mp3";
+					break;
+				}
+			case 6:
+				{
+					audioSrc = "music/wo99.net_20171128230229445.mp3";
+					break;
+				}
+			default:
+				{
+					break;
+				}
+		}
+		var v01 = document.getElementById("audio01");
+		v01.src = audioSrc;
+	}
+
+	// 播放控制
+	function playContral(parm) {
+		var v01 = document.getElementById("audio01");
+		v01[parm]();
+	}
+
+	function playListG(pram) {
+		if (!pram) {
+			return;
+		}
+	}		
+</script>

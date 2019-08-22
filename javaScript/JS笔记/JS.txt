@@ -1,0 +1,234 @@
+阶段学习：
+
+//jQuery
+//做了更多的思考,开始封装插件,做网页特效 jq22.com
+//webServer--网站和交互
+//node.js ----后台
+//egg.js ----后台（交互)
+//vue框架 (庞大)
+//补充营养 -- react 响应式的高级应用
+//应用阶段 pc端-微信程序-移动端程序-wpf桌面应用等
+
+
+
+
+
+
+
+资料：
+www.jq22.com jquery插件
+http://wangdoc.com/javascript/basic/     javascript教程
+https://www.cnblogs.com/beli/p/6297741.html     排序
+http://wangdoc.com/javascript/oop/new.html 讲解教程
+http://www.w3school.com.cn/htmldom/htmldom_reference.asp  W3C教程
+
+方老师邮箱：lingchen991@163.com
+
+ JavaScript是一门脚本语言，不需要编译只翻译，需要V8引擎进行翻译。是一个弱类型语言。
+
+ a=true true 是布尔值 （弱类型）
+
+ js特性：关于字符串和数字
+ typeof（）判断数据类型
+ a=o ;typeof(a);
+ a='sdsadfsd';typeof(a);输出
+ a="skajd";typeof(a);
+ a= new Date().getTime()时间
+
+ console.info();打印出来
+ console.log(a);
+
+ 弱类型的扩展：
+ 弱类型的陷阱
+ a=20;
+ b="20";
+ a==b true 
+ a===b false  
+ ==   只判断数值是否相等
+ ===不止判断数值还要判断数据类型
+
+ 布尔与数字的真相：
+ if（a==b）{ console.inf }
+
+ var a=0;
+ b=0
+ 没有var修饰的变量会被系统认为是一个全局变量   全局变量越少越好
+ 所以，要严格校验自己的变量名，（否则拼写错误很难排查）
+ 
+ a=true;typeof(a);
+ "boolean"
+
+不确定就意味着不可靠
+
+字符串可以按下标访问，但是不可以赋值。
+
+“2”+2
+“22”字符串的拼接
+
+isNaN(a);  判断a是不是数字
+a = 0;isNaN(a);//isNaN函数，全称是 is not a number() 参数不是一个数字？ 
+
+描述问题的能力，等于解决问题的能力！解决问题的时候，定位问题 = 解决问题
+
+Math.random()*区间 + 最小值（取3到5之间的随机数）
+
+Math.Date 查看时间
+
+indexof 字符串常用的一个API
+lastIndexof()
+replace("eee","") 最后相同字母的下标
+length()  字符串的长度 长度是属性不是函数
+
+"ssddddd".replace("ss","wwww");  替换掉
+“ sdsadsa  ”.trim();   把字符串的前后空格去掉也能把转义字符去掉
+
+\n 换行
+
+in 操作 判断数组是否具有某个下标 由于键名都是字符串，所以字符串不会报错
+
+for in循环（用遍历对象的方式来遍历它）
+for（ var x in arr）{console.info( arr[x])} 实际上是在遍历对象
+
+for( car x in arr){console.info("arr 的下标" + x +"他的值为" + arr[x])}
+
+遍历数组 
+for(var i = 0; i<a.length;i++ ){ console.info( a[i] ) }
+
+Math.floor( Math.random()*3 + 3 ) //0 < x <3 ....3~5之间...
+
+数组的下标，坑，数字下标超出长度也可以赋值，但会造成几个empty位置
+
+数组是有序的，对象是无序的。
+
+对象：是JavaScript语言的核心概念，也是最重要的数据类型。
+var student = {};// 对象的声明
+
+对象的属性名是确定的不是变量
+
+原型:
+继承：js没有继承，有父类才有继承
+原型链
+
+键值对 key - vaue 结构
+
+json对象：描述对象的格式，从文本上看，他对对象的结构没有任何区别。
+
+所有的键名都是字符串
+
+读取对象的属性值
+var a = [0,1,2,3];a[0];数组的情况
+
+在对象中（key-vaue），key我们称为属性，为了统一，我们也可以这样说，属性名-属性值
+
+遍历操作：for(var x in student){ console.info( x +":"+ student[x] ) }
+
+	//数组是对象  变量的属性是无序的
+	//对象是一组无序的 key-value 结构,键-值 对
+	//属性名-属性值
+	//严格的说:属性名是固定的,且是字符串
+       //对象的属性可以随意增删
+	var ob01 = {
+		"name": "meng",
+		"age":22,
+		"long":"3.6inc",
+		"weigth":"65kg",
+		"title":"广西十大杰出码农",
+		"secTitle":"优秀隔壁老王"
+	};
+	//遍历对象 for in
+	//遍历自己
+	for(var x in ob01 ){
+		console.info(x+": "+ob01[x]);
+	}
+
+   对象的属性可以随意增删 
+
+ 对象是javascript中的重要概念, 所有的对象初始化的时候都有名字,但是不用命名，也能访问。
+
+in 运算符判断对象是否具有某属性
+student.hasOwnProperty("age") 和 in 操作一样，作为容错的重要手段
+
+if( student.hasOwnProperty("name") ){ console.info("字段存在")}
+
+作为标志位的对象
+_flags = { candelete：false, locked:false,finished:false }
+
+1.对象的属性，也可以是对象 2.对象的属性，也可以是函数（方法）
+
+//笔记: 调试方法--1.找到代码位置 2.打断点 3.使用F10逐步运行,使用F11进入函数
+
+
+函数：基本要素 1.输入 2.函数体 3.返回值  但是在js里，函数也是一个对象。
+
+function 函数名 （1.输入）{
+    2.函数体
+    
+    3.返回值
+    return 值，
+}
+
+三元表达式：
+function  meng(a,b){  return a<b?a:b }    a<b?a:b 三元表达式    如果a小于b为ture  输出a,反之为false输出b  
+    return  (f1)() > (f2)() ？(f3)() : (f4)()   (立即执行函数)
+
+函数表达式:
+var fang03 = function ( a, b ){
+           return a*b;
+}
+var c = fang03( 2 , 3 );
+console.info( c );
+
+
+
+立即执行函数()();第一个括号表示要执行的函数,
+	// 放函数体，可以是匿名的函数，第二个括号,放参数列表
+ //    (	function foo(a,b){
+	// 	alert(a);//笔记: alert()是阻塞的,如果没有人点击确定,后面的代码不会执行.
+	// 	console.info(b);
+	// 	b = {a:1};
+	// 	return b;
+	// })("121231","444444");
+	// foo("hello");
+
+
+使用或运算进行容错 ：
+var name =  " ";
+var username = name || "匿名用户";//如果第一个条件成立，则不再计算后边的条件
+console.info(  userName );
+
+
+**定时器 setIntterval();是一个函数,他接受两个参数,
+ 参数1: 一个函数体(要做的事情)
+参数2：int值， 表示毫秒，即间隔多少毫秒，去执行一次参数1函数
+
+
+
+
+数组补充：var a = [0,1,2];  a[ a.length ] = 3; 
+a.push(4); push()函数增加长度  a.pop(1);长度减一
+
+
+// 数组的拼接 a1.concat(a2)
+	 //var a1 = [0,1,2,3]; var a2 = [4,5,6,7];
+	 var arr1 = ["fang" , "yang" , "li" ,"liu" , "lin"];
+	 var arr1 = arr1.concat(arr1.splice(2,2,"tom","jim"));
+
+数组的裁剪：slice
+ // splice 替换原素,会改变原数组
+	 // slice 截取数组的一段出来用,不会改变原数组,截取的片段应该用新变量接收 
+            d = arr1.slice(1,3); 括号里表示从下标 1 截取到 下标 3 但是不包括下标 3
+
+
+  构造器函数本身只做声明，如果想要使用，必须先实例化一个对象。
+  Math是一个全局对象！他不可以New，因为他不是一个构造函数   全局对象指的是直接可以拿来用的对象，一般指工具类型（对象）。
+
+window的子集 ---> dom / document / BOM
+
+构造函数的扩展，使用 .prototype 来修改其原型。
+
+	//数组的排序 sort() ,  数组的反转 reverse().
+	aa.sort(function(a,b){return a-b} );//排序从小到大 只适用于数字
+	aa.sort(function(a,b){return b-a} );//排序从大到小
+                 aa.reverse // 反过来
+
+z-index的讲解

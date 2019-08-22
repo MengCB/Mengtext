@@ -1,0 +1,7 @@
+方老师邮箱：lingchen991@163.com
+
+
+径向渐变：
+border-color:#ff898e #93baff #c89386 #ffb151; /*边框用颜色等分*/
+
+background-image: -webkit-linear-gradient(top right,@0000ff 0%, red 50%, blue 90%)

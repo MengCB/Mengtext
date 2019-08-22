@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JQ-dom操作</title>
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+		</script>
+	</head>
+	<body>
+		<p id="text">明明就她<b>比较温柔</b></p>
+
+		<button id="btn1">显示文本</button>
+		<button id="btn2">显示html</button>
+		<br>
+		<input type="text" class="aa" id="text1" value="我是猪" />
+		<button type="button" id="btn3">取输入框</button>
+		<button type="button" id="btn4">修改值</button>
+		<button type="button" id="btn5">使用attr函数</button>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#btn1").click(function() {
+			// text()函数 - 取出innerText
+			alert("文本为" + $("#text").text());
+		});
+
+		$("#btn2").click(function() {
+			// html()函数 - 取出 innerHTML
+			alert("文本为" + $("#text").html());
+		});
+		
+		
+		$("#btn3").click(function(){
+			// val()函数 取出有 value 的元素的value 值
+			var textValue = $("#text1").val();
+			alert(textValue);
+		});
+		
+		// 笔记 这些函数都有两个功能 - 设置或返回(取值)
+		$("#btn4").click(function(){
+			$("#text1").val("我不是猪,我是马");
+			$("#text").text("你还在那撒谎");
+			// $("#btn1").text("显示文本---");
+			$("#text").html("<span style='color:red'>你大爷</span>");
+		});
+		
+		// attr() 函数参数列表( 目标属性名， 目标属性替换值， 回调函数 )
+		$("#btn5").click(function(){
+			var xxx = $("# ").attr("class" );
+			alert(xxx);
+		});
+	});
+</script>

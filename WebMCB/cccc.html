@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>布局</title>
+</head>
+<body>
+   <div class="box">摄影社区热门小镇</div>
+   <div class="box1">
+       <div class="i">
+           <div class="i2">
+               <img src="image/pic_01.jpg" alt="01.jpg">
+           </div>
+           <div class="i1">风影狙击手<br>
+               <span>成员：80<br>作品：276</span>
+           </div>
+           <!--<div class="c">成员：80</div>-->
+           <!--<div class="">作品：276</div>-->
+       </div>
+       <div class="j">
+           <div class="j2">
+               <img src="image/pic_02.jpg" alt="02.jpg">
+           </div>
+           <div class="j1">叙事感<br>
+               <span>成员：235<br>作品：116</span>
+           </div>
+       </div>
+       <div class="k">
+           <div class="k2">
+               <img src="image/pic_03.jpg" alt="03.jpg">
+           </div>
+           <div class="k1">定焦视界<br>
+               <span>成员：56<br>作品：456</span>
+           </div>
+       </div>
+
+       <div class="h">
+           <div class="h2">
+               <img src="image/pic_04.jpg" alt="">
+           </div>
+           <div class="h1">中画幅乐园<br>
+               <span>成员：130<br>作品：239</span>
+           </div>
+       </div>
+
+       <div class="l">
+           <div class="l2">
+               <img src="image/pic_05.jpg" alt="">
+           </div>
+           <div class="l1">《卡啪》先锋...<br>
+               <span>成员：78<br>作品：125</span>
+           </div>
+       </div>
+
+       <div class="m">
+           <div class="m2">
+               <img src="image/pic_06.jpg" alt="">
+           </div>
+           <div class="m1">z植物的无声世界<br>
+               <span>成员：235<br>作品：1258</span>
+           </div>
+       </div>
+
+   </div>
+</body>
+<style>
+      .box{
+          font-size: 13px;
+          font-weight: bold;
+          color: #4d4d4d;
+      }
+      .box1{
+         width: 606px;
+         height: 202px;
+         border: 1px dotted #e3e3e3;
+         display: flex;
+         flex-wrap: wrap;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+     }
+      .box1>div {
+          width: 200px;
+          height: 100px;
+          border: 1px dotted #e3e3e3;
+          border-top: none;
+      }
+      .i,.j,.k,.h,.l,.m{
+          position: relative;
+      }
+      .box1>div:nth-of-type(1),.box1>div:nth-of-type(4){
+          border-left: none;
+      }
+      .box1>div:nth-of-type(3),.box1>div:nth-of-type(6){
+          border-right: none;
+      }
+      img{
+          position: relative;
+          top: 2px;
+          left: 2px;
+     }
+      .i1,.j1,.k1,.h1,.l1,.m1{
+         position:absolute;
+         top:18px;
+         left: 90px;
+         color: #2e75bc;
+         font-size: 13px;
+     }
+      .i2,.j2,.k2,.h2,.l2,.m2{
+         width: 64px;
+         height: 64px;
+         border: 1px solid #dfdfdf;
+         position: relative;
+         top: 18px;
+         left: 8px;
+     }
+      span{
+        font-size: 10px;
+        color: #999999;
+    }
+
+
+
+</style>
+</html>

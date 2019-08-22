@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <div class="a1"></div>
+
+<div class="a2"></div>
+
+
+<div class="a3"></div>
+<div class="a4"></div>
+
+</body>
+<style>
+    /*.a1{*/
+        /*width: 500px;*/
+        /*height: 500px;*/
+        /*border: 20px solid red;*/
+        /*padding: 10px;*/
+        /*!*box-sizing: border-box;*!*/
+        /*!*content-box标准盒子 border-box怪异盒子*!*/
+        /*margin: 0 auto;!*水平居中*!*/
+        /*background-clip: content-box;!*背景图的裁剪区域*!*/
+        /*!*background-color: red;!*背景颜色*!*!*/
+        /*background-image: url("image/pic_01.jpg");!*引入背景图*!*/
+        /*background-repeat: no-repeat;!*背景图不平铺*!*/
+        /*background-size: 100% 100%;!*设置背景图的尺寸*!*/
+        /*background-position: 0 0;!*背景的定位*!*/
+        /*background:url("") no-repeat 0 0;!*背景语法糖*!*/
+    /*}*/
+
+    /*.a2{*/
+        /*width: 500px;*/
+        /*height: 500px;*/
+        /*!*background: linear-gradient(45deg!*渐变方向 也可以是角度 如45deg*!,blue,hotpink,red,chartreuse);!*线性渐变*!*!*/
+        /*background: radial-gradient(red 50%,hotpink,blue,chartreuse,goldenrod);!*径向渐变*!*/
+    /*}*/
+     .a3{
+         width: 300px;
+         height: 300px;
+         border: 1px solid #000;
+
+     }
+    .a3:hover{/*鼠标悬停在元素上是发生的样式变换*/
+        width: 500px;
+        height: 500px;
+
+    }
+    .a4{
+        width: 300px;
+        height: 300px;
+        background-color:red;
+    }
+    .a4:active{/*鼠标按压时发生的样式变换*/
+        width: 500px;
+        height: 500px;
+
+    }
+</style>
+</html>

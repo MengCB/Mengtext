@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title>jq-增删续</title>
+	</head>
+	<body>
+		<input type="text" id="text1" style="width: 200px;" />
+		<input type="button" id="bt1" value="输入-追加" />
+		<input type="button" id="bt2" value="输入-插队" />
+		<br><br>
+		<hr><br><br>
+		<textarea id="text2" rows="10" cols="90"></textarea>
+
+
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+
+		// 绑定事件
+		// 追加文本
+		$("#bt1").click(function() {
+			var text1 = $("#text1").val();
+			text1 = text1.trim();
+			if (!text1) {
+				alert("请输入---");
+			} else {
+				$("#text2").append(text1 + "\r\n");
+				$("#text1").val("");
+			}
+		});
+		
+		// 点击输入-插队
+		$("#bt2").click(function() {
+			var text1 = $("#text1").val();
+			text1 = text1.trim();
+			if (!text1) {
+				alert("请输入---");
+			} else {
+				$("#text2").prepend(text1 + "\r\n");
+				$("#text1").val("");
+			}
+		});
+		
+		// 敲回车自动输入
+		window.onkeydown = function(e){
+			if(e.key == "Enter"){
+				$("#bt1").click();
+			}
+		}
+	});
+</script>

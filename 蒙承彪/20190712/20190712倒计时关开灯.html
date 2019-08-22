@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background-color: black;
+			}
+
+			.mask {
+				/* display: none; */
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: "";
+				background-color: antiquewhite;
+				opacity: 0.8;
+			}
+
+			.circular {
+				width: 200px;
+				height: 200px;
+				background-color: crimson;
+				border-radius: 50%;
+				text-align: center;
+				position: absolute;
+				top: 300px;
+				left: 800px;
+				font-size: 80px;
+				line-height: 200px;
+			}
+
+			.light {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				background-color: yellow;
+				position: absolute;
+				left: 50%;
+				margin-left: -100px;
+				margin-top: 10%;
+				filter: grayscale(100%);
+				visibility: hidden;
+			}
+		</style>
+	</head>
+	<body>
+<!-- 		<span style="co;or:#000000; font-size: 20px; " id="span1">
+			撒打开了父母健康老人发了看你离开
+		</span> -->
+		<br>
+		<div class="light" id="light1"></div>
+		<input type="button" class="myButton" id="bt1" value="开灯" />
+		<input type="button" class="myButton" id="bt2" value="关灯" />
+		
+		<div class="mask" id="mask">
+			<input type="button" value="点击开始" style="width: 100px; position:relative; top: 100px;left: 100px;" onclick="arrivalTime()" />
+			<div class="circular">
+				<div class="num" id="num">5</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	// 作业1: 倒计时功能 + 遮罩
+	// 倒计时开始,计时完毕,隐藏遮罩
+	function arrivalTime() {
+		var count = 5;
+		// 计时器
+		var Timer = setInterval(function() {
+			document.getElementById("num").style.display = "none";
+			count -= 1;
+			if (count >= 0) {
+				document.getElementById("num").innerText = count;
+			} else {
+				document.getElementById("num").style.display = "none";
+				document.getElementById("mask").style.display = "none";
+				clearInterval(Timer);
+			}
+			// 延时执行倒数
+			setTimeout(function() {
+				document.getElementById("num").style.display = "block";
+			}, 500) // 延时500毫秒执行
+		}, 1000)
+	}
+
+	// 作业2: 点亮
+	var timer2;
+	document.getElementById("bt1").onclick = function(e) {
+		document.getElementById("light1").style.filter = "grayscale(100%)";
+		document.getElementById("light1").style.visibility = "visible";
+		var grayscale001 = 100;
+		timer2 = setInterval(function() {
+			grayscale001 -= 15;
+			document.getElementById("light1").style.filter = "grayscale(" + grayscale001 + ")";
+			if (grayscale001 <= 0) {
+				document.body.style.background = "#FFFF00";
+				clearInterval(timer2);
+			}
+		}, 400);
+	}
+	// 关闭
+	document.getElementById("bt2").onclick = function(e) {
+		clearInterval(timer2); // 终止点亮过程, 进入关灯
+		document.getElementById("light1").style.filter = "grayscale(100%)";
+
+		setTimeout(function() {
+			document.getElementById("light1").style.visibility = "hidden";
+			document.body.style.background = "#000000";
+		}, 1000)
+	};
+</script>

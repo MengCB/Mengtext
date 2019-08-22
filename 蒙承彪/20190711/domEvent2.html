@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom-3</title>
+		<style type="text/css">
+			.body {
+				width: 100%;
+				height: 100%;
+				/* position: relative; */
+			}
+
+			.longStick {
+				width: 400px;
+				height: 100px;
+				background-color: cadetblue;
+				position: absolute;
+				left: 40%;
+				top: 40%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="longStick" id="stick1"></div>
+
+	</body>
+</html>
+<script>
+	//1.1 鼠标事件
+	document.getElementById("stick1").onmousedown = function(e) {
+		// onmousemove 事件驻车
+		e.target.onmousemove = function(e) {
+			// setBomAngle(e);
+		}
+	}
+	document.getElementById("stick1").onmouseup = function(e) {
+		console.info("停止监听");
+		e.target.onmousemove = null; // 事件解绑
+	}
+	// 容错 onmouseout 
+	document.getElementById("stick1").onmouseout = function(e) {
+		console.info("停止监听");
+		e.target.onmousemove = null;
+	}
+
+	// 监听键盘
+	// 在这里补充些按键类型和shift 组合按键, 
+	// 参考http://www.w3school.com.cn/example/hdom_examples.asp
+	document.body.onkeypress = function(e) {
+		console.info(e.key);
+	}
+
+	// 通过滚轮调整炮口
+	window.onmousewheel = function(e) {
+		console.info(e);
+
+		// 
+		//取出当前角度,排除掉字符串取角度数字 
+		var currAngle = document.getElementById("stick1").style.transform;
+		if (!currAngle) {
+			currAngle = 0;
+		} else {
+			currAngle = currAngle.replace("rotate(", "");
+			currAngle = currAngle.replace("deg(", "");
+			currAngle = parseInt(currAngle);
+		}
+		//鼠标y方向的变化,小于0代表向上,反之亦然
+		if (e.shiftKey) {
+			if (e.deltaY < 0) {
+				console.info("滚轮向上");
+				currAngle -= 1;
+			} else {
+				console.info("滚轮向下");
+				currAngle += 1;
+			}
+		}
+		//限制角度,超过角度不操作
+		if (currAngle > -60 && currAngle < 0) {
+			document.getElementById("stick1").style.transform = 'rotate(' + currAngle + 'deg)';
+		}
+	}
+</script>

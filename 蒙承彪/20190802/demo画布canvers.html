@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>画布canvers</title>
+		<style type="text/css">
+			#cavsElem {
+				background: bisque;
+				width: 400px;
+				height: 300px;
+				/* background-image: -webkit-linear-gradient(left top, aqua 30%, bisque 50%, gray 100%); */
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="cavsElem" width="400" height="400">
+
+		</canvas>
+	</body>
+</html>
+<script type="text/javascript">
+	// var canvas = document.getElementById('cavsElem'); // 获取画布
+	// var context = canvas.getContext('2d'); // 获取画布的画笔
+	// canvas.width = 900;
+	// canvas.height = 600;
+	// context.beginPath();
+	// context.moveTo(40,40); // 移动画笔到
+	// context.lineTo(100,200); // 拟画一条直线,从笔的位置到目标位置
+	// context.lineTo(200,200);
+	// context.lineTo(300,100);
+	// context.fillStyle = "aqua"
+	// context.stroke(); //执行画笔
+	// context.fill(); // 填充
+
+	// 画出楼梯
+	// context.beginPath();
+	// context.lineTo(700, 550);
+	// 	context.lineTo(700, 450);
+	// 	context.lineTo(580, 450);
+	// 
+	// 	context.lineTo(580, 350);
+	// 	context.lineTo(460, 350);
+	// 
+	// 	context.lineTo(460, 250);
+	// 	context.lineTo(340, 250);
+	// 
+	// 	context.lineTo(340, 150);
+	// 	context.lineTo(215, 150);
+	// 
+	// 	context.lineTo(215, 40);
+	// 	context.lineTo(80, 40);
+	// 	context.fillStyle = "gray";
+	// 	context.stroke();
+	
+		function drowSteps(stepCount) {
+			var canvas = document.getElementById('cavsElem'); // 获取画布
+			canvas.width = 900;
+			canvas.height = 600;
+			var context = canvas.getContext('2d'); // 获取画布的画笔
+	
+			// 1.总共有几个台阶,对画布做等分
+			// 2.台阶比例(x,y) //基点 0,0
+			var baseX = 0;
+			var baseY = 0;
+			// 3.跨度 200
+			// context.beginPath();
+			context.moveTo(baseX,baseY);
+			var counter = 0;
+			var all = stepCount || 9;
+			while (counter < all*2) {
+				if (counter%2 == 0) {
+					baseX += 50;
+				} else {
+					baseY += 50;
+				}
+				context.lineTo(baseX, baseY);
+				counter++;
+			}
+			context.lineTo(0,baseY); // 最后的点
+			context.closePath();
+			context.fillStyle = "lightblue";
+			context.fill()
+			context.stroke();
+		}
+		drowSteps(10);
+
+	// 画矩形
+	function drawRect() {
+		var canvas = document.getElementById("cavsElem");
+		if (!canvas.getContext) return;
+		var ctx = canvas.getContext('2d');
+		ctx.fillStyle = "rgb(200,0,0)";
+
+		// 绘制矩形
+		ctx.fillRect(0, 0, 120, 120); // (x, y, width, height)
+		ctx.strokeRect(130, 0, 120, 120); // 画线
+		ctx.clearRect(15, 15, 30, 30); //擦除某个区域
+	}
+	drawRect();
+	// 画圆弧...........................
+	function drawArc() {
+		var canvas = document.getElementById("cavsElem");
+		if (!canvas.getContext) return;
+		var ctx = canvas.getContext('2d');
+		ctx.beginPath();
+		// x,y,r,atartAngle(弧度),endAngle(弧度),false(顺时针)
+		ctx.arc(350, 250, 40, 0, (Math.PI / 180) * 360, false);
+		ctx.fillStyle = "rgba(225,105,215, 0.3)";
+		ctx.fill();
+		ctx.stroke();
+
+
+	}
+	drawArc();
+</script>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>炮弹</title>
+	</head>
+	<style type="text/css">
+		body {
+			position: relative;
+		}
+
+		.cannon {
+			width: 180px;
+			height: 180px;
+			border-radius: 50%;
+			position: relative;
+			top: 400px;
+			background-color: black;
+		}
+
+		.Gun {
+			width: 280px;
+			height: 60px;
+			background-color: black;
+			transform: rotate(-45deg);
+			position: relative;
+			top: -50px;
+		}
+
+		.Shell {
+			width: 45px;
+			height: 45px;
+			border-radius: 50%;
+			background-color: red;
+			position: relative;
+			top: 24px;
+			left: 106px;
+		}
+
+		.man {
+			width: 80px;
+			height: 150px;
+			background-color: antiquewhite;
+			position: absolute;
+			top: 450px;
+			left: 1600px;
+			background-image: url(imges/1.jpg);
+			z-index: -1;
+		}
+	</style>
+	<body onload="paodan()">
+		<!-- 			 1.计时器
+			2.抛物线（炮弹轨迹）算法
+			3.抛物线和大炮的仰角的关系
+			4.获取页面上div的坐标（浮动的）
+			5.碰撞检测（两个物体的坐标是否有交叉） -->
+		<input type="button" value="开炮" onclick="test()" />
+		<input type="button" value="重置" onclick="over()" />
+		<div class="cannon">
+			
+			<div class="Gun"><div class="Shell" id="Shell"></div></div>
+		</div>
+		<div class="man" id="man"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	// document.getElementById("man").style.left = "1000px";
+	function paodan() {
+		var now = document.getElementById("man").style.left = "1600px";
+		now = now.replace("px", "");
+		now = parseInt(now);
+		var timer = setInterval(function() {
+			if (now > 180) {
+				now = now - 5;
+				document.getElementById("man").style.left = now + "px";
+			} else {
+				alert("结束");
+				now = 1600;
+			};
+		}, 100);
+	}
+
+    
+	var test = function() {
+		var Shell = document.getElementById("Shell");
+		pwx(Shell, 58, 10); //参数2：抛物线角度，参数3：横向速度每次增加10
+	}
+	function pwx(Shell, radian, step) {
+		var animate = function(opt) {
+			var cos = Math.cos(opt.radian * Math.PI / 180); //邻边比斜边,60度的话等于1/2
+			var sin = Math.sin(opt.radian * Math.PI / 180); //对边比斜边,30度的话等于1/2
+			var left = opt.Shell.offsetLeft;
+			var top = opt.Shell.offsetTop;
+			if (opt.radian > 0) {
+				left += opt.step;
+				opt.radian -= 1; //角度递减1
+				var a = left - opt.initLeft;
+				var c = (a / cos);
+				var b = (sin * c);
+				opt.Shell.style.left = opt.initLeft + a + "px";
+				opt.Shell.style.top = opt.initTop - b + "px";
+				setTimeout(function() { //setTimeout( )是设定一个指定等候时间 (单位是千分之一秒, millisecond), 时间到了, 浏览器就会执行一个指定的 method 或 function,
+					animate(opt);
+				}, 10);//等候时间10毫秒
+			} else {
+				opt.Shell.style.left = left + opt.step + "px";
+				opt.Shell.style.top = opt.initTop + "px";
+			}
+		}
+		animate({
+			step: step,
+			Shell: Shell,
+			radian: radian,
+			initTop: Shell.offsetTop,
+			initLeft: Shell.offsetLeft
+		});
+	}
+	//X方向的边长每次递增5，角度每次递减1，根据这两个已知条件，通过三角函数就可以计算出Y方向的长度是多少
+	
+	    window.ll = function () {
+	    var oDiv = document.getElementById('Shell');
+	    var oDiv2 = document.getElementById('man');
+	    var disX = 0;
+	    var disY = 0;
+	    oDiv = function (ev) {
+	        var ev = ev|| test;
+	        disX = ev.clientX - oDiv.offsetLeft;
+	        disY = ev.clientY - oDiv.offsetTop;
+	        document.onmousemove = function (ev) {
+	            var ev = ev|| test;
+	 
+	            var t1 = oDiv.offsetTop;
+	            var l1 = oDiv.offsetLeft;
+	            var r1 = oDiv.offsetLeft + oDiv.offsetWidth;
+	            var b1 = oDiv.offsetTop + oDiv.offsetHeight;
+	 
+	            var t2 = oDiv2.offsetTop;
+	            var l2 = oDiv2.offsetLeft;
+	            var r2 = oDiv2.offsetLeft + oDiv2.offsetWidth;
+	            var b2 = oDiv2.offsetTop + oDiv2.offsetHeight;
+	            if(b1<t2 || l1>r2 || t1>b2 || r1<l2){// 表示没碰上
+	 
+	            }else{
+	              alert("僵尸已死！");
+	            }
+	            oDiv.style.left = ev.clientX - disX +'px';
+	            oDiv.style.top = ev.clientY - disY +'px';
+	        }
+	        }
+	        return false;
+	    }
+		//1.1 鼠标事件
+	document.getElementById("Gun").onmousedown = function(e) {
+		// onmousemove 事件驻车
+		e.target.onmousemove = function(e) {
+			setBomAngle(e);
+		}
+	}
+	document.getElementById("Gun").onmouseup = function(e) {
+		console.info("停止监听");
+		e.target.onmousemove = null; // 事件解绑
+	}
+	// 容错 onmouseout 
+	document.getElementById("Gun").onmouseout = function(e) {
+		console.info("停止监听");
+		e.target.onmousemove = null;
+	}
+	
+	// 监听键盘
+	// 在这里补充些按键类型和shift 组合按键, 
+	// 参考http://www.w3school.com.cn/example/hdom_examples.asp
+	document.body.onkeypress = function(e) {
+		console.info(e.key);
+	}
+	
+	
+	// 
+	function setBomAngle(e) {
+		//取出当前角度,排除掉字符串取角度数字 
+		var currAngle = document.getElementById("Gun").style.transform;
+		if (!currAngle) {
+			currAngle = 0;
+		} else {
+			currAngle = currAngle.replace("rotate(", "");
+			currAngle = currAngle.replace("deg(", "");
+			currAngle = parseInt(currAngle);
+		}
+		//鼠标y方向的变化,小于0代表向上,反之亦然
+		if (e.movementY < 0) {
+			currAngle -= 1;
+		} else {
+			currAngle += 1;
+		}
+		//限制角度,超过角度不操作
+		if (currAngle < -90 || currAngle > 0) {
+			return;
+		}
+		document.getElementById("Gun").style.transform = 'rotate(' + currAngle + 'deg)';
+	}
+</script>
+<!-- <script type="text/javascript">
+			function start() {
+				var x, y, k = 1,t;
+				//x是水平方向移动路径；y是垂直方向的；k记录次数，可与0.1相乘得时间；t记录setInterval的返回id，用于clearInterval
+				t = setInterval(function() {
+					x = 30 + 0.1 * k * 4 * 100;
+					//S(x)=S(0)+t*V(x)，100是自定义的米到px转换数
+					y = 30 + 1 / 2 * 9.8 * 0.1 * k * 0.1 * k * 100; //S(y)=S(0)+1/2*g*t*t
+					var j = document.getElementById("Shell");
+					//通过修改小球的top和left，修改小球的位置
+					j.style.top = y;
+					j.style.left = x;
+					k++; //每次调用，k自增，简化计算
+					if (x > 480 || y > 480) {
+						clearInterval(t); //小球达到边界时，清除setInterval
+					}
+				}, 100); //每0.1s调用一次setInterval的function
+			}
+		</script> -->

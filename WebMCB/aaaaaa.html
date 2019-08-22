@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class="box"></div>
+<div class="bd color-gary"></div>
+<div id="aaa"></div>
+
+<div class="ppp">
+    <div>1</div>
+    <div class="aa">2</div>
+    <div>3</div>
+    <div>4</div>
+    <div kkk="1">5</div>
+
+    <div class="qqq" style="width:100px; ">内联样式</div>
+</div>
+样式的优先级：！important>内联样式>内嵌样式>外部样式
+</body>
+<style>
+    /*越精确优先级越高*/
+    ！important>id选择器>类选择器>元素选择器>继承样式>通配符选择器>浏览器默认样式
+   /*内嵌样式*/
+    [kkk="1"]{/*属性选择器*/
+
+    }
+
+    .aa+div{/*相邻选择符匹配到紧挨着的元素是不是div*/
+
+    }
+    .aa~div{/*兄弟选择符 匹配到的是之后对的所有元素*/
+
+    }
+    .ppp>div{/*子选择符*/
+
+    }
+    .ppp div{/*包含选择符 破匹配到包含的元素*/
+
+    }
+    *{/*通配符选择符 匹配到页面内的所有元素*/
+        magrgin:0;
+        padding: 0;
+        /*边距重置*/
+    }
+    div{/*元素选择器 匹配到页面内的所有div*/
+
+    }
+    .color-gary{
+        background-color: black;
+    }
+    .bd{
+
+    }
+    .box{
+
+    }
+    #aaa{/*ID选择器 id名唯一*/
+
+    }
+</style>
+</html>

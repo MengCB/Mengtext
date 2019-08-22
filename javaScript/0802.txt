@@ -1,0 +1,105 @@
+
+<textarea>标签用于定义多行文本输入框，
+可以通过cols和rows属性来规定文本区域内可见的列数和行数，
+具体的尺寸可以通过width和height来设置。
+-------------------------------------------
+name	由用户自定义	控件的名称
+readonly	readonly	该控件内容为只读（不能编辑修改）
+disabled	disabled	第一次加载页面时禁用该控件（显示为灰色）
+maxlength	正整数	控件允许输入的最多字符数
+autofocus	autofocus	指定页面加载后是否自动获取焦点
+placeholder	字符串	为input类型的输入框提供一种提示
+required	required	规定输入框填写的内容不能为空
+cols	number	规定文本区内的可见宽度。
+rows	number	规定文本区内的可见行数。
+
+<select> 标签可创建单选或多选菜单
+-------------------------------------
+<select>	size	指定下拉菜单的可见选项数（取值为正整数）。
+multiple	定义multiple=“multiple”时，
+                下拉菜单将具有多项选择的功能，多选方法为，
+                 按住Ctrl键选择多项。
+<option>	selected   定义selected =“selected ”时，
+                           当前项即为默认选中。
+-----------------------------------------------------
+<datalist>标签用于定义输入域的选项列表，即与<input>标签配合定义
+<input>标签可能的值。列表通过<datalist>标签内的<option>标签创建，
+可以使用<input>标签的list属性引用<datalist>标签的id属性，
+
+HTML5 Canvas
+---------------------
+<canvas> 标签定义图形，比如图表和其他图像，您必须使用脚本来绘制图形。
+
+Canvas - 路径
+------------------
+在Canvas上画线，我们将使用以下两种方法：
+
+moveTo(x,y) 定义线条开始坐标
+lineTo(x,y) 定义线条结束坐标
+
+在canvas中绘制圆形, 
+我们将使用以下方法:
+-------------------------
+arc(x,y,r,start,stop)
+// x,y,r,atartAngle(弧度),endAngle(弧度),false(顺时针)
+ctx.arc(350, 250, 40, 0, (Math.PI / 180) * 360, false);
+
+Canvas - 文本
+使用 canvas 绘制文本，重要的属性和方法如下：
+
+font - 定义字体
+fillText(text,x,y) - 在 canvas 上绘制实心的文本
+strokeText(text,x,y) - 在 canvas 上绘制空心的文本
+
+Canvas - 渐变
+-------------------------------------------------
+渐变可以填充在矩形, 圆形, 线条, 文本等等, 各种形状可以自己
+              定义不同的颜色。
+
+以下有两种不同的方式来设置Canvas渐变：
+
+createLinearGradient(x,y,x1,y1) - 创建线条渐变
+
+ctx.fillRect(0, 0, 120, 120); // (x, y, width, height)
+ctx.strokeRect(130, 0, 120, 120); // 画线
+ctx.clearRect(15, 15, 30, 30); //擦除某个区域
+
+createRadialGradient(x,y,r,x1,y1,r1) - 创建一个径向/圆渐变
+                                  当我们使用渐变对象，
+                                  必须使用两种或两种以上的停止颜色。
+
+addColorStop()方法指定颜色停止，参数使用坐标来描述，可以是0至1.
+
+使用渐变，设置fillStyle或strokeStyle的值为 渐变，然后绘制形状，
+如矩形，文本，或一条线
+
+Canvas - 图像
+--------------------------------------------
+把一幅图像放置到画布上, 使用以下方法:
+
+drawImage(image,x,y)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

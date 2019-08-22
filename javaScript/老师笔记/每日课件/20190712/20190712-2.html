@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM-练习2</title>
+		<script src="../jquery-3.1.1.min.js"></script>
+
+		<style type="text/css">
+			body {
+				background-color: aliceblue;
+			}
+
+			.student {
+				width: 100px;
+				height: 100px;
+				border-radius: 70%;
+				background-color: cadetblue;
+				line-height: 100px;
+				text-align: center;
+				font-size: 32px;
+				position: absolute;
+				z-index: 9;
+			}
+
+			.student:hover {
+				background: #FFFF00;
+				z-index: 900;
+			}
+		</style>
+
+	</head>
+	<body>
+		<input type="button" id="Shuffle" value="洗牌" />
+		<span id="currOne"></span>
+		<!-- <div class="student">杨庆文</div> -->
+	</body>
+</html>
+<script type="text/javascript">
+	// 练习3 : 抽签 
+	// 木棍 林昆
+	var allStudents = [
+		{
+			name: "曾传森",
+			id: 333
+		},
+		
+		{
+			name: "杨庆文",
+			id: 300
+		},
+		{
+			name: "李春朋",
+			id: 4
+		},
+		{
+			name: "赵珊",
+			id: 5
+		},
+		{
+			name: "孙蒙",
+			id: 6
+		},
+		{
+			name: "高原",
+			id: 7
+		},
+		{
+			name: "雷雪煜",
+			id: 8
+		},
+		{
+			name: "王文金",
+			id: 9
+		},
+		{
+			name: "韦清源",
+			id: 10
+		},
+		{
+			name: "高佳骏",
+			id: 11
+		},
+		{
+			name: "董青林",
+			id: 12
+		},
+		{
+			name: "刘伟业",
+			id: 13
+		},
+		{
+			name: "陈艺宇",
+			id: 14
+		},
+		{
+			name: "李烜铖",
+			id: 15
+		},
+		{
+			name: "满春发",
+			id: 16
+		},
+		{
+			name: "蒙承彪",
+			id: 17
+		},
+		{
+			name: "苏壮晖",
+			id: 18
+		},
+		{
+			name: "施一航",
+			id: 19
+		},
+		{
+			name: "王程鑫",
+			id: 20
+		},
+		{
+			name: "骆明睿",
+			id: 21
+		},
+		{
+			name: "梁鸿标",
+			id: 22
+		},
+		{
+			name: "黄伟洪",
+			id: 23
+		},
+		{
+			name: "黄河源",
+			id: 24
+		},
+		{
+			name: "杨昊",
+			id: 25
+		},
+		{
+			name: "李旭昊",
+			id: 26
+		},
+		{
+			name: "黄春惠",
+			id: 27
+		},
+		{
+			name: "尚冉",
+			id: 28
+		},
+		{
+			name: "袁鑫",
+			id: 29
+		}
+	];
+
+	createRan()
+	// 洗牌
+	function createRan() {
+		document.getElementById("currOne").innerText = "";
+		// 先删除页面上所有学生(div) 通过数据源进行删除
+
+		// 这段代码不可用!!!!, 因为页面上的 节点不断被删除, 数组长度不断变化, 不可靠
+		// var allguys = document.getElementsByClassName("student");
+		// for( var i=0 ; i< allguys.length ; i++){
+		// 	console.info(allguys.length);
+		// 	allguys[i].remove(); // 注意, IE不支持这个方法!比尔盖子这个...
+		// }
+
+		// 方法1
+		var allguys = document.getElementsByClassName("student");
+		while (allguys.length > 0) {
+			allguys[0].remove();
+		}
+
+		// 方法 2
+		// for (var i = 0; i < allStudents.length; i++) {
+		// 	var targetHtmlNode = document.getElementById( allStudents[i].id );
+		// 	if (targetHtmlNode) {
+		// 		targetHtmlNode.remove();
+		// 	}
+		// }
+		// 遍历 allStudents, 将他们都放到页面上
+		for (var i = 0; i < allStudents.length; i++) {
+			var oneStudent = document.createElement("div");
+			oneStudent.setAttribute("class", "student");
+			oneStudent.id = allStudents[i].id;
+			oneStudent.onclick = function(evetxxx) {
+				showName(evetxxx);
+			}
+			var xRan = Math.random() * 90;
+			var yRan = Math.random() * 90;
+			oneStudent.style.left = xRan + "%";
+			oneStudent.style.top = yRan + "%";
+			document.body.appendChild(oneStudent);
+		}
+	}
+
+	function showName(evetxxx) {
+		var stuId = evetxxx.target.id;
+		console.info(stuId);
+		for (var i = 0; i < allStudents.length; i++) {
+
+			document.getElementById(allStudents[i].id).style.zIndex = 9; // 降低其他人的z-index
+			if (allStudents[i].id == stuId) {
+				evetxxx.target.innerText = allStudents[i].name;
+				evetxxx.target.style.zIndex = 999;
+				evetxxx.target.style.background = "#FFFF00";
+
+				document.getElementById("currOne").innerText = allStudents[i].name;
+				// break; // 让遍历结束, 因为要降低所有人的z-index
+			}
+		}
+	}
+
+
+	// 事件注册
+	document.getElementById("Shuffle").onclick = function(e) {
+		createRan();
+	}
+</script>

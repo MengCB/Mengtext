@@ -1,0 +1,14 @@
+body {
+		text-align: center;
+
+	}
+div{
+	color: aquamarine;
+	font-family: "华文楷体";
+	font-weight: 500;
+	font-size: 30px;
+}
+p{
+	position: relative;
+	left: -22px;
+}

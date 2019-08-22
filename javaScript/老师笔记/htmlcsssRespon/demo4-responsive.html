@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>响应式的表现形式-媒体查询</title>
+
+		<style type="text/css">
+			body {
+				background: red;
+
+			}
+
+			.face {
+				background: url(173440.png)no-repeat;
+				width: 300px;
+				height: 300px;
+			}
+
+			@media (min-width:420px) {
+				body {
+					background: yellow;
+				}
+				.face {
+					background: url(3410.png)no-repeat;
+					width: 400px;
+					height: 400px;
+				}
+
+			}
+
+			@media (min-width:620px) {
+				body {
+					background: blue;
+				}
+				.face {
+					background: url(402.png)no-repeat;
+					width: 400px;
+					height: 400px;
+				}
+			}
+
+			@media (min-width:800px) {
+				body {
+					background: green;
+				}
+				.face {
+					background: url(42.png)no-repeat;
+					width: 400px;
+					height: 400px;
+				}
+			}
+
+			@media (min-width:900px) {
+				body {
+					background: palevioletred;
+				}
+				.face {
+					background: url(424.png) no-repeat;
+					width: 400px;
+					height: 400px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="face"></div>
+	</body>
+</html>

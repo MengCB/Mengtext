@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>排版</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- 引入bootstrap -->
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<style type="text/css">
+			.column {
+				min-height: 500px;
+				border: 1px solid antiquewhite;
+				background: salmon;
+				border-radius: 10px;
+			}
+
+			.table1 {
+				min-height: 250px;
+				background: sandybrown;
+				border-radius: 10px;
+			}
+
+			.form01 {
+				min-height: 300px;
+				border: 1px solid aquamarine;
+				background: #F5E79E;
+				border-radius: 10px;
+			}
+			
+			h1,h2,h3,h4,h5,h6{
+				color: aqua;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 column">
+					<h1>标题1 <small>副标题</small></h1>
+					<h2>标题2 <small>副标题</small></h2>
+					<h3>标题3 <small>副标题</small></h3>
+					<h4>标题4 <small>副标题</small></h4>
+					<h5>标题5 <small>副标题</small></h5>
+					<h6>标题6 <small>副标题</small></h6>
+					<br />
+					<!-- 页面主体 -->
+					<p>页面主体--艰苦奋斗输卵管就开始变了改变了 </p>
+					<br>
+					<!-- 中心内容 -->
+					<p class="lead">中心内容--通过添加.lead类可以让段落突出显示</p>
+					<br>
+				</div><br>
+				<div class="col-md-4 column">
+					<!-- 内联文本元素 -->
+					对不起，你是一个<mark>好人</mark>。
+					<br>
+					<!-- 被删除的文本 -->
+					<del>被删除的文本：对于被删除的文本使用del标签</del>
+					<br>
+
+					<!-- 无用文本 -->
+					<s>无用文本：对于没用的文本使用</s>
+					<br>
+					<!-- 插入文本 下划线 -->
+					<ins>插入文本：对于额外插入的文本可以使用</ins>
+					<br>
+					<!-- 带下划线的文本 -->
+					<u>这是一个带下划线的文本，为文本添加下划线</u>
+					<br>
+					<!-- 小号文本 -->
+					<small>小号文本：对于不需要强调的inline和block类型的文本使用small标签，他的字体为父容器的85%</small>
+					<br>
+					<!-- 着重 -->
+					<strong>着重：通过增加font-weight值强调一段文字</strong>
+					<br>
+					<!-- 斜体 -->
+					<em>斜体：用斜体强调一段文字</em>
+					<b>高亮一段文字</b>
+					<br>
+					<!-- 对齐 -->
+					<p class="text-left">左上</p>
+					<p class="text-center">居中</p>
+					<p class="text-right">靠右</p>
+					<p class="text-justify">左下</p>
+					<p class="text-nowrap"> No wrap text</p>
+					<br>
+				</div><br>
+				<div class="col-md-4 column">
+					<!-- 改变大小写 -->
+					<p class="text-lowercase">字母变小写：Lowercase</p>
+					<p class="text-uppercase">字母变大写：uppercase</p>
+					<p class="text-capitalize">首字母变大写：capitalize</p>
+					<br>
+					<!-- 缩略语 当鼠标悬停在缩写和缩写词上时就会显示完整内容，缩略语元素带有 title 属性，
+					外观表现为带有较浅的虚线框，鼠标移至上面时会变成带有“问号”的指针 -->
+					<!-- 基本缩略语 -->
+					<abbr title="attribute">基本缩略语</abbr>
+					<br>
+					<!-- 首字母缩略语 -->
+					<abbr title="HyperText Markup Language" class="initialism">HTML</abbr>首字母缩略语
+					<br>
+					<!-- 地址 让联系信息以最接近日常使用的格式呈现。在每行结尾添加 <br> 可以保留需要的样式。 -->
+					<address>
+						<strong>Twitter,Inc</strong><br>
+						1355 Market Street, Suite 900<br>
+						San Francisco, CA 94103<br />
+						<abbr title="Phone">p:</abbr>(123) 456-7890
+					</address>
+
+					<address>
+						<strong>Full Name</strong>
+						<a href="mailto:#">first.last@example.com</a>
+					</address>
+				</div><br>
+				<div class="col-md-4 column">
+					<!-- 引用 在你的文档中引用其他来源的内容 -->
+					<!-- 默认样式的引用 -->
+					<blockquote>
+						<p>将任何HTML元素包裹在blockquote中即可表现为引用样式。对于直接引用建议用p标签</p>
+					</blockquote>
+					<br>
+					<!-- 多种引用样式 -->
+					<!-- footer 用于标明引用来源 来源的名称可以包裹进 <cite>标签中-->
+					<blockquote>
+						<p>将任何HTML元素包裹在blockquote中即可表现为引用样式。对于直接引用建议用p标签</p>
+						<footer>用于标明引用来源<cite title="Source Title">Source Title</cite></footer>
+					</blockquote>
+					<br>
+					<!-- 另一种展示风格 赋予 .blockquote-reverse 类可以让引用呈现内容右对齐的效果。-->
+					<blockquote class="blockquote-reverse">
+						<p>将任何HTML元素包裹在blockquote中即可表现为引用样式。对于直接引用建议用p标签</p>
+						<footer>用于标明引用来源<cite title="Source Title">Source Title</cite></footer>
+					</blockquote>
+					<br>
+				</div>
+				<br>
+				<div class="col-md-4 column">
+					<!-- 列表 -->
+					<!-- 无序列表 -->
+					<ul>
+						<li>无序列表</li>
+						<li>无序列表</li>
+						<li>无序列表</li>
+					</ul>
+					<br>
+					<!-- 有序列表 -->
+					<ol>
+						<li>有序列表</li>
+						<li>有序列表</li>
+						<li>有序列表</li>
+					</ol>
+					<br>
+					<!-- 无样式列表 添加类.list-unstyled-->
+					<ol class="list-unstyled">
+						<li>无样式列表</li>
+						<li>无样式列表</li>
+						<li>无样式列表</li>
+					</ol>
+					<br>
+				</div><br>
+				<div class="col-md-4 column">
+					<!-- 内联列表 通过设置 display: inline-block; 并添加少量的内补（padding），
+		将所有元素放置于同一行。-->
+					<ul class="list-inline">
+						<li>内联列表</li>
+						<li>内联列表</li>
+						<li>内联列表</li>
+					</ul>
+					<br>
+					<!-- 描述 带有描述的短语列表 -->
+					<p>带有描述的短语列表</p>
+					<dl>
+						<dt>JS</dt>
+						<dd>javascript</dd>
+						<dt>JS</dt>
+						<dd>javascript</dd>
+						<dt>JS</dt>
+						<dd>javascript</dd>
+					</dl>
+					<br>
+					<!-- 水平排列的描述 .dl-horizontal 可以让 <dl> 内的短语及其描述排在一行。
+		开始是像 <dl> 的默认样式堆叠在一起，随着导航条逐渐展开而排列在一行。-->
+					<p>水平排列的描述</p>
+					<dl class="dl-horizontal">
+						<dt>JS</dt>
+						<dd>javascript</dd>
+						<dt>JS</dt>
+						<dd>javascript</dd>
+						<dt>JS</dt>
+						<dd>javascript</dd>
+					</dl>
+				</div><br>
+				<h2>表格</h2>
+				<div class="col-md-12 table1">
+					<!-- 条纹表格 -->
+					<table class="table table-striped">
+						<thead>
+							<tr class="">
+								<th>第一列</th>
+								<th>第二列</th>
+								<th>第三列</th>
+								<th>第四列</th>
+							</tr>
+						</thead>
+						<tr class="">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+						<tr class="">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+						<tr class="">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+					</table>
+				</div>
+				<br>
+				<div class="col-ma-12 table1">
+					<!-- 带边框的表格以及状态类为行或者单元格设置颜色 -->
+					<table class="table table-bordered">
+						<thead>
+							<tr class="active">
+								<th>第一列</th>
+								<th>第二列</th>
+								<th>第三列</th>
+								<th>第四列</th>
+							</tr>
+						</thead>
+						<tr class="success">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+						<tr class="warning">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+						<tr class="danger">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+						<tr class="success">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+					</table>
+				</div><br>
+				<div class="col-md-12 table1">
+					<!-- 鼠标悬停的表格 -->
+					<table class="table table-hover">
+						<thead>
+							<tr class="">
+								<th>第一列</th>
+								<th>第二列</th>
+								<th>第三列</th>
+								<th>第四列</th>
+							</tr>
+						</thead>
+						<tr class="">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+						<tr class="">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+						<tr class="">
+							<td>6</td>
+							<td>5</td>
+							<td>4</td>
+							<td>3</td>
+						</tr>
+					</table>
+				</div><br>
+				<h1>表单</h1>
+				<div class="col-md-6 form01">
+					<h2>基本实例</h2>
+					<form>
+						<div class="form-group">
+							<label for="exampleInputEmaill">Email address</label>
+							<input type="email" class="form-control" id="exampleInputEmaill" placeholder="Email" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Password</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputFile">File input</label>
+							<input type="file" id="exampleInputFile" />
+							<p class="help-block">Example block-level help text here.</p>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" />看看我
+							</label>
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+					<h2>内联表单</h2>
+					<!-- 为 <form> 元素添加 .form-inline 类可使其内容左对齐并且表现为 inline-block 级别的控件 -->
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="exampleInputName2">名字</label>
+							<input type="text" class="form-control" id="exampleInputName2" placeholder="张山峰" />
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail2">Email</label>
+							<input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com" />
+						</div>
+						<button type="submit" class="btn btn-default">Send invitation</button>
+					</form>
+					<br>
+					<form class="form-inline">
+						<div class="form-group">
+							<label class="sr-only" for="exampleInputEmail3">Email address</label>
+							<input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" />
+						</div>
+						<div class="form-group">
+							<label class="sr-only" for="exampleInputPassword3">Password</label>
+							<input type="password" class="form-control" id="exampleInputPassword3" placeholder="密码" />
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" />Remeber me
+							</label>
+						</div>
+						<button type="submit" class="btn btn-default">Sign in</button>
+					</form>
+					<br>
+					<form class="form-inline">
+						<div class="form-group">
+							<label class="sr-only" for="examp;eInputAmount">Amount (in dollars)</label>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount" />
+								<div class="input-group-addon">.00</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Transfer cash</button>
+					</form>
+				</div>
+				<br><br>
+				<div class="col-md-6 form01">
+					<!-- 水平排列的表单 -->
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="inputEmail3" placeholder="Email" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="inputPassword3" placeholder="Password" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" />Remeber me
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-default">Sign in</button>
+							</div>
+						</div>
+					</form>
+
+					<!-- 输入框 -->
+					<input type="text" class="form-control" placeholder="输入框" />
+					<!-- 文本域 -->
+					<textarea class="form-control" rows="3"></textarea>
+					<!-- 多选框和单选框 -->
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="" />
+							男生
+						</label>
+					</div>
+					<!-- disabled 禁止选取 -->
+					<div class="checkbox disabled">
+						<label>
+							<input type="checkbox" value="" disabled>
+							女生
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="optionRadios" id="optionRadios1" value="option1" checked />
+							one
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="optionRadios" id="optionRadios2" value="option2" />
+							two
+						</label>
+					</div>
+					<div class="radio disabled">
+						<label>
+							<input type="radio" name="optionRadios" id="optionRadios3" value="option3" disabled />
+							three
+						</label>
+					</div>
+					<label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox1" value="option1" />1
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox2" value="option1" />2
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox3" value="option1" />3
+					</label>
+					<br>
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />4
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />5
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" />6
+					</label>
+					<select class="form-control">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+					<br>
+					<select multiple class="form-control">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<div class="col-md-6 form01">
+					<h2>静态控件</h2>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">email@qq.com</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="inputPassword" placeholder="Password" />
+							</div>
+						</div>
+					</form>
+					<form class="form-inline">
+						<div class="form-group">
+							<label class="sr-only">Email</label>
+							<p class="form-control-static">email@qq.com</p>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword2" class="sr-only">Password</label>
+							<input type="password" id="inputPassword2" class="form-control" placeholder="Password" />
+						</div>
+						<button type="submit" class="btn btn-default">Confirm identity</button>
+					</form>
+					<br>
+					<!-- 禁用状态 -->
+					<input class="form-control" id="disabledInput" type="text" placeholder="Disable input here" disabled />
+					<br>
+					<form>
+						<fieldset disabled>
+							<div class="form-group">
+								<label for="disableTextInput">Disable input</label>
+								<input type="text" id="disableTextInput" class="form-control" placeholder="Disable input" />
+							</div>
+							<div class="form-group">
+								<label for="disabledSelect">Disabled select menu</label>
+								<select id="disabledSelect" class="form-control">
+									<option>Disabled select</option>
+								</select>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" />你真好！
+								</label>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</fieldset>
+					</form>
+					<br>
+					<!-- 只读状态 -->
+					<input class="form-control" type="text" placeholder="Readonly input here..." readoly />
+				</div>
+				<div class="col-md-6 form01">
+					<!-- 校验状态 添加 .has-warning、.has-error 或 .has-success 类到这些控件的父元素即可。
+					任何包含在此元素之内的 .control-label、.form-control 和 .help-block 元素
+					都将接受这些校验状态的样式。-->
+					<h2>校验状态</h2>
+					<div class="form-group has-success">
+						<label class="control-label" for="inputSuccess1">Input with success</label>
+						<input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+						<span id="helpBlock2" class="help-block">Bootstrap 对表单控件的校验状态</span>
+					</div>
+					<div class="form-group has-warning">
+						<label class="control-label" for="inputWarning1">Input with warning</label>
+						<input type="text" class="form-control" id="inputWarning1">
+					</div>
+					<div class="form-group has-error">
+						<label class="control-label" for="inputError1">Input with error</label>
+						<input type="text" class="form-control" id="inputError1">
+					</div>
+					<div class="has-success">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="checkboxSuccess" value="option1">
+								男性
+							</label>
+						</div>
+					</div>
+					<div class="has-warning">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="checkboxWarning" value="option1">
+								女性
+							</label>
+						</div>
+					</div>
+					<div class="has-error">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="checkboxError" value="option1">
+								两性
+							</label>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="col-md-6 form01">
+					<!-- 添加额外的图标 设置相应的 .has-feedback 类并添加正确的图标即可。
+                          反馈图标（feedback icon）只能使用在文本输入框 
+						  <input class="form-control"> 元素上。 -->
+					<div class="form-group has-success has-feedback">
+						<label class="control-label" for="inputSuccess2">输入框1</label>
+						<input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" />
+						<span class="glyphicon glyphicon-ok form-control-feedback" hidden="true"></span>
+						<span id="inputSuccess2Status" class="sr-only">(success)</span>
+					</div>
+					<div class="form-group has-warning has-feedback">
+						<label class="control-label" for="inputWarning2">输入框2</label>
+						<input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status" />
+						<span class="glyphicon glyphicon-warning-sign form-control-feedback" hidden="true"></span>
+						<span id="inputWarning2Status" class="sr-only">(warning)</span>
+					</div>
+					<div class="form-group has-error has-feedback">
+						<label class="control-label" for="inputError2">输入框3</label>
+						<input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status" />
+						<span class="glyphicon glyphicon-remove form-control-feedback" hidden="true"></span>
+						<span id="inputError2Status" class="sr-only">(error)</span>
+					</div>
+					<div class="form-group has-success has-feedback">
+						<label class="control-label" for="inputGroupSuccess1">输入框4</label>
+						<div class="input-group">
+							<span class="input-group-addon">*</span>
+							<input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+						</div>
+						<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+						<span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+					</div>
+				</div><br>
+				<div class="col-md-6 form01">
+					<h2>高度尺寸</h2>
+					<input class="form-control input-lg" type="text" placeholder=".input-lg" /><br>
+					<input class="form-control" type="text" placeholder="Default input" /><br>
+					<input class="form-control input-sm" type="text" placeholder=".input-sm" /><br>
+
+					<select class="form-control input-lg">
+						<option value="">.input-lg</option>
+					</select><br>
+					<select class="form-control">
+						<option value="">Default input</option>
+					</select><br>
+					<select class="form-control input-sm">
+						<option value="">.input-sm</option>
+					</select><br>
+					<!-- 水平排列的表单组尺寸 -->
+					<h2>水平排列的表单组尺寸</h2>
+					<form class="form-horizontal">
+						<div class="form-group form-group-lg">
+							<label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+							<div class="col-sm-10">
+								<input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input" />
+							</div>
+						</div>
+						<h2>调整列(column)尺寸</h2>
+						<div class="row">
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2" />
+							</div>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=".col-xs-3" />
+							</div>
+							<div class="col-xs-4">
+								<input type="text" class="form-control" placeholder=".col-xs-4" />
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>
+<script src="bootstrap/jquery-2.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>

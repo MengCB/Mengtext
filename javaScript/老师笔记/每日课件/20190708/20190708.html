@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数function</title>
+		<style type="text/css">
+			body {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+
+		1.1函数声明：
+		function functionName(parameters) {
+		要执行的代码
+		}
+		<br>
+		1.2 函数的返回值
+
+		<br>
+		函数的提升， 声明之前调用，不报错是因为， 程序自动的提升了function的位置，让其靠前
+		<br>
+		自调用函数， （有些地方也称作立即执行函数）
+		(function ( 参数) {
+		var x = "Hello!!"; //我会调用我自己
+		})( 参数);
+
+		<br />
+		// 对象的构造器函数
+		// http://www.w3school.com.cn/js/js_object_constructors.asp
+		// js 面向对象第一步
+	</body>
+</html>
+
+<script type="text/javascript">
+	//demo1();
+
+	var a = 100;
+	var xx = "xx";
+
+	function myFunction(a, b, c, d) {
+		// 函数体, 可以使用参数, 也可以使用外部变量
+		console.info(a + c); // a 在参数列表中, 跟外部变量a 没有关系,
+		//　如果ａ　不在参数列表中,　是可以读取外部的变量的
+		console.info(xx); // 使用了外部变量
+		console.info(d);
+	}
+
+	//myFunction(45, null, 5); // 显式的调用函数, 参数列表的顺序
+	//myFunction();
+
+	// 写一个函数 , 返回 a +　ｂ　的值
+	function addEx(a, b) {
+		return a + b;
+	}
+	//console.info( addEx(2, 6) );
+
+	// 匿名函数 
+	var times = function(a, b) {
+		return a * b;
+	}
+
+	// return 关键字 -  终止函数!!! 返回值(也可以没有返回值)
+	function demo1() {
+		//return;
+		var a = 1,
+			b = 2,
+			c = 3;
+		if (a < 0) {
+			return a;
+		}
+		var d = a + b + c;
+		console.info(d);
+	}
+
+
+	// 例程1： 编写函数， 实现输入两个数字， 返回较大的数
+	function abMax(a, b) {
+		// 容错拦截错误参数
+		if (isNaN(a) || isNaN(b)) {
+			console.info("参数必须是数字");
+			return;
+		}
+		if (a < b) {
+			return b;
+		} else {
+			return a;
+		}
+	}
+
+	//例程2： 编写函数， 实现输入一个字符串，一个数组，
+	//返回- 字符串是否在数组中， 如果在，返回其在数组中的下标
+	var arr01 = ["fang", "yang", "liu", "zhang", "sun"];
+
+	function matchTest(str, arr) {
+		// 方法1
+		// if( arr.indexOf(str) >=0 ){
+		// 	return arr.indexOf(str);
+		// }else{
+		// 	return -1;
+		// }
+		//方法2
+		for (var i = 0; i < arr.length; i++) {
+			if (str == arr[i]) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	// 自调用 / 立即执行函数 ( 参数是个匿名函数， 两个括号， 后者传参 )
+	(function(a, b) {
+		console.info(a + b);
+		//
+		//
+	})(1, 2);
+
+	// 对象的构造器函数 
+	// http://www.w3school.com.cn/js/js_object_constructors.asp
+	// js 面向对象第一步
+	function Song(index, name, type, auther, total) {
+		this.index = index;
+		this.name = name;
+		this.type = type;
+		this.auther = auther;
+		this.total = total;
+		//
+		this.perfect = function() {
+			if (this.total > 80) {
+				this.auther += "******";
+			} else {
+				// 李春鹏******
+				this.auther = this.auther.replace("******", "");
+			}
+		}
+		// setter // getter
+		this.setTotal = function(pTotal) {
+			this.total = pTotal;
+			this.perfect();
+			console.info(this.auther);
+		}
+		this.perfect(); // 初始化动作 int();
+	}
+	var song1 = new Song(0, "十七岁", "pop", "刘德华", 100);
+	var song2 = new Song(1, "老鼠爱大米", "pop", "李春鹏", 98);
+
+	console.info(song2); // 初始化的时候自动评优
+	song2.total = 70;
+	song2.perfect();
+	console.info(song2); // 分数被改变以后重新评优
+
+	// 课堂练习, 完善对象构造函数, 当分数发生改变时, 自动更新auther的星号
+
+
+	// 周考题:
+	function popStart(name, age) {
+		this.name = name;
+		this.age = age;
+		this.isYoung = function() {
+			if (this.age >= 80) {
+				this.old = true;
+			}
+		}
+	};
+
+	var zhoujielun = new popStart("周杰伦", 30);
+	zhoujielun.isYoung();
+	console.info(zhoujielun.old);
+
+	var zhaozhongxiang = new popStart("赵忠祥", 82);
+	zhaozhongxiang.isYoung();
+	console.info(zhaozhongxiang.old);
+
+	// 4S店的库存表, 以车的牌子CarList建立, 新增库存表的时候, 算一下总价
+	// 价格单位 : 万
+	var prices = {
+		ford: 30,
+		Benz: 40,
+		changan: 10,
+		haval: 15,
+		suzuki: 14,
+		volvo: 20
+	}
+	function CarList(brand, count) {
+		this.brand = brand;
+		this.count = count;
+		// 修改这里, 自动计算总价
+		this.getTotalPrice = function() {
+			// 去价格表查询当前的单价
+			var singlePrice = prices[this.brand];
+			if( singlePrice ){
+				// 单价乘以count 数量 
+				this.totalPrice = singlePrice *　this.count;
+			}else{
+				this.totalPrice = 0 ;
+			}
+		}
+		this.getTotalPrice(); // 执行它
+	}
+	// 今天入库奔驰 10辆, 福特20辆, 哈佛 5辆, 长安4辆, 铃木 6辆, volvo 18辆
+	// var fordPrice = new CarList("ford", 20);
+	// var BenzPrice = new CarList("Benz", 10);
+	// var havalPrice = new CarList("haval", 5);
+	// var changanPrice = new CarList("changan", 4);
+	// var suzukiPrice = new CarList("suzuki", 6);
+	// var volvoPrice = new CarList("volvo", 18);
+	// 
+	// var allPrice = fordPrice.totalPrice + BenzPrice.totalPrice +
+	// 	havalPrice.totalPrice + changanPrice.totalPrice + 
+	// 	suzukiPrice.totalPrice + volvoPrice.totalPrice;
+	
+	// 方法2
+	var all = [];
+	all.push( new CarList("ford", 20) );
+	all.push( new CarList("Benz", 10) );
+	all.push( new CarList("haval", 5) );
+	all.push( new CarList("suzuki", 6) );
+	all.push(  new CarList("changan", 4) );
+	all.push( new CarList("volvo", 18) );
+	
+	var allPrice = 0;
+	for(var i = 0; i<all.length; i++){
+		//allPrice = allPrice + all[i].totalPrice; 
+		allPrice += all[i].totalPrice; // 总价格累加
+		
+		console.info( "小计" +  allPrice);
+	}
+	console.info( "库存总价格" + allPrice  + "万");
+</script>

@@ -1,0 +1,40 @@
+
+  表单
+
+-----------------------
+input[type=text] - 选取文本输入框
+input[type=password] - 选择密码的输入框
+input[type=number] - 选择数字的输入框
+-----------------------------------------------------
+单选框：name的属性名必须一致，且属性名尽量不要用中文，
+因为编码识别不了，识别中文需要转换多次。
+
+性别:
+<br>
+<!-- checked="checked" 默认选择 -->
+男：<input type="radio" name="性别" value="男" checked="checked"/>
+&nbsp;
+女：<input type="radio" name="性别" value="女" />
+
+复选框:<input type="checkbox" name="" value="复选框" />
+
+<input> required 属性
+--------------------------------
+required 属性规定必需在提交之前填写输入字段。
+
+如果使用该属性，则字段是必填（或必选）的。
+
+CSS :focus 选择器
+--------------------------------------
+:focus 选择器用于选取获得焦点的元素。
+
+invalid 选择器
+---------------------------------------
+:invalid 选择器用于在表单元素中的值是非法时设置指定样式。
+
+注意： :invalid 选择器只作用于能指定区间值的元素，例如 input 
+元素中的 min 和 max 属性，及正确的 email 字段, 合法的数字字段等。
+
+
+作业
+http://www.51aspx.com/

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="{CHARSET}">
+        <title></title>
+        <style type="text/css">
+            #box{background: greenyellow;
+                border-radius: 50%;
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                left: 20px;
+                top: 200px;                
+                }
+        </style>
+        <script type="text/javascript">
+            onload=function(){
+                var oBox=document.getElementById("box");
+                //给一个速度
+                //水平速度
+                var xSpeed=10;
+                //垂直速度
+                var ySpeed=-30;
+                var timer=setInterval(function(){
+                    ySpeed+=3;
+                    oBox.style.left=xSpeed+oBox.offsetLeft+"px";
+                    oBox.style.top=ySpeed+oBox.offsetTop+"px";
+                    //边界判断
+                    var clientHeight=document.documentElement.clientHeight||document.body.clientHeight;
+                    if (oBox.offsetTop>=clientHeight-oBox.offsetHeight) {
+                        //修正位置，正好触底
+                        oBox.style.top=clientHeight-oBox.offsetHeight+"px";
+                        //修正y的速度，使其向相反的方向运动，并且速度越来越小
+                        ySpeed *= -0.6;
+                    }
+                },100)
+                //处理一下水平方向的速度，让其越来越慢，最后变为0
+                var timer2 = setInterval(function(){
+                    --xSpeed <=0 ? clearInterval(timer2) : "";
+                    
+                },2000);
+                
+                
+            }
+        </script>
+    </head>
+    <body>
+        <div id="box" >
+            
+        </div>
+    </body>
+</html>

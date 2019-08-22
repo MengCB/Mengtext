@@ -1,0 +1,82 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #f7f7f7;
+}
+
+header,.items{
+	margin-bottom: 20px;
+	width: 1250px;
+	height: 400px;
+	padding-left: 20px;
+	margin: 10px auto;
+}
+
+.items {
+	height: 320px;
+}
+
+.p {
+	background-color: #2a809d;
+	height: 320px;
+	background-image: linear-gradient(to bottom,
+	#4d6bd9 20%,
+	#b2d3ff 88%); /* 设置修改元素背景自上而下的线性渐变 */
+	font-family: 'Microsoft Yahei';
+	font-size: 30px;
+	font-weight: bold;
+	color: #fff;
+	padding-top: 40px;
+	line-height: 30px; /* 设置文本行高 */
+}
+
+.item {
+	width: 230px;
+	height: 300px;
+	text-align: center;
+	margin-right: 20px;
+	background-color: #fff;
+	float: left;
+	position: relative;
+	top: 0;
+	overflow: hidden;
+	/* css3新增动画属性：过渡，all（默认值）指所有属性改变
+	，整个转换过程在0.5秒内完成 */
+	transition: all 0.5s;
+	/* 盒子阴影：向下偏移5px,模糊值5px,颜色为 */
+	box-shadow: #41a8ff 0px 5px 5px;
+}
+
+.pic {
+	margin-top: -15px;
+	margin-left: -35px;
+}
+
+.desc {
+	position: absolute;
+	bottom: -100px;
+	width: 100%;
+	height: 100px;
+	background-color: #58a6f0;
+	transition: all 0.5s;
+	background-color: rgba(99, 168, 240,0.8);
+}
+
+/* 鼠标点击时效果 */
+.item:hover{
+	top: -5px;
+	box-shadow: 0 0 15px #aaa;
+}
+
+/* 当鼠标悬停在类名为item的元素上时，该元素的类名为desc的子元素绝对定位，其底部与父元素底部对齐 */
+.item:hover .desc{
+	bottom: 0;
+}
+
+.detail {
+	font-weight: bold;
+	font-size: 20px;margin-top: 50px;
+}
+.detail {
+	color: hotpink;
+}

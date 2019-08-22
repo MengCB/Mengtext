@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人信息</title>
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css" />
+		<style type="text/css">
+			body {
+				opacity: 0.8;
+				background: darkgrey;
+				background: url(img/12.jpg);
+			}
+
+			h1 {
+				width: 100%;
+				text-align: center;
+				font-family: "宋体";
+				color: #FAEBD7;
+			}
+
+			.box {
+				width: 100%;
+				height: 400px;
+				display: flex;
+				justify-content: space-around;
+				align-items: flex-start;
+			}
+
+			.div-left {
+				width: 30%;
+				height: 300px;
+				background: #ffffff;
+				background: url(img/8.jpg);
+			}
+
+			form {
+				width: 100%;
+				height: 100px;
+				position: relative;
+				top: 50px;
+				left: 78px;
+				/* margin: 50px; */
+			}
+
+			form input {
+				width: 60%;
+				height: 30px;
+				margin-top: 10px;
+				/* margin: 5px; */
+			}
+
+			.submit1 input {
+				width: 100%;
+				height: 100px;
+				background: lightblue;
+				color: #FFFFFF;
+				font-size: 24px;
+				position: relative;
+				top: 100px;
+			}
+
+			.div-right {
+				width: 35%;
+				height: 400px;
+				background: #FFFFFF;
+				/* margin-left: 10px; */
+				position: relative;
+				background: url(img/8.jpg);
+			}
+
+			.Img1 {
+				width: 40%;
+				height: 200px;
+				border-radius: 20px;
+				margin: 45px auto;
+				/* border: 1px solid aquamarine; */
+				background: url(img/13.jpg)no-repeat;
+				background-size: 100%;
+			}
+
+			h5 {
+				width: 100px;
+				color: black;
+				position: relative;
+				top: -35px;
+				left: 45%;
+			}
+
+			.div-right-bt {
+				width: 100%;
+				height: 100px;
+				background: lightblue;
+				position: relative;
+				top: -30px;
+			}
+
+			.div-right-bt ul {
+				width: 50%;
+			}
+
+			.div-right-bt li {
+				width: 50%;
+				float: left;
+				margin-left: 20px;
+				margin-top: 20px;
+				list-style: none;
+				color: #FFFFFF;
+				/* 去掉li前的黑点 */
+			}
+
+			.div-last {
+				width: 30%;
+				height: 300px;
+			}
+
+			.div-last div {
+				width: 100%;
+				height: 25%;
+				border: 1px solid lightcyan;
+				background: lightblue;
+				float: left;
+				color: #FFFFFF;
+			}
+
+			span {
+				position: relative;
+				top: 30px;
+				left: 20px;
+			}
+
+			.div-last p {
+				width: 100px;
+				position: relative;
+				top: -8px;
+				left: 50px;
+			}
+
+			.div-last02 h6 {
+				width: 20px;
+				color: red;
+				background: #FAEBD7;
+				font-family: "宋体";
+				position: relative;
+				top: -55px;
+				left: 90%;
+			}
+			
+			
+			.div-last01:hover,.div-last02:hover,.div-last03:hover,.div-last04:hover,.submit1:hover input{
+				background: gainsboro;
+			}
+			
+             /* 媒体 */
+			@media (max-width:960px) {
+				.box {
+					width: 100%;
+					display: flex;
+					flex-flow: column; /* 弹性盒子元素按纵轴方向顺序排列 */
+					justify-content: space-between; /* 弹性盒子元素会平均地分布在行里 */
+					align-items: center;
+				}
+
+				.div-left {
+					width: 100%;
+					height: 300px;
+					background: url(img/8.jpg);
+					order: 1;
+				}
+
+				.div-right {
+					margin-top: 100px;
+					width: 100%;
+					height: 400px;
+					background: url(img/8.jpg);
+					position: relative;
+					order: 2;
+				}
+
+				.div-last {
+					width: 100%;
+					height: 300px;
+					order: 3;
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h1>个人信息</h1>
+		<div class="box">
+			<div class="div-left">
+				<form>
+					<input type="text" name="" id="" placeholder="请输入姓名" value="" />
+					<input type="text" name="" id="" placeholder="请输入密码" value="" />
+				</form>
+				<div class="submit1"><input type="submit" value="修改密码"></div>
+			</div>
+
+			<div class="div-right">
+				<div class="Img1"></div>
+				<h5>斯嘉丽</h5>
+				<div class="div-right-bt">
+					<ul>
+						<li>3万</li>
+						<li>粉丝</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="div-last">
+				<div class="div-last01">
+					<span><i class="fa fa-address-card fa-lg"></i></span>
+					<p>个人资料</p>
+				</div>
+				<div class="div-last02">
+					<span><i class="fa fa-commenting fa-lg"></i></span>
+					<p>消息</p>
+					<h6>13</h6>
+				</div>
+				<div class="div-last03">
+					<span><i class="fa fa-cogs fa-lg"></i></span>
+					<p>设置</p>
+				</div>
+				<div class="div-last04">
+					<span><i class="fa fa-envira fa-lg"></i></span>
+					<p>退出登录</p>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

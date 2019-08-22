@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom续1：鼠标事件</title>
+	</head>
+	<body onmousedown="whichButton(event)">
+		<p>请点击鼠标  科技股份收到货了跨甲关键是如何古人说的话<br>过来看后宫换个方式及工会；帅；房间里看书分公司工会来说覆盖U盾是个善良的古寺老公</p>
+	</body>
+</html>
+<script type="text/javascript">
+	//document.oncontextmenu 页面上的按键
+	document.oncontextmenu = function(e) {
+		return false; //禁用右键菜单
+		return true; //禁用左键菜单
+	}
+
+
+
+	//对整个窗口执行事件注册
+	window.onmousedown = function(e) {
+		// whichButton(e);
+		console.info("onmousedown");
+	}
+	window.onmouseup = function(e) {
+		console.info("onmouseup");
+	}
+	window.onclick = function(e) {
+		console.info("onclick");
+	}
+    
+
+	
+	//鼠标的移动
+	var count = 0;
+	window.onmousemove = function(e) {
+		count++;
+		console.info(e);
+		if (e.movenmentX < 0) {
+			console.info("左移--->");
+		} else {
+			console.info("右移--->");
+		}
+
+		if (e.movenmentY < 0) {
+			console.info("上移--->");
+		} else {
+			console.info("下移--->");
+		}
+		// console.info( count );
+	}
+
+	//课堂练习1:写一个鼠标监听事件,控制输出按下了鼠标的哪个按键？
+	function whichButton(event) {
+		var btnNum = event.button;
+		if (btnNum == 2) {
+			alert("您点击了鼠标右键！");
+		} else if (btnNum == 0) {
+			alert("您点击了鼠标左键！");
+		} else if (btnNum == 1) {
+			alert("您点击了鼠标中键！");
+		} else {
+			alert("您点击了" + btnNum + "号键，但我不能确定他的名称。")
+		}
+	}
+
+
+	window.onmousedown = function(e) {
+		whichButton(e);
+	}
+</script>

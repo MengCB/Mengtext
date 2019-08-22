@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>进度条</title>
+		<script src="jquery-2.js"></script>
+		<style type="text/css">
+			.box {
+				width: 500px;
+				height: 30px;
+				border: 2px solid darkcyan;
+				border-radius: 20px;
+				margin: 50px auto;
+				background: darkorange;
+				position: relative;
+				z-index: -1;
+			}
+
+			#progress1 {
+				width: 0;
+				height: 30px;
+				background: lightgreen;
+				border-radius: 50px 5px 5px 50px;
+				text-align: center;
+
+			}
+
+			.windmill {
+				width: 40px;
+				height: 40px;
+				border: 2px solid darkorange;
+				border-radius: 50px;
+				background: url(img/风车.PNG)no-repeat;
+				background-size: 100%;
+				position: relative;
+				top: -35px;
+				left: 480px;
+			}
+
+			.move {
+				width: 40px;
+				height: 30px;
+				background: darkorange;
+				border-radius: 40px;
+				position: absolute;
+				top: 0px;
+				left: 482px;
+				z-index: -1;
+			}
+			.move-1,.move-2{
+				width: 15px;
+				height: 12px;
+				background: lightgreen;
+				border-radius: 40px;
+			}
+			.move-1{
+				position: relative;
+				top: 3px;
+			}
+			.move-2{
+				position: relative;
+				top: 5px;
+				left: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<!-- 外边框 -->
+			<div class="progress" id="progress1">
+				<div id="count01">0%</div>
+			</div>
+			<!-- 进度条 -->
+			<div class="windmill" id="windmill"></div>
+			<!-- 风车图 -->
+			<input type="button" name="contr" id="contr1" value="增加10%" />
+			<!-- 按钮 -->
+			<div class="move" id="move1">
+				<div class="move-1"></div>
+				<div class="move-2"></div>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var getWidth;
+	var count = 0;
+	var count1 = 0;
+	var tt = 0;
+	$(function() {
+		$("#contr1").click(function() {
+			// 自增
+			if (count % 10 != 0) {
+				return;
+			}
+			count1 += 10;
+			var temp = setInterval(function() {
+				count++;
+				$("#count01").text(count + "%");
+				if (count == count1) {
+					clearInterval(temp);
+				}
+				if (count >= 100) {
+					count = 99;
+					clearInterval(temp);
+				}
+				if (count1 > 100) {
+					clearInterval(temp);
+				}
+			}, 100);
+
+			// 进度条,风车动画
+			getWidth = $("#progress1").width();
+			getWidth += 50;
+			tt += 360;
+			if (getWidth <= 500) {
+				$("#progress1").css({
+					width: getWidth + "px",
+					transition: "all 2s"
+				});
+				$("#windmill").css({
+					transform: "rotate(" + tt + "deg)",
+					transition: "all 2s "
+				});
+				$("#move1").animate({
+					left: "20px",
+				},800,function(){
+					$("#move1").animate({
+						left: "482px",
+					},2,function(){});
+				});
+			} else {
+				$("#progress1").width(0);
+			}
+		});
+	});
+
+	// var getId = document.getElementById("progress1");
+	// var timer = setInterval(function(){
+	// 	if(getId.style.width == "100%"){
+	// 		clearInterval(timer);
+	// 		return;
+	// 	}
+	// 	getId.style.width = parseInt(getId.style.width) + 10 + '%';
+	// },500)
+</script>

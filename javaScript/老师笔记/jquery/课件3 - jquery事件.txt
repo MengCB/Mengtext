@@ -1,0 +1,71 @@
+﻿https://www.runoob.com/jquery/jquery-events.html
+
+jquery事件参考w3c
+http://www.w3school.com.cn/jquery/jquery_ref_events.asp
+
+
+
+// 探讨问题1: 绑定事件/注册事件 的方法
+// 探讨问题2: 对于未来元素的事件绑定
+
+
+
+1. 什么是事件？
+------------------------------------------
+页面对不同访问者的响应叫做事件。
+事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。
+实例：
+在元素上移动鼠标。
+选取单选按钮
+点击元素
+在事件中经常使用术语"触发"（或"激发"）例如： "当您按下按键时触发 keypress 事件"。
+
+
+
+2. 常见的事件(注意, 区别于原生js事件)
+-------------------------------------------
+鼠标事件 : click , dbclick , mouseenter , mouseleave , mouseover 
+键盘事件 : keypress , keydown , keyup
+窗口事件 : load , resize , scroll , unload
+
+
+3. jQuery 事件方法语法
+-------------------------------------------
+在 jQuery 中，大多数 DOM 事件都有一个等效的 jQuery 方法。
+页面中指定一个点击事件：
+$("p").click();
+下一步是定义什么时间触发事件。您可以通过一个事件函数实现：
+$("p").click(function(){
+    // 动作触发后执行的代码!!
+});
+
+
+
+4. 事件参考手册提要, 以及特殊的用法
+-------------------------------------------
+
+4.1: 绑定与解绑 
+bind() -- unbind()   // 
+
+4.2: 针对子元素的事件  delegate
+$("div").delegate("button","click",function(){
+  $("p").slideToggle();
+});
+$(selector).delegate(childSelector,event,data,function)  
+$("div").delegate("button","click",function(){
+  $("p").slideToggle();
+});
+
+
+4.3  (1.9版本一会停用了) 使用live() 方法向尚未创建的元素添加事件处理器。 // （比如由脚本创建的新元素）。
+$("button").live("click",function(){
+  $("p").slideToggle();
+});
+
+那么,如果想要对脚本产生的元素绑定事件, 可以在产生的逻辑绑定事件, 
+例如: 
+$("button").click(function() {
+	var tempa = $("<p>This is a new paragraph.</p>").insertAfter("button"); // 这个函数会返回添加的新元素
+	tempa.click( function(){} );
+});
+

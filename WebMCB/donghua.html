@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+</head>
+<body>
+<div class="box">
+    <div></div>
+</div>
+</body>
+<style>
+    .box{
+        width: 600px;
+        height: 600px;
+        border: 1px solid #000;
+        margin: 0 auto;
+        position: relative;
+    }
+    .box>div{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: scale(1) rotate(0);
+        opacity: 1;/*透明度*/
+        animation:ddd 10s 0.5s linear alternate infinite;
+        /*简写形式 ddd动画名称 10s持续时间 0.5s延时时间（打开页面时动画多久开始）linear过渡方式 alternate动画是否交替运行*/
+        /*animation-name: ddd;!*动画名称*!*/
+        /*animation-duration: 10s;!*动画的持续时间*!*/
+        /*animation-delay: 0.5s;!*动画的延时*!*/
+        /*animation-timing-function: linear;!*动画的过渡方式 默认值ease平滑过渡*!*/
+        /*animation-direction: alternate;!*定义动画是否交替运行*!*/
+        /*animation-iteration-count: infinite;!*动画的循环次数 默认是一次 infinite无限循环*!*/
+    }
+    @keyframes ddd {/*@keyframes动画*/
+        0%{
+            top: 0;
+            left: 0;
+            transform: scale(0.5) rotate(0);
+            opacity: 0.3;
+        }
+        25%{
+            top: 0;
+            left: 500px;
+            transform: scale(2) rotate(0);
+            opacity: 0.5;
+        }
+        50%{
+            top: 500px;
+            left: 500px;
+            transform: scale(1) rotate(999999999deg);
+            opacity: 0.8;
+        }
+        75%{
+            top: 500px;
+            left: 0;
+            transform: scale(1) rotate(-999999999deg);
+            opacity: 0.9;
+        }
+        100%{
+            top: 0;
+            left: 0;
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+        }
+    }
+</style>
+</html>

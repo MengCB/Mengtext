@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+		</script>
+		<title></title>
+	</head>
+	<body>
+	
+	</body>
+</html>
+<script type="text/javascript">
+	
+	var student01 = {
+		name:"li",
+		grade:"大三",
+		id:16060219,
+		"class":"计算机科学与技术1班",
+		"house":"17#104",
+		total:90
+	}
+	
+	var student02 = {
+		name:"wang",
+		grade:"大三",
+		id:16060222,
+		"class":"计算机科学与技术1班",
+		"house":"17#105",
+		total:88
+	}
+	
+	var student03 = {
+		name:"zhang",
+		grade:"大三",
+		id:16060210,
+		"class":"计算机科学与技术1班",
+		"house":"17#104",
+		total:70
+	}
+	
+	var arryTemp = [ student01,student02,student03];
+	
+	//编写一段代码,找出total分数最高的学生的姓名和id
+	//声明变量，用来存最高分的信息，每次匹配都赋值
+	var topOne = {
+		name:"",
+		id:0,
+		total:0
+	};
+	
+	//不要污染原数据
+	
+	//遍历数组 ，每次对比分数
+	for( var i = 0; i < arryTemp.length; i++ ){
+		if( arryTemp[i].total > topOne.total  ){
+			topOne.total = arryTemp[i].total;
+			topOne.name = arryTemp[i].name;
+			topOne.id = arryTemp[i].id;
+		}
+	}
+	
+	// 输出最高分的学生信息
+	console.info(topOne);
+	
+	// 1.对象的属性，也可以是对象 2.对象的属性，也可以是函数（方法）
+	 
+	 var personA = {
+		 "name":"fang",
+		 "age": 20,
+		 "brothers":[1,2,3,4,5,6],
+		 "father":{
+			 name: "fang-father"
+		 },
+		 getFather: function(){
+			 return this.father
+		 },
+		 getBigBrother : function(){
+			 //取这个人的所有兄弟
+			 var tempArray = this.brothers;
+			 //找出最大那个
+			 var tempBrother = 0;
+			 for( var i = 0; i < tempArray.length; i++){
+				 if( tempArray[i] > tempBrother ){
+					 tempBrother = tempArray[i];
+				 }
+			 }
+			 return tempBrother;
+		 }
+	 };
+	 //运行
+	 console.info("最大兄弟:"+ personA.getBigBrother() );
+	
+</script>

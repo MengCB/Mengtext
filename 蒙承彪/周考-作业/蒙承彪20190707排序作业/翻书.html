@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>翻书</title>
+		<style type="text/css">
+		   .bookpage{
+			   width: 400px;
+			   height: 200px;
+			   position: absolute;
+			   left: 30%;
+			   top: 40%;
+		   }
+			.bookpage img{
+				width: 200px;
+				height: 200px;
+				border: 1px solid aquamarine;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bookpage" id="bookpage2">
+			<img src="img/ht.PNG" style="width: 400px;"/>
+		</div>
+		<div class="bookpage" id="bookpage1">
+			<img src="img/tree.jpg" >
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var aaa = 180;
+	var timer1 = setInterval(function(){
+		aaa -=3;
+		if( aaa < 3 ){
+			clearInterval(timer1);
+		}
+		document.getElementById("bookpage1").style.transform = "rotateY("+aaa+"deg";
+	},80);
+</script>

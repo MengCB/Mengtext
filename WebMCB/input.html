@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .aa{
+        color: yellow;
+    }
+    ::-webkit-input-placeholder{/*更改提示信息的字体颜色*/
+        color:red;
+    }
+</style>
+<body>
+<!--输入控件-->
+<!--autofocus 页面加载时自动获取焦点 placeholder提示信息-->
+
+<input type="text" class="aa" placeholder="提示信息" value="默认值" autofocus> <br>
+
+<!--br 换行标签-->
+<hr>
+ <!--hr 分割线-->
+密码:<input type="password"><br>
+禁用:<input type="text" disabled value="这是禁用里的内容不可复制">
+
+只读:<input type="text" readonly value="这里是只读的内容">
+
+搜索: <input type="search">
+
+日期: <input type="date">
+数据列表: <input list="foodlist">
+    <datalist id="foodlist">
+        <option>苹果</option>
+        <option value="2">香蕉</option>
+        <option value="3">哈密瓜</option>
+        <option value="4">樱桃</option>
+    </datalist>
+
+输入控件长度: <input type="text" maxlength="8"><br>
+<!--输入的最大长度-->
+
+颜色: <input type="color">
+邮箱: <input type="email">
+手机: <input type="tel">
+链接: <input type="url">
+上传文件: <input type="file">
+数字: <input type="number"><br>
+横条:<input type="range">
+
+复选框  爱好:
+<label for="basketball">篮球:</label>
+<input type="checkbox" id="basketball">
+
+<label for="football">足球：</label>
+<input type="checkbox" id="football">
+
+<label for="vball">排球：</label>
+<input type="checkbox" id="vball">
+  <!--label标签 可以通过点击文字达到点击复选框的作用-->
+
+单选框 性别:
+男: <input type="radio" name="sex" checked>
+<!--checked 页面加载完成时的默认选择-->
+女: <input type="radio" name="sex">
+
+<!--输入控件的按钮功能-->
+按钮: <input type="button" value="这是普通的按钮">
+提交: <input type="submit" value="登录">
+重置: <input type="reset" value="重置">
+
+<button disabled>禁用按钮</button>
+<button type="reset">重置</button>
+<button type="submit">提交按钮</button>
+<button type="botton">普通按钮</button>
+
+<!--原生下拉菜单-->
+<select name="" id="">
+    <option value="N">南宁</option>
+    <option value="L">柳州</option>
+    <option value="G">桂林</option>
+</select>
+
+<select name="" id="">
+    <optgroup label="广西">
+        <option value="北海">北海</option>
+        <option value="桂林">桂林</option>
+        <option value="柳州">柳州</option>
+        <option value="南宁">南宁</option>
+        <option value="防城港">防城港</option>
+    </optgroup>
+    <optgroup label="广东">
+        <option value="广州">广州</option>
+        <option value="潮州">潮州</option>
+        <option value="汕头">汕头</option>
+        <option value="珠海">珠海</option>
+        <option value="深圳">深圳</option>
+    </optgroup>
+</select>
+
+<textarea name="" id="" cols="30" rows="10">
+    文本框
+    富文本编辑器
+</textarea>
+
+</body>
+
+</html>

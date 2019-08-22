@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>视频</title>
+		<style type="text/css">
+			.left01 {
+				float: left;
+				width: 40%;
+				height: 400px;
+			}
+
+			.right01 {
+				float: left;
+				margin-left: 10%;
+				width: 40%;
+				height: 400px;
+				background-color: antiquewhite;
+			}
+
+			.right01 li {
+				list-style: none;
+				/* 去掉li黑点 */
+				margin-top: 10px;
+			}
+
+			.right01 a {
+				text-decoration: none;
+				/* 去掉a标签的下划线 */
+			}
+
+			a:hover {
+				font-size: 36px;
+			}
+
+			.contralBord {
+				min-width: 400px;
+				height: 40px;
+				width: 100%;
+				background: #269ABC;
+				/* position: absolute; */
+				margin-top: 260px;
+				bottom: 20px;
+			}
+
+			.cbSon {
+				padding-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="left01">
+			<video width="400" height="100%" id="video001" preload="preload" controls="controls" src="news1.mp4"
+			 autoplay="autoplay">
+				<a href="htt://www.baidu.com">下载视频</a>
+			</video>
+		</div>
+ 
+		<div class="right01">
+			<ul>
+				<li onclick="changeVideo(1)"><a href="#">新闻</a></li>
+				<li onclick="changeVideo(2)"><a href="#">cxk</a></li>
+				<li onclick="changeVideo(3)"><a href="#">搞笑视频</a></li>
+			</ul>
+			<div class="contralBord">
+				<div class="cbSon">
+					<input type="button" value="上一个" />
+					<input onclick="playContral('pause')" type="button" value="暂停" />
+					<input onclick="playContral('play')" type="button" value="播放" />
+					<input type="button" value="上一个" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	function changeVideo(videoSrc) {
+		if (!videoSrc) {
+			return;
+		}
+		switch (videoSrc) {
+			case 1:
+				{
+					videoSrc = "news1.mp4";
+					break;
+				}
+			case 2:
+				{
+					videoSrc = "1.mp4";
+					break;
+				}
+			case 3:
+				{
+					videoSrc = "mda-jcfd7018v6tgp588.mp4";
+					break;
+				}
+			default:
+				{
+					break;
+				}
+		}
+		var v01 = document.getElementById("video001");
+		v01.src = videoSrc;
+	}
+	
+	// 播放控制
+	function playContral( parm ){
+		var v01 = document.getElementById("video001");
+		v01[parm]();   
+	}
+	
+	function playListG( pram ){
+		if(!pram){
+			return;
+		}
+	}
+	
+	// volume 0~1 , 1 表示最大音量,0 表示静音 v01.volume
+	// paused 表示当前是否处于暂停的状态 false 表示播放中 ture表示暂停中
+	// ended 返回视频的播放是否已结束 当<video>里有loop属性时 没作用
+	// duration -- 视频总长度( 秒 )
+	// currentTime 当前播放的时间(秒) // 修改这个属性可以实现快进/快退
+	
+	
+	// 事件 ended
+	// playing是开始播放后触发  onplay是执行play()就触发
+	document.getElementById("video001").onplaying = function(e){
+		alert("playing");
+	}
+	document.getElementById("video001").onended = function(e){
+		alert("播放结束");
+	}
+</script>

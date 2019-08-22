@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#cal {
+				border: 2px solid #000000;
+			}
+
+			#cal2 {
+				border: 2px solid #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="cal" width="600" height="600"></canvas>
+		<canvas id="cal2" width="400" height="400"></canvas>
+	</body>
+</html>
+<script type="text/javascript">
+	function drowColors() {
+		var canvas1 = document.getElementById("cal");
+		var ctx = canvas1.getContext('2d');
+		// 		ctx.fillStyle = "rgb(200, 0, 0)";
+		// 		ctx.fillRect(0, 0, 100, 100);
+		// 
+		// 		ctx.fillStyle = "rgb(100, 0, 0)";
+		// 		ctx.fillRect(100, 0, 100, 100);
+		for (var i = 0; i < 6; i++) {
+			//随机颜色
+			for (var j = 0; j < 6; j++) {
+				var red = parseInt(Math.random() * 255);
+				var green = parseInt(Math.random() * 255);
+				var blue = parseInt(Math.random() * 255);
+
+				ctx.strokeStyle = "rgb(" + red + "," + green + "," + blue + ")";
+				ctx.lineWidth = 5; // 线宽
+				// ctx.fillRect(j*100,i*100,100,100);
+				ctx.strokeRect(j * 50 + 5, i * 50 + 5, 40, 40); // 修正线宽
+			}
+
+			// 渐变的颜色(有色阶)
+			// 			for (var j = 0; j < 6; j++) {
+			// 				var red = parseInt(255 - 255 / 6 * i);
+			// 				var green = parseInt(255 - 255 / 6 * j);
+			// 				var blue = 0; // parseInt(255-255 / 6 * i);
+			// 
+			// 				ctx.fillStyle = "rgb(" + red + "," + green + "," + blue + ")";
+			// 				ctx.fillRect(j * 100, i * 100, 100, 100	);
+			// 			}
+		}
+	}
+	drowColors();
+
+
+	// lineCap --butt / round / square
+	function dorwLine(linCapP) {
+		var canvas1 = document.getElementById("cal2");
+		var ctx = canvas1.getContext('2d');
+		ctx.moveTo(50, 40);
+		ctx.lineTo(50, 200);
+		ctx.lineWidth = 20;
+
+		if (!linCapP) {
+			linCapP = "butt";
+		}
+		ctx.lineCap = linCapP;
+		// 虚线
+		ctx.setLineDash([2, 26]); // 实线长度,间隙长度
+		ctx.lineDashOffset = -0; // 起始偏移量
+		ctx.stroke();
+	}
+	// dorwLine("round");
+	(function() {
+		var canvas1 = document.getElementById("cal2");
+		var ctx = canvas1.getContext('2d');
+		ctx.font = "100px sans-serif";
+		ctx.lineWidth = 2;
+		ctx.fillText("天地良心", 10, 100);
+		ctx.strokeText("天地良心", 10, 100);
+
+		
+		
+		var img = document.getElementById("cal2");
+		ctx.drawImage(img, 10, 10);
+	})
+</script>

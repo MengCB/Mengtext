@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>dom-3 rainFall</title>
+		<style type="text/css">
+			body {
+				position: relative;
+				background-color: cadetblue
+			}
+
+			.rain {
+				position: absolute;
+				/* background-color: azure; */
+				border: 1px solid azure;
+				border-radius: 50%;
+				width: 20px;
+				height: 20px;
+				background: url("xuehua1.png") no-repeat;
+				background-size: 100%;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div class="rain"></div> -->
+
+	</body>
+</html>
+<script type="text/javascript">
+	var rainCount = 0; // 当前雨滴数量
+	var rainMax = 200; // 雨滴总数量
+	function doRainFall() {
+		if(  rainCount >= rainMax ){
+			return;
+		}
+		var rainFall = document.createElement('div'); //创建div
+		rainFall.setAttribute("class", "rain");
+		
+		rainFall.style.background = "url(\"xuehua2.png\")no-repeat"
+		rainFall.style.top = "0px";
+		rainFall.style.left =  Math.random()*100 + "%";
+		document.body.appendChild(rainFall);
+		rainCount += 1;
+		
+		var rainTimer = setInterval(function() {
+			var newTop = rainFall.style.top.replace("px", "");
+			newTop = parseFloat(newTop);
+			newTop += Math.floor( Math.random()* 15 + 5 ); //newTop += 10;
+			// 落到地面的时候让它消失
+			if( newTop >= 800){
+				
+				rainFall.remove();
+				rainCount -= 1;
+				clearInterval( rainTimer );
+			}
+			rainFall.style.top = newTop + "px";
+		}, 100);
+	}
+
+	var doRain = setInterval(function(){
+		doRainFall();
+	} , 800);
+	
+</script>

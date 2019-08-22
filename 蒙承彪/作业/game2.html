@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- <meta name="viewport"> -->
+		<title>水游戏</title>
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style003.css" />
+	</head>
+	<body>
+		<div class="box">
+			<p>中国国家重点湿地公园科普宣传</p>
+			<div class="box_1">
+				<div class="glass01">
+					<div class="glass01_a" id="glass01_a" ondrop="drop(event)" ondragover="allowDrop(event)" 
+				draggable="true" ondragstart="drag(event)"></div>
+					<div class="glass01_b"></div>
+				</div>
+				<div class="box_1_chid">
+					<div class="glass02">
+						<div class="glass02_a" ondrop="drop(event)" ondragover="allowDrop(event)" 
+				draggable="true" ondragstart="drag(event)"></div>
+						<div class="glass02_b"></div>
+					</div>
+					<div class="glass03">
+						<div class="glass03_a" ondrop="drop(event)" ondragover="allowDrop(event)" 
+				draggable="true" ondragstart="drag(event)"></div>
+						<div class="glass03_b"></div>
+					</div>
+					<div class="glass04">
+						<div class="glass04_a" ondrop="drop(event)" ondragover="allowDrop(event)" 
+				draggable="true" ondragstart="drag(event)"></div>
+						<div class="glass04_b"></div>
+					</div>
+					<div class="glass05">
+						<div class="glass05_a" ondrop="drop(event)" ondragover="allowDrop(event)" 
+				draggable="true" ondragstart="drag(event)"></div>
+						<div class="glass05_b"></div>
+					</div>
+					<div class="glass06">
+						<div class="glass06_a" id="glass06_a" ondrop="drop(event)" ondragover="allowDrop(event)" 
+				draggable="true" ondragstart="drag(event)"></div>
+						<div class="glass06_b"></div>
+					</div>
+					<div class="glass07">
+						<div class="glass07_a" ondrop="drop(event)" ondragover="allowDrop(event)" 
+				draggable="true" ondragstart="drag(event)"></div>
+						<div class="glass07_b"></div>
+					</div>
+				</div>
+			</div>
+			<div class="box_2" id="beat01"></div>
+			<div class="box_3"></div>
+			<div class="box_4"></div>
+			<div class="box_5"></div>
+			<div class="box_6"></div>
+			<div class="box_7"></div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	// 拖动
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("Text", ev.target.id);
+	}
+
+	function drop(ev) {
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("Text");
+		// ev.target.appendChild(document.getElementById(data));
+	}
+	
+	$(function(){
+		$("#glass01_a").hover(function(){
+			$("#glass01_a").css("background","url(images/container-full.png)no-repeat");
+			$("#glass01_a").css("background-size","100%");
+		});
+	});
+</script>

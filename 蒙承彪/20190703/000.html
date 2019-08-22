@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	// var arr1 = [2,61,7,12,88,95,100];
+	// for (var i = 0; i < arr1.length; i++) {
+	// 	if( arr1[i] > 60 ){
+	// 		console.info(arr1[i]);
+	// 	}
+	// }
+	var arr2 = [
+		{  name: "李白"  ,total: 90},
+		{  name: "王五"  ,total: 70},
+		{  name: "李四"  ,total: 40},
+		{  name: "李思思"  ,total: 80},
+		{  name: "左程文"  ,total: 60},
+		{  name: "程咬金"  ,total: 50},
+	];
+	var temp = [];
+	for(var i = 0; i < arr2.length; i++ ){
+		if( arr2[i].name.indexOf("李") >= 0){
+			 temp.push(arr2[i]);
+		}
+	}
+	for (var x = 0; x < temp.length - 1; x++) {
+		for (var j = 0; j < temp.length - 1 - x; j++) {
+			if (temp[j].total < temp[j + 1].total) {
+				var w = temp[j];
+				temp[j] = temp[j + 1];
+				temp[j + 1] = w;
+			}
+		}
+	}
+	console.info(temp)
+</script>

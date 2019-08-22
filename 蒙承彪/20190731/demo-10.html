@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>渐变</title>
+		<style type="text/css">
+			.rainbow-linear-graident{
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				background-image: -webkit-linear-gradient(right,#0000ff 0%,#00ffff 60%,#5effff 90%);
+				background-image: -ms-linear-gradient(right,#0000ff 0%,#00ffff 60%,#5effff 90%);
+			}
+			.radial {
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				background-image: -webkit-radial-gradient(
+				      150px,
+					  red 5%,
+					  #ffb151 20%,
+					  yellow 35%,
+					  #ffe07b 50%,
+					  aqua 90%
+					  );
+			}
+		</style>
+	</head>
+	<body>
+		<div class="rainbow-linear-graident"></div>
+		<div class="radial"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var bg = 10;
+	var upFlag = false;
+	setInterval(function(){
+		if(bg > 120){
+			upFlag = false;
+		}
+		if(bg < 10){
+			upFlag = true;
+		}
+		if( upFlag ){
+			bg += 12;
+		}else{
+			bg -= 12;
+		}
+		// console.info(bg);
+		document.getElementById("radial").style.backgroundImage = "-webkit-radial-gradient(150px,red 5%,#ffb151 20%, yellow 35%, #ffe07b 50%,aqua 90%);";
+	},100);
+</script>

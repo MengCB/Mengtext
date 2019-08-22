@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		20190628
+	</body>
+</html>
+
+<script>
+	myFunction(6);
+
+	function fang01(a, b) {
+		return a > b;
+	}
+	fang01(2, 4); // false
+
+	// 实现输入两个数字， 返回较大的数, 如果任意一个参数不是数字, 就提示错误,不做比较
+	// 容错!!
+	function fang02(a, b) {
+		if (isNaN(a) || isNaN(b)) {
+			console.info("参数必须是数字 ");
+			return;
+		} else {
+			return a > b ? a : b; // 三元表达式
+		}
+	}
+
+	//
+	function fang0201(a, b) {
+		if (a >= b) {
+			return a;
+		} else {
+			return b;
+		}
+	}
+
+	// 函数表达式
+	var fang03 = function(a, b) {
+		return a * b;
+	}
+
+	function myFunction(y) {
+		console.info(y * y);
+	}
+
+	// 使用或运算进行容错 
+	var name = "";
+	var userName = name || '匿名用户'; // 如果第一个条件不满足, 则取下一个条件, 依次类推
+	console.info(userName);
+	//
+	name = "方老师";
+	userName = name || '匿名用户'; // 只要第一个条件成立, 则不再计算后边的条件
+	console.info(userName);
+
+	//// 
+	var a = {
+		father: {
+			father: {
+				father: {
+					a : {}
+				}
+			}
+		}
+
+	}
+
+	//  编写函数， 实现输入一个字符串，一个字符串数组， 
+	// 返回- 字符串是否在数组中， 如果在，返回其在数组中的下标
+
+	function searchArray(string1, array1) {
+		// 遍历
+		for (var i = 0; i < array1.length; i++) {
+			if (string1 == array1[i]) {
+				return i;
+			}
+		}
+		return "no - match";
+	}
+	//
+	var str = "yuanxin";
+	var ourClass = ["wangwenjin", "gaojiajun", "hangshengxi", "weiqingyuan", "yangqingwen", "yuanxin"];
+	var result = searchArray(str, ourClass);
+	console.info(result);
+
+	// 例程3： 编写一个函数， 参数为 a,b 两个数字， 返回值为这两个数字之间的随机数 
+	function getRan(a, b) {
+		//var ranData ; // undifine
+		//ranData =  Math.floor( Math.random()*a + b ) ;
+		//
+		// if(a > b ){
+		// 	return Math.floor( Math.random()*(a - b +1 ) + b ) ;
+		// }else{
+		// 	return Math.floor( Math.random()*(b - a +1 ) + a ) ;
+		// }
+		// 绝对值  // 三元表达式 a<b?a:b
+		return Math.floor(Math.random() * (Math.abs(a - b) + 1) + (a < b ? a : b));
+	}
+	// 测试
+	//var r1 = getRan(3, 9 );
+	console.info(getRan(3, 5));
+
+
+	// 例程4 : 编写一个函数，　实现交换数组中两个元素的位置（a = [ " tomy" , "peter" ]）;
+	var a001 = ["red", "blue"];
+	// 要求输出 ["peter" , "tomy"]
+	function exchange() {
+		var cup;
+		cup = a001[0];
+		a001[0] = a001[1];
+		a001[1] = cup;
+	}
+
+
+	// 冒泡排序 // 固定格式! 倒序排序 9,8,7,6,5,4,...
+	var a = [3, 8, 2, 6, 5, 0, 4, 1, 9];
+	// 
+	for (var i = 0; i < a.length - 1; i++) {
+		for (var j = 0; j < a.length - 1 - i; j++) {
+			// 
+			if (a[j] < a[j + 1]) {
+				// 交换相邻的两个元素 // 固定写法.
+				var temp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = temp;
+			}
+		}
+	}
+	console.info(a);
+
+	// 一个student 数组， 对分数进行排序，
+	//并且将自己的排名加入到属性中。 编写一个函数， 输入姓名， 返回其排名信息。
+	function Student(name, total, age) {
+		this.name = name;
+		this.total = total;
+		this.age = age;
+	}
+	var students = [];
+	students.push(  new Student( "方文山", 80 , 40 )  ); // 1
+	students.push(  new Student( "周杰伦", 60 , 38)  ); // 5
+	students.push(  new Student( "刘德华", 77 , 60)  ); // 2
+	students.push(  new Student( "赵本山", 68, 70 )  ); // 4
+	students.push(  new Student( "赵四", 73 , 50)  ); //3
+	students.push(  new Student( "沈腾", 12 , 14)  ); //6
+	console.info(students);
+	// 排序以后, 得到的结果应该是 {name: "方文山", total: 80 , index: 1}
+	// 对象的属性可以任意增加,不需要声明
+	
+	
+	function searchIndex( nameString ){
+		// 容错
+		if( !nameString ){
+			console.info("请输入参数");
+			return;
+		}
+		for( var i =0; i < students.length; i++ ){
+			if( nameString == students[i].name ){
+				return students[i].index; 
+			}
+		}
+		return "没有找到";
+	}
+	
+	// 扩展
+	function soertAndSearch( nameString ,  studentArrary, attrName , smallToBig){
+		if( !nameString  || !attrName){
+			console.info("请输入参数");
+			return;
+		}
+		// step 1 将数组排序, 把排名给人
+		for (var i = 0; i < studentArrary.length - 1; i++) {
+			for (var j = 0; j < studentArrary.length - 1 - i; j++) {
+				// 
+				if (studentArrary[j][attrName] < studentArrary[j + 1][attrName] ) {
+					// 交换相邻的两个元素 // 固定写法.
+					var temp = studentArrary[j];
+					studentArrary[j] = studentArrary[j + 1];
+					studentArrary[j + 1] = temp;
+				}
+			}
+		}
+		// 如果有值, 意味着从小到大排序, 则执行这一行
+		if( smallToBig ){
+			studentArrary.reverse();
+		}
+		//console.info(studentArrary);
+		// 实现了将自己的排名记录到自己的属性中
+		for( var x =0; x < studentArrary.length; x++   ){
+			studentArrary[x].index = x+1; 
+		}
+		//console.info(studentArrary);
+		// step 2 开始查找
+		for( var i =0; i < students.length; i++ ){
+			if( nameString == students[i].name ){
+				return students[i].index; 
+			}
+		}
+		return "没有找到";
+	}
+	
+	
+	
+</script>

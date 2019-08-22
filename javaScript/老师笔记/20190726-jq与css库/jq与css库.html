@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jq与css库</title>
+		<script type="text/javascript" src="jquery-2.js"></script>
+		<link rel="stylesheet"  href="animate.css" />
+		<link rel="stylesheet" href="style.css" />
+		
+		<style type="text/css">
+			.fadeDemo{
+				width: 400px;
+				height: 200px;
+				background-color: #F35626;
+			}
+		</style>
+	</head>
+	<body>
+
+		<input type="button" value="开始动画" id="action" />
+		<input type="button" name="" id="ranAnimate" value="随机动画" />
+		
+		<select class="input input--dropdown js--animations" id="select1">
+        <optgroup label="Attention Seekers">
+          <option value="bounce">bounce</option>
+          <option value="flash">flash</option>
+          <option value="pulse">pulse</option>
+          <option value="rubberBand">rubberBand</option>
+          <option value="shake">shake</option>
+          <option value="swing">swing</option>
+          <option value="tada">tada</option>
+          <option value="wobble">wobble</option>
+          <option value="jello">jello</option>
+          <option value="heartBeat">heartBeat</option>
+        </optgroup>
+
+        <optgroup label="Bouncing Entrances">
+          <option value="bounceIn">bounceIn</option>
+          <option value="bounceInDown" selected="selected">bounceInDown</option>
+          <option value="bounceInLeft">bounceInLeft</option>
+          <option value="bounceInRight">bounceInRight</option>
+          <option value="bounceInUp">bounceInUp</option>
+        </optgroup>
+
+        <optgroup label="Bouncing Exits">
+          <option value="bounceOut">bounceOut</option>
+          <option value="bounceOutDown">bounceOutDown</option>
+          <option value="bounceOutLeft">bounceOutLeft</option>
+          <option value="bounceOutRight">bounceOutRight</option>
+          <option value="bounceOutUp">bounceOutUp</option>
+        </optgroup>
+
+        <optgroup label="Fading Entrances">
+          <option value="fadeIn">fadeIn</option>
+          <option value="fadeInDown">fadeInDown</option>
+          <option value="fadeInDownBig">fadeInDownBig</option>
+          <option value="fadeInLeft">fadeInLeft</option>
+          <option value="fadeInLeftBig">fadeInLeftBig</option>
+          <option value="fadeInRight">fadeInRight</option>
+          <option value="fadeInRightBig">fadeInRightBig</option>
+          <option value="fadeInUp">fadeInUp</option>
+          <option value="fadeInUpBig">fadeInUpBig</option>
+        </optgroup>
+
+        <optgroup label="Fading Exits">
+          <option value="fadeOut">fadeOut</option>
+          <option value="fadeOutDown">fadeOutDown</option>
+          <option value="fadeOutDownBig">fadeOutDownBig</option>
+          <option value="fadeOutLeft">fadeOutLeft</option>
+          <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+          <option value="fadeOutRight">fadeOutRight</option>
+          <option value="fadeOutRightBig">fadeOutRightBig</option>
+          <option value="fadeOutUp">fadeOutUp</option>
+          <option value="fadeOutUpBig">fadeOutUpBig</option>
+        </optgroup>
+
+        <optgroup label="Flippers">
+          <option value="flip">flip</option>
+          <option value="flipInX">flipInX</option>
+          <option value="flipInY">flipInY</option>
+          <option value="flipOutX">flipOutX</option>
+          <option value="flipOutY">flipOutY</option>
+        </optgroup>
+
+        <optgroup label="Lightspeed">
+          <option value="lightSpeedIn">lightSpeedIn</option>
+          <option value="lightSpeedOut">lightSpeedOut</option>
+        </optgroup>
+
+        <optgroup label="Rotating Entrances">
+          <option value="rotateIn">rotateIn</option>
+          <option value="rotateInDownLeft">rotateInDownLeft</option>
+          <option value="rotateInDownRight">rotateInDownRight</option>
+          <option value="rotateInUpLeft">rotateInUpLeft</option>
+          <option value="rotateInUpRight">rotateInUpRight</option>
+        </optgroup>
+
+        <optgroup label="Rotating Exits">
+          <option value="rotateOut">rotateOut</option>
+          <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+          <option value="rotateOutDownRight">rotateOutDownRight</option>
+          <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+          <option value="rotateOutUpRight">rotateOutUpRight</option>
+        </optgroup>
+
+        <optgroup label="Sliding Entrances">
+          <option value="slideInUp">slideInUp</option>
+          <option value="slideInDown">slideInDown</option>
+          <option value="slideInLeft">slideInLeft</option>
+          <option value="slideInRight">slideInRight</option>
+
+        </optgroup>
+        <optgroup label="Sliding Exits">
+          <option value="slideOutUp">slideOutUp</option>
+          <option value="slideOutDown">slideOutDown</option>
+          <option value="slideOutLeft">slideOutLeft</option>
+          <option value="slideOutRight">slideOutRight</option>
+          
+        </optgroup>
+        
+        <optgroup label="Zoom Entrances">
+          <option value="zoomIn">zoomIn</option>
+          <option value="zoomInDown">zoomInDown</option>
+          <option value="zoomInLeft">zoomInLeft</option>
+          <option value="zoomInRight">zoomInRight</option>
+          <option value="zoomInUp">zoomInUp</option>
+        </optgroup>
+        
+        <optgroup label="Zoom Exits">
+          <option value="zoomOut">zoomOut</option>
+          <option value="zoomOutDown">zoomOutDown</option>
+          <option value="zoomOutLeft">zoomOutLeft</option>
+          <option value="zoomOutRight">zoomOutRight</option>
+          <option value="zoomOutUp">zoomOutUp</option>
+        </optgroup>
+
+        <optgroup label="Specials">
+          <option value="hinge">hinge</option>
+          <option value="jackInTheBox">jackInTheBox</option>
+          <option value="rollIn">rollIn</option>
+          <option value="rollOut">rollOut</option>
+        </optgroup>
+      </select>
+		<br><br><br><br>
+		<span id="animationSandbox" style="display: block;" class="">
+			<h1 class="site__title mega">Animate.css</h1>
+		</span>
+		
+		<hr>
+		<input type="button" value="fade" id="btFade">
+		<div class="fadeDemo"></div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#btFade").click( function(){
+			$(".fadeDemo").fadeOut();
+			setTimeout(function(){
+				$(".fadeDemo").fadeIn();
+			}, 1500);
+			setTimeout(function(){
+				$(".fadeDemo").fadeTo("fast", 0.9);
+				$(".fadeDemo").fadeTo("fast", 0.1);
+				$(".fadeDemo").fadeTo("fast", 0.9);
+				$(".fadeDemo").fadeTo("fast", 0.1);
+				$(".fadeDemo").fadeTo("fast", 0.9);
+				$(".fadeDemo").fadeTo("fast", 0.1);
+				$(".fadeDemo").fadeTo("fast", 1);
+				///////
+				// setInterval(function(){
+				// 	$(".fadeDemo").fadeToggle("fast");
+				// }, 1000)
+			}, 2500);
+			
+			
+		});
+		
+
+
+		$("#action").click(function() {
+			var claName = $("#select1").val();
+			changeAnimate( claName );
+		});
+		
+		// 监听select的值发生改变的事件
+		$("#select1").change(function(){
+			var cla = $(this).val();
+			changeAnimate( cla );
+		});
+		// 原生的写法
+		// document.getElementById("select1").onchange = function( e ){
+		// 	changeAnimate( e.target.value );
+		// }
+		
+		// 随机动画 - 按钮响应
+		$("#ranAnimate").click( function( ){
+			// 课堂练习 随机执行一个select1中的动画
+			// 方法1 随机提取option的innerText, 传递给执行动画的函数
+			// var allOptions = [];
+			// for( var i=0; i< $("#select1")[0].length; i++){
+			// 	allOptions.push(  $("#select1")[0][i].innerText );
+			// }
+			// var ranIndex = Math.floor( Math.random()* ($("#select1")[0].length) );
+			// changeAnimate(  allOptions[ranIndex] );
+			
+			// 方法2 思路同方法1, 算法精简
+			// var ranIndex = Math.floor( Math.random()* ($("#select1")[0].length) );
+			// changeAnimate(  $("#select1")[0][ranIndex].innerText );
+			
+			// 方法3 通过改变select1的值, 并手动触发change事件, 因为change事件已经包含了执行动画的动作
+			// var ranIndex = Math.floor( Math.random()* ($("#select1")[0].length) );
+			// var ranText =  $("#select1")[0][ranIndex].innerText;
+			// $("#select1").val( ranText );
+			// $("#select1").change();
+			
+			// 方法4 思路同方法3 - 通过改变随机子option的选中状态, 手动触发change
+			var ranIndex = Math.floor( Math.random()* ($("#select1")[0].length) );
+			$("#select1")[0][ranIndex].selected = true;
+			$("#select1").change();
+			
+		});
+		
+		
+	});
+	// 执行动画的函数
+	function changeAnimate( claName ){
+		var newClass =  claName + " animated";  // 这个css库的设定, 需要加类名 animated 才会执行动画
+		$("#animationSandbox").addClass( newClass );
+		//
+		setTimeout(function(){
+			$("#animationSandbox").removeClass( newClass );
+		}, 1500);
+	}
+	
+	// 
+	
+	
+	
+</script>

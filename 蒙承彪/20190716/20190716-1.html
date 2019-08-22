@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>window相关1</title>
+	</head>
+	<body>
+		
+		<a id="a1" href="20190716-2.html?name=mengchengbiao&age=22&weight=23">前往2页面</a>
+		<br>
+		<br>
+		<input id="bt1" type="button" onclick="navTo3()" value="去百度" />
+		<input id="windowClose"  type="button" value="windowClose"/>
+		
+		<input id="windowOpen"  type="button" value="windowOpen"/>
+		<input id="windowCloseSon"  type="button" value="关儿子"/>
+		
+		<input type="button" value="reload" id="reload" />
+	</body>
+</html>
+
+<script type="text/jscript">
+	window.name = "window222222";
+	console.info("页面加载" +　new Date().getTime() );
+	
+	function navTo3(){
+		window.location = "20190716-2.html"; // 跳转到新的页面
+		
+	}
+	document.getElementById( "bt1").onclick = function(){
+		alert(1);
+		window.location = "http://fangwentao.com";
+	}
+	// document.getElementById( "a1").click(); // 模拟点击
+	
+	//window.open(), window.close()，window.stop()
+	document.getElementById("windowClose").onclick = function(){
+		window.close(); // 关闭当前窗口
+	}
+	// open 参数列表 ( url , name , XXX)
+	// 关于name 参数, 可以自定义, 也可以使用这几个值: _self 当前窗口打开
+	// _blank(默认值) 新窗口打开  _top表示顶层窗口
+	document.getElementById("windowOpen").onclick = function(){
+		_son = window.open("20190716-2.html",  "_self" );  
+	}
+	
+	document.getElementById("windowCloseSon").onclick = function(){
+		//_son.open("http://www.hao123.com");
+		_son.close();  // 关闭子页面
+	}
+	
+	// 关闭网页之前要做的事情
+	window.onunload = function(){
+		// _son.close();
+	}
+	// 打开页面的时候顺带打开新的子页面
+	window.onload = function(){
+		//_son = window.open("20190716-3.html"); 
+	}
+	
+	
+	// 重新加载当前页面
+	document.getElementById("reload").onclick = function(){
+		location.reload();
+	}
+	
+	// history
+	// url - parameter
+</script>

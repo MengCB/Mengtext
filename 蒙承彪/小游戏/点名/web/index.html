@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- saved from url=(0013)about:internet -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- 禁用右键 -->
+		<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+		<script src="jquery.js"></script>
+		<title>DOM-练习2</title>
+
+		<style type="text/css">
+			body {}
+
+			.student {
+				width: 100px;
+				height: 100px;
+				border-radius: 70%;
+				background-color: cadetblue;
+				line-height: 100px;
+				text-align: center;
+				font-size: 32px;
+				position: absolute;
+			}
+
+			.student:hover {
+				background: #FFFF00;
+			}
+		</style>
+
+	</head>
+	<body>
+		<input type="button" id="Shuffle" value="洗牌" />
+		<span id="currOne"></span>
+		<!-- <div class="student">杨庆文</div> -->
+	</body>
+</html>
+<script type="text/javascript">
+
+// 退出应用
+function JScloseApp() {
+	window.external.ExitApp();
+}
+
+//监听键盘
+$(document).keydown(function(event) {
+	if (event.keyCode == 13) {
+		//alert('你按下了Enter');　　　　
+	}
+	if (event.keyCode == 27 || event.key.toUpperCase() == "ESC") {
+		//alert("即将退出系统");
+		JScloseApp();
+	}
+
+});
+
+	// 练习3 : 抽签 
+	// 木棍 林昆
+	var allStudents = [{
+			name: "曾敏",
+			id: 1
+		},
+		{
+			name: "黄盛玺",
+			id: 2
+		},
+		{
+			name: "杨庆文",
+			id: 300
+		},
+		{ name:"李春朋" , id: 4},
+		{ name:"赵珊" , id: 5},
+		{ name:"孙蒙" , id: 6},
+		{ name:"高原" , id: 7},
+		{ name:"雷雪煜" , id: 8},
+		{ name:"王文金" , id: 9},
+		{ name:"韦清源" , id: 10},
+		{ name:"高佳骏" , id: 11},
+		{ name:"董青林" , id: 12},
+		{ name:"刘伟业" , id: 13},
+		{ name:"陈艺宇" , id: 14},
+		{ name:"李烜铖" , id: 15},
+		{ name:"满春发" , id: 16},
+		{ name:"蒙承彪" , id: 17},
+		{ name:"苏壮晖" , id: 18},
+		{ name:"施一航" , id: 19},
+		{ name:"王程鑫" , id: 20},
+		{ name:"骆明睿" , id: 21},
+		{ name:"梁鸿标" , id: 22},
+		{ name:"黄伟洪" , id: 23},
+		{ name:"黄河源" , id: 24},
+		{ name:"杨昊" , id: 25},
+		{ name:"李旭昊" , id: 26},
+		{ name:"黄春惠" , id: 27},
+		{ name:"尚冉" , id: 28},
+		{ name:"袁鑫" , id: 29},
+	];
+
+	createRan();
+	// 洗牌
+	function createRan() {
+		document.getElementById("currOne").innerText = "";
+		// 先删除页面上所有学生(div) 通过数据源进行删除
+		// 这段代码不可用!!!!, 因为页面上的 节点不断被删除, 数组长度不断变化, 不可靠
+		// var allguys = document.getElementsByClassName("student");
+		// for( var i=0 ; i< allguys.length ; i++){
+		// 	console.info(allguys.length);
+		// 	allguys[i].remove(); // 注意, IE不支持这个方法!比尔盖子这个...
+		// }
+		for (var i = 0; i < allStudents.length; i++) {
+			var targetHtmlNode = document.getElementById( allStudents[i].id );
+			if (targetHtmlNode) {
+				$(targetHtmlNode).remove();
+			}
+		}
+		// 遍历 allStudents, 将他们都放到页面上
+		for (var i = 0; i < allStudents.length; i++) {
+			var oneStudent = document.createElement("div");
+			oneStudent.setAttribute("class", "student");
+			oneStudent.id = allStudents[i].id;
+			oneStudent.onclick = function(evetxxx) {
+				showName(evetxxx);
+			}
+			var xRan = Math.random() * 90;
+			var yRan = Math.random() * 90;
+			oneStudent.style.left = xRan + "%";
+			oneStudent.style.top = yRan + "%";
+			document.body.appendChild(oneStudent);
+		}
+	}
+
+	function showName(evetxxx) {
+		var stuId = evetxxx.target.id;
+		console.info(stuId);
+		for (var i = 0; i < allStudents.length; i++) {
+			if (allStudents[i].id == stuId) {
+				evetxxx.target.innerText = allStudents[i].name;
+				document.getElementById("currOne").innerText = allStudents[i].name;
+				break;
+			}
+		}
+	}
+
+
+	// 事件注册
+	document.getElementById("Shuffle").onclick = function(e) {
+		createRan();
+	}
+</script>

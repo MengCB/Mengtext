@@ -1,0 +1,241 @@
+﻿
+web前端 周考题目-第三周
+
+
+为方便老师改卷, 选择题和判断题的答案请写在这个位置
+
+选择题: 
+ C D C B C C D D C A C B D C D
+
+判断题: 
+ × × √ √ × × × √ √ √ × √ × ×
+
+
+
+
+一 . 选择题
+
+1.	javascript是一种弱类型语言,弱类型语言和强类型语言之间的区别,下列描述正确的是()
+	A.	弱类型语言很弱,强类型语言很强大
+	B.	弱类型语言中没有数据类型的概念
+	C.	弱类型语言也有数据类型,例如number
+	D.	弱类型语言的javascript没有数据类型的概念
+
+2. 以下表达式,能生成 10 ~ 30 之间的随机数的是: 
+	A. Math.random()* 30
+	B. Math.random()* 10 + 20
+	C. Math.random()*10 + 30
+	D. Math.random()*20 + 10
+	
+3. 执行 parseInt( "100只猪" ) 的结果是
+	A. NaN
+	B. 脚本错误
+	C. 100
+	D. 100只猪
+	
+4. 以下哪个选项不属于typeOf()函数的输出值:
+	A. number
+	B. NaN
+	C. object
+	D. function
+	
+5. "we are best".indexOf("a") < 0 ; 执行的结果是
+	A. 3
+	B. 2
+	C. false
+	D. true
+	
+6. 判断字符串 var str01 = "welcome to entor" 的长度，正确的方法是（）
+	A.	str01.long		
+	B.	str01.replace()		
+	C.	str01.length
+	D.	str01.length()
+	
+7. 在js中, 将时间转换成毫秒数的语句正确的是()
+	A.	Math.random()* 100
+	B.	new Now().toInt()
+	C.	new Date().getFullYear()
+	D.	new Date().getTime()
+
+8. 在语句 var x = 0; while( __C__) { x += 2} , 如果要想执行个循环10次,空白处应该填写的代码是
+	A.	x<10 
+	B.	x<=10
+	C.	x<20
+	D.	x<=20	
+	
+9. 有代码如下 : var a= 10 , b = 12, c = "20";   c = a + b ; console.info(c); 
+	A. 语法错误, 无法创建变量b 和 c 
+	B. 语法错误, c = a + b ; 无法执行
+	C. 执行后, 控制台输出 22
+	D. 执行后, 控制台输出 1012
+	
+10. 关于 Date 对象, 以下描述错误的是 : B
+	A. Date 可以被创建, 生成的对象记录了当前时刻的信息
+	B. new Date().getTime() 总是能够返回一个整数
+	C. new Date().getFullYear() 可以取到当前的年信息
+	D. new Date().getMonth() 可以取到当前月份
+	
+11. var x= 0 ; while( x <= 10 ){ x++ }D
+	A. 代码存在语法错误
+	B. x的值不会改变,这是个死循环
+	C. 循环执行了10次
+	D. 循环执行了11次
+	
+12. var a1=10; 	var a2=20; 	console.info( "a1 + a2 = " + a1+ a2 );执行后,输出的结果是
+	A.	a1 + a2 = 30
+	B.	a1 + a2 = 1020
+	C.	a1 + a2 = a1+ a2
+	D.	a1 + a2 = +a1+a2
+
+13. var arr1 = [0,1,2,3,4];  arr1[8] = 8; 
+	A. 语法错误,下标越界
+	B. arr1的长度为 6
+	C. arr1的长度为 8
+	D. arr1的长度为 9
+	
+14. var x = function(){ console.info("嘿嘿") }
+	A. 语法错误, 因为函数没有名字
+	B. 语法错误, 因为函数没有返回值
+	C. 这个函数可以执行, 使用 x() 调用它
+	D. 这个函数不可能被执行
+
+15. 有一个变量 a , 它的值不明, 为了判断其是否放为数字, 以下做法有效
+	A. parseInt(a) 能成功执行, 说明a是数字
+	B. a+1 能成功执行, 说明a是数字
+	C. isNaN(a) 执行结果是ture说明a是数字
+	D. !(isNaN(a)) 执行结果是ture说明a是数字
+	
+
+二. 判断题
+
+1. 在javascript中, 布尔值的取值除了true和false, 还有0 和1  	( × )
+2. 没有名字的函数不能调用, 必须给函数取一个名字. 	( ×  )
+3. 对一个数组执行了sort()函数以后, 原数组的顺序永久改变  	( √ ) 
+4. 字符串中包含的每个字符都有下标.		( )
+5. 一个函数体中, 可以出现多个return 语句, 但是return语句必须有返回值.	( )
+6. 对象的属性不能被删除,  但是属性值可以删除.		( )
+7. 在javascript中, 布尔值的取值除了true和false, 还有0 和1 		( )
+8. 在javascript中, 数字和字符串是可以混用的.    		(F )
+9.  在同一个函数中, 如果有两个不同的循环, 在循环中定义的变量可以通用.    ( )
+10. 在同一个函数中, 多次 使用var 定义同一个变量是不被允许的.   ( )
+11. 对象的属性, 本质上是一个变量, 所以他的值得数据类型不受限制.   ( ) 
+12. 对象是javascript中的重要概念, 所有的对象初始化的时候都有名字, 对象必须有名字.   ( )
+13. 函数执行的过程中, 如果执行到了 return 语句, 就会直接退出. 	( )
+14. 一个函数体中, 可以出现多个return 语句, 但是return语句必须有返回值.	( )
+15. 在函数体中不可以再定义函数, 因为这样的函数外部无法调用, 抱语法错误.  ( )
+ 
+
+三. 代码分析题: 
+
+1. 执行这段代码以后, 控制台的输出是: 
+		var n = '5';
+		switch(n){
+		case 5:
+		console.info(n);
+		case "5" :
+		console.info( n+1);
+		default:
+		console.info('default');
+		}
+
+		请写下控制台的输出:  51 default
+               
+
+
+
+
+
+2. 这段代码执行后,控制台输出了两次, 请分别写下控制台的输出内容
+		function popStart( name, age ){
+			this.name = name;
+			this.age = age;
+			this.isYoung = function(){
+			if( this.age >= 80){
+			this.old = true;
+		}
+		}
+		}
+		var zhoujielun = new popStart( "周杰伦" , 30); 
+		zhoujielun. isYoung();
+		console.info(  zhoujielun.old );
+		var zhaozhongxiang = new popStart( "赵忠祥" , 82); 
+		zhaozhongxiang. isYoung();
+		console.info(  zhaozhongxiang.old );
+
+
+		控制台的输出为:  undefined  true
+
+
+
+3.	执行这段代码以后, 控制台的输出是: 
+	var a=0, b=5, c=10;
+	while ( b < c ){
+		b += Math.floor(  Math.random() *  (b-a) + (a++)  ) + 1;
+	}
+	consol.info( b> c
+	
+	
+	控制台的输出为: true
+	
+	
+
+四: 程序设计题:  (代码请附在最后,注明程序1,程序2 ...)
+
+1. var arr1 = [ 2, 61 , 7, 12,  88 , 95,  100] ;  编写函数, 返回数组中, 大于60 的所有元素
+
+2. var arr2 = [
+		{  name: "李白"  ,total: 90},
+		{  name: "王五"  ,total: 70},
+		{  name: "李四"  ,total: 40},
+		{  name: "李思思"  ,total: 80},
+		{  name: "左程文"  ,total: 60},
+		{  name: "程咬金"  ,total: 50},
+	]; 
+	写一个算法, 在这个对象数组中,筛选出姓李的对象, 并将它们按照total进行由高到低排序.
+
+
+程序1： 
+        var arr1 = [ 2, 61 , 7, 12,  88 , 95,  100] ;
+   	for (var i = 0; i < arr1.length; i++) {
+		if( arr1[i] > 60 ){
+			console.info(arr1[i]);
+		}
+	}
+
+
+程序2：
+        var arr2 = [
+		{  name: "李白"  ,total: 90},
+		{  name: "王五"  ,total: 70},
+		{  name: "李四"  ,total: 40},
+		{  name: "李思思"  ,total: 80},
+		{  name: "左程文"  ,total: 60},
+		{  name: "程咬金"  ,total: 50},
+	]; 
+       	var temp = [];
+	for(var i = 0; i < arr2.length; i++ ){
+		if( arr2[i].name.indexOf("李") >= 0){
+			 temp.push(arr2[i]);
+		}
+	}
+	for (var x = 0; x < temp.length - 1; x++) {
+		for (var j = 0; j < temp.length - 1 - x; j++) {
+			if (temp[j].total < temp[j + 1].total) {
+				var w = temp[j];
+				temp[j] = temp[j + 1];
+				temp[j + 1] = w;
+			}
+		}
+	}
+	console.info(temp)
+
+
+
+
+
+
+
+
+
+
+
