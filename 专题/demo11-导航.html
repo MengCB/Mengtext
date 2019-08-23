@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- 引入bootstrap -->
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<style type="text/css">
+			body {
+				background: darkseagreen;
+			}
+
+			h2 {
+				color: blue;
+			}
+
+			h3 {
+				color: black;
+			}
+
+			.myStyle {
+				min-height: 200px;
+				background: burlywood;
+				border-radius: 20px;
+			}
+
+			.myStyle01 {
+				min-height: 200px;
+				background: darkorange;
+				border-radius: 20px;
+			}
+
+			.myStyle02 {
+				min-height: 200px;
+				background: thistle;
+				border-radius: 20px;
+			}
+
+			.myStyle03 {
+				min-height: 200px;
+				background: tomato;
+				border-radius: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 myStyle">
+					<h2>导航</h2>
+					<h3>标签页</h3>
+					<p>使用.nav-tabs类</p>
+					<!-- 注意 .nav-tabs 类依赖 .nav 基类。 -->
+					<ul class="nav nav-tabs">
+						<li role="presentation" class="active"><a href="#">首页</a></li>
+						<li role="presentation"><a href="#">概况</a></li>
+						<li role="presentation"><a href="#">设置</a></li>
+						<li role="presentation"><a href="#">组织机构</a></li>
+					</ul>
+
+					<h3>胶囊式标签页</h3>
+					<p>使用.nav-pills类</p>
+					<ul class="nav nav-pills ">
+						<li role="presentation" class="active"><a href="#">首页</a></li>
+						<li role="presentation"><a href="#">概况</a></li>
+						<li role="presentation"><a href="#">设置</a></li>
+						<li role="presentation"><a href="#">组织机构</a></li>
+					</ul>
+
+					<h3>垂直堆叠排列</h3>
+					<p>使用.nav-stacked类</p>
+					<ul class="nav nav-pills nav-stacked">
+						<li role="presentation" class="active"><a href="#">首页</a></li>
+						<li role="presentation"><a href="#">概况</a></li>
+						<li role="presentation"><a href="#">设置</a></li>
+						<li role="presentation"><a href="#">组织机构</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-6 myStyle02">
+					<h3>两端对齐的标签页</h3>
+					<ul class="nav nav-tabs nav-justified">
+						<li role="presentation" class="active"><a href="#">首页</a></li>
+						<li role="presentation"><a href="#">概况</a></li>
+						<li role="presentation"><a href="#">设置</a></li>
+						<li role="presentation"><a href="#">组织机构</a></li>
+					</ul><br>
+					<ul class="nav nav-pills nav-justified">
+						<li role="presentation" class="active"><a href="#">首页</a></li>
+						<li role="presentation"><a href="#">概况</a></li>
+						<li role="presentation"><a href="#">设置</a></li>
+						<li role="presentation"><a href="#">组织机构</a></li>
+					</ul>
+
+					<h3>禁用的链接</h3>
+					<ul class="nav nav-pills nav-justified">
+						<li role="presentation" class="active"><a href="#">首页</a></li>
+						<li role="presentation" class="disabled"><a href="#">概况</a></li>
+						<li role="presentation"><a href="#">设置</a></li>
+						<li role="presentation"><a href="#">组织机构</a></li>
+					</ul>
+
+					<h3>添加下拉菜单</h3>
+					<h4>带下拉菜单的标签页</h4>
+					<ul class="nav nav-tabs">
+						<li role="presentation" class="active"><a href="#">首页</a></li>
+						<li role="presentation"><a href="#">概况</a></li>
+						<li role="presentation" class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+							 id="dropdownMenu3">
+								组织机构<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li class="dropdown-header">3</li>
+								<li role="separator" class="divider"></li> <!-- 分割线 -->
+								<li><a href="#">4</a></li>
+							</ul>
+						</li>
+					</ul>
+
+					<h3>带下拉菜单的胶囊式标签页</h3>
+					<ul class="nav nav-pills">
+						<li role="presentation" class="active"><a href="#">首页</a></li>
+						<li role="presentation"><a href="#">概况</a></li>
+						<li role="presentation" class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+							 id="dropdownMenu4">
+								组织机构<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li class="dropdown-header">3</li>
+								<li role="separator" class="divider"></li> <!-- 分割线 -->
+								<li><a href="#">4</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div><br>
+
+				<div class="col-md-6 myStyle03">
+					<h2>导航条</h2>
+					<h3>默认样式的导航条</h3>
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+								 aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="#">首页</a>
+							</div>
+
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li class="active"><a href="#">概况<span class="sr-only">(current)</span></a></li>
+									<li><a href="#">概况</a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">组织机构<span
+											 class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">A</a></li>
+											<li><a href="#">A</a></li>
+											<li><a href="#">A</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="#">A</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="#">A</a></li>
+										</ul>
+									</li>
+								</ul>
+								<form class="navbar-form navbar-left">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="搜索..." />
+									</div>
+									<button type="submit" class="btn btn-success">搜索</button>
+								</form>
+								<ul class="nav navbar-nav navbarbar-right">
+									<li><a href="#">Link</a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown<span
+											 class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Action</a></li>
+											<li><a href="#">Action</a></li>
+											<li><a href="#">Action</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="#">Action</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+
+					<h3>品牌图标</h3>
+					<nav class="navbar-default">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<a class="navbar-brand" href="#">
+									<img alt="Brand" src="img/风车.PNG" />
+								</a>
+							</div>
+						</div>
+					</nav>
+
+
+
+				</div>
+				<div class="col-md-6 myStyle01">
+					<h3>表单</h3>
+					<form class="navbar-form navbar-left" role="搜索">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="搜索..." />
+						</div>
+						<button type="submit" class="btn btn-info">搜索</button>
+					</form>
+
+					<h3>按钮</h3>
+					<!-- 对于不包含在 form 中的 button元素，加上 .navbar-btn 后， -->
+					<!-- 可以让它在导航条里垂直居中。有一些对于为辅助设备提供可识别标签的方法，
+					例如， aria-label、aria-labelledby 或者 title 属性。如果这些方法都没有，屏幕阅读器将使用 -->
+					<!-- placeholder 属性（如果这个属性存在的话），但是请注意，使用 placeholder 
+					 代替其他识别标签的方式是不推荐的。 -->
+					<button type="button" class="btn btn-default navbar-btn">注册</button>
+
+					<h3>文本</h3>
+					<p class="navbar-text">什么鸟都有啊</p>
+					<br>
+					<h3>非导航的链接</h3>
+					<p class="navbar-text navbar-right">什么鸟都有啊<a href="#" class="navbar-link">Otto</a></p>
+
+
+				</div>
+				<div class="col-md-4 myStyle02">
+					<h3>固定在顶部</h3>
+					<nav class="navbar navbar-default navbar-fixed-top">
+						<div class="container">
+							<ul class="nav nav-pills ">
+								<li role="presentation" class="active"><a href="#">首页</a></li>
+								<li role="presentation"><a href="#">概况</a></li>
+								<li role="presentation"><a href="#">设置</a></li>
+								<li role="presentation"><a href="#">组织机构</a></li>
+							</ul>
+						</div>
+					</nav>
+
+					<h3>固定在底部</h3>
+					<!-- <nav class="navbar navbar-default navbar-fixed-bottom">
+						<div class="container">
+							<ul class="nav nav-pills ">
+								<li role="presentation" class="active"><a href="#">首页</a></li>
+								<li role="presentation"><a href="#">概况</a></li>
+								<li role="presentation"><a href="#">设置</a></li>
+								<li role="presentation"><a href="#">组织机构</a></li>
+							</ul>
+						</div>
+					</nav> -->
+
+					<h3>静止在顶部</h3>
+					<nav class="navbar navbar-default navbar-static-top">
+						<div class="container">
+							<ul class="nav nav-pills ">
+								<li role="presentation" class="active"><a href="#">首页</a></li>
+								<li role="presentation"><a href="#">概况</a></li>
+								<li role="presentation"><a href="#">设置</a></li>
+								<li role="presentation"><a href="#">组织机构</a></li>
+							</ul>
+						</div>
+					</nav>
+
+					<h3>反色的导航条</h3>
+					<nav class="navbar navbar-inverse navbar-fixed-top">
+						<div class="container">
+							<ul class="nav nav-pills ">
+								<li role="presentation" class="active"><a href="#">首页</a></li>
+								<li role="presentation"><a href="#">概况</a></li>
+								<li role="presentation"><a href="#">设置</a></li>
+								<li role="presentation"><a href="#">组织机构</a></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+				<div class="col-md-6 myStyle03">
+					<h2>路径导航</h2>
+					<h3>在一个带有层次的导航结构中标明当前页面的位置。</h3>
+					<p>各路径间的分隔符已经自动通过 CSS 的 :before 和 content 属性添加了。</p>
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+					</ol>
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Library</a></li>
+					</ol>
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Library</a></li>
+						<li class="active">Data</li>
+					</ol>
+
+					<h3>分页</h3>
+					<h4>默认分页</h4>
+					<nav aria-label="Page navigation">
+						<ul class="pagination">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+
+					<h3>禁用和激活状态</h3>
+					<p>给不能点击的链接添加 .disabled 类、给当前页添加 .active 类</p>
+					<nav aria-label=".">
+						<ul class="pagination">
+							<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+							<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<nav aria-label=".">
+						<ul class="pagination">
+							<li class="disabled">
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li class="active"><span href="#">1<span class="sr-only"></span></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li class="active">
+								<span aria-hidden="true">&raquo;</span>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<div class="col-md-6 myStyle">
+					<h3>尺寸</h3>
+					<nav aria-label="">
+						<ul class="pagination pagination-lg">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<nav aria-label="">
+						<ul class="pagination pagination">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<nav aria-label="">
+						<ul class="pagination pagination-sm">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+
+					<h3>翻页</h3>
+					<nav aria-label="..">
+						<ul class="pager">
+							<li><a href="#">上一页</a></li>
+							<li><a href="#">下一页</a></li>
+						</ul>
+					</nav>
+
+					<h3>对齐链接</h3>
+					<nav aria-label="..">
+						<ul class="pager">
+							<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>上一页</a></li>
+							<li class="next"><a href="#"><span aria-hidden="true">&rarr;</span>下一页</a></li>
+						</ul>
+					</nav>
+
+					<h3>可选的禁用状态</h3>
+					<nav aria-label="..">
+						<ul class="pager">
+							<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span>上一页</a></li>
+							<li class="next"><a href="#"><span aria-hidden="true">&rarr;</span>下一页</a></li>
+						</ul>
+					</nav>
+				</div>
+
+				<div class="col-md-4 myStyle02">
+					<h2>标签/可用的变体</h2>
+					<h1>塞德里克减肥呢活动顺<span class="label label-default">New</span></h1>
+					<h2>塞德里克减肥呢活动顺<span class="label label-success">New</span></h2>
+					<h3>塞德里克减肥呢活动顺<span class="label label-danger">New</span></h3>
+					<h4>塞德里克减肥呢活动顺<span class="label label-warning">New</span></h4>
+					<h5>塞德里克减肥呢活动顺<span class="label label-info">New</span></h5>
+					<h6>塞德里克减肥呢活动顺<span class="label label-primary">New</span></h6>
+					
+					<h2>徽章</h2>
+					<p>给链接、导航等元素嵌套 span class="badge"元素，可以很醒目的展示新的或未读的信息条目。</p>
+					<a href="#">消息<span class="badge">66</span></a>
+					<button type="button" class="btn btn-info">
+						Messages <span class="badge">99</span>
+					</button>
+				</div>
+				
+				<div class="col-md-4 myStyle03">
+					<h4>适配导航元素的激活状态</h4>
+					<ul class="nav nav-pills" role="tablist">
+					  <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+					  <li role="presentation"><a href="#">Profile</a></li>
+					  <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+					</ul>
+					
+					<h2>巨幕</h2>
+					<div class="jumbotron">
+						<h1>Hello, world!</h1>
+						<p>房管科风格日记突破就骗人你就皮哦二姐活泼I还不涅破然后就突破I人</p>
+						<p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+					</div>
+				</div>
+				
+				<div class="col-md-12 myStyle01">
+					<h2>页头</h2>
+					<div class="page-header">
+						<h1>你正好<small>你真好</small></h1>
+					</div>
+					
+					<h2>缩略图</h2>
+					<div class="row">
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail">
+								<img src="img/13.jpg" >
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail">
+								<img src="img/13.jpg" >
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail">
+								<img src="img/13.jpg" >
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail">
+								<img src="img/13.jpg" >
+							</a>
+						</div>
+					</div>
+					
+					<h3>自定义内容</h3>
+					<div class="row">
+					  <div class="col-sm-6 col-md-4">
+					    <div class="thumbnail">
+					      <img src="img/2.jpg" alt="img">
+					      <div class="caption">
+					        <h3>Thumbnail label</h3>
+					        <p>当时发生的分公司的风格</p>
+					        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-sm-6 col-md-4">
+					    <div class="thumbnail">
+					      <img src="img/2.jpg" alt="img">
+					      <div class="caption">
+					        <h3>Thumbnail label</h3>
+					        <p>当时发生的分公司的风格</p>
+					        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					
+				</div>
+				
+				<div class="col-md-6 myStyle03">
+					<h2>警告框</h2>
+					<div class="alert alert-success" role="alert">虽然规划课题然后高考分数观看比赛</div>
+					<div class="alert alert-info" role="alert">虽然规划课题然后高考分数观看比赛</div>
+					<div class="alert alert-warning" role="alert">虽然规划课题然后高考分数观看比赛</div>
+					<div class="alert alert-danger" role="alert">虽然规划课题然后高考分数观看比赛</div>
+					
+					<h3>可关闭的警告框</h3>
+					<p>为警告框添加一个可选的 .alert-dismissible 类和一个关闭按钮。</p>
+					<div class="alert alert-success alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>警告!</strong> 可以关闭的警告框可以关闭的警告框可以关闭的警告框！
+					</div>
+					
+					
+				</div>
+				
+				<div class="col-md-6 myStyle">
+					<h3>警告框中的链接</h3>
+					<div class="alert alert-success" role="alert">
+					  <a href="#" class="alert-link">链接11111111111111111</a>
+					</div>
+					<div class="alert alert-info" role="alert">
+					  <a href="#" class="alert-link">链接222222222222222222</a>
+					</div>
+					<div class="alert alert-warning" role="alert">
+					  <a href="#" class="alert-link">链接333333333333333333</a>
+					</div>
+					<div class="alert alert-danger" role="alert">
+					  <a href="#" class="alert-link">链接444444444444444444</a>
+					</div>
+					
+					<h2>进度条</h2>
+					<div class="progress">
+					  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+					    <span class="sr-only">50% 进度条</span>
+					  </div>
+					</div>
+					<h3>带有提示标签的进度条</h3>
+					<div class="progress">
+					  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+					    90%
+					  </div>
+					</div>
+					
+					<div class="progress">
+					  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">
+					    0%
+					  </div>
+					</div>
+					<div class="progress">
+					  <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 2%;">
+					    2%
+					  </div>
+					</div>
+				</div>
+				
+				<div class="col-md-8 myStyle01">
+					<h3>根据情境变化效果</h3>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+					    <span class="sr-only">40% Complete (success)</span>
+					  </div>
+					</div>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+					    <span class="sr-only">20% Complete</span>
+					  </div>
+					</div>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+					    <span class="sr-only">60% Complete (warning)</span>
+					  </div>
+					</div>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+					    <span class="sr-only">80% Complete (danger)</span>
+					  </div>
+					</div>
+					
+					<h3>条纹效果</h3>
+					<!-- progress-bar-striped 条纹效果 -->
+					<div class="progress">
+					  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+					    <span class="sr-only">40% Complete (success)</span>
+					  </div>
+					</div>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+					    <span class="sr-only">20% Complete</span>
+					  </div>
+					</div>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+					    <span class="sr-only">60% Complete (warning)</span>
+					  </div>
+					</div>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+					    <span class="sr-only">80% Complete (danger)</span>
+					  </div>
+					</div>
+				</div>
+				
+				<div class="col-md-4 myStyle02">
+					<h3>动画效果</h3>
+					<!-- 为 .progress-bar-striped 添加 .active 类，使其呈现出由右向左运动的动画效果 -->
+					<div class="progress">
+					  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+					    <span class="sr-only">45% Complete</span>
+					  </div>
+					</div>
+					
+					<h3>堆叠效果</h3>
+					<div class="progress">
+					  <div class="progress-bar progress-bar-success" style="width: 35%">
+					    <span class="sr-only">35% Complete (success)</span>
+					  </div>
+					  <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 40%">
+					    <span class="sr-only">40% Complete (warning)</span>
+					  </div>
+					  <div class="progress-bar progress-bar-danger" style="width: 10%">
+					    <span class="sr-only">10% Complete (danger)</span>
+					  </div>
+					</div>
+				</div>
+				
+				<div class="col-md-12 myStyle03">
+					<h2>媒体对象</h2>
+					<div class="media">
+					  <div class="media-left">
+					    <a href="#">
+					      <img class="media-object" src="img/13.jpg" alt="img">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">大头贴</h4>
+					    给vb尽快答复广播I够is搬弄是非V健康bois；而化工I；是不能改变神农；而烦不烦快乐
+					  </div>
+					  <div class="media-right">
+					    <a href="#">
+					      <img class="media-object" src="img/13.jpg" alt="img">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">大头贴</h4>
+					    给vb尽快答复广播I够is搬弄是非V健康bois；而化工I；是不能改变神农；而烦不烦快乐
+					  <div class="media-body">
+					    <a href="#">
+					      <img class="media-object" src="img/13.jpg" alt="img">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">大头贴</h4>
+					    给vb尽快答复广播I够is搬弄是非V健康bois；而化工I；是不能改变神农；而烦不烦快乐
+					  </div>
+					</div>
+					</div>
+					
+					<h3>对齐</h3>
+					<div class="media">
+					  <div class="media-left media-middle">
+					    <a href="#">
+					      <img class="media-object" src="img/13.jpg" alt="img">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">你的大头</h4>
+					    付款了给你软件和宋I喝奶粉V怒io无人回复狗日办法
+					  </div>
+					</div>
+					<div class="media">
+					  <div class="media-left media-middle">
+					    <a href="#">
+					      <img class="media-object" src="img/13.jpg" alt="img">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">你的大头</h4>
+					    付款了给你软件和宋I喝奶粉V怒io无人回复狗日办法
+					  </div>
+					</div>
+					<div class="media">
+					  <div class="media-left media-middle">
+					    <a href="#">
+					      <img class="media-object" src="img/13.jpg" alt="img">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">你的大头</h4>
+					    付款了给你软件和宋I喝奶粉V怒io无人回复狗日办法
+					  </div>
+					</div>
+				</div>
+				
+				<div class="col-md-6 myStyle">
+					<h3>媒体对象列表</h3>
+					<div class="media-list">
+					  <div class="media-left">
+					    <a href="#">
+					      <img class="media-object" src="img/13.jpg" alt="img">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">你的大头</h4>
+					    付款了给你软件和宋I喝奶粉V怒io无人回复狗日办法
+					  </div>
+					</div>
+					
+					<h2>列表组</h2>
+					<ul class="list-group">
+					  <li class="list-group-item">Cras justo odio</li>
+					  <li class="list-group-item">Dapibus ac facilisis in</li>
+					  <li class="list-group-item">Morbi leo risus</li>
+					  <li class="list-group-item">Porta ac consectetur ac</li>
+					  <li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+					
+					<h3>徽章</h3>
+					<ul class="list-group">
+					  <li class="list-group-item">
+					    <span class="badge">60</span>
+					    未读消息
+					  </li>
+					</ul>
+					
+					<h3>链接</h3>
+					<div class="list-group">
+					  <a href="#" class="list-group-item active">
+					    消息
+					  </a>
+					  <a href="#" class="list-group-item">消息</a>
+					  <a href="#" class="list-group-item">消息</a>
+					  <a href="#" class="list-group-item">消息</a>
+					  <a href="#" class="list-group-item">消息</a>
+					</div>
+				</div>
+				
+				<div class="col-md-6 myStyle02">
+					<h3>按钮/被禁用的条目</h3>
+					<div class="list-group">
+					  <button type="button" class="list-group-item disabled">按钮1</button>
+					  <button type="button" class="list-group-item">按钮</button>
+					  <button type="button" class="list-group-item">按钮</button>
+					  <button type="button" class="list-group-item">按钮</button>
+					  <button type="button" class="list-group-item">按钮</button>
+					</div>
+					
+					<h3>情景类</h3>
+					<ul class="list-group">
+					  <li class="list-group-item list-group-item-success">消息</li>
+					  <li class="list-group-item list-group-item-info">消息</li>
+					  <li class="list-group-item list-group-item-warning">消息</li>
+					  <li class="list-group-item list-group-item-danger">消息</li>
+					</ul>
+					<div class="list-group">
+					  <a href="#" class="list-group-item list-group-item-success">情景类</a>
+					  <a href="#" class="list-group-item list-group-item-info">情景类</a>
+					  <a href="#" class="list-group-item list-group-item-warning">情景类</a>
+					  <a href="#" class="list-group-item list-group-item-danger">情景类</a>
+					</div>
+				</div>
+				
+				<div class="col-md-4 myStyle">
+					<h3>定制内容</h3>
+					<div class="list-group">
+					  <a href="#" class="list-group-item active">
+					    <h4 class="list-group-item-heading">跟我走吧</h4>
+					    <p class="list-group-item-text">分工人太多机构ie监护人骗过你舒服；v;owsi</p>
+					  </a>
+					  <a href="#" class="list-group-item">
+					    <h4 class="list-group-item-heading">跟我走吧</h4>
+					    <p class="list-group-item-text">分工人太多机构ie监护人骗过你舒服；v;owsi</p>
+					  </a>
+					  <a href="#" class="list-group-item">
+					    <h4 class="list-group-item-heading">跟我走吧</h4>
+					    <p class="list-group-item-text">分工人太多机构ie监护人骗过你舒服；v;owsi</p>
+					  </a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="bootstrap/jquery-2.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>

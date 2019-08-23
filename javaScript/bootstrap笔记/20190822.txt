@@ -1,1 +1,11 @@
-GUI图形化界面
+GUI 图形化界面
+
+https://www.echartsjs.com/index.html 
+
+------前端模块化
+
+require -- 前端模块化的标志 --（依赖，要求，请求，引用）-- 引入一个模块 
+
+request（请求） -- 
+
+respon（响应） -- 
