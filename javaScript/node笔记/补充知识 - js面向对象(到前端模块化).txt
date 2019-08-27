@@ -1,0 +1,34 @@
+﻿
+
+JavaScript面向对象简介(详细)
+-----------
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
+
+
+js面向对象和原型链
+------------------
+http://wangdoc.com/javascript/oop/index.html
+
+
+面向对象与前端的模块化的演化过程
+----------------------------------
+前端模板化 -> 前端组件化 -> 前端模块化 -> 前端自动化(智能化) 
+
+
+前端模块化详解(阮一峰3篇博客)
+-----------------------------
+http://www.ruanyifeng.com/blog/2012/10/javascript_module.html 模块化编程
+http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html
+http://www.ruanyifeng.com/blog/2012/11/require_js.html
+
+
+require.js  解决的问题：
+（1）实现js文件的异步加载，避免网页失去响应；
+
+（2）管理模块之间的依赖性，便于代码的编写和维护。
+
+通行的Javascript模块规范有两种：CommonJS和AMD
+
+AMD:
+因为AMD是单线程所以有回调函数
+require([moduke],cakkback)

@@ -1,0 +1,145 @@
+https://www.runoob.com/nodejs/nodejs-event.html
+
+除了正常的运行模式,Javascript还有第二中运行模式(strict mode).
+
+严格模式: 'use strict'启用严格模式
+
+用来做web前端的目录不能用中文,独立一个目录.
+-----------------------------------------------------------
+------------借用wampServer 的数据库
+
+启动后点击mysql的my.ini,默认端口为3306
+使用命令 查看mysql的所有数据库: show databases;
+
+删除一个数据库的命令为 drop databases 数据库名;
+
+可见mysql自带了一些数据库,
+新建数据库 create database meng;
+
+使用use命令进入相应的数据库use meng;
+
+使用show tables; 查看该数据库内的所有表格(初始数据库无表格,空)
+Empt set 表示查询语句返回了空数据集
+
+使用create table 命令,创建一个名为Person 的表
+create table Person (id int auto_increment, name varchar(20), key(id));
+
+使用 desc Person; 查看该表的结构,是否正确.
+
+使用insert命令,向这个表中添加一条记录
+insert into Person(name) values('meng');
+
+使用 select 命令查询记录
+select * from Person;
+
+使用update命令修改表记录
+update Person set name='mengchengbiao' where id=1;
+
+使用delete命令删除表记录
+delete from Person where id=1;
+
+安装mysql模块输入语句: npm install mysql -g
+
+--------------------------------------------
+node.js里所有的异步操作都要带有回调函数
+
+
+7.事件与事件对象
+1.原理
+Node.js 是单进程单线程应用程序,但是因为V8引擎提供的异步执行
+        回调函数,通过这些可以处理大量的并发,所以性能非常高.
+Node.js 几乎每一个API都是支持回调函数的.
+Node.js 基本上所有的事件机制都是用设计模式中观察者模式实现.
+Node.js 单线程类似进入一个while(true)的事件循环,直到没有事件
+        观察者退出,每个异步事件都生成一个事件观察者,如果有事
+        件发生就调用函数
+------------------------------------
+不要把监听放到一个函数里面
+
+
+
+------------Stream(流)
+流用完就得关掉end();
+
+特点:数据是有序的
+
+Stream 是一个抽象接口，Node 中有很多对象实现了这个接口。
+例如，对http 服务器发起请求的request 对象就是一个 Stream，
+还有stdout（标准输出）。
+
+Node.js，Stream 有四种流类型：
+
+Readable - 可读操作。
+
+Writable - 可写操作。
+
+Duplex - 可读可写操作.
+
+Transform - 操作被写入数据，然后读出结果。
+
+所有的 Stream 对象都是 EventEmitter 的实例。常用的事件有：
+
+data - 当有数据可读时触发。
+
+end - 没有更多的数据可读时触发。
+
+error - 在接收和写入过程中发生错误时触发。
+
+finish - 所有数据已被写入到底层系统时触发。
+
+
+
+事件-->event模块-->eventEventmitter--> on/emit -->"topic"/(require)
+--eventName事件名,自定义的字符串,遵守命名规则:1.见名知意,
+2.不能用关键字3.下划线拼接,前后缀--buffer(二进制序列)-->stream(流)-->
+抽象接口-->模块"fs"文件系统(文件file/目录path)
+-->rs读取流= fs.createReadStream/fs.createWriteStream
+-------------------------------------------------
+
+---------------管道流(pipe)
+
+管道提供了一个输出流到输入流的机制。
+通常我们用于从一个流中获取数据并将数据传递到另外一个流中。
+
+
+-----------------11.http 对象 url 和 path
+https://www.liaoxuefeng.com/wiki/1016959663602400/1017804782304672
+
+----http 和 node
+
+http里最重要的两个对象是 request对象 和 response对象
+request 对象封装了HTTP请求, response 对象封装了HTTP响应
+
+-----------------------------哈希hash特点是永不同步
+
+----------------文件系统(file System)
+包括文件和目录
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
