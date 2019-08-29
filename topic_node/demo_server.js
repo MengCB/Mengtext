@@ -2,7 +2,7 @@
 
 'use strict'; // 启用严格模式
 var http = require('http');
-
+// 启动服务器
 http.createServer(function (request, response) {
 	// 查看请求的信息
 	console.log(request.method + ':' + request.url);

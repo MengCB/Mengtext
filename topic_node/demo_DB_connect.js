@@ -8,6 +8,7 @@ const connection = mysql.createConnection({
 	database: "men" // 数据库名
 });
 connection.connect(); // 数据库连接
+
 // 编写一端插入一条记录的代码
 // 插入 insert into Person(name) values('wu')
 connection.query("insert into Person(name) values('zhang')",
@@ -19,7 +20,7 @@ connection.query("insert into Person(name) values('zhang')",
 		}
 	});
 
-connection.query('select * from Person',
+connection.query('select * from Person where id = 1',
 	function(error, results, fields) {
 		if (error) {
 			throw error;

@@ -14,12 +14,12 @@ var server = http.createServer(function(request, response) {
 	// 获得请求URL的pathname
 	var pathname = url.parse(request.url).pathname;
 	console.info("解析后的根目录为:" + pathname);
-
+	
 	// console.log("请求方法 -"+ request.method + '-请求地址-' + request.url);
 	// 根目录的组合(文件的完整地址)
 	var filePath = path.join(root, pathname);
 	console.info("文件地址:" + filePath);
-
+	
 	// 获取文本状态
 	fs.stat(filePath, function(err, stats) {
 		if (!err && stats.isFile()) {
@@ -30,9 +30,9 @@ var server = http.createServer(function(request, response) {
 			// 将文件流导向response(放到页面)filestream 是一个
 			var filestream = fs.createReadStream(filePath);
 			filestream.pipe(response);
-		} else if (!err && stats.isDirectory()) {
+		} else if(!err && stats.isDirectory()){
 			response.writeHead(200);
-			var filestream = fs.createReadStream(filePath + "/index.html");
+			var filestream = fs.createReadStream(filePath+"/index.html");
 			filestream.pipe(response);
 		} else {
 			// 出错或文件不存在
