@@ -1,0 +1,26 @@
+模块化起点(静态模板)
+
+----面向对象 -->
+1.面向对象:
+ 函数和对象--> 构造器函数: -->对象模板 -->继承/扩展 -->js有继承吗?-->通过原形链替代继承 -->js继承
+ -->严格模式
+
+2.什么是模块化?
+ -->函数模块(全局变量,命名空间冲突,污染全局变量)--> 对象化(暴露成员)-->立即执行函数(自调用)--例子:Boll模块:html/css/js放置到任何地方
+--> 模块(可初始化,具体的行为,可销毁)-->新问题:复用的问题-->require.js(异步执行不阻塞)/AMD规范(require,defind,delear,callback)
+
+3.node(后台,模块化,一切皆模块)-->模块的使用:var http = require("http");// 常用,模块:http/fs/mysql/url/path/querystring/util
+   /express {---}(接口设定) /替代server.js
+ -->node复习:buffer(二进制序列)与Stream(流)的区别,buffer是静态的Stream是动态的
+
+----------流.pie() stream事件 -- on('data',callback)
+          ,http-request-response-path-url -->文件服务器(通过解析地址,向response pipe了相应的内容)
+            -->文件系统fs,mkdir/递归增加recursive: true --readdir -->callback-->遍历文件列表forEach(function(file){...})-->
+          -->appendFile(追加写入)-->open/close
+---------相对路径--> ./ / ../ (上上层 .../ ?..../ ../)
+
+-->启动一个服务器,将磁盘根目录下的web文件夹的所有文件的名字都返回给前端页面(不需要路由,不解析请求,直接返回文件列表)
+
+--->异步请求-->早年间,向服务器发请求,都是用from--指向新页面(跳转/刷新)--异步请求,js原生xhr-->ajax:js异步请求技术
+
+   流- 文件 - 目录 - http/文件服务器 - 模块系统 - 简介get/post - 路由(分发)--express(接口设定)
