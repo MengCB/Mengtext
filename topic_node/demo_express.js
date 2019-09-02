@@ -31,7 +31,7 @@ app.post("/testpost", urlencodedParser, function(req, res) {
 	console.info(req.query); // 请求参数
 	console.info(req.originalUrl); // 原始路径
 
-	console.info(req.body);
+	console.info(req.body);0
 
 	res.end("nmmp");
 });

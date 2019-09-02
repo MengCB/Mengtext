@@ -1,0 +1,73 @@
+---------------使用bodyparse
+var bodyParser = require('body-Parser');
+var urlencodedParser = bodyParser.urlencoded({
+	extended: false
+});
+
+--------------------------文件上传:
+依赖var multer - requier('multer');模块
+不要使用根目录作为上传目录!
+使用post请求上传
+需要序列化过程(fs.writeFile)
+其中全局变量不需要声明,
+
+异步请求:
+在页面上使用ajax请求,可以不需要刷新页面,而向后台获取你需要的数据.
+
+如果想要返回json对象,请使用respon.json({........});
+如果想要返回文本(字符串),使用respon.send{} 或者 respon.end()
+如果想要返回文件,使用respon.sendFile(__dirname + "/web/index.html");
+如果想要返回新的地址(重定向),使用respon.location(__dirname + "/web/index.html");
+
+另外: 如果使用了app.get("/",function(){}) 不管做重定向还是返回文件,请求地址并不会因此而发生改变
+,也就是会说,重定向的页面,基地址还是"/",这时候要注意页面中引用的外部文件的地址!!!!!!!!
+app.get('/', function(req, res) {
+	res.sendFile(__dirname + "/web/index.html");
+	// index.html中,引用jquery,js,这时候要注意,基于/ ,而不是/web
+})
+
+
+
+---------------------------------------session(会话机制)
+
+-------------------------------session与cookie的区别 
+ 
+https://blog.csdn.net/jnshu_it/article/details/80630102
+用户可以读取cookie却不能直接访问session;
+Cookie数据存放在客户的浏览器(本地),session数据放在服务器上
+Cookie不如session安全，别人可以分析存放在本地的Cookie并进行Cookie欺骗,
+所以出于安全性的考虑应当使用Session
+
+----------session案例:网站的登陆和退出
+
+步骤:
+1.修改数据库,新增user表,将userld,userName,userPassword,userDesc
+2.做一个校验登录状态的接口,权限页面用阻塞的方式来校验登录状态
+3.如果登录了,返回用户的session 信息,将其姓名放到导航栏上
+4.如果没有登录,跳转到登录页面
+5.登录页面,很简单,送用户名,密码,+(验证码)到后台,在数据库中校验其用户名和密码,
+  匹配,则将session登录状态字段设置为true,并且将其姓名存入session
+6.登出操作-->修改session,成功后,跳转到未登录的首页(非权限页面)
+
+
+######################################
+--------------------------------------
+create table user (
+	user_id int auto_increment not null, 
+	user_name varchar(40), 
+	user_password varchar(40),
+	user_desc varchar(40),
+	key(user_id) 
+)DEFAULT CHARSET=utf8;
+
+insert into user (user_name,  user_password, user_desc) values('fang', '123' , '土豪');
+
+
+
+
+
+
+
+
+
+

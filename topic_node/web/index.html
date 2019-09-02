@@ -29,7 +29,7 @@
 		</form>
 		
 		<br>
-		<form action="/getUserInfo" method="get">
+		<form>
 			<input type="text" name="userId" id="userId" placeholder="用户id" value="1" />
 			<input type="text" name="userName" id="userName" placeholder="用户name" />
 			<input type="button" id="getUserInfo" value="查询"/>
@@ -41,8 +41,8 @@
 	$("#getUserInfo").click(function(){
 		// console.info("12");
 		// 通过id去查询用户的名字
-		var userId =parseInt($("#userId").val());
-		var userName =parseInt($("#userName").val());
+		var userId = parseInt($("#userId").val());
+		var userName = $("#userName").val();
 		if(isNaN(userId)){
 			alert("请输入数字");
 			return;
@@ -58,6 +58,34 @@
 			success:function(res){
 				console.info( res );
 				$("#userName").val(res);
+			},
+			error:function( a,b ){
+				console.info(a);
+			}
+		})
+	});
+	
+	$("#updateUser").click(function(){
+		// console.info("12");
+		// 通过id去查询用户的名字
+		var userId =parseInt($("#userId").val());
+		var userName =$("#userName").val();
+		// console.info(userName);
+		// 容错
+		if(isNaN(userId)){
+			alert("请输入数字或姓名");
+			return;
+		}
+		$.ajax({
+			url:"/updateUser",
+			type: 'post',
+			dataType: 'json',
+			data:{
+				"userId": userId,
+				"userName": userName
+			},
+			success:function(data){
+				alert(data.info);
 			},
 			error:function( a,b ){
 				console.info(a);
