@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="jquery-2.js"></script>
+		<title>预约表</title>
+		<style type="text/css">
+			body{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="/subscribe" method="post">
+			<input type="text" name="companyName" id="companyName" placeholder="请输入公司名称" />
+			<br>
+			<br>
+			<input type="text" name="timeInterval" id="timeInterval" placeholder="请输入使用天数1~30" />
+			<br>
+			<br>
+			<input type="text" name="price" id="price" placeholder="请输入价格" />
+			<br>
+			<br>
+			<input type="text" name="floor" id="floor" placeholder="请输入展厅号:例1A" />
+			<br>
+			<br>
+			<input type="button" id="sub" value="提交预约" />
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#sub").click(function() {
+			var companyName = $("#companyName").val();
+			var timeInterval = $("#timeInterval").val();
+			var price = $("#price").val();
+			var floor = $("#floor").val();
+			if (companyName.length <=0 || price.length <=0 || floor.length <=0) {
+				alert("请输入公司名称或者价格以及展厅号!");
+				return;
+			} else if( isNaN(timeInterval) || timeInterval.length <= 0 || timeInterval > 30){
+				alert("请输入正确天数!");
+				return;
+			}
+			$.ajax({
+				url: '/subscribe',
+				data: {
+					"companyName": companyName,
+					"timeInterval": timeInterval,
+					"price": price,
+					"floor": floor
+				},
+				type: 'post',
+				dataType: 'json',
+				success: function(res) {
+					if (res.ok) {
+						alert("提交成功");
+					} else {
+						alert("提交失败");
+					}
+				},
+				error: function(a, b) {
+					console.info(a);
+				}
+			})
+		});
+	});
+
+</script>

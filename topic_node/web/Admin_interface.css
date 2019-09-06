@@ -1,0 +1,273 @@
+	.apply_content {
+		width: 400px;
+		height: 600px;
+		background: rgba(215, 202, 246, 0.6);
+		position: relative;
+		left: 589px;
+		top: 44px;
+		visibility: hidden;
+	}
+
+	@font-face {
+		font-family: mao;
+		src: url("font/毛泽东体.ttf");
+	}
+	.nav>a>span {
+		position: relative;
+		top: 6px;
+	}
+	.a_text1 {
+		position: relative;
+		left: 1095px;
+	}
+	.right_1>ul>li>form {
+		position: relative;
+		width: 700px;
+		
+	}
+	.right_1>ul>li>form>.p1{
+		position: relative;
+		left: -1px;
+		
+	}
+	.right_1>ul>li>form>.p3 {
+		/* position: relative; */
+		/* left: 13px; */
+	}
+	.right_1>ul>li>form>.p2{
+		position: relative;
+		top: -1px;
+	}
+	.right_1>ul>li {
+		border-top: 1px solid gray;
+		position: relative;
+		left: -40px;
+		width: 700px;
+	}
+	@font-face {
+		font-family:钢笔字体;
+		src: url("font/庞中华钢笔字体.TTF");
+	}
+	.right_1 {
+		background: rgba(221, 233, 249, 0.6);
+		position: relative;
+		left: 199px;
+		top: -463px;
+		width: 700px;
+		height: 600px;
+		visibility: hidden;
+	}
+	.right_1>ul {
+		list-style: none;
+	}
+	
+	body {
+		margin: 0;
+		padding: 0;
+		background: url(images/bgg.jpg);
+		font-family: 钢笔字体;
+	}
+
+	.header {
+		width: 100%;
+		height: 114px;
+		/* background-color: blueviolet; */
+	}
+
+	.header01 {
+		display: flex;
+		margin-left: 50px;
+	}
+
+	.hz {
+		margin-top: 20px;
+	}
+
+	.te {
+		margin-top: 30px;
+	}
+
+	.nav {
+		width: 100%;
+		height: 45px;
+		background-color: #0377C2;
+		display: flex;
+	}
+
+	a {
+		display: block;
+		width: 200px;
+		height: 45px;
+		text-decoration: none;
+		color: black;
+		text-align: center;
+		line-height: 45px;
+	}
+
+	.a_text {
+		position: relative;
+		left: 280px;
+	}
+
+	.content {
+		width: 900px;
+		height: 600px;
+		/* background-color: #2B4F87; */
+		/* background: rgba(40,40,40,0.4); */
+		margin-left: 100px;
+		display: flex;
+		position: relative;
+		left: 190px;
+	}
+
+	.left_1>ul {
+		list-style: none;
+		font-size: 56px;
+		margin-top: 150px;
+		/* background-color: hotpink; */
+
+	}
+
+	.F3 {
+		width: 200px;
+		height: 100px;
+		margin-left: -40px;
+		text-align: center;
+		line-height: 100px;
+		cursor: pointer;
+
+	}
+	.F2 {
+		width: 200px;
+		height: 100px;
+		margin-left: -40px;
+		text-align: center;
+		line-height: 100px;
+		cursor: pointer;
+	
+	}
+	.F1 {
+		width: 200px;
+		height: 100px;
+		margin-left: -40px;
+		text-align: center;
+		line-height: 100px;
+		cursor: pointer;
+	
+	}
+
+	.left_1 {
+		width: 200px;
+		height: 600px;
+		background: rgba(3, 119, 196, 0.6);
+	}
+
+
+	.iconfont {
+		font-size: 34px;
+		position: relative;
+		top: -8px;
+	}
+
+	.right_3 {
+		width: 700px;
+		height: 600px;
+		background: rgba(221, 233, 249, 0.6);
+		position: absolute;
+		left: 200px;
+		top: -1px;
+		visibility: hidden;
+	}
+
+	.right_3>ul {
+		list-style: none;
+		position: relative;
+		left: -40px;
+		line-height: 97px;
+	}
+
+	.right_3>ul>li {
+		width: 700px;
+		height: 200px;
+		/* border: 1px solid black; */
+		border-top: 1px solid gray;
+	}
+	.p1>span {
+		font-size: 40px;
+		line-height: 20px;
+	}
+	.p1 {
+		width: 100px;
+		height: 200px;
+	}
+	.p2 {
+		width: 400px;
+		height: 200px;
+		line-height: 30px;
+		display: flex;
+		justify-content: center;
+	}
+	.p3 {
+		width: 200px;
+		height: 200px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+	}
+	form {
+		font-size: 18px;
+		display: flex;
+	}
+	.p3>input {
+		width: 50px;
+		height: 50px;
+	}
+	.p2>div>input {
+		width: 100px;
+	}
+	.p2>div {
+		padding-top: 70px;
+		text-align: center;
+	}
+	.right_2 {
+		margin: 0;
+		padding: 0;
+		width: 700px;
+		height: 600px;
+		background: rgba(221, 233, 249, 0.6);
+		position: absolute;
+		left: 76px;
+		top: -285px;
+		visibility: hidden;
+	}
+	
+	.right_2>ul {
+		list-style: none;
+		position: relative;
+		left: -33px;
+		
+	}
+	.right_2>ul>li>div {
+		display: flex;
+		
+	}
+	.right_2>ul>li {
+		width: 700px;
+		border-top: 1px solid gray;
+		position: relative;
+		left: -3px;
+	}
+	.right_2>ul>li>form>div>span {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		line-height: 94px;
+	}
+	.right_2>ul>li>form {
+		position: relative;
+		left: -7px;
+		width: 700px;
+		display: flex;
+	}
+	

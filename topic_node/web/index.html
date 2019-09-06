@@ -2,94 +2,224 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>post</title>
-		　<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<!-- <script type="text/javascript" src="jquery-2.js"></script> -->
-		<style type="text/css">
-			body{
-				text-align: center;
-			}
-		</style>
+		<title></title>
+		<script type="text/javascript" src="jquery-2.js"></script>
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1243315_7en108cni6.css" />
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="验证但呢个了.js"></script>
 	</head>
 	<body>
-		<form action="/testpost" method="post">
-			<input type="text" name="name" id="" value="" />
-			<input type="text" name="id" id="" value="" />
-			<input type="submit" name="" id="" value="post请求" />
-		</form>
-		<br>
-		
-		
-		<h3>文件上传：</h3>
-		选择一个文件上传: <br />
-		<form action="/file_upload" method="post" enctype="multipart/form-data">
-		<input type="file" name="image" size="50" />
-		<br />
-		<input type="submit" value="上传文件" />
-		</form>
-		
-		<br>
-		<form>
-			<input type="text" name="userId" id="userId" placeholder="用户id" value="1" />
-			<input type="text" name="userName" id="userName" placeholder="用户name" />
-			<input type="button" id="getUserInfo" value="查询"/>
-			<input type="button" id="updateUser" value="修改"/>
-		</form>
+		<header class="header">
+			<div class="header01">
+				<div class="hz"><img src="images/logo会展.png" alt=""></div>
+				<div class="te"><img src="images/h35.png"></div>
+				<div class="login_header">
+					<div class="user_main"><span class="iconfont icon-mengbanhangkonghangtian-waixingrenalien"></span>
+						<a href="/web/register.html">注册</a>
+						<a href="/web/login.html">登录</a>
+							<a href="" id="app-5" v-on:click="delogout">注销</a>
+							<!-- <button type="button" v-on:click="delogout">注销</button> -->
+						<!-- <a href="/web/user.html">注销</a> -->
+						<!-- <a href="" id="app-5" v-on:click="delogout">注销</a> -->
+					</div>
+					<div class="Administrator_main"><span class="iconfont icon-4"></span><a href="http://127.0.0.1:8848/%E4%BC%9A%E5%B1%95%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE/adminlogin.html">管理员入口</a></div>
+				</div>
+			</div>
+		</header>
+		<div class="nav"><a href="#" id="reserve_appear"><span class="iconfont icon-shangchuan"></span>此处预约
+				<div class="reserve" id="reserve">
+
+
+
+				</div>
+			</a><a href="#" id="reserve_disappear">收起</a></div>
+
+		<div class="container">
+			<div class="left01">
+				<ul>
+					<li class="F3" id="F3">3F <span class="iconfont icon-jiantou-right"></span>
+						<div class="content" id="content">
+							<div class="regional">
+								<div class="Q1"><a href="#" id="zt1">1区</a>
+									<div class="pic" id="pic1">
+										<div class="picc"><img src="images/6.jpg" alt="" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="11" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="Q2"><a href="#" id="zt2">2区</a>
+									<div class="pic" id="pic2">
+										<div class="picc"><img src="images/1.jpg" alt="" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="22" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="Q3"><a href="#" id="zt3">3区</a>
+									<div class="pic" id="pic3">
+										<div class="picc"><img src="images/2.jpg" alt="" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="33" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="F2" id="F2">2F <span class="iconfont icon-jiantou-right"></span>
+						<div class="content" id="content01">
+							<div class="regional">
+								<div class="Q1"><a href="#" id="ztt1">1区</a>
+									<div class="pic" id="picc1">
+										<div class="picc"><img src="images/3.jpg" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="pp" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="Q2"><a href="#" id="ztt2">2区</a>
+									<div class="pic" id="picc2">
+										<div class="picc"><img src="images/7.jpg" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="ll" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="Q3"><a href="#" id="ztt3">3区</a>
+									<div class="pic" id="picc3">
+										<div class="picc"><img src="images/4.jpg" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="kk" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="F1" id="F1">1F <span class="iconfont icon-jiantou-right"></span>
+						<div class="content" id="content02">
+							<div class="regional">
+								<div class="Q1"><a href="#" id="zttt1">1区</a>
+									<div class="pic" id="piccc1">
+										<div class="picc"><img src="images/5.jpg" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="溜了" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="Q2"><a href="#" id="zttt2">2区</a>
+									<div class="pic" id="piccc2">
+										<div class="picc"><img src="images/1.jpg" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="扣扣" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="Q3"><a href="#" id="zttt3">3区</a>
+									<div class="pic" id="piccc3">
+										<div class="picc"><img src="images/5.jpg" style="width: 600px;height: 520px;"></div>
+										<div class="details">
+											<form action="" method="">
+												<div><span>面积:</span><input type="text" name="" id="" value="嘎嘎" /></div>
+												<div><span>使用的公司:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>时间区间:</span><input type="text" name="" id="" value="" /></div>
+												<div><span>价格:</span><input type="text" name="" id="" value="" /></div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</body>
 </html>
+<script type="text/javascript" src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript" src="注销.js"></script>
 <script type="text/javascript">
-	$("#getUserInfo").click(function(){
-		// console.info("12");
-		// 通过id去查询用户的名字
-		var userId = parseInt($("#userId").val());
-		var userName = $("#userName").val();
-		if(isNaN(userId)){
-			alert("请输入数字");
-			return;
-		}
-		$.ajax({
-			url:"/getUserInfo",
-			type: 'get',
-			dataType: 'json',
-			data:{
-				"userId": userId,
-				"userName": userName
-			},
-			success:function(res){
-				console.info( res );
-				$("#userName").val(res);
-			},
-			error:function( a,b ){
-				console.info(a);
-			}
-		})
-	});
+	// function zhuxiao() {
+	// 	if (confirm("您是否要注销")) {
+	// 		$(function() {
+	// 			$.ajax({
+	// 				url: "/logout",
+	// 				type: 'post',
+	// 				dataType: 'json',
+	// 				success: function(res) {
+	// 					alert("注销成功");
+	// 				},
+	// 				error: function(a, b) {
+	// 					alert(a);
+	// 				}
+	// 			});
+	// 		});
+	// 	} else {
+	// 		alert("不注销");
+	// 	}
+	// }
 	
-	$("#updateUser").click(function(){
-		// console.info("12");
-		// 通过id去查询用户的名字
-		var userId =parseInt($("#userId").val());
-		var userName =$("#userName").val();
-		// console.info(userName);
-		// 容错
-		if(isNaN(userId)){
-			alert("请输入数字或姓名");
-			return;
-		}
-		$.ajax({
-			url:"/updateUser",
-			type: 'post',
-			dataType: 'json',
-			data:{
-				"userId": userId,
-				"userName": userName
-			},
-			success:function(data){
-				alert(data.info);
-			},
-			error:function( a,b ){
-				console.info(a);
-			}
-		})
-	});
+	// var app5 = new Vue({
+	// 	el: '#app-5',
+	// 	data: {},
+	// 	// 方法集
+	// 	methods: {
+	// 		delogout: function() {
+	// 			$.ajax({
+	// 				url: "/logout",
+	// 				type: 'post',
+	// 				dataType: 'json',
+	// 				success: function(res) {
+	// 					alert("注销成功");
+	// 				},
+	// 				error: function(a, b) {
+	// 					alert(a);
+	// 				}
+	// 			});
+	// 		}
+	// 	}
+	// });
 </script>

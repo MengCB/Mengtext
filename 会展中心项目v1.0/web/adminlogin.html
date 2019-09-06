@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>管理员登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="adminlogin.css" />
+		<script src="/web/jquery-2.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="container">
+				<h1>管理员登录</h1>
+				<form>
+					<input type="text" id="adName" value="" placeholder="管理员账号" />
+					<input type="password" id="adPassword" value="" placeholder="密码" />
+					<input type="password" id="adNumber" value="" placeholder="管理员账号编号" />
+					<div class="box">
+						<input type="button" class="button" id="adLogin" value="登录" />
+					</div>
+
+				</form>
+			</div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#adLogin").click(function() {
+			var adName = $("#adName").val();
+			var adPassword = $("#adPassword").val();
+			var adNumber = $("#adNumber").val();
+			if (adName.length <= 0 || !isNaN(adName)) {
+				alert("请输入正确用户名");
+				return;
+			} else if (adPassword.length <= 0) {
+				alert("请输入密码");
+				return;
+			}
+			$.ajax({
+				url: '/adlogin',
+				data: {
+					"adName": adName,
+					"adPassword": adPassword,
+					"adNumber":adNumber
+				},
+				type: 'post',
+				dataType: 'json',
+				success: function(res) {
+					if (res.ok) {
+						alert("登录成功");
+						window.location = "/web/Admin_interface.html";
+					} else {
+						alert("登录失败");
+						window.location = "/";
+					}
+
+				},
+				error: function(a, b) {
+					console.info(a);
+				}
+			});
+		});
+	});
+</script>

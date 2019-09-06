@@ -1,45 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>登录页面</title>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>注册/登录</title>
 		<script type="text/javascript" src="/web/jquery-2.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="adminlogin.css" />
 	</head>
 	<body>
-		<form action="/login" method="post">
-			<input type="text" name="userName" id="userName" placeholder="用户姓名"  value="fang"/>
-			<br>
-			<input type="password" name="userPassword" id="userPassword" placeholder="用户密码" value="123" />
-			<input type="button" value="登录" id="loginBt"/>
-		</form>
+		<div class="wrap">
+			<div class="container">
+				<h1 style="font-family: 钢笔字体;">注册/登录</h1>
+				<form action="/login" method="post">
+					<input type="text" name="userName" id="userName" placeholder="用户姓名" value="" />
+					<input type="password" name="userPassword" id="userPassword" placeholder="用户密码" value="" />
+					<div class="box">
+						<input type="button" class="val1" value="注册" />
+						<input type="button" class="val2" id="loginBt" value="登录" />
+					</div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>
 <script type="text/javascript">
-	$(function(){
-		$("#loginBt").click(function(){			
+	$(function() {
+		$("#loginBt").click(function() {
+			var userName = $("#userName").val();
+			var userPassword = $("#userPassword").val();
+			var pattern=/^\S+$/gi;
+			if (userName.length <= 0 || !isNaN(userName)) {
+				alert("请输入正确用户名");
+				return;
+			} else if (userPassword.length <= 0 || !pattern.test(userPassword) ) {
+				alert("请输入密码");
+				return;
+			}
 			$.ajax({
 				url: '/login',
-				data:{
-					userName: $("#userName").val() || 'xx',
-					userPassword: $("#userPassword").val() || "xxxx",
+				data: {
+					userName: userName,
+					userPassword: userPassword
 				},
 				type: 'post',
 				dataType: 'json',
-				success: function(res){
-					if( res.ok){
+				success: function(res) {
+					if (res.ok) {
 						alert("登录成功");
-						window.location = "/";					
-					}else{
-						alert("用户名或密码不正确");
+						window.location = "/web/index.html";
+					} else {
+						alert("您未注册");
+						window.location = "/web/index.html";
 					}
-					
+
 				},
-				error: function(a,b){
+				error: function(a, b) {
 					console.info(a);
-				}				
-			});						
+				}
+			});
 		});
-		
-		
 	})
 </script>

@@ -1,0 +1,53 @@
+-------会展中心管理系统
+
+删除表:drop table 表名称  
+
+创建数据库: men;
+create  database  men;
+
+----建表语句
+// 展厅表
+create table tehInformation (id int auto_increment, teh_name varchar(20), teh_area varchar(20), companyName varchar(500), elapsedTime varchar(200),teh_price varchar(50), key(id) )DEFAULT CHARSET=utf8;
+
+
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('1A','200square','腾讯有限公司','20','500RMB');
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('1B','180square','','','500RMB');
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('1C','220square','','','500RMB');
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('2A','150square','','','500RMB');
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('2C','167square','','','500RMB');
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('3C','200square','华为有限公司','60','500RMB');
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('3A','250square','','','500RMB');
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('3B','110square','','','500RMB');
+insert into tehInformation(teh_name,teh_area,companyName,elapsedTime,teh_price) values('2B','200square','网易有限公司','80','500RMB');
+
+// 申请表
+create table subs (id int auto_increment, companyName varchar(500), elapsedTime varchar(50),teh_price int(50), teh_name varchar(20), key(id) ) DEFAULT CHARSET=utf8;
+insert into subs (teh_name,companyName,elapsedTime,teh_price) values('1A','腾讯有限公司','50','500RMB');
+
+// 创建会员表
+create table user(id int auto_increment, user_name varchar(20),serialNumber varchar(50)  ,user_password varchar(20),key(id) )DEFAULT CHARSET=utf8;
+// 插入管理员
+insert into user(user_name,serialNumber,user_password) values('liang','666','123456');
+
+--user表(注册跟登录表)user:
+
+create table user (id int auto_increment, user_name varchar(20), user_password int(20), key(id) )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+数据库
+D:\wamp\bin\mysql\mysql5.1.53\bin>mysqldump --opt -hlocalhost -uroot -p --skip-lock-tables fang > fang.sql
+
+查看编码:
+----------------------------------
+show variables like '%char%';
+
+
+把字符集临时改为gbk(中文)
+---------------------------------------
+set character_set_results='gbk';
+set character_set_client='gbk';
+set character_set_connection='gbk';
+set character_set_database='gbk';
+set character_set_server='gbk';   //这个建表之前一定要输入!!!!!!!!!!

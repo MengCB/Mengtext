@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title></title>
+	</head>
+	<body>
+
+		<div id="app">
+			{{ message }}
+		</div>
+
+		<div id="app-2">
+			<span v-bind:title="message">
+				鼠标悬停几秒钟查看此处动态绑定的提示信息！
+			</span>
+		</div>
+
+		<!-- 判断条件 -->
+		<div id="app-3">
+			<p v-if="seen">现在你看到我了</p>
+		</div>
+		
+		<!--循环-->
+		<div id="app-4">
+		  <ol>
+		    <li v-for="todo in todos"> <!-- todo是一个变量 todos数组名 -->
+		      {{ todo.text }}
+		    </li>
+		  </ol>
+		</div>
+		
+		<!-- 处理用户的输入 -->
+		<div id="app-5">
+		  <p>{{ message }}</p>
+		  <button v-on:click="reverseMessage">反转消息</button>
+		</div>
+		
+		<!-- v-model(模型) 双向绑定-你动我也跟着动-->
+		<div id="app-6">
+		  <p>{{ message }}</p>
+		  <input v-model="message">
+		  <input type="checkbox" v-model="check" />
+		  <br>
+		 A <input type="radio" name="x" value="A" v-model="SEX"/>
+		 B <input type="radio" name="x" value="B" v-model="SEX"/>
+		 C <input type="radio" name="x" value="C" v-model="SEX"/>
+		</div>
+		
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app', // element --> "#app"
+		data: {
+			message: '慢慢跑事实上身上试试'
+		}
+	});
+
+	var app2 = new Vue({
+		el: '#app-2',
+		data: {
+			message: '页面加载于 ' + new Date().toLocaleString()
+		}
+	});
+
+	var app3 = new Vue({
+		el: '#app-3',
+		data: {
+			seen: true
+		}
+	});
+	
+	var app4 = new Vue({
+	  el: '#app-4',
+	  data: {
+	    todos: [
+	      { text: '学习 JavaScript' },
+	      { text: '学习 Vue' },
+	      { text: '整个牛项目' }
+	    ]
+	  }
+	});
+	
+	var app5 = new Vue({
+	  el: '#app-5',
+	  data: {
+	    message: 'Hello Vue.js!'
+	  },
+	  methods: {
+	    reverseMessage: function () {
+	      this.message = this.message.split('').reverse().join('') // 反转
+	    }
+	  }
+	});
+	
+	var app6 = new Vue({
+	  el: '#app-6',
+	  data: {
+	    message: 'Hello Vue!',
+		check: 'meng',
+		SEX: 'C'
+	  }
+	});
+</script>

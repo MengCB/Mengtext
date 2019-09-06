@@ -1,0 +1,20 @@
+
+
+数据库
+D:\wamp\bin\mysql\mysql5.1.53\bin>mysqldump --opt -hlocalhost -uroot -p --skip-lock-tables fang > fang.sql
+
+查看编码:
+----------------------------------
+show variables like '%char%';
+
+
+把字符集临时改为gbk(中文)
+---------------------------------------
+set character_set_results='gbk';
+set character_set_client='gbk';
+set character_set_connection='gbk';
+set character_set_database='gbk';
+set character_set_server='gbk';
+
+
+.button{border:0px;background-color:transparent;background-image:url(你自定义背景图片的位置.png);}

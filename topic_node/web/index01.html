@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>post</title>
+		　<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<!-- <script type="text/javascript" src="jquery-2.js"></script> -->
+		<style type="text/css">
+			body{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="/testpost" method="post">
+			<input type="text" name="name" id="" value="" />
+			<input type="text" name="id" id="" value="" />
+			<input type="submit" name="" id="" value="post请求" />
+		</form>
+		<br>
+		
+		
+		<h3>文件上传：</h3>
+		选择一个文件上传: <br />
+		<form action="/file_upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="image" size="50" />
+		<br />
+		<input type="submit" value="上传文件" />
+		</form>
+		
+		<br>
+		<form>
+			<input type="text" name="userId" id="userId" placeholder="用户id" value="1" />
+			<input type="text" name="userName" id="userName" placeholder="用户name" />
+			<input type="button" id="getUserInfo" value="查询"/>
+			<input type="button" id="updateUser" value="修改"/>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	$("#getUserInfo").click(function(){
+		// console.info("12");
+		// 通过id去查询用户的名字
+		var userId = parseInt($("#userId").val());
+		var userName = $("#userName").val();
+		if(isNaN(userId)){
+			alert("请输入数字");
+			return;
+		}
+		$.ajax({
+			url:"/getUserInfo",
+			type: 'get',
+			dataType: 'json',
+			data:{
+				"userId": userId,
+				"userName": userName
+			},
+			success:function(res){
+				console.info( res );
+				$("#userName").val(res);
+			},
+			error:function( a,b ){
+				console.info(a);
+			}
+		})
+	});
+	
+	$("#updateUser").click(function(){
+		// console.info("12");
+		// 通过id去查询用户的名字
+		var userId =parseInt($("#userId").val());
+		var userName =$("#userName").val();
+		// console.info(userName);
+		// 容错
+		if(isNaN(userId)){
+			alert("请输入数字或姓名");
+			return;
+		}
+		$.ajax({
+			url:"/updateUser",
+			type: 'post',
+			dataType: 'json',
+			data:{
+				"userId": userId,
+				"userName": userName
+			},
+			success:function(data){
+				alert(data.info);
+			},
+			error:function( a,b ){
+				console.info(a);
+			}
+		})
+	});
+</script>

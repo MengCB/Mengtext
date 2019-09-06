@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="jquery-2.js"></script>
+		<title>注册页面</title>
+		<style type="text/css">
+			body{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="/register" method="post">
+			<input type="text" name="userName" id="userName" placeholder="请输入用户姓名" />
+			<br>
+			<br>
+			<input type="password" name="userPassword" id="userPassword" placeholder="请输入密码" />
+			<br>
+			<br>
+			<input type="button" value="注册" id="loginBt" />
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#loginBt").click(function() {
+			var userName = $("#userName").val();
+			var userPassword = $("#userPassword").val();
+			if (userName.length <= 0 || !isNaN(userName)) {
+				alert("请输入正确用户名");
+				return;
+			} else if (userPassword.length <= 0) {
+				alert("请输入密码");
+				return;
+			}
+			$.ajax({
+				url: '/register',
+				data: {
+					userName: userName,
+					userPassword: userPassword
+				},
+				type: 'post',
+				dataType: 'json',
+				success: function(res) {
+					if (res.ok) {
+						alert("注册成功");
+						window.location = "/web/index.html";
+					} else {
+						alert("用户名已存在!");
+					}
+				},
+				error: function(a, b) {
+					console.info(a);
+				}
+			});
+		});
+	})
+</script>
