@@ -10,11 +10,8 @@
 					type: 'post',
 					dataType: 'json',
 					success: function(res) {
-						if(res.logout){
-							alert("注销成功");
-						}else{
-							alert("注销失败");
-						}
+							console.info("注销成功");
+							// alert("注销成功");
 					},
 					error: function(a, b) {
 						alert(a);

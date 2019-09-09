@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title>WebSocket</title>
+	</head>
+	<body>
+
+		<div id="xxx" style="width: 400px; height: 300px; border: 1px solid darkorange;">
+
+		</div>
+
+		<input type="text" name="" id="input1" value="" />
+
+		<input type="button" name="" id="bt1" value="提交" />
+	</body>
+</html>
+<script type="text/javascript">
+	// url可以带参数,标识
+	var ws = new WebSocket('ws://127.0.0.1:3000?name=蒙承彪&passCode=3344'); //new的时候就尝试连接服务器
+	
+	ws.onopen = function() {
+		console.info('WebSocket--连接');
+	}
+	
+	ws.onmessage = function(mess) {  // onmessage送过来的消息
+		console.info(mess.data);
+		$("#xxx")[0].innerText += mess.data;
+		$("#input1").val('');
+	}
+
+	// setTimeout(function() {
+	// 	ws.send("我是WebSocket");
+	// }, 2000);
+	// send只接受字符串或者流, 对象需要另转
+	$("#bt1").click(function() {
+		var messText = $("#input1").val();
+		if (!messText) {
+			alert("消息内容不能为空");
+			return;
+		}
+		ws.send(messText);
+	});
+	// 注意事项: send函数只接受字符串或者流, 对象需要另转
+</script>

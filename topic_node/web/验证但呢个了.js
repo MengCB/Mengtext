@@ -1,6 +1,6 @@
-			$.ajax({
+$.ajax({
 				async: false,
-				url: "/checkLogin",
+				url: "/cleck_Login",
 				type: "get",
 				dataType: 'json',
 				data: {},
@@ -8,9 +8,8 @@
 					if (res.ok) {
 						//
 					} else {
-						//未登录
-						// alert("您未登录");
-						console.info("未登录");
+						alert("您未登录");
+						window.location = "/web/index.html";
 					}
 				},
 				error: function(a, b) {

@@ -1,0 +1,32 @@
+
+WebSocset 教程
+https://www.runoob.com/html/html5-websocket.html 
+
+WS模块
+https://www.jianshu.com/p/8c471f33989a
+---------------------------WebSocset
+
+引用ws模块: cnpm install ws
+socket本身并不存在他是一个建立通信,保留连接句柄(连接对象),长连接.
+socket是由客户端发起的,客户端可以是服务器端,后端.
+session和WebSocket不通用
+
+js-浏览器关闭事件:onbeforeunload
+window.onbeforeunload = function() {confim("你要去哪妹纸?"); return false};
+
+WebSocket 事件
+
+事件	事件处理程序	描述
+open	Socket.onopen	连接建立时触发
+message	Socket.onmessage	客户端接收服务端数据时触发
+error	Socket.onerror	通信发生错误时触发
+close	Socket.onclose	连接关闭时触发
+
+WebSocket 方法
+
+以下是 WebSocket 对象的相关方法。假定我们使用了以上代码创建了 Socket 对象
+Socket.send()	
+使用连接发送数据
+
+Socket.close()	
+关闭连接

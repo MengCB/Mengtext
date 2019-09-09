@@ -1,0 +1,270 @@
+	.apply_content {
+		width: 400px;
+		height: 600px;
+		background: rgba(215, 202, 246, 0.6);
+		position: relative;
+		left: 589px;
+		top: 44px;
+		visibility: hidden;
+		 overflow: scroll;
+	}
+	.p2>div>input {
+		height: 40px;
+	}
+	.p2>div>span {
+		font-size: 24px;
+		color: #808080;
+		font-family: "隶书";
+	}
+	input {
+		width: 200px;
+		height: 30px;
+		list-style: none;
+		background-color: inherit;
+		border: none;
+		border-bottom: 2px solid #666666;
+		border-radius: 10px 10px 0px 0px;
+		font-size: 20px;
+		
+		
+	}
+	input:focus {
+		outline: none;
+		border-bottom: #fbfee9;
+		box-shadow: 0px 0px 5px 3px gray;
+		border-radius: 10px;
+	}
+	.p3>input {
+		font-family: "隶书";
+		color: white;
+		width: 80px;
+		height: 40px;
+		border-radius: 20px;
+		background: rgba(215, 202, 246, 0.6);
+	}
+	.apply_content>ol>li>button {
+		margin-top: 5px;
+		border-radius: 10px;
+	}
+	.m1>div {
+		margin-top: 5px;
+	}
+	.m1>div>div {
+		display: flex;
+		align-items: center;
+	}
+	.m1>div>div>span {
+		background: rgba(221, 233, 249);
+	}
+	.m1>div>div:nth-of-type(2) {
+		margin-left: 15px;
+		color: #364349;
+	}
+	.m1>div {
+		display: flex;
+		/* width: 350px; */
+		height: 15px;
+		/* border: 1px solid black; */
+		font-size: 12px;
+	}
+
+	@font-face {
+		font-family: mao;
+		src: url("font/毛泽东体.ttf");
+	}
+	.nav>a>span {
+		position: relative;
+		top: 6px;
+	}
+	.a_text1 {
+		position: relative;
+		left: 1095px;
+	}
+	@font-face {
+		font-family:钢笔字体;
+		src: url("font/庞中华钢笔字体.TTF");
+	}
+	.right_1 {
+		background: rgba(221, 233, 249, 0.6);
+		position: relative;
+		left: 200px;
+		top: -460px;
+		width: 700px;
+		height: 600px;
+		visibility: hidden;
+	}
+	.right_3 {
+		width: 700px;
+		height: 600px;
+		background: rgba(221, 233, 249, 0.6);
+		position: absolute;
+		left: 200px;
+		top: -1px;
+		visibility: hidden;
+	}
+	.right_2 {
+		margin: 0;
+		padding: 0;
+		width: 700px;
+		height: 600px;
+		background: rgba(221, 233, 249, 0.6);
+		position: relative;
+		left: 200px;
+		top: -352px;
+		visibility: hidden;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+	}
+	.p1 {
+		width: 700px;
+		height: 150px;
+		/* border: 1px solid black; */
+		text-align: center;
+		line-height: 150px;
+		font-family: 钢笔字体;
+		font-size: 56px;
+	}
+	.p2>div {
+		width: 350px;
+		height: 150px;
+		display: flex;
+		align-items: center;
+		font-size: 24px;
+		font-family: 钢笔字体;
+		
+	}
+	.p2 {
+		width: 700px;
+		height: 300px;
+		border-top: 1px solid gray;
+		font-size: 24px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		
+	}
+	
+	.p3 {
+		width: 700px;
+		height: 150px;
+		border-top: 1px solid gray;
+	}
+	
+	
+	
+	body {
+		margin: 0;
+		padding: 0;
+		background: url(../images/bgg.jpg);
+		font-family: 钢笔字体;
+	}
+
+	.header {
+		width: 100%;
+		height: 114px;
+		/* background-color: blueviolet; */
+	}
+
+	.header01 {
+		display: flex;
+		margin-left: 50px;
+	}
+
+	.hz {
+		margin-top: 20px;
+	}
+
+	.te {
+		margin-top: 30px;
+	}
+
+	.nav {
+		width: 100%;
+		height: 45px;
+		background-color: #0377C2;
+		display: flex;
+	}
+
+	a {
+		display: block;
+		width: 200px;
+		height: 45px;
+		text-decoration: none;
+		color: black;
+		text-align: center;
+		line-height: 45px;
+	}
+	#disappear {
+		visibility: hidden;
+	}
+
+	.a_text {
+		position: relative;
+		left: 280px;
+	}
+
+	.content {
+		width: 900px;
+		height: 600px;
+		/* background-color: #2B4F87; */
+		/* background: rgba(40,40,40,0.4); */
+		margin-left: 100px;
+		display: flex;
+		position: relative;
+		left: 190px;
+	}
+
+	.left_1>ul {
+		list-style: none;
+		font-size: 56px;
+		margin-top: 150px;
+		/* background-color: hotpink; */
+
+	}
+
+	.F3 {
+		width: 200px;
+		height: 100px;
+		margin-left: -40px;
+		text-align: center;
+		line-height: 100px;
+		cursor: pointer;
+
+	}
+	.F2 {
+		width: 200px;
+		height: 100px;
+		margin-left: -40px;
+		text-align: center;
+		line-height: 100px;
+		cursor: pointer;
+	
+	}
+	.F1 {
+		width: 200px;
+		height: 100px;
+		margin-left: -40px;
+		text-align: center;
+		line-height: 100px;
+		cursor: pointer;
+	
+	}
+
+	.left_1 {
+		width: 200px;
+		height: 600px;
+		background: rgba(3, 119, 196, 0.6);
+	}
+
+
+	.iconfont {
+		font-size: 34px;
+		position: relative;
+		top: -8px;
+	}
+
+	
+

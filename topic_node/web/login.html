@@ -47,8 +47,9 @@
 				dataType: 'json',
 				success: function(res) {
 					if (res.ok) {
-						alert("登录成功");
+						// alert("登录成功");
 						window.location = "/web/index.html";
+						// $("#user").text(res.pass);
 					} else {
 						alert("您未注册");
 						window.location = "/web/index.html";

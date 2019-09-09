@@ -7,7 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1243315_7en108cni6.css" />
 		<link rel="stylesheet" type="text/css" href="index.css" />
 		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script type="text/javascript" src="验证但呢个了.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		
 	</head>
 	<body>
 		<header class="header">
@@ -15,13 +16,20 @@
 				<div class="hz"><img src="images/logo会展.png" alt=""></div>
 				<div class="te"><img src="images/h35.png"></div>
 				<div class="login_header">
+					<div id="user" style="width: 100px;background: #007BFF;">
+
+					</div>
 					<div class="user_main"><span class="iconfont icon-mengbanhangkonghangtian-waixingrenalien"></span>
 						<a href="/web/register.html">注册</a>
-						<a href="/web/login.html">登录</a>
-							<a href="" id="app-5" v-on:click="delogout">注销</a>
-							<!-- <button type="button" v-on:click="delogout">注销</button> -->
-						<!-- <a href="/web/user.html">注销</a> -->
+						<a href="/web/login.html" id="pass">登录</a>
+						<div id="app-5">
+							<!-- <a href="" v-on:click="delogout">注销</a> -->
+							<!-- <a href="" v-on:click="delogout">注销</a> -->
+							<button type="button" v-on:click="delogout">注销</button>
+						</div>
 						<!-- <a href="" id="app-5" v-on:click="delogout">注销</a> -->
+						<!-- <button type="button" v-on:click="delogout">注销</button> -->
+						<!-- <a href="/web/user.html">注销</a> -->
 					</div>
 					<div class="Administrator_main"><span class="iconfont icon-4"></span><a href="http://127.0.0.1:8848/%E4%BC%9A%E5%B1%95%E4%B8%AD%E5%BF%83%E9%A1%B9%E7%9B%AE/adminlogin.html">管理员入口</a></div>
 				</div>
@@ -179,29 +187,11 @@
 	</body>
 </html>
 <script type="text/javascript" src="index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script type="text/javascript" src="注销.js"></script>
+<!-- <script type="text/javascript" src="注销.js"></script> -->
 <script type="text/javascript">
 	// function zhuxiao() {
-	// 	if (confirm("您是否要注销")) {
-	// 		$(function() {
-	// 			$.ajax({
-	// 				url: "/logout",
-	// 				type: 'post',
-	// 				dataType: 'json',
-	// 				success: function(res) {
-	// 					alert("注销成功");
-	// 				},
-	// 				error: function(a, b) {
-	// 					alert(a);
-	// 				}
-	// 			});
-	// 		});
-	// 	} else {
-	// 		alert("不注销");
-	// 	}
-	// }
-	
+	// if (confirm("您是否要注销")) {
+
 	// var app5 = new Vue({
 	// 	el: '#app-5',
 	// 	data: {},
@@ -222,4 +212,5 @@
 	// 		}
 	// 	}
 	// });
+
 </script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>管理员页面</title>
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1243315_7en108cni6.css" />
+		<link rel="stylesheet" href="Admin_interface.css">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="/web/jquery-2.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<header class="header">
+			<div class="header01">
+				<div class="hz"><img src="../images/logo会展.png" alt=""></div>
+				<div class="te"><img src="../images/h35.png"></div>
+				<div style="font-family: mao; font-size: 45px; color: #364349; position: relative;left: 618px;top: 31px; font-family: 隶书;">管理员页面</div>
+				<a href="/web/index.html" class="iconfont icon-tuichudenglu" style="font-size: 30px; position: relative;left: 650px; top: 35px;"><span
+					 style="font-size: 20px; font-family: 钢笔字体;">返回主页面</span></a>
+			</div>
+		</header>
+		<div class="nav">
+			<a href="#" class="a_text"><span class="iconfont icon-changdi"></span>管理场地</a>
+			<a href="#" class="a_text1" id="appear"><span class="iconfont icon-shenqing"></span>预约申请</a>
+			<a href="#" class="a_text1" id="disappear"><span class="iconfont"></span>点击收回</a>
+			<div class="apply_content" id="apply_content">
+				<ol>
+					<li v-for="(tood,i) in todos">
+						<div class="m1" style="font-family: 隶书;">
+							<div><div><span>公司:</span></div> <div>{{tood.companyName}}</div></div>
+							<div><div><span>租用时间:</span></div> <div>{{tood.elapsedTime}}</div></div>
+							<div><div><span>价格:</span></div> <div>{{tood.teh_price}}</div></div>
+							<div><div><span>展区:</span></div> <div>{{tood.teh_name}}</div></div>
+							
+							
+					</div>
+						<button type="button" :class="tood.id" v-on:click="greet(tood,$event)">同意</button>
+						 <button type="button" :class="tood.id" v-on:click="refused(tood,$event)">拒绝</button>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="content">
+			<div class="left_1">
+				<ul>
+					<li class="F3" id="F3" style="font-family: 隶书;">修改<span class="iconfont icon-jiantou-right"></span>
+						<div class="right_3" id="right_3">
+
+							<form action="" method="">
+								<div class="p1"><span  style="font-family: 隶书; color: #808080;">展区修改表</span></div>
+								<div class="p2">
+									<div>
+										<span>展区信息:</span>
+										<input type="text" name="subsName" id="subsName" value="" />
+									</div>
+									<div>
+										<span>使用的公司:</span>
+										<input type="text" name="userConpyname" id="userConpyname" value="" />
+									</div>
+									<div>
+										<span>时间区间:</span>
+										<input type="text" name="userTime" id="userTime" value="" />
+									</div>
+									<div>
+										<span>价&emsp;&emsp;&emsp;格:</span>
+										<input type="text" name="userPrices" id="userPrices" value="" />
+									</div>
+								</div>
+								<div class="p3">
+									<input type="button" name="admin_update" id="admin_update" value="修改" style="margin-top: 40px;" />
+								</div>
+							</form>
+
+						</div>
+					</li>
+
+				</ul>
+			</div>
+
+		</div>
+
+	</body>
+</html>
+<script type="text/javascript" src="/web/Admin_interface.js"></script>

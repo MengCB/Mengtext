@@ -28,7 +28,7 @@ connection.connect(); //数据库连接
 
 app.use('/web', express.static('web'));
 
-const hour = 1000 * 60 * 60; 
+const hour = 1000 * 60 * 60;
 var sessionOpts = {
 	secret: 'a cool secret', // 设置密钥	
 	resave: true, // 强制将会话保存回会话存储区
@@ -48,7 +48,7 @@ app.get('/checkLogin', function(req, res) {
 		res.json({
 			"ok": true
 		});
-		console.info(checkLogin.checkLogin(req));
+		// console.info(checkLogin.checkLogin(req));
 	} else {
 		res.json({
 			"ok": false
@@ -59,16 +59,16 @@ app.get('/checkLogin', function(req, res) {
 
 // 修改成权限页面
 app.get('/', function(req, res) {
-		// 验证登录状态
-		var sess = req.session;
-		if (checkLogin.checkLogin(req)) {
-			res.sendFile(__dirname + "/web/login.html");
-		} else {
-			res.setHeader('Content-Type', 'text/html;charset=utf-8');
-			// res.write('<p> 欢迎您: ' + sess.userName + '</p>');
-			res.end();
-		}
-	});
+	// 验证登录状态
+	var sess = req.session;
+	if (checkLogin.checkLogin(req)) {
+		// res.sendFile(__dirname + "/web/login.html");
+	} else {
+		res.setHeader('Content-Type', 'text/html;charset=utf-8');
+		// res.write('<p> 欢迎您: ' + sess.userName + '</p>');
+		res.end();
+	}
+});
 
 // 响应注销退出
 app.post('/logout', function(request, response) {
@@ -97,9 +97,9 @@ app.post("/login", function(request, respon) {
 			// 登录成功, 要改session
 			var sess = request.session;
 			sess.userName = request.body.userName;
-			console.info("哈哈哈哈哈哈");
+			var pass = result[0].user_name;
 			respon.json({
-				"ok": true
+				"ok": true,
 			});
 		}
 	});
@@ -182,3 +182,5 @@ app.post("/subscribe", function(request, respon) {
 // 	res.end();
 // });
 app.listen(3306);
+
+console.info("服务器已启动");

@@ -79,6 +79,7 @@ app.get('/checkeLogin', function(req, res) {
 		});
 	}
 })
+
 // 会员登录
 app.post('/adlogin', function(request, respon) {
 	convention.administrator(request, respon);

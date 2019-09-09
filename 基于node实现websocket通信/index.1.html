@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<title>WebSocket-index1</title>
+	</head>
+	<body>
+
+		<div id="xxxxx" style="width: 400px; height: 300px; border:2px solid #0000FF; overflow: scroll;">
+
+		</div>
+
+		<input type="text" name="" id="input1" value="" />
+
+		<input type="button" name="" id="bt1" value="提交" />
+	</body>
+
+</html>
+
+<script>
+	var ws = new WebSocket('ws://127.0.0.1:3000');
+
+	ws.onopen = function() {
+		console.log('index1--连接');
+	}
+	ws.onmessage = function( mess) {
+		console.log(mess.data);
+		$("#xxxxx")[0].innerText += mess.data;
+		$("#input1").val('');
+	}
+
+	// setTimeout(function() {
+	// 	ws.send("{to: 'server', mes: '我是index11111'}")
+	// }, 2000);
+
+
+	$("#bt1").click(function(){
+		var messText = $("#input1").val() ;
+		if( !messText){
+			alert("消息内容不能为空");
+			return; 
+		}
+		ws.send( messText );
+	});
+	
+	
+	
+</script>
