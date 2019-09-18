@@ -1,0 +1,6 @@
+
+---数据库中随机选取3个用户
+select * from men where name = 'mcb' order by rand() limit 3; 
+
+---模糊查询
+select * from person where name  like '%mcb%';

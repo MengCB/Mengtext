@@ -1,0 +1,46 @@
+创建考试系统库
+create database testquestion;
+
+进入数据库
+use testquestion;
+
+1.创建管理员表(教师登录)
+create table teacher (id int auto_increment,username varchar(40),userpassword varchar(40),key(id))DEFAULT CHARSET=utf8;
+insert into teacher(username,userpassword) values('user','123456');
+
+
+2.创建学生表
+create table students(id int auto_increment,username varchar(40),userpassword varchar(40),userscore varchar(20),key(id))DEFAULT CHARSET=utf8;
+
+
+3.创建题库(题目类型为:html js jq )
+create table question(id int auto_increment,testtitle varchar(100),optionsA varchar(50),optionsB varchar(50),optionsC varchar(50),optionsD varchar(50),answer varchar(20),kind varchar(40),key(id))DEFAULT CHARSET=utf8;
+
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('javascript是一种弱类型语言,弱类型语言和强类型语言之间的区别,下列描述正确的是()','弱类型语言很弱,强类型语言很强大','弱类型语言中没有数据类型的概念','弱类型语言也有数据类型,例如number','弱类型语言的javascript没有数据类型的概念','C','js');
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('以下表达式,能生成 10 ~ 30 之间的随机数的是:','Math.random()* 30','Math.random()* 10 + 20','Math.random()*10 + 30','Math.random()*20 + 10','D','js');
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('执行 parseInt( "100只猪" ) 的结果是','NaN','脚本错误','100','100只猪','C','js');
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('以下哪个选项不属于typeOf()函数的输出值:','number','NaN','object','function','B','js');
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('判断字符串 var str01 = "welcome to entor" 的长度，正确的方法是（）','str01.long','str01.replace()','str01.length','str01.length()','C','js');
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('下面哪一个是用来追加到指定元素的末尾的？','insertAfter()','append()','ppendTo()','after()','B','jq');
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('使用jquery检查<input type="hidden" id="id" name="id" />元素在网页上是否存在。（）','if($("#id")) {   //do someing...    }',' if($("#id").length > 0) {   //do someing...    }',' if($("#id").length() > 0) {   //do someing...    }',' if($("#id").size > 0) {   //do someing...    }','B','jq');
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('本周的例程中,我们使用了3D转换实现了翻书效果, 使用的是css的哪个样式?','scaleY(y)','rotate(angle)','skewX(angle)','rotateY()','D','html');
+
+insert into question(testtitle,optionsA,optionsB,optionsC,optionsD,answer,kind) values('以下哪个是CSS选择器中的通用选择器','body{}',' em,strong{}',' *{}','P{}','C','html');
+
+
+解决中文入库解译问题
+show variables like '%char%';
+
+set character_set_results='gbk';
+set character_set_client='gbk';
+set character_set_connection='gbk';
+set character_set_database='gbk';
+set character_set_server='gbk';

@@ -43,6 +43,12 @@ delete from Person where id=1;
 --------------------------------------------
 node.js里所有的异步操作都要带有回调函数
 
+---------------Node.js 的 HTTP 服务器：
+
+第一行请求（require）Node.js 自带的 http 模块，并且把它赋值给 http 变量。
+接下来我们调用 http 模块提供的函数： createServer 。
+这个函数会返回 一个对象，这个对象有一个叫做 listen 的方法，
+这个方法有一个数值参数， 指定这个 HTTP 服务器监听的端口号。
 
 7.事件与事件对象
 1.原理
@@ -88,7 +94,7 @@ error - 在接收和写入过程中发生错误时触发。
 finish - 所有数据已被写入到底层系统时触发。
 
 
-
+-------------20190826
 事件-->event模块-->eventEventmitter--> on/emit -->"topic"/(require)
 --eventName事件名,自定义的字符串,遵守命名规则:1.见名知意,
 2.不能用关键字3.下划线拼接,前后缀--buffer(二进制序列)-->stream(流)-->
@@ -112,8 +118,12 @@ request 对象封装了HTTP请求, response 对象封装了HTTP响应
 
 -----------------------------哈希hash特点是永不同步
 
-----------------文件系统(file System)
-包括文件和目录
+---------流 .pie() stream事件 -- on('data',callback) -- on('end', callback)--
+http-request-response--path-url-->文件服务器(通过解析地址,向response pie了相应的内容)
+-->文件系统fs--mkdir/递归增加recursive:true --readdir-->callback-->
+--遍历文件列表forEach( function( file ){...} )-->appendFile(追加写入)
+--open/close (打开/关闭文件)
+
 
 
 

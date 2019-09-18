@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="/web/bootstrap/css/bootstrap.css" />
+		<script type="text/javascript" src="/web/jquery-3.1.1.min.js"></script>
+		<style type="text/css">
+			body {
+				background: #66AFE9;
+			}
+
+			.ground1 {
+				height: 500px;
+				width: 600px;
+				margin: 100px auto;
+				background-color: #BCE8F1;
+				border-radius: 20px;
+			}
+
+			.main {
+				background: #AFD9EE;
+				border-radius: 15px;
+				padding: 25px;
+			}
+
+			.container {
+				margin-top: 15px;
+			}
+
+
+			.bground {
+				height: 750px;
+			}
+
+			.logo {
+				height: 100px;
+				background: #66AFE9;
+				font-size: 50px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding-right: 100px;
+			}
+
+			.logo01 {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				background-size: 100%;
+				margin-left: 50px;
+				background-image: url(image/tubiao2.jpg);
+			}
+
+			.deng {
+				font-size: 32px;
+				text-align: center;
+				margin-top: 40px;
+			}
+
+
+			.bt01 {
+				display: flex;
+				justify-content: space-around;
+			}
+
+			.bground {
+				background-image: url(image/11.jpg);
+				background-size: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="row">
+			<div class="header center-content">
+				<div class="logo">
+					<div class="logo01"></div>
+					<strong>欢迎报考!</strong>
+					<p>
+						<a href="/web/index.html" class="btn btn-default btn-lg active backb  btn-info" role="button">返回</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid banner-container bground">
+			<div class="row ground1">
+				<div class="banner-info-box center-content">
+					<div class="banner-info deng">
+						<strong>注册/登录并开始考试</strong>
+						<div class="banner-tab hide-on-mobile">
+							<div class="search-box">
+								<div class="form-group has-feedback has-clear">
+									<br><br>
+									<div class="row">
+										<div class="col-xs-1 text02 col-xs-offset-3">
+											<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+										</div>
+
+										<div class="col-lg-6 ">
+											<div class="input-group">
+												<input type="text" class="form-control search-txt" id="userName" placeholder="请输入ID" />
+											</div>
+										</div>
+									</div><br>
+
+									<div class="row">
+										<div class="col-xs-1 text02 col-xs-offset-3">
+											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+										</div>
+										<div class="col-lg-6">
+											<div class="input-group">
+												<input type="password" class="form-control search-txt" id="userPassword" placeholder="请输入密码" />
+											</div>
+										</div>
+									</div><br>
+								</div>
+							</div>
+
+
+							<div class="bt01">
+								<div><a class="nav-link btn-default btn-lg active btn-info" data-toggle="tab" href="/web/stuRegister.html">注册</a></div>
+								<div><a class="nav-link btn-default btn-lg active btn-info" style="cursor: pointer;" id="loginBt">开始测试</a></div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 main">
+					注意:您需要使用学号登录,登录后立即考试,如果您已经考试登录后查看成绩.
+
+				</div>
+			</div>
+		</div><br>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#loginBt").click(function() {
+			if ($("#userName").val() == "" || $("#userPassword").val() == "") {
+				alert("用户名或密码不正确!");
+			} else {
+				$.ajax({
+					url: '/stulogin',
+					data: {
+						userName: $("#userName").val(),
+						userPassword: $("#userPassword").val()
+					},
+					type: 'post',
+					dataType: 'json',
+					success: function(res) {
+						if (res.ok) {
+							alert("登录成功");
+							// 判断是否有分数(即是否考过试,如果考过试则不能再考,只能显示分数)
+							if (res.score == null) {
+								window.location = "/web/examination.html";
+							} else {
+								window.location = "/web/studentgrade.html";
+							}
+						} else {
+							alert("用户名或密码不正确")
+						}
+					},
+					error: function(a, b) {
+						console.info(a);
+					}
+				})
+			}
+		})
+	})
+</script>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>汇率</title>
+	</head>
+	<body>
+		<div id="rate">
+			作业:切换币种
+			<p>
+				请选择币种:
+				<select style="width: 200px;">
+					<option value="RMB" selected="selected">人民币</option>
+					<option value="RMB">日元</option>
+					<option value="RMB">美元</option>
+					<option value="RMB">欧元</option>
+				</select>
+				输入人名币值: <input type="text" name="" id="text" v-model="RMB" />
+			</p>
+			<p>
+				日元:<span>{{RMB / 0.06547}}</span>
+				<br>
+				美元:<span>{{RMB / 7.0754}}</span>
+				<br>
+				欧元:<span>{{RMB / 7.8346}}</span>
+				<br>
+				人民币:<span>{{RMB / 1}}</span>
+			</p>
+		</div>
+
+		<!-- 计算变量 -->
+		<br>
+		<p style="color: red;">计算属性的computed</p>
+		<div id="example">
+			请选择币种:
+			<select style="width: 200px;" v-model="select001" id="mm">
+				<option value="RMB" selected="selected">人民币</option>
+				<option value="Yen">日元</option>
+				<option value="USD">美元</option>
+				<option value="Euro">欧元</option>
+			</select>
+			<input type="text" v-model="stransStander" /> <!-- v-model双向绑定 -->
+			<br>
+			方法一:
+			<p>人民币: "{{ RMB }}"</p>
+			<p>日元: "{{ Yen }}"</p>
+			<p>美元: "{{ USD }}"</p>
+			<p>欧元: "{{ Euro }}"</p>
+			<br>
+			方法二:	
+			<p>人民币: "{{ showMoney('RMB') }}"</p>
+			<p>日元: "{{ showMoney('Yen') }}"</p>
+			<p>美元: "{{ showMoney('USD') }}"</p>
+			<p>欧元: "{{ showMoney('Euro') }}"</p>
+			
+			
+			<p>绑定函数的返回值: {{reversedMessage()}}</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var Rate = new Vue({
+		el: '#rate',
+		data: {
+			RMB: 1
+		}
+	});
+
+	var vm = new Vue({
+		el: '#example',
+		data: {
+			stransStander: 0,
+			select001: "RMB"
+		},
+		computed: {
+			// 计算属性的 getter
+			Yen: function() {
+				return parseFloat(this.mm) / 0.06547
+			},
+			USD: function() {
+				return parseFloat(this.mm) / 7.0754
+			},
+			Euro: function() {
+				return parseFloat(this.mm) / 7.8346
+			},
+			RMB: function() {
+				return parseFloat(this.mm) / 1
+			},
+			mm: function() {
+				var kind = this.select001;
+				var sttander = this.stransStander;
+				switch ( kind ) {
+					case "USD":
+						{
+							return sttander * 7.0754;
+						}
+						
+					case "Yen":
+						{
+							return sttander * 0.06547;
+						}
+						
+					case "Euro":
+						{
+							return sttander * 7.8346;
+						}
+						
+					case "RMB":
+						{
+							return sttander * 1;
+						}
+
+					default:
+						return 0;
+				}
+			}
+		},
+		
+	    methods: {
+	      reversedMessage: function () {
+	        return "横说竖说"
+	      },
+		  showMoney: function( currency ){
+			  var kind = this.select001;
+			  var sttander = this.stransStander;
+			  var money = 0;
+			  switch ( kind ) {
+			  	case "USD":
+			  		{
+			  			money = sttander * 7.0754;
+						break;
+			  		}
+			  		
+			  	case "Yen":
+			  		{
+			  			money = sttander * 0.06547;
+						break;
+			  		}
+			  		
+			  	case "Euro":
+			  		{
+			  			money = sttander * 7.8346;
+						break;
+			  		}
+			  		
+			  	case "RMB":
+			  		{
+			  			money = sttander * 1;
+						break;
+			  		}
+			  
+			  	default:
+			  		return 0;
+			  }
+			  
+			  switch( currency ){
+				  case "USD":
+				  		{
+				  			return parseFloat(money) / 7.0754
+				  		}
+				  		
+				  	case "Yen":
+				  		{
+				  			return parseFloat(money) / 0.06547;
+				  		}
+				  		
+				  	case "Euro":
+				  		{
+				  			return parseFloat(money) / 7.8346;
+				  		}
+				  		
+				  	case "RMB":
+				  		{
+				  			return parseFloat(money) / 1;
+				  		}
+				  
+				  	default:
+				  		return 0;
+				  }
+			  }
+	    }
+		
+	})
+</script>

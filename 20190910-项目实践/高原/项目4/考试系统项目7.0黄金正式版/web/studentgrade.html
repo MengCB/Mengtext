@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="/web/bootstrap/css/bootstrap.css"/>
+		<script type="text/javascript" src="/web/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="/web/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript">
+			$.ajax({
+				async:false, // 同步执行
+				url:"/checkeLogin",
+				type:"get",
+				data:{},
+				dataType:"json",
+				success:function(res){
+					if(res.login){
+						console.info("OK")
+					}else{
+						alert("您未登录");
+						window.location = "/web/studentlog.html";
+					}
+				},
+				error:function(a,b){
+					
+				}
+			})
+		</script>
+		<style type="text/css">
+			.mark{
+				width: 500px;
+				height: 500px;
+				margin: 150px auto;
+				background: #BCE8F1;
+				border-radius: 25px;
+				padding: 10px;
+			}
+			.mark2{
+				width: 200px;
+				height: 100px;
+				background-color: #66AFE9;
+				margin: 100px auto;
+				line-height: 100px;
+				text-align: center;
+				font-size: 50px;
+				
+			}
+			.mark02{
+				width: 200px;
+				height: 100px;
+				background-color: #66AFE9;
+				margin: auto;
+				font-size: 25px;
+			}
+			body{
+				background-image: url(image/33.jpg);
+				background-size: 100%;
+			}
+			.mark002{
+				width: 200px;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="row mark">
+			<div>
+			<h2>已考试,不能再次参加,分数为</h2>
+			</div>
+			<div class="row mark2">
+			</div>
+			<div class="mark002">
+		<input type="button" class="mark02" name="" id="tixe" value="退出" />	
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		
+		$.ajax({
+			url:'/secScore',
+			data:{},
+			type:"get",
+			dataType:"json",
+			success:function(res){
+				if(res.ok){
+					console.info(res.score);
+					$(".mark2").append('<p>' + res.score + '</p>');
+				}else{
+					alert("分数查询失败");
+				}
+			},
+			error:function(a,b){
+				console.info(a);
+			}
+		})
+		$("#tixe").click(function(){
+				$.ajax({
+						url:"/logout",
+						data:{},
+						type:"get",
+						dataType:"json",
+						success:function(res){
+							if(res.logout){
+								window.location = "/web/index.html";
+							}
+						},
+						error:function(a,b){
+							alert("退出失败");
+						}
+					})
+				})
+			
+		})
+</script>

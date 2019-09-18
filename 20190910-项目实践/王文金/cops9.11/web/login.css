@@ -1,0 +1,39 @@
+.father{
+	margin-top: 100px;
+}
+.lie {
+	/* border: 2px solid white; */
+	border-radius: 15px;
+}
+
+.boxs {
+	text-align: center;
+}
+
+.table-1 {
+	width: 250px;
+	height: 50px;
+	border-radius: 10px 10px 10px 10px;
+	opacity: 0.5;
+	margin-top: 10px;
+	/* background-image: url(../image/147.jpg); */
+}
+
+.table-2 {
+	width: 250px;
+	height: 50px;
+	border-radius: 10px 10px 10px 10px;
+	opacity: 0.5;
+	margin-top: 10px;
+	/* background-image: url(../image/159.jpg); */
+}
+
+.login-input {
+	width: 200px;
+	margin-top: 10px;
+}
+
+.enroll-input {
+	width: 200px;
+	margin-top: 10px;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="jquery-2.js"></script>
+		<!-- <script type="text/javascript" src="../connect_database_module.js"></script> -->
+		<!-- <script type="text/javascript" src="../demo1_tehInformation.js"></script> -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>用户页面</title>
+		<script type="text/javascript">
+			$.ajax({
+				async: false,
+				url: "/cleck_Login",
+				type: "get",
+				dataType: 'json',
+				data: {},
+				success: function(res) {
+					if (res.ok) {
+						//
+					} else {
+						alert("您未登录");
+						window.location = "/web/index.html";
+					}
+				},
+				error: function(a, b) {
+					alert(a);
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="app-5">
+			<div>&emsp;&emsp;下次再见!!!<br>嘻嘻嘻嘻!!!!!</div>
+			<button type="button" v-on:click="delogout">注销</button>
+		</div>
+		<style type="text/css">
+			body {
+				width: 100%;
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			div {
+				 font-size: 75px;
+			}
+			button {
+				width: 200px;
+				height: 100px;
+				font-size: 56px;
+				position: relative;
+				left: 150px;
+			}
+			
+		</style>
+	</body>
+</html>
+<script type="text/javascript">
+	var app5 = new Vue({
+		el: '#app-5',
+		data: {},
+		// 方法集
+		methods: {
+			delogout: function() {
+				$.ajax({
+					url: "/logout",
+					type: 'post',
+					dataType: 'json',
+					success: function(res) {
+						alert("注销成功");
+						window.location = "/web/index.html";
+					},
+					error: function(a, b) {
+						alert(a);
+					}
+				});
+			}
+		}
+	});
+</script>

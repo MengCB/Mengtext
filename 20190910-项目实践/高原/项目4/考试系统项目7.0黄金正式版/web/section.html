@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="/web/bootstrap/css/bootstrap.css" />
+		<script type="text/javascript" src="/web/jquery-3.1.1.min.js"></script>
+		<script src="/web/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript">
+			$.ajax({
+				async: false, // 同步执行
+				url: "/checkeLogin",
+				type: "get",
+				data: {},
+				dataType: "json",
+				success: function(res) {
+					if (res.login) {
+						console.info("OK")
+					} else {
+						alert("您未登录");
+						window.location = "/web/teacherlog.html";
+					}
+				},
+				error: function(a, b) {
+
+				}
+			})
+		</script>
+		<style type="text/css">
+			body {
+				background: #BCE8F1;
+			}
+
+			.main {
+				background: #ffffff;
+				border-radius: 15px;
+				padding: 25px;
+			}
+
+			.container {
+				margin-top: 50px;
+			}
+
+			.navbar-default {
+				background: #66AFE9;
+			}
+
+			.text-re {
+				position: relative;
+				left: 90%;
+			}
+
+			.text02 {
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				font-size: 17px;
+				font-weight: 600;
+			}
+
+			.secBt {
+				text-align: center;
+			}
+			
+			.he{
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<input type="button" class="btn btn-default navbar-btn" name="" id="hand" value="进入题库" />
+				</div>
+				<div class="navbar-header text-re">
+					<input type="button" class="btn btn-default navbar-btn" name="logout" id="logout" value="退出" />
+
+				</div>
+			</div>
+		</nav><br>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-10 col-xs-offset-1 main">
+					<h1>请出题</h1>
+					<form action="/quesSec1" method="post">
+
+						<textarea id="testtitle" name="testtitle" class="form-control" cols="128" rows="5"></textarea><br>
+						<div class="row">
+							<div class="col-xs-2 text02 col-xs-offset-3">
+								<p>A选项:</p>
+							</div>
+
+							<div class="col-lg-6">
+								<div class="input-group">
+									<input type="text" required id="optionsA" name="optionsA" class="form-control">
+								</div>
+							</div>
+						</div><br>
+						<div class="row">
+							<div class="col-xs-2 text02 col-xs-offset-3">
+								<p>B选项:</p>
+							</div>
+							<div class="col-lg-6">
+								<div class="input-group">
+									<input type="text" id="optionsB" required="" name="optionsB" class="form-control">
+								</div>
+							</div>
+						</div><br>
+						<div class="row">
+							<div class="col-xs-2 text02 col-xs-offset-3">
+								<p>C选项:</p>
+							</div>
+							<div class="col-lg-6">
+								<div class="input-group">
+									<input type="text" id="optionsC" required="" name="optionsC" class="form-control">
+								</div>
+							</div>
+						</div><br>
+						<div class="row">
+							<div class="col-xs-2 text02 col-xs-offset-3">
+								<p>D选项:</p>
+							</div>
+							<div class="col-lg-6">
+								<div class="input-group">
+									<input type="text" id="optionsD" required="" name="optionsD" class="form-control">
+								</div>
+							</div>
+						</div><br>
+
+						<div class="row">
+							<div class="col-xs-2 text02 col-xs-offset-3">
+								<p>正确答案:</p>
+							</div>
+							<div class="col-lg-6">
+								<div class="dropdown">
+									<button class="btn btn-primary dropdown-toggle he" type="button" data-toggle="dropdown" aria-haspopup="true"
+									 aria-expanded="true" id="answer">
+										正确答案
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										<li><a href="#" id="A">A</a></li>
+										<li><a href="#" id="B">B</a></li>
+										<li><a href="#" id="C">C</a></li>
+										<li><a href="#" id="D">D</a></li>
+									</ul>
+								</div>
+							</div>
+						</div><br>
+
+						<div class="row">
+							<div class="col-xs-2 text02 col-xs-offset-3">
+								<p>题目类型:</p>
+							</div>
+							<div class="col-lg-6">
+								<div class="dropdown">
+									<button class="btn btn-primary dropdown-toggle he" type="button" data-toggle="dropdown" aria-haspopup="true"
+									 aria-expanded="true" id="kind">
+										题目类型
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										<li><a href="#" id="js">js</a></li>
+										<li><a href="#" id="jq">jq</a></li>
+										<li><a href="#" id="html">html</a></li>
+									</ul>
+								</div>
+							</div>
+						</div><br>
+
+						<div class="secBt">
+							<input type="button" name="" class="btn btn-primary btn-lg" id="secBt" value="提交" /><br>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div><br>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-10 col-xs-offset-1 main">
+					注意:正确答案必须为A, B, C, D, 题目类型必须为html, js, jq, 每出完一题后需要点击提交.
+
+				</div>
+			</div>
+		</div><br>
+
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#A").click(function(){
+			$("#answer").text($("#A").text());
+		})
+		$("#B").click(function(){
+			$("#answer").text($("#B").text());
+		})
+		$("#C").click(function(){
+			$("#answer").text($("#C").text());
+		})
+		$("#D").click(function(){
+			$("#answer").text($("#D").text());
+		})
+		$("#js").click(function(){
+			$("#kind").text($("#js").text());
+		})
+		$("#jq").click(function(){
+			$("#kind").text($("#jq").text());
+		})
+		$("#html").click(function(){
+			$("#kind").text($("#html").text());
+		})
+		
+		
+		
+		//  校验
+		$("#secBt").click(function() {
+			console.info($("#answer").text().replace(/\s*/g, ""));
+			// var str_1 = $("#testtitle").val().replace(/\s*/g,"");
+			if ($("#testtitle").val().replace(/\s*/g, "") == "") {
+				alert("题目不能留空")
+			} else if ($("#optionsA").val().replace(/\s*/g, "") == "") {
+				alert("A选项不能留空")
+			} else if ($("#optionsB").val().replace(/\s*/g, "") == "") {
+				alert("B选项不能留空")
+			} else if ($("#optionsC").val().replace(/\s*/g, "") == "") {
+				alert("C选项不能留空")
+			} else if ($("#optionsD").val().replace(/\s*/g, "") == "") {
+				alert("D选项不能留空")
+			} else if ($("#answer").text().replace(/\s*/g, "") == "正确答案") {
+				alert("请选择正确答案")
+			} else if ($("#kind").text().replace(/\s*/g, "") == "题目类型") {
+				alert("请选择题目类型")
+			} else {
+				$.ajax({
+					url: '/quesSec',
+					data: {
+						testtitle: $("#testtitle").val(),
+						optionsA: $("#optionsA").val(),
+						optionsB: $("#optionsB").val(),
+						optionsC: $("#optionsC").val(),
+						optionsD: $("#optionsD").val(),
+						answer: $("#answer").text(),
+						kind: $("#kind").text()
+					},
+					type: 'post',
+					dataType: "json",
+					success: function(res) {
+						alert("提交成功");
+						window.location.reload();
+					},
+					error: function(a, b) {
+						console.info(a);
+					}
+				})
+			}
+		})
+
+
+//  进入题库
+$("#hand").click(function(){
+	window.location = "/web/questionDepo.html";
+})
+		// 注销退出
+		$("#logout").click(function() {
+			$.ajax({
+				url: "/logout",
+				data: {},
+				type: "get",
+				dataType: "json",
+				success: function(res) {
+					if (res.logout) {
+						window.location = "/web/index.html";
+					}
+				},
+				error: function(a, b) {
+					alert("退出失败");
+				}
+			})
+		})
+	})
+</script>

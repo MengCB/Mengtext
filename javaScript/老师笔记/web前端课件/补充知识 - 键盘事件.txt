@@ -1,9 +1,12 @@
 ﻿一.keypress,keydown,keyup的区别:
 
- 1.keydown：在键盘上按下某键时发生,一直按着则会不断触发（opera浏览器除外）, 它返回的是键盘代码;
- 2.keypress：在键盘上按下一个按键，并产生一个字符时发生, 返回ASCII码。注意: shift、alt、ctrl等键按下并不会产生字符，所以监听无效 ,换句话说, 只有按下能在屏幕上输出字符的按键时keypress事件才会触发。若一直按着某按键则会不断触发。
- 3.keyup：用户松开某一个按键时触发, 与keydown相对, 返回键盘代码.
- 
+ 1.onkeydown：在键盘上按下某键时发生,一直按着则会不断触发（opera浏览器除外）, 它返回的是键盘代码;
+ 2.onkeypress：在键盘上按下一个按键，并产生一个字符时发生, 返回ASCII码。注意: shift、alt、ctrl
+             等键按下并不会产生字符，所以监听无效 ,换句话说, 只有按下能在屏幕上输出字符的
+             按键时keypress事件才会触发。若一直按着某按键则会不断触发。
+ 3.onkeyup：用户松开某一个按键时触发, 与keydown相对, 返回键盘代码.
+  
+ 先后顺序onkeydown onkeyup onkeypress
  
  
  关于获取触发事件的说明：

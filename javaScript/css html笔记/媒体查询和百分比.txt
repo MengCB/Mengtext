@@ -30,7 +30,7 @@ http://fontawesome.dashgame.com/#basic
 图标旋转添加一个fa-spin类
 
 ----------------
-弹性盒子布局：
+弹性盒子布局：flex
 ---------------
 flex-flow 是属性 flex-direction 和 flex-wrap 的简写，
 用于排列弹性子元素。

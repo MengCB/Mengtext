@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="/web/bootstrap/css/bootstrap.css" />
+		<script type="text/javascript" src="/web/jquery-3.1.1.min.js"></script>
+		<script src="/web/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript">
+			$.ajax({
+				async:false, // 同步执行
+				url:"/checkeLogin",
+				type:"get",
+				data:{},
+				dataType:"json",
+				success:function(res){
+					if(res.login){
+						console.info("OK")
+					}else{
+						alert("您未登录");
+						window.location = "/web/studentlog.html";
+					}
+				},
+				error:function(a,b){
+					
+				}
+			})
+		</script>
+		<style type="text/css">
+			body {
+				background: #BCE8F1;
+			}
+
+			.navbar-default {
+				background: #66AFE9;
+			}
+
+			.navbar-btn {
+				width: 100px;
+			}
+
+			.main {
+				background: #ffffff;
+				border-radius: 0 0 15px 15px;
+				padding: 25px;
+			}
+
+			.inputText {
+				font-size: 16px;
+				font-family: "宋体";
+			}
+
+			.container {
+				margin-top: 50px;
+			}
+
+			.text-re {
+				position: relative;
+				left: 1350px;
+			}
+			.inputText{
+				font-size: 16px;
+				font-family: "宋体";
+			}
+			
+			.ptext{
+				font-size: 20px;
+				font-weight: 500;
+			}
+			.answers{
+				float: right;
+			}
+			h2{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<input type="button" class="btn btn-default navbar-btn" name="" id="zo" value="全部题库" />
+					<input type="button" class="btn btn-default navbar-btn" name="" id="js" value="js题库" />
+					<input type="button" class="btn btn-default navbar-btn" name="" id="jq" value="jq题库" />
+					<input type="button" class="btn btn-default navbar-btn" name="" id="html" value="html题库" />
+				</div>
+				<div class="navbar-header text-re">
+					<input type="button" class="btn btn-default navbar-btn" name="logout" id="logout" value="返回" />
+
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-10 col-xs-offset-1 main">
+					<form action="/" method="get" class="inputText" id="index">
+						<h1>请选择要查看题目的类型</h1>
+					</form>
+				</div>
+			</div>
+		</div><br>
+
+	</body>
+</html>
+
+<script type="text/javascript">
+	$(function() {
+		$(function() {
+			$.ajax({
+				url: "/Takeooo",
+				type: "get",
+				dataType: "json", //  服务器返回的数据类型
+				data: {},
+				success: function(res) {
+					console.info(res);
+					
+					$("#zo").click();
+					$("#zo").click(function(){
+						 $("#index").empty();
+						for(var i = 0; i<res.length; i++){
+								var text1 = $("<p class='ptext'>" + (i+1) + "." + res[i].testtitle + "</p>");
+								var p1 = $("<p>A. "+ res[i].optionsA +"</p>");
+								var p2 = $("<p>B. "+ res[i].optionsB +"</p>");
+								var p3 = $("<p>C. "+ res[i].optionsC +"</p>");
+								var p4 = $("<p>D. "+ res[i].optionsD +"</p><br>");
+								var p5 = $("<p class='answers'>"+ (i+1) +". 正确答案: "+ res[i].answer +"</p><br>");
+								$("#index").append(text1, p1, p2, p3, p4,p5)
+							}
+						var h2 =  $("<h2>总的题目(总"+ i +"题)</h2>");
+						$("#index").prepend(h2);
+					})
+					
+					//  js 类型
+					$("#js").click(function(){
+						var count = 0;
+						$("#index").empty();
+						for(var i = 0; i<res.length; i++){
+							if(res[i].kind == "js"){
+								count ++;
+								var text1 = $("<p class='ptext'>" + count + "." + res[i].testtitle + "</p>");
+								var p1 = $("<p>A. "+ res[i].optionsA +"</p>");
+								var p2 = $("<p>B. "+ res[i].optionsB +"</p>");
+								var p3 = $("<p>C. "+ res[i].optionsC +"</p>");
+								var p4 = $("<p>D. "+ res[i].optionsD +"</p><br>");
+								var p5 = $("<p class='answers'>"+ count +". 正确答案: "+ res[i].answer +"</p><br>");
+								$("#index").append(text1, p1, p2, p3, p4,p5)
+							}
+						}
+						var h2 =  $("<h2>js的题目(总"+count+"题)</h2>");
+						$("#index").prepend(h2);
+					})
+					// jq  类型
+					$("#jq").click(function(){
+						var count = 0;
+						$("#index").empty();
+						for(var i = 0; i<res.length; i++){
+							if(res[i].kind == "jq"){
+								count ++;
+								var text1 = $("<p class='ptext'>" + count + "." + res[i].testtitle + "</p>");
+								var p1 = $("<p>A. "+ res[i].optionsA +"</p>");
+								var p2 = $("<p>B. "+ res[i].optionsB +"</p>");
+								var p3 = $("<p>C. "+ res[i].optionsC +"</p>");
+								var p4 = $("<p>D. "+ res[i].optionsD +"</p><br>");
+								var p5 = $("<p class='answers'>"+ count +". 正确答案: "+ res[i].answer +"</p><br>");
+								$("#index").append(text1, p1, p2, p3, p4,p5)
+							}
+						}
+						var h2 =  $("<h2>jq的题目(总"+count+"题)</h2>");
+						$("#index").prepend(h2);
+					})
+					// html  类型
+					$("#html").click(function(){
+						var count = 0;
+						$("#index").empty();
+						for(var i = 0; i<res.length; i++){
+							if(res[i].kind == "html"){
+								count ++;
+								var text1 = $("<p class='ptext'>" + count + "." + res[i].testtitle + "</p>");
+								var p1 = $("<p>A. "+ res[i].optionsA +"</p>");
+								var p2 = $("<p>B. "+ res[i].optionsB +"</p>");
+								var p3 = $("<p>C. "+ res[i].optionsC +"</p>");
+								var p4 = $("<p>D. "+ res[i].optionsD +"</p><br>");
+								var p5 = $("<p class='answers'>"+ count +". 正确答案: "+ res[i].answer +"</p><br>");
+								$("#index").append(text1, p1, p2, p3, p4,p5)
+							}
+						}
+						
+						var h2 =  $("<h2>html的题目(总"+count+"题)</h2>");
+						$("#index").prepend(h2);
+					})
+					
+				},
+				error: function(a, b) {
+					console.info(a);
+				}
+			})
+
+		})
+
+		$("#logout").click(function() {
+			window.location = "/web/section.html";
+
+		})
+		
+	})
+</script>

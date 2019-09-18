@@ -1,7 +1,9 @@
 ﻿http://www.wangdoc.com/javascript/bom/window.html
 
 1. 概述
-浏览器里面，window对象（注意，w为小写）指当前的浏览器窗口。它也是当前页面的顶层对象，即最高一层的对象，所有其他对象都是它的下属。一个变量如果未声明，那么默认就是顶层对象的属性。
+浏览器里面，window对象（注意，w为小写）指当前的浏览器窗口。
+它也是当前页面的顶层对象，即最高一层的对象，所有其他对象都是它的下属。
+一个变量如果未声明，那么默认就是顶层对象的属性。
 
 a = 1;
 window.a // 1
@@ -11,7 +13,7 @@ window有自己的实体含义，其实不适合当作最高一层的顶层对�
 
 
 
-
+window的儿子-->
 
 window.document：指向document对象，详见《document 对象》一章。注意，这个属性有同源限制。只有来自同源的脚本才能读取这个属性。
 window.location：指向Location对象，用于获取当前窗口的 URL 信息。它等同于document.location属性，详见《Location 对象》一章。

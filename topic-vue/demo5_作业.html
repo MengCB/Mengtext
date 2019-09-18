@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-for</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<style type="text/css">
+		#homework {
+			width: 700px;
+			text-align: center;
+			position: relative;
+			left: 50%;
+			border: 3px solid red;
+			margin-left: -300px;
+			padding: 5px;
+		}
+
+		#newStudent {
+			width: 100%;
+			padding: 20px 0;
+		}
+
+		#newStudent input {
+			width: 200px;
+			margin-top: 12px;
+		}
+
+		#newStudent select {
+			width: 200px;
+			margin-top: 12px;
+		}
+
+		table {
+			position: relative;
+			width: 100%;
+		}
+
+		table td {
+			width: 25%;
+		}
+
+		.tb {
+			width: 700px;
+			height: 200px;
+			overflow-y: scroll;
+		}
+	</style>
+	<body>
+		<p>编辑一个表格实现增删功能</p>
+		<div id="homework">
+			<div id="newStudent">
+				<input type="text" name="name" v-model="newStudent.name" placeholder="姓名" />
+				<br>
+				<input type="number" name="age" v-model="newStudent.age" placeholder="年龄" />
+				<br>
+				<select v-model="newStudent.sex">
+					<option value="male">男</option>
+					<option value="female">女</option>
+					<option value="x">其他</option>
+				</select>
+				<br>
+				<input type="button" value="新增" @click="addNewStudent" />
+				<br>
+				<br>
+				<hr>
+				<table border="0">
+					<tr>
+						<th>序号</th>
+						<th>姓名</th>
+						<th>年龄</th>
+						<th>性别</th>
+						<th>操作</th>
+					</tr>
+				</table>
+				<hr>
+				<div class="tb">
+					<table border="0">
+						<tr v-for="(item, index) in students">
+							<td>{{index+1}}</td>
+							<td>{{item.name}}</td>
+							<td>{{item.age}}</td>
+							<td v-if="item.sex == 'male'">男</td>
+							<td v-else-if="item.sex == 'female'">女</td>
+							<td v-else-if="item.sex == 'x'">其他</td>
+							<!-- <td>{{transFormation(item.sex)}}</td> -->
+							<td>
+								<input type="button" @click="dele(item, index, $event)" v-bind:id="index" value="删除" style="width: 120px;" />
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var tableEdit = new Vue({
+		el: '#homework',
+		data: {
+			newStudent: {
+				name: '',
+				age: '',
+				sex: 'male'
+			},
+			students: [{
+				name: '小妹',
+				age: '15',
+				sex: 'female'
+			}, {
+				name: '碧螺',
+				age: '48',
+				sex: 'x'
+			}, {
+				name: '张飞',
+				age: '42',
+				sex: 'male'
+			}],
+		},
+		methods: {
+			addNewStudent: function() {
+				var newOne = this.newStudent;
+				if (!newOne.name || !newOne.age) {
+					alert("信息不完整");
+					return;
+				}
+				this.students.push(newOne);
+				this.newStudent = {
+					name: '',
+					age: '',
+					sex: 'male'
+				};
+			},
+			dele: function(item, index, event) {
+				this.students.splice(index, 1);
+			}
+			// transFormation: function(newSex) {
+			// 	switch (newSex) {
+			// 		case "male":
+			// 			{
+			// 				return "男";
+			// 			}
+			// 		case "female":
+			// 			{
+			// 				return "女";
+			// 			}
+			// 		case "x":
+			// 			{
+			// 				return "其他";
+			// 			}
+			// 	}
+			// }
+		}
+	})
+</script>

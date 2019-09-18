@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>排班表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+		<!-- <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script> -->
+		<style type="text/css">
+			body {
+				background-image: url(../web/image/24.jpg);
+			}
+
+			.hang {
+				margin-top: 50px;
+			}
+
+			.lie {
+				/* border: 2px solid hotpink; */
+				border-radius: 15px;
+			}
+
+			tr {
+				color: lightyellow;
+			}
+			
+			a{
+				color: #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row hang">
+				<div class="col-md-12">
+					<h1 id="h1Name" style="color: lightyellow; text-align: center;"></h1>
+				</div>
+			</div>
+
+			<div class="row hang">
+				<div class="col-md-12 lie">
+					<h4 style="text-align: center; color: lightgoldenrodyellow;">排班表</h4>
+					<table class="table tab">
+						<thead>
+							<tr>
+								<th>日期</th>
+								<th>警员名</th>
+								<th>执勤地址</th>
+							</tr>
+						<tbody id="tbody"></tbody>
+						</thead>
+					</table>
+				</div><!-- 列 -->
+
+				<div class="col-md-3">
+					<input class="btn bg-primary btn-block" id="bt02" type="button" value="点击查看警员排班表" />
+				</div>
+
+				<div class="col-md-3">
+					<input type="text" id="ipt1" placeholder="请输入日期" class="btn bg-warning  btn-block">
+				</div>
+
+				<div class="col-md-3">
+					<input type="text" id="ipt2" placeholder="输入警员名" class="btn bg-warning btn-block">
+				</div>
+
+				<div class="col-md-3">
+					<button id="btn" class="btn bg-info btn-block">搜索测试</button>
+				</div>
+
+			</div><!-- 行 -->
+			<br>
+			<div class="row">
+				<div class="col-md-4 col-lg-offset-4">
+					<a href="/map/map.html">
+						<input class="btn bg-link btn-block" type="button" value="返回地图界面" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="/web/jquery-2.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript">
+	// 随机人员
+	$(function() {
+		
+		var copsArr;
+		$.ajax({
+			url: '/secName',
+			data: {},
+			type: "get",
+			dataType: "json",
+			async: false,
+			success: function(res) {
+				if (res.ok) {
+					copsArr = res.result;
+				} else {
+					alert("名字查询失败");
+				}
+			},
+			error: function(a, b) {
+				console.info(a);
+			}
+		});
+		
+		
+		
+		
+		$("#bt02").click(function() {
+
+			var dateList = [{
+					date: "星期一"
+				},
+				{
+					date: "星期二"
+				},
+				{
+					date: "星期三"
+				},
+				{
+					date: "星期四"
+				},
+				{
+					date: "星期五"
+				},
+				{
+					date: "星期六"
+				},
+				{
+					date: "星期日"
+				},
+			];
+			for (var i = 0; i < dateList.length; i++) {
+				var targetHtmlNode = document.getElementById(dateList[i].date);
+				if (targetHtmlNode) {
+					targetHtmlNode.remove();
+				}
+			}
+
+			var postList = [{
+				post: "岗位1"
+			}, {
+				post: "岗位2"
+			}, {
+				post: "岗位3"
+			}, {
+				post: "岗位4"
+			}, {
+				post: "岗位5"
+			}, {
+				post: "岗位6"
+			}, {
+				post: "岗位7"
+			}, ]
+			for (var i = 0; i < postList.length; i++) {
+				var targetHtmlNode = document.getElementById(postList[i].post);
+				if (targetHtmlNode) {
+					targetHtmlNode.remove();
+				}
+			}
+			
+			var tempArr = [];
+			for (var i = 0; i < 7; i++) {
+				var ran = Math.floor(Math.random() * (copsArr.length - i));
+				tempArr.push(copsArr[ran]);
+				copsArr[ran] = copsArr[copsArr.length - i - 1];
+				
+				// 在列表上显示
+				var tr = $("<tr style='color: white' ></tr>");
+				tr.append("<td style='color: white'>" + dateList[i].date + "</td>");
+				tr.append("<td style='color: white'>" + tempArr[i].cop_name + "</td>");
+				tr.append("<td style='color: white'>" + postList[i].post + "</td>");
+				// tr.append("<td style='color: white'>岗位1</td>");
+				// tr.append("<td style='color: white'>0</td>");
+				$("#tbody").append(tr);
+			};
+		});
+		
+		
+		
+
+	})
+
+	// 测试部分
+	//查找元素
+	var oipt1 = document.getElementById('ipt1');
+	var oipt2 = document.getElementById('ipt2');
+	var obtn = document.getElementById('btn');
+	var osel = document.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+	console.log(osel);
+
+	// console.log(o);
+	//添加点击事件
+	obtn.onclick = function() {
+		showTrim();
+
+		// console.log(o1);
+		for (var i = 0; i < osel.length; i++) {
+			var o = osel[i].children[0].innerHTML; //获取每一行id的内容
+			var uName = osel[i].children[1].innerHTML; //获取每一行的姓名
+			var userId = oipt1.value.trim(); //祛除空格后的数据
+			var userName = oipt2.value.trim(); //祛除空格
+			if ((userId != '' && userName == '' && o == userId) ||
+				(userId == '' && userName != '' && userName == uName) ||
+				(userId != '' && userName != '' && o == userId && userName == uName)) {
+				osel[i].style.background = 'skyblue';
+			}
+		}
+	}
+	//祛除行背景
+	function showTrim() {
+		for (var i = 0; i < osel.length; i++) {
+			osel[i].style.background = '';
+		}
+	}
+
+	// 显示登录信息
+	$.ajax({
+		url: '/tableName',
+		data: {},
+		type: "get",
+		dataType: "json",
+		success: function(res) {
+			$("#h1Name").text(res);
+
+		}
+	})
+</script>

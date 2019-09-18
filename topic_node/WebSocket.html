@@ -7,7 +7,7 @@
 	</head>
 	<body>
 
-		<div id="xxx" style="width: 400px; height: 300px; border: 1px solid darkorange;">
+		<div id="xxx" style="width: 400px; height: 500px; border: 1px solid darkorange; background: lightcyan;">
 
 		</div>
 
@@ -18,14 +18,14 @@
 </html>
 <script type="text/javascript">
 	// url可以带参数,标识
-	var ws = new WebSocket('ws://127.0.0.1:3000?name=蒙承彪&passCode=3344'); //new的时候就尝试连接服务器
+	var ws = new WebSocket('ws://192.168.3.141:3000?name=蒙承彪&passCode=3344'); //new的时候就尝试连接服务器
 	
 	ws.onopen = function() {
 		console.info('WebSocket--连接');
 	}
 	
 	ws.onmessage = function(mess) {  // onmessage送过来的消息
-		console.info(mess.data);
+		// console.info(mess.data);
 		$("#xxx")[0].innerText += mess.data;
 		$("#input1").val('');
 	}

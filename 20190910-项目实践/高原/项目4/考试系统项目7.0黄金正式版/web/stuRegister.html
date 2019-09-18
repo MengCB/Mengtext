@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="/web/bootstrap/css/bootstrap.css" />
+		<style type="text/css">
+			body {
+				background: #66AFE9;
+			}
+
+			.tt {
+				background-image: url(image/zc.jpg);
+				width: 50%;
+				height: 700px;
+				margin: 50px 0 0 250px;
+				background-size: 100%;
+			}
+
+			.form02 {
+				background: #BCE8F1;
+				width: 400px;
+				height: 200px;
+			}
+
+			.form01 {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.bt01 {
+				display: flex;
+				justify-content: space-around;
+			}
+
+			.form {
+				background: #BCE8F1;
+				width: 500px;
+				height: 500px;
+				position: absolute;
+				top: 15%;
+				right: 10%;
+				border-radius: 25px;
+			}
+
+			h1 {
+				margin-top: 100px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tt"></div>
+		<div class="form">
+			<h1>账号注册</h1>
+			<div class="form01">
+				<div class="form02">
+					<form class="" id="studentBuild">
+						<div class="form-group">
+							<label for="examplePostName1">学号</label>
+							<input type="name" name="username" class="form-control" id="username" placeholder="请输入学号">
+						</div>
+						<div class="form-group" id="studentPost">
+							<label for="exampleInputPost1">密码</label>
+							<input type="password" name="userpassword" class="form-control" id="userpassword" placeholder="请输入密码">
+						</div><br>
+						<div class="bt01">
+							<button type="button" class="btn btn-success" id="registerBt">注册</button>
+							<button type="button" class="btn btn-primary" id="exitBt">返回</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		<!-- <div class="jumbotron">
+			<div class="container">
+				<form class="form-inline" id="studentBuild" style="margin: 0px auto;display: table;">
+					<div class="form-group">
+						<label for="examplePostName1">创建一个账号</label>
+						<input type="name" name="username" class="form-control" id="username" placeholder="请输入学号">
+					</div>
+					<div class="form-group" id="studentPost">
+						<label for="exampleInputPost1">密码</label>
+						<input type="password" name="userpassword" class="form-control" id="userpassword" placeholder="请输入密码">
+					</div>
+					&nbsp;
+					<button type="button" class="btn btn-success" id="registerBt">注册</button>
+					&nbsp;
+					<button type="button" class="btn btn-primary" id="exitBt">返回</button>
+				</form>
+			</div>
+		</div> -->
+	</body>
+</html>
+<script type="text/javascript" src="/web/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/web/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#registerBt").click(function() {
+			if ($("#username").val() == "") {
+				alert("注册的学号不能为空!");
+			} else if ($("#userpassword").val() == "") {
+				alert("注册的密码不能为空!");
+			} else if (isNaN($("#username").val())) {
+				alert("注册的学号只能是数字!");
+			} else if ($("#username").val().indexOf(" ") >= 0) {
+				alert("注册的学号不能带有空格!");
+			} else {
+				$.ajax({
+					url: '/register',
+					type: 'post',
+					data: {
+						username: $("#username").val(),
+						userpassword: $("#userpassword").val()
+					},
+					dataType: 'json',
+					success: function(res) {
+						if (res.ok) {
+							alert("注册成功!");
+							window.location = "/web/studentlog.html";
+						} else {
+							alert("注册失败或用户已存在!")
+						}
+					},
+					error: function(a, b) {
+						console.info(a);
+					}
+				})
+			}
+
+		})
+
+		$("#exitBt").click(function() {
+			window.location = "/web/index.html";
+		})
+	})
+</script>

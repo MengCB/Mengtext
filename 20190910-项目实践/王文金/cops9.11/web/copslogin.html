@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="/web/jquery-2.js"></script>
+		<title></title>
+		<style type="text/css">
+			body{
+				background:url(/web/image/24.jpg);
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+			.title{
+				position: absolute;
+				font-size: 50px;
+				right: 350px;
+				margin-top: 10%;
+			}
+			.mokuai{
+				width: 700px;
+				height: 450px;
+				background-color: white;
+				opacity: 0.2;
+				position: absolute;
+				right: 100px;
+				margin-top: 300px;
+			}
+			.biaoge{
+				width:600px;
+				height: 70px;
+				border-radius: 10px 10px 10px 10px;
+				background-color: skyblue;
+				position: absolute;
+				right: 150px;
+				margin-top: 350px;
+				opacity: 0.7;
+				background-image: url(/web/image/147.jpg);
+				background-size: 60px 60px;
+				background-position: 5px 4px;
+				background-repeat: no-repeat;
+				/* padding: 8px 10px 8px 40px; */
+				color: gray;
+				font-size: 30px;
+				margin-left: 100px;
+				text-align: center;
+			}
+			.biaoge2{
+				width:600px;
+				height: 70px;
+				border-radius: 10px 10px 10px 10px;
+				background-color: skyblue;
+				position: absolute;
+				right: 150px;
+				margin-top: 450px;
+				opacity: 0.7;
+				background-image: url(/web/image/159.jpg);
+				background-size: 60px 60px;
+				background-position: 5px 4px;
+				background-repeat: no-repeat;
+				color: gray;
+				font-size: 30px;
+				margin-left: 100px;
+				text-align: center;
+			}
+			.sign{
+				width:400px;
+				height: 70px;
+				border-radius: 10px 10px 10px 10px;
+				opacity: 0.9;
+				background-color: skyblue;
+				position: absolute;
+				right: 250px;
+				margin-top: 600px;
+				font-size: 30px;
+				color: white;
+			}
+			.zhuche{
+				width: 200px;
+				height: 80px;
+				border-radius: 15px 15px 15px 15px;
+				position: absolute;
+				right: 0;
+				font-size: 30px;
+				background-color:darkgray;
+				color: orange;
+			}
+			#img{
+				width: 235px;
+				height: 250px;
+				float: right;
+				background-image: url(/web/image/haha.jpg);
+				margin-right: 320px;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="title" style="color:white"></div>
+		<div id="img">
+			
+		</div>
+		<div class="mokuai">
+		</div>
+		<input type="text" class="biaoge"  name="copName" id="copName" value="jason" />
+		<input type="password" class="biaoge2"   name="copPassword" id="copPassword" value="123" />
+		<button type="button" class="sign" id="loginBt" >登录<a href="#"></a></button>
+		<button type="button" class="zhuche" id="bt1" >新警员注册</button>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	$(function() {
+		$("#loginBt").click(function() {
+			$.ajax({
+				url: '/copslogin',
+				data: {
+					copName: $("#copName").val(),
+					copPassword: $("#copPassword").val()
+				},
+				type: 'post',
+				dataType: 'json',
+				success: function(res) {
+					if (res.ok) {
+						alert("登录成功");
+						window.location = '/map/map.html';
+						
+					} else {
+						alert("用户名或密码不正确！");
+					}
+				},
+				error: function(a, b) {
+					console.info(a);
+				}
+			})
+		});
+		
+		$("#bt1").click(function(){
+			window.location = "/web/enroll.html";
+		})
+		
+		
+	});
+	
+	
+</script>

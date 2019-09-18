@@ -7,7 +7,9 @@ https://www.jianshu.com/p/8c471f33989a
 ---------------------------WebSocset
 
 引用ws模块: cnpm install ws
+
 socket本身并不存在他是一个建立通信,保留连接句柄(连接对象),长连接.
+
 socket是由客户端发起的,客户端可以是服务器端,后端.
 session和WebSocket不通用
 
@@ -30,3 +32,26 @@ Socket.send()
 
 Socket.close()	
 关闭连接
+
+
+node.js WebSocket API
+
+
+create table person (id int auto_increment, name varchar(20), record varchar(60), key(id) )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

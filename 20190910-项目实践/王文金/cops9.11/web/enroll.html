@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="login.css" />
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+		<script type="text/javascript" src="/web/jquery-2.js"></script>
+		<title>注册</title>
+		<style type="text/css">
+			body {
+				background-image: url(/web/image/24.jpg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container father">
+			<div class="row hang">
+				<div class="col-md-4 col-md-offset-4 lie">
+					<h1 style="text-align: center; color: darkgrey;">加入我们</h1>
+				</div>
+			</div>
+			<br>
+			<div class="row hang">
+				<div class="col-md-6 col-md-offset-3 lie">
+					<div class="boxs">
+						<form>
+							<input type="text" class="table-1" name="userName" id="userName" placeholder="请输入警员姓名" />
+							<br>
+							<input type="password" class="table-2" name="userPassword" id="userPassword" placeholder="请输入警员密码" />
+							<br>
+
+							<input type="text" class="table-2" name="userId" id="userDesc" placeholder="请输入个人警衔" />
+							<br>
+							<input type="button" class="btn btn-info btn-lg enroll-input" id="enroll02" value="注册" />
+							<br>
+							<input type="button" class="btn btn-info btn-lg enroll-input" id="cancel" value="取消注册" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<!-- <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script> -->
+<script type="text/javascript">
+	$(function() {
+		// 注册
+		$("#enroll02").click(function() {
+			if ($("#userName").val() == "") {
+				alert("警号不能为空!");
+			} else if ($("#userPassword").val() == "") {
+				alert("密码不能为空!");
+			} else {
+				$.ajax({
+					url: '/toEnroll',
+					type: 'post',
+					dataType: 'json',
+					data: {
+						userName: $("#userName").val(),
+						userPassword: $("#userPassword").val(),
+						userDesc: $("#userDesc").val()
+					},
+					success: function(res) {
+						// alert(data.info);
+						if (res.ok) {
+							alert("注册成功");
+							window.location = "/web/copslogin.html";
+						} else {
+							alert("注册失败");
+						}
+					},
+					error: function(a, b) {
+						console.info(a);
+					}
+				});
+			}
+		});
+
+		$("#cancel").click(function() {
+			window.location = "/web/copslogin.html";
+		});
+
+	})
+</script>

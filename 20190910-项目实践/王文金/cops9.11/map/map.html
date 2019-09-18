@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<script src="jquery-2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/library/GeoUtils/1.2/src/GeoUtils_min.js "></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=3.0&ak=zeRDEddthGGHjsetz02Hum46S6RXBNl3"></script>
+		<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+		<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+		<style type="text/css">
+			body {
+				background-image: url(../web/image/24.jpg);
+			}
+			
+			h1 {
+				text-align: center;
+				color: white;
+			}
+			
+			#allmap {
+				/* top: 120px; */
+				width: 100%;
+				height: 700px;
+				overflow: hidden;
+				margin: 0;
+				border-radius: 20px;
+			}
+
+			.box1 {
+			}
+		</style>
+		<title>地图展示</title>
+
+	</head>
+	<body>
+		<h1 style="text-align: center;">执勤点</h1>
+		<br>
+		<br>
+		<div id="allmap"></div>
+		<br>
+		<!-- <input id="bt01" type="button" value="打卡" />
+		<input type="button" name="logout" id="logout" value="退出登录" /> -->
+		<div class="box1">
+		<button type="button" class="btn btn-success btn-lg" id="bt01">警员到岗打卡</button>
+		<button type="button" class="btn btn-info btn-lg" id="watch">查看排班表</button>
+		<button type="button" class="btn btn-warning btn-lg" id="logout">退出登录</button>
+		<!-- <button type="button" class="btn btn-danger">管理人员通道</button> -->
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap"); // 创建Map实例
+	map.centerAndZoom(new BMap.Point(108.38948, 22.82344), 16); // 初始化地图,设置中心点坐标和地图级别
+	map.setMapStyleV2({
+		styleId: '2bcdac2099b1612b3133753ab270689c'
+	});
+
+	map.setCurrentCity("南宁"); // 设置地图显示的城市
+	map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+
+
+
+
+	$(function() {
+
+		// 注销退出
+		$("#logout").click(function() {
+			$.ajax({
+				url: "/logout",
+				data: {},
+				type: "get",
+				dataType: "json",
+				success: function(res) {
+					if (res.logout) {
+						window.location = "/web/copslogin.html";
+					}
+				},
+				error: function(a, b) {
+					alert("退出失败");
+				}
+			})
+		});
+
+
+
+		var loginName;
+		$.ajax({
+			url: '/checkLogin',
+			data: {},
+			type: "get",
+			dataType: "json",
+			async: false,
+			success: function(res) {
+				if (res.ok) {
+					// console.info(res.logName);
+					loginName = res.logName;
+				} else {
+					console.info("xxxx");
+				}
+			}
+		})
+
+		var copsArr;
+		$.ajax({
+			url: '/secName',
+			data: {},
+			type: "get",
+			dataType: "json",
+			async: false,
+			success: function(res) {
+				if (res.ok) {
+					copsArr = res.result;
+				} else {
+					alert("名字查询失败");
+				}
+			},
+			error: function(a, b) {
+				console.info(a);
+			}
+		})
+
+		//巡逻点固定坐标
+		var site = [
+			[108.385083, 22.814292],
+			[108.376585, 22.819214],
+			[108.381454, 22.815882],
+			[108.386089, 22.828957],
+			[108.378543, 22.82929],
+			[108.40657, 22.825826],
+			[108.390473, 22.825093],
+		];
+
+		//信息窗口
+		var opts = {
+			width: 250, // 信息窗口宽度
+			height: 80, // 信息窗口高度
+			title: "警员信息", // 信息窗口标题
+			enableMessage: true //设置允许信息窗发送短息
+		};
+
+		var tempArr = [];
+		var content;
+		var marker;
+		var psPoint_x;
+		var psPoint_y;
+		var index = null;
+		var clock;
+
+		//自定义坐标样式
+		var myIcon1 = new BMap.Icon("cop_32px.ico", new BMap.Size(48, 48));
+
+		function turnlight() {
+			//将数据库表中成员随机重组并保存到 tempArr 中
+			for (var i = 0; i < 7; i++) {
+				// console.info(copsArr);
+				var ran = Math.floor(Math.random() * (copsArr.length - i));
+				tempArr.push(copsArr[ran]);
+				copsArr[ran] = copsArr[copsArr.length - i - 1];
+			};
+			console.info(tempArr);
+
+			for (var j = 0; j < 7; j++) {
+				marker = new BMap.Marker(new BMap.Point(site[j][0], site[j][1]), {
+					icon: myIcon1
+				}); // 创建标注
+				content = tempArr[j].cop_name;
+				map.addOverlay(marker); // 将标注添加到地图中
+				addClickHandler(content, marker);
+				//人员随机并保存相应坐标
+				tempArr[j].cop_site_x = site[j][0];
+				tempArr[j].cop_site_y = site[j][1];
+
+				//当警员姓名等于登陆者姓名的时候, clock 等于 与登录者相对应的警员姓名
+				//psPoint_x/y 等于该警员相对应的坐标
+				if (tempArr[j].cop_name === loginName) {
+					clock = tempArr[j].cop_name;
+					psPoint_x = tempArr[j].cop_site_x;
+					psPoint_y = tempArr[j].cop_site_y;
+				};
+			};
+
+
+
+		};
+		turnlight();
+
+		//打卡
+		//在打卡的时候 登陆的警员 的相对应坐标窗口弹出
+		$("#bt01").click(function() {
+			// alert(666);
+			// var r = confirm("确认是否打卡")
+			var point01 = new BMap.Point(psPoint_x, psPoint_y);
+			if (point01.lat === 0) {
+				alert("打卡失败");
+				alert("您今日轮休，请好好休息");
+				
+			} else{
+				alert("打卡成功");
+				alert("请前往该站点执勤");
+				var infoWindow = new BMap.InfoWindow(clock, opts);
+				var point01 = new BMap.Point(psPoint_x, psPoint_y);
+				map.openInfoWindow(infoWindow, point01);
+			}
+		});
+
+		//点击执勤点显示信息
+		function addClickHandler(content, marker) {
+			marker.addEventListener("click", function(e) {
+				openInfo(content, e)
+			});
+		}
+
+		//开启信息窗口
+		function openInfo(content, e) {
+			var p = e.target;
+			var point02 = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+			var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象 
+			map.openInfoWindow(infoWindow, point02); //开启信息窗口
+		}
+		
+		$("#watch").click(function() {
+			window.location = "/web/table.html";
+		});
+
+	});
+</script>

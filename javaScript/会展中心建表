@@ -32,7 +32,6 @@ insert into user(user_name,serialNumber,user_password) values('liang','666','123
 --user表(注册跟登录表)user:
 
 create table user (id int auto_increment, user_name varchar(20), user_password int(20), key(id) )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-create table user (id int auto_increment, name varchar(20), record varchar(60), key(id) )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -51,3 +50,6 @@ set character_set_client='gbk';
 set character_set_connection='gbk';
 set character_set_database='gbk';
 set character_set_server='gbk';   //这个建表之前一定要输入!!!!!!!!!!
+
+
+

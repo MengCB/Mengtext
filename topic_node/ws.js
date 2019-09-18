@@ -40,18 +40,18 @@ wss.on('connection', function(ws, request) {
 	
 	ws.queryObj = queryObj;
 	allClient.push( ws );
-	console.info(allClient);
+	// console.info(allClient);
 	
 	ws.on('message', function(message) {
 		console.info('收到客户端信息 :' + message);
 		allData.push(message);
-		
+		 // 聊天信息存在数据库
 		connection.query('insert into person(name, record) values("'+ queryObj.name +'","'+ message +'");',
 			function(error, results, fields) {
 				if (error) {
 					throw error;
 				} else {
-					console.info('插入结果:', results);
+					// console.info('保存成功');
 				}
 			});
 		
@@ -60,21 +60,21 @@ wss.on('connection', function(ws, request) {
 		// ws.send( text4return );
 		
 		// 群发/广播
-// 		wss.clients.forEach(function each(client) {
-// 
-// 			// if(client !== ws && client.readyState === WebSocket.OPEN){
-// 			if (client.readyState === WebSocket.OPEN) {
-// 				client.send("\n" + message + "\n");
-// 			}
-// 		});
+		wss.clients.forEach(function each(client) {
+
+			// if(client !== ws && client.readyState === WebSocket.OPEN){
+			if (client.readyState === WebSocket.OPEN) {
+				client.send("\n" + queryObj.name +":"+ message + "\n");
+			}
+		});
         
 		// 私聊
-		for(var j=0; j< allClient.length; j++){
-			if( allClient[j].queryObj.name == '蒙承彪' ){
-				
-				allClient[j].send("\n我是你爸爸" + message + "\n");
-			}
-		}
+		// for(var j=0; j< allClient.length; j++){
+		// 	if( allClient[j].queryObj.name == '蒙承彪' ){
+		// 		
+		// 		allClient[j].send("\n"+ queryObj.name+":" + message + "\n");
+		// 	}
+		// }
 
 	});
 	ws.send('服务器连接成功,可以开始聊天,ps:随便尼玛');
@@ -87,7 +87,7 @@ function refreshData(mess) {
 	for (var i = 0; i < allData.length; i++) {
 		text4return += allData[i] + "\n";
 	}
-
+    console.info(text4return);
 	return text4return;
 }
 

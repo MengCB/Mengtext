@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="/web/bootstrap/css/bootstrap.css" />
+		<script type="text/javascript" src="/web/jquery-3.1.1.min.js"></script>
+		<script src="/web/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript">
+			$.ajax({
+				async:false, // 同步执行
+				url:"/checkeLogin",
+				type:"get",
+				data:{},
+				dataType:"json",
+				success:function(res){
+					if(res.login){
+						console.info("OK")
+					}else{
+						alert("您未登录");
+						window.location = "/web/studentlog.html";
+					}
+				},
+				error:function(a,b){
+					
+				}
+			})
+		</script>
+		<style type="text/css">
+			body {
+				background: #BCE8F1;
+			}
+
+			.main {
+				background: #ffffff;
+				border-radius: 0 0 15px 15px;
+				padding: 25px;
+			}
+
+			.container {
+				margin-top: 50px;
+			}
+
+			.navbar-default {
+				background: #66AFE9;
+			}
+
+			.text-re {
+				position: absolute;
+				right: 100px;
+			}
+			.time{
+				font-size: 16px;
+				line-height: 50px;
+			}
+			.inputText{
+				font-size: 16px;
+				font-family: "宋体";
+			}
+			
+			.ptext{
+				font-size: 20px;
+				font-weight: 500;
+			}
+		</style>
+	</head>
+	<body>
+
+		<nav class="navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<input type="button" class="btn btn-default navbar-btn" name="" id="hand" value="交卷" />
+					<input type="button" class="btn btn-default navbar-btn" name="" id="exitBt" value="退出" />
+				</div>
+				<div class="navbar-header text-re">
+					<div class="time">时间:<span id="time01"></span> 分钟 </div>
+					
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-10 col-xs-offset-1 main">
+					<form action="/" method="get" class="inputText" id="index">
+
+					</form>
+				</div>
+			</div>
+		</div><br>
+
+	</body>
+</html>
+
+<script type="text/javascript">
+	$(function() {
+		var Res = null;
+		$.ajax({
+			url: "/TakeOut",
+			type: "get",
+			dataType: "json", //  服务器返回的数据类型
+			data: {},
+			success: function(res) {
+				var Answer = [];
+				for(var i = 0; i<res.length; i++){
+					res[i].answer
+					Answer.push(res[i].answer)
+				}
+				Correction(res,Answer);
+				for (var i = 0; i < res.length; i++) {
+					var text1 = $("<p class='ptext'>" + (i + 1) + "." + res[i].testtitle + "</p>");
+					var input1 = $("<input  type='radio' name=" + i + " id='' value='A' />" +" A. "+ res[i].optionsA + " <br>");
+					var input2 = $("<input  type='radio' name=" + i + " id='' value='B' />" +" B. "+ res[i].optionsB + " <br>");
+					var input3 = $("<input  type='radio' name=" + i + " id='' value='C' />" +" C. "+ res[i].optionsC + " <br>");
+					var input4 = $("<input  type='radio' name=" + i + " id='' value='D' />" +" D. "+ res[i].optionsD + " <br><br>");
+
+					$("#index").append(text1, input1, input2, input3, input4)
+				}
+			},
+			error: function(a, b) {
+				console.info(a);
+			}
+		})
+  //  交卷
+		function Correction(Res,answ) {
+			console.info(Res);
+			$("#hand").click(function() {
+				var Student_answ = [];
+				var achievement = 0;
+				for(var i = 0; i<Res.length; i++){
+					var Choose = document.getElementsByName(i);
+					for (var j = 0; j < Choose.length; j++) {
+						if (Choose[j].checked) {
+							Student_answ.push(Choose[j].value)
+							break;
+						}else if(!Choose[j].checked && j == Choose.length - 1){
+							Student_answ.push("null");
+						}
+					}
+				}
+				console.info(Student_answ);
+				for(var i = 0; i<Student_answ.length; i++){
+					if(Student_answ[i] == answ[i]){
+						achievement = achievement + 5;
+					}
+				}
+				console.info(achievement);
+				$.ajax({
+					url:'/fraction',
+					type:"post",
+					data:{
+						userscore:achievement
+					},
+					dataType:"json",
+					success:function(res){
+						if(res.ok){
+							console.info("分数已提交后台数据库");
+							alert("考试结束,分数为: " + achievement );
+							window.location="/web/studentgrade.html";
+						}else{
+							alert("分数提交后台失败");
+						}
+					},
+					error:function(a,b){
+						console.info(a);
+					}
+				})
+			})
+		};
+		
+		//  时间
+		(function(){
+			$.ajax({
+				url: "/checkTime",
+				data: {},
+				type: "post",
+				dataType: "json",
+				success: function(res) {
+					console.info(res.start);
+					$('#time01').html(res.showTime);
+					if(res.ok){
+						alert("考试时间到！");
+					}
+				},
+				error: function(a, b) {
+					console.info(a);
+				}
+			});
+			var timer = setInterval(function(){
+				$.ajax({
+					url: "/checkTime",
+					data: {},
+					type: "post",
+					dataType: "json",
+					success: function(res) {
+						$('#time01').html(res.showTime);
+						if(res.ok){
+							alert("考试时间到！");
+							clearInterval(timer);
+						}
+					},
+					error: function(a, b) {
+						console.info(a);
+					}
+				})
+			},60000)
+		})()
+		
+		// 退出按钮
+		$("#exitBt").click(function(){
+			var exi = confirm("你确定要退出吗？退出后将直接交卷！")
+			if(exi == true){
+				$("#hand").click();
+			}
+			})
+		
+	})
+</script>
