@@ -1,0 +1,8 @@
+
+表单建表语句:
+create table Student (id int auto_increment, name varchar(500), age int(3),tel varchar(20), address varchar(50), email varchar(50), remark varchar(50),hobby varchar(30),imagepath varchar(30), key(id) ) DEFAULT CHARSET=utf8;
+
+
+---插入
+insert into Student(name,age,sex,address,email,remark,hobby) values('大哥','12','男','广东','154665@qq.com','高手','Rap','');
+

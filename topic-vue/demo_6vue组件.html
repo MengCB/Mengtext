@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>组件</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="components-demo">
+			<button-counter></button-counter>
+			<button-counter></button-counter> <!-- 可以复用 -->
+			<hr>
+			<blog-post meng="My journey with Vue"></blog-post>
+			<hr>
+			<blog-post v-for="post in posts" v-bind:key="post.id" v-bind:meng="post"></blog-post>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	// 定义一个名为 button-counter 的新组件
+	// 这是一个全局组件的声明,组件是一个可复用的vue实例
+	Vue.component('button-counter', {
+		// 坑: data不能直接给,必须是函数.
+		data: function() {
+			return {
+				count: 0
+			}
+		},
+		template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+	});
+
+	// 全局组件的prop属性,接受外部数据
+	Vue.component('blog-post', {
+		// data: function() {
+		// 	return {
+		// 		props1: "mcb"
+		// 	}
+		// },
+		props: ['meng'],
+		template: '<div><h3>{{ meng.title }}</h3> <span>{{meng.content}}</span></div>'
+	});
+
+
+	// 实例化
+	new Vue({
+		el: '#components-demo',
+		data: {
+			posts: [{
+					id: 1,
+					title: 'My journey with Vue',
+					content:' 我 cn'
+				},
+				{
+					id: 2,
+					title: 'Blogging with Vue',
+					content:' 我 cn'
+				},
+				{
+					id: 3,
+					title: 'Why Vue is so fun',
+					content:' 我 cn'
+				}
+			]
+		}
+	})
+</script>

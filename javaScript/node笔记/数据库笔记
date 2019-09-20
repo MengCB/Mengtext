@@ -3,18 +3,25 @@
 select * from person where name = '蒙承彪' order by rand() limit 3; 
 
 ---模糊查询
-select * from person where name  like '%蒙承彪%';
+select * from person where name  like '%蒙承彪%'; like '% 蒙承彪 %'  百分号(%)匹配任意字符长度
 
 select * from teachers where teacher_name in (select * from teacher_id where student_id = 1);
 
----连表查询
+
 查询学生对应的老师:
 select teacher_name from teachers where teacher_id in (select teacher_id
 from students where student_name = '李嘉诚');
 
+---联表查询
 select * from teachers join students on teachers.teacher_id = studets.teacher_id where students.student_name = '李嘉诚';
 
 select student_desc from teachers join students on teachers.teacher_id = students.teacher_id where students.student_name = '李嘉诚';
 
-取别名
+--取别名
 select * from teachers T join students  S on T.teacher_id = S.teacher_id where S.student_name = '李嘉诚';
+
+--查询teachers表的teacher_name
+select teacher_name from teachers;
+
+下划线
+select name from person where name like '_四%';

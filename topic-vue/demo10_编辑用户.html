@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>作业-编辑用户</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+
+			}
+
+			.mianContent {
+				width: 100%;
+				min-width: 980px;
+				min-height: 800px;
+				border: 1px solid #000000;
+			}
+
+			.vue01 {
+				position: relative;
+				width: 1200px;
+				height: 800px;
+				left: 50%;
+				margin-left: -600px;
+				background: #87CEEB;
+				padding: 2px 0px;
+			}
+
+			.title01 {
+				/* position: relative; */
+				margin-top: 8px;
+				width: 100%;
+				height: 120px;
+				background: #1B6D85;
+			}
+
+			.form001 {
+				margin-top: 8px;
+				width: 100%;
+				min-height: 400px;
+				background: #3E8F3E;
+			}
+
+			.flexCon {
+				width: 100%;
+				display: flex;
+				flex-flow: row;
+			}
+
+			.formcontrol_left {
+				flex: 4;
+				/*扩展比率0、收缩比率1和宽度居中的缩写形式*/
+				border: 1px solid #0000FF;
+			}
+
+			.formcontrol_right {
+				flex: 2;
+				border: 1px solid #0000FF;
+			}
+			.table001 {
+				margin-top: 8px;
+				width: 100%;
+				min-height: 250px;
+				background: #3E8F3E;
+			}
+			.faceCon{
+				position: absolute;
+				left: 35%;
+				top:20%;
+				width: 200px;
+				height: 200px;
+				border: 2px solid #0000FF;
+				background: #00FFFF;
+			}
+			.faceCon img{
+				width: 100%;
+				height: 200px;
+			}
+			
+		</style>
+
+	</head>
+
+	<body>
+		<div id="mianContent" class="mianContent">
+
+			<div id="vue01" class="vue01">
+				<div id="title01" class="title01">
+					xxxxxxxxxxx
+				</div>
+
+
+
+				<div id="form001" class="form001">
+
+					<div class="flexCon">
+						<div id="formcontrol_left" class="formcontrol_left">
+							<p>
+								姓名: <input type="text" v-model="currentPerson.name" />
+							</p>
+							<p>
+								年龄: <input type="text" v-model="currentPerson.age" />
+							</p>
+							<p>
+								电话: <input type="text" v-model="currentPerson.tel" />
+							</p>
+							<p>
+								地址: <input type="text" v-model="currentPerson.addr" />
+							</p>
+							<p>
+								描述: <input type="text" v-model="currentPerson.persondesc" />
+							</p>
+							<p>
+								备注: <input type="text" v-model="currentPerson.exinfo" />
+							</p>
+							<p>
+								技术类型:
+								java<input type="checkbox" value="java" v-model="currentPerson.tectype" />&nbsp;&nbsp;
+								js<input type="checkbox" value="js" v-model="currentPerson.tectype" />&nbsp;&nbsp;
+								php<input type="checkbox" value="php" v-model="currentPerson.tectype" />&nbsp;&nbsp;
+								c#<input type="checkbox" value="c#" v-model="currentPerson.tectype" />&nbsp;&nbsp;
+							</p>
+
+							<div class="faceCon">
+								<img v-if="currentPerson.imagepath"  v-bind:src=" '/temp/'+ currentPerson.imagepath" />
+								<!-- <input type="file"   v-model="currentPerson.imagepath" id="facexxxxxxx"/> -->
+								<input type="file"    id="facexxxxxxx"/>
+							</div>
+
+						</div>
+
+						<div id="formcontrol_right" class="formcontrol_right">
+							
+							<br><br>
+							<input type="button" @click="getSingleUser" value="测试-获取单个用户信息" />
+							<input v-if="isCreatingPerson == false" type="button" @click="clearForm" value="新增用户" />
+							<input v-if="isCreatingPerson == true" type="button" @click="createPerson" value="确认提交" />
+							<br><br>
+							{{currentPerson}}
+						</div>
+
+					</div>
+					
+				</div>
+
+
+				<div id="table001" class="table001">
+					zzzzzzzzzzzzz
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+
+	</body>
+</html>
+<script type="text/javascript">
+	var form001 = new Vue({
+		el: "#form001",
+		data: {
+			
+			isCreatingPerson: false,
+			currentPerson: {
+				id: '1',
+				name: '张三',
+				age: '34',
+				tel: '43535345345',
+				addr: '啊时代发生地方',
+				persondesc: '45撒旦法撒旦法撒旦法',
+				exinfo: '是打发舒服',
+				tectype: ['java'],
+				imagepath : ""
+			},
+			nameLikes: []
+		},
+		methods: {
+			
+			// 查找单个用户信息
+			getSingleUser: function() {
+				$.ajax({
+					url: "/getPersonById",
+					type: "get",
+					dataType: 'json',
+					data: {
+						personId: 28
+					},
+					success: function(res) {
+						if (res.status != 'no') {
+							// 因为是回调, 这里的this不再是我们的vue对象, 直接用vue对象的名字吧!!!!
+							form001.currentPerson = res.data.person;
+							form001.currentPerson.tectype = form001.currentPerson.tectype.split(',');
+						}
+					}
+				});
+			},
+
+			// 新增用户
+			createPerson: function() {
+				let currentPerson = this.currentPerson;
+				// 容错 - 存在当前用户的id, 说明清理的不干净, 不能网后台传
+				if (currentPerson.id || !this.isCreatingPerson || !currentPerson.name) {
+					alert("请检查输入!");
+					return;
+				}
+				
+				let data2update = new window.FormData();
+				
+				for (var x in currentPerson) {
+					data2update.append(x, currentPerson[x])
+				}				
+				data2update.append("file1xxxxx",$('#facexxxxxxx')[0].files[0]); 
+				
+				$.ajax({
+					url: "/newPerson",
+					type: "post",
+					dataType: 'json',
+					data: data2update,
+					processData: false, // 使数据不做处理  // 必填!!!!
+					contentType: false, // 不要设置Content-Type请求头 // 必填!!!!
+					
+					// data: {
+					// 	name: currentPerson.name,
+					// 	age: currentPerson.age,
+					// 	tel: currentPerson.tel,
+					// 	addr: currentPerson.addr,
+					// 	persondesc: currentPerson.persondesc,
+					// 	exinfo: currentPerson.exinfo,
+					// 	tectype: currentPerson.tectype.join(",")
+					// },
+					success: function(res) {
+						console.info(res);
+						// 新增成功后, 别忘了复位
+						form001.isCreatingPerson = false;
+					}
+				});
+
+			},
+
+			// 新增用户之前, 清空form
+			clearForm: function() {
+				// 容错
+				if (this.isCreatingPerson == true) {
+					return; // 已经在编辑了, 不允许切换状态
+				}
+				var currentPerson = this.currentPerson;
+				for (x in currentPerson) {
+					currentPerson[x] = '';
+				}
+				currentPerson.tectype = []; // 容错
+				this.isCreatingPerson = true;
+			}
+
+		}
+	});
+</script>

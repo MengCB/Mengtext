@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人信息表单</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			#app {
+				width: 800px;
+				margin: auto;
+				border: 2px solid orange;
+			}
+
+			#app-1 {
+				width: 800px;
+				height: 50px;
+				background: cornflowerblue;
+			}
+
+			form {
+				width: 800px;
+				height: 200px;
+				background: peachpuff;
+				color: cornflowerblue;
+			}
+
+			.input01 {
+				position: relative;
+				left: 450px;
+				top: 12px;
+			}
+
+			.input02 {
+				position: relative;
+				left: 450px;
+				top: 12px;
+			}
+
+			#table01 {
+				width: 158px;
+				background: #A7DBD8;
+				position: relative;
+				left: 450px;
+				top: -5px;
+				z-index: 1;
+			}
+
+			.image01 {
+				width: 100px;
+				height: 150px;
+				position: relative;
+				top: -200px;
+				left: 600px;
+			}
+
+			#picture {
+				width: 100px;
+				height: 100px;
+				border: 1px solid rosybrown;
+				border-radius: 10px;
+			}
+
+			.tables {
+				width: 800px;
+				height: 200px;
+			}
+
+			.tables_tr {
+				overflow-y: scroll;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="app-1">
+				<input type="text" class="input01" v-model="searchValue" />
+				<input type="button" class="input02" id="" value="搜索" @click="Search" />
+				<div id="table01">
+					<p v-for="(item , index) in nameLikes" @click="getStudent(index)">
+						{{item.name}}
+					</p>
+				</div>
+
+			</div>
+			<br>
+			<form action="/student" method="post">
+				<br>
+				&nbsp;&nbsp;姓名: <input type="text" v-model="newStudent.name" id="name" />
+				&nbsp;&nbsp;年龄: <input type="text" v-model="newStudent.age" id="age" />
+				<br>
+				<br>
+				&nbsp;&nbsp;电话: <input type="text" v-model="newStudent.tel" id="tel" />
+				&nbsp;&nbsp;地址: <input type="text" v-model="newStudent.address" id="address" />
+				<br>
+				<br>
+				&nbsp;&nbsp;邮箱: <input type="text" v-model="newStudent.email" id="email" />
+				&nbsp;&nbsp;备注: <input type="text" v-model="newStudent.remark" id="remark" />
+				<br>
+				<br>
+				&nbsp;&nbsp;爱好:
+				&nbsp;&nbsp;唱: <input type="checkbox" value="唱" v-model="newStudent.hobby">&nbsp;&nbsp;
+				&nbsp;&nbsp;跳: <input type="checkbox" value="跳" v-model="newStudent.hobby">&nbsp;&nbsp;
+				&nbsp;&nbsp;Rap: <input type="checkbox" value="Rap" v-model="newStudent.hobby">&nbsp;&nbsp;
+				&nbsp;&nbsp;篮球: <input type="checkbox" value="篮球" v-model="newStudent.hobby">&nbsp;&nbsp;
+				<br>
+				&nbsp;&nbsp;<span>{{ newStudent.hobby }}</span>
+				<br>
+				<br>
+				<div id="" class="image01">
+					<div id="picture">
+						<img v-if="newStudent.imagepath" v-bind:src="'temp/'+ newStudent.imagepath" style="width: 100px;height: 100px;">
+					</div>
+
+					<input type="file" name="" id="myFile" />
+					<br>
+					<br>
+					<!-- <input type="button" value="新增" @click="getStudent" /> -->
+					<!-- <input type="button" value="提交" @click="updataForm" /> -->
+					<input v-if="isCreatingPerson == false" type="button" @click="clearForm" value="新增用户" />
+					<input v-if="isCreatingPerson == true" type="button" @click="createPerson" value="确认提交" />
+				</div>
+			</form>
+			<br>
+			<div class="tables">
+				<table class="table table-hover">
+					<div id="tables_nav">
+						<thead>
+							<tr class="success">
+								<th>id</th>
+								<th>姓名</th>
+								<th>年龄</th>
+								<th>电话</th>
+								<th>地址</th>
+								<th>邮箱</th>
+								<th>备注</th>
+								<th>爱好</th>
+							</tr>
+						</thead>
+					</div>
+				</table>
+				<div style="overflow-y: scroll; height: 140px;" >
+					<table class="table table-hover">
+						<thead>
+							<tr class="" v-for="(item, index ) in  allPerson" @click="selectOnePerson(index )">
+								<td>{{ index + 1}}</td>
+								<td>{{ item.name }}</td>
+								<td>{{item.age}}</td>
+								<td>{{item.tel}}</td>
+								<td>{{item.address}}</td>
+								<td>{{item.email}}</td>
+								<td>{{item.remark}}</td>
+								<td>{{item.hobby}}</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var vm = new Vue({
+		el: '#app',
+		data: {
+			isCreatingPerson: false,
+			newStudent: {
+				name: '张三',
+				age: '21',
+				tel: '888888',
+				address: '广西南宁市',
+				email: '147258369@qq.com',
+				remark: '无',
+				hobby: [],
+				imagepath: ""
+			},
+			formData: {
+				file01: null
+			},
+			searchValue: "",
+			namePeaceLocked: false, // 锁定标记, 不允许太频繁的向后台发送ajax
+			nameLikes: [],
+			allPerson: [],
+
+		},
+		watch: {
+
+			searchValue: function() {
+				// 监听了namePeace的变化!!!!!
+				console.info(this.searchValue);
+				// 锁定标记, 不允许太频繁的向后台发送ajax
+				if (!this.searchValue) {
+					console.info("无关键字");
+					this.nameLikes = [];
+					return;
+				}
+				if (this.namePeaceLocked) {
+					return;
+				}
+				this.namePeaceLocked = true;
+				$.ajax({
+					url: "/searchperson",
+					type: 'get',
+					dataType: 'json',
+					data: {
+						pName: this.searchValue
+					},
+					success: function(res) {
+						// console.info(res);
+						vm.nameLikes = res.data.likePersons;
+						// console.info(vm.nameLikes);
+					},
+					complete: function() {
+						vm.namePeaceLocked = false;
+					}
+				});
+
+			}
+		},
+
+		methods: {
+			// 搜索用户
+			Search: function() {
+				var searchValue = this.searchValue;
+				$.ajax({
+					url: "/searchStudent",
+					type: 'post',
+					dataType: 'json',
+					data: {
+						searchValue: vm.searchValue
+					},
+					success: function(res) {
+						vm.newStudent.name = res.name;
+						vm.newStudent.age = res.age;
+						vm.newStudent.tel = res.tel;
+						vm.newStudent.address = res.address;
+						vm.newStudent.email = res.email;
+						vm.newStudent.remark = res.remark;
+						vm.newStudent.hobby = res.hobby.split(',');
+						vm.newStudent.imagepath = res.imagepath;
+					}
+				});
+			},
+
+			// 搜索下拉菜单
+			getStudent: function(index) {
+				// console.info(vm.nameLikes);
+				let selectStudent = vm.nameLikes[index];
+				if (!selectStudent.id) {
+					return;
+				}
+				this.getSingleUser(selectStudent.id);
+				this.nameLikes = [];
+				this.namePeace = '';
+			},
+
+			// 点击列表响应
+			selectOnePerson: function(index) {
+				this.newStudent = this.allPerson[index];
+				this.newStudent.hobby = this.allPerson[index].hobby.split(",");
+			},
+
+
+			// 查找单个用户信息
+			getSingleUser: function(xxx) {
+				$.ajax({
+					url: "/getPersonById",
+					type: "get",
+					dataType: 'json',
+					data: {
+						personId: xxx
+					},
+					success: function(res) {
+						if (res.status != 'no') {
+							// 因为是回调, 这里的this不再是我们的vue对象, 直接用vue对象的名字吧!!!!
+							vm.newStudent = res.data.person;
+							// vm.newStudent.hobby = vm.newStudent.hobby.split(',');
+						}
+					}
+				});
+			},
+
+			// 批量查找person
+			getPersonsByRange: function() {
+				// 
+				$.ajax({
+					url: "/getAllPerson",
+					type: 'get',
+					dataType: 'json',
+					success: function(res) {
+						// console.info(res);
+						vm.allPerson = res.data.allPerson;
+					}
+				});
+
+			},
+
+
+			// 新增用户
+			createPerson: function() {
+				let newStudent = this.newStudent;
+				// 容错 - 存在当前用户的id, 说明清理的不干净, 不能网后台传
+				if (newStudent.id || !this.isCreatingPerson || !newStudent.name) {
+					alert("请检查输入!");
+					return;
+				}
+
+				let data2update = new window.FormData();
+
+				for (var x in newStudent) {
+					data2update.append(x, newStudent[x]);
+				}
+				data2update.append("file001", $('#myFile')[0].files[0]);
+				$.ajax({
+					url: "/insertStudent",
+					type: "post",
+					dataType: 'json',
+					data: data2update,
+					processData: false, // 使数据不做处理  // 必填!!!!					
+					contentType: false, // 不要设置Content-Type请求头 // 必填!!!!
+					success: function(res) {
+						// 新增成功后, 别忘了复位
+						form001.isCreatingPerson = false;
+					}
+				});
+
+			},
+
+			// 新增用户之前, 清空form
+			clearForm: function() {
+				// 容错
+				if (this.isCreatingPerson == true) {
+					return; // 已经在编辑了, 不允许切换状态
+				}
+				var newStudent = this.newStudent;
+				for (x in newStudent) {
+					newStudent[x] = '';
+				}
+				newStudent.hobby = []; // 容错
+				this.isCreatingPerson = true;
+			}
+
+		}
+	});
+	vm.getPersonsByRange();
+</script>

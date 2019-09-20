@@ -58,7 +58,36 @@ $event 指定为事件源
 
 
 
+data2update.append("faceImage",$('#filexxxxxxxx')[0].files[0]); 
 
+var data2update = new window.FormData();
+				
+				for (var x in this.formData) {
+					data2update.append(x, this.formData[x])
+				}				
+				
+	$.ajax({
+					type: 'POST',					
+					url: "/file_upload",
+					processData: false, // 使数据不做处理  // 必填!!!!
+					//contentType: "multipart/form-data;",
+					contentType: false, // 不要设置Content-Type请求头 // 必填!!!!
+					data: data2update,
+					success: function(res) {
+						console.info(res);
+					},
+					error: function(a, b) {
+						console.info(a);
+					}
+				});
+
+
+
+------------------------vue组件(component)
+
+组件是可复用的VUE实例
+
+每个组件必须只有一个根元素
 
 
 

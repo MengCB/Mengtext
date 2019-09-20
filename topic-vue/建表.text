@@ -1,0 +1,1 @@
+create table Student (id int auto_increment, name varchar(500), age int(3),tel varchar(20), address varchar(50), email varchar(50), remark varchar(50),hobby varchar(30),imagepath varchar(30), key(id) ) DEFAULT CHARSET=utf8;
