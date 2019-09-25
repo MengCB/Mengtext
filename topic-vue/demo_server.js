@@ -32,7 +32,7 @@ connection.connect(); //数据库连接
 // 模糊查询(搜索)
 app.post("/searchStudent", function(request, respon) {
 	var queryObj = request.body;
-	console.info(queryObj.searchValue);
+	// console.info(queryObj.searchValue);
 	if (!queryObj || !queryObj.searchValue) {
 		respon.json({
 			status: "no",
@@ -54,12 +54,11 @@ app.post("/searchStudent", function(request, respon) {
 
 });
 
-// 模糊查询person
+// 模糊查询person (like '% name %')
 app.get("/searchperson", function(request, respon) {
+	// 解析为对象
 	var queryObj = url.parse(request.url, true).query;
-	console.info(queryObj);
 	if( !queryObj  || !queryObj.pName){
-		
 		respon.json({
 			status: "no",
 			data: {
@@ -68,7 +67,6 @@ app.get("/searchperson", function(request, respon) {
 		});
 		return;
 	}
-	
 	connection.query(" select name, id from student where name like '%"+ queryObj.pName  +"%'", function( error, results,fields) {
 		if(error){
 			throw error;

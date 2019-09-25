@@ -12,7 +12,7 @@
 			#app {
 				width: 800px;
 				margin: auto;
-				border: 2px solid orange;
+				border: 1px solid orange;
 			}
 
 			#app-1 {
@@ -26,6 +26,10 @@
 				height: 200px;
 				background: peachpuff;
 				color: cornflowerblue;
+			}
+			
+			form input{
+				border-radius: 8px;
 			}
 
 			.input01 {
@@ -41,11 +45,11 @@
 			}
 
 			#table01 {
-				width: 158px;
-				background: #A7DBD8;
+				width: 173px;
+				background: snow;
 				position: relative;
 				left: 450px;
-				top: -5px;
+				top: 12px;
 				z-index: 1;
 			}
 
@@ -67,10 +71,31 @@
 			.tables {
 				width: 800px;
 				height: 200px;
+				overflow-y: scroll;
 			}
 
-			.tables_tr {
-				overflow-y: scroll;
+			/* 滚动条样式 */
+			.tables::-webkit-scrollbar {
+				width: 4px;
+				/*height: 4px;*/
+			}
+
+			.tables::-webkit-scrollbar-thumb {
+				border-radius: 10px;
+				-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+				background: rgba(0, 0, 0, 0.2);
+			}
+
+			.tables::-webkit-scrollbar-track {
+				-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+				border-radius: 0;
+				background: rgba(0, 0, 0, 0.1);
+
+			}
+			
+			.tt:hover td{
+				background: darkseagreen;
+				cursor: pointer;
 			}
 		</style>
 	</head>
@@ -117,48 +142,42 @@
 
 					<input type="file" name="" id="myFile" />
 					<br>
-					<br>
-					<!-- <input type="button" value="新增" @click="getStudent" /> -->
-					<!-- <input type="button" value="提交" @click="updataForm" /> -->
 					<input v-if="isCreatingPerson == false" type="button" @click="clearForm" value="新增用户" />
 					<input v-if="isCreatingPerson == true" type="button" @click="createPerson" value="确认提交" />
 				</div>
 			</form>
 			<br>
+			<div id="">
+				<table class="table">
+					<thead>
+						<tr class="success">
+							<th style="width: 60px;">id</th>
+							<th style="width: 110px;">姓名</th>
+							<th style="width: 100px;">年龄</th>
+							<th style="width: 100px;">电话</th>
+							<th style="width: 98px;">地址</th>
+							<th>邮箱</th>
+							<th>备注</th>
+							<th>爱好</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
 			<div class="tables">
 				<table class="table table-hover">
-					<div id="tables_nav">
-						<thead>
-							<tr class="success">
-								<th>id</th>
-								<th>姓名</th>
-								<th>年龄</th>
-								<th>电话</th>
-								<th>地址</th>
-								<th>邮箱</th>
-								<th>备注</th>
-								<th>爱好</th>
-							</tr>
-						</thead>
-					</div>
+					<thead>
+						<tr class="tt" v-for="(item, index ) in  allPerson" @click="selectOnePerson(index )">
+							<td style="width: 60px;">{{ index + 1}}</td>
+							<td style="width: 110px;">{{ item.name }}</td>
+							<td style="width: 100px;">{{item.age}}</td>
+							<td style="width: 80px;">{{item.tel}}</td>
+							<td style="width: 80px;">{{item.address}}</td>
+							<td>{{item.email}}</td>
+							<td>{{item.remark}}</td>
+							<td>{{item.hobby}}</td>
+						</tr>
+					</thead>
 				</table>
-				<div style="overflow-y: scroll; height: 140px;" >
-					<table class="table table-hover">
-						<thead>
-							<tr class="" v-for="(item, index ) in  allPerson" @click="selectOnePerson(index )">
-								<td>{{ index + 1}}</td>
-								<td>{{ item.name }}</td>
-								<td>{{item.age}}</td>
-								<td>{{item.tel}}</td>
-								<td>{{item.address}}</td>
-								<td>{{item.email}}</td>
-								<td>{{item.remark}}</td>
-								<td>{{item.hobby}}</td>
-							</tr>
-						</thead>
-					</table>
-				</div>
-
 			</div>
 		</div>
 	</body>
@@ -190,8 +209,7 @@
 		watch: {
 
 			searchValue: function() {
-				// 监听了namePeace的变化!!!!!
-				console.info(this.searchValue);
+				// 监听了searchValue的变化!!!!!
 				// 锁定标记, 不允许太频繁的向后台发送ajax
 				if (!this.searchValue) {
 					console.info("无关键字");
@@ -210,10 +228,9 @@
 						pName: this.searchValue
 					},
 					success: function(res) {
-						// console.info(res);
 						vm.nameLikes = res.data.likePersons;
-						// console.info(vm.nameLikes);
 					},
+					// 请求完成后的回调函数
 					complete: function() {
 						vm.namePeaceLocked = false;
 					}
@@ -248,7 +265,6 @@
 
 			// 搜索下拉菜单
 			getStudent: function(index) {
-				// console.info(vm.nameLikes);
 				let selectStudent = vm.nameLikes[index];
 				if (!selectStudent.id) {
 					return;
@@ -266,19 +282,20 @@
 
 
 			// 查找单个用户信息
-			getSingleUser: function(xxx) {
+			getSingleUser: function(id) {
 				$.ajax({
 					url: "/getPersonById",
 					type: "get",
 					dataType: 'json',
 					data: {
-						personId: xxx
+						personId: id
 					},
 					success: function(res) {
 						if (res.status != 'no') {
 							// 因为是回调, 这里的this不再是我们的vue对象, 直接用vue对象的名字吧!!!!
 							vm.newStudent = res.data.person;
-							// vm.newStudent.hobby = vm.newStudent.hobby.split(',');
+							// split(',')字符串转数组 join() 数组转字符串
+							vm.newStudent.hobby = vm.newStudent.hobby.split(',');
 						}
 					}
 				});

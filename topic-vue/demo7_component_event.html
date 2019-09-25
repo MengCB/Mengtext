@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>组件的事件传递</title>
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="blog-posts-events-demo">
+			<!-- :style == v-bind:style vue绑定样式 -->
+			<div :style="{ fontSize: postFontSize + 'em' }">
+				<blog-post v-for="(item, index) in posts" v-bind:key="item.id"
+				 v-bind:post="item" v-on:enlarge-text="up(index, $event)"
+				 v-bind:yyyy="searchText"
+				 v-on:yyyyyyyyy="yy"></blog-post>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	Vue.component('blog-post', {
+		props: ['post', 'value', 'yyyy'],
+		template: `
+	    <div class="blog-post" :style="{ fontSize: post.fontZ + 'em' }">
+	      <h3>{{ post.title }}</h3>
+	      <button v-on:click="$emit('enlarge-text',{ a: 110, c: 'meng' })">
+	        按钮1
+	      </button>
+		  
+		  <input type='text' v-bind:value="yyyy" v-on:input="$emit('yyyyyyyyy', $event.target.value)">
+	      <div v-html="post.content"></div>
+	    </div>
+	  `
+	});
+
+	new Vue({
+		el: '#blog-posts-events-demo',
+		data: {
+			posts: [{
+				title: "文章标题11",
+				content: "房东是个艺术家感觉",
+				fontZ: 3
+			}, {
+				title: "文章标题11",
+				content: "房东是个艺术家感觉",
+				fontZ: 1
+			}],
+			postFontSize: 0.5,
+
+			searchText: "蒙承彪"
+		},
+		methods: {
+			up: function(a, b) {
+				console.info(b)
+				// this.postFontSize += a;
+				this.posts[a].title += "(正在审核)";
+				this.posts[a].fontZ += 0.5;
+			},
+			yy: function(a){
+				console.info(a);
+				this.searchText = a;
+			}
+
+		}
+	});
+
+
+	// 练习 - 子组件的按钮向父组件传递事件,父组件改变该子组件标题名称, 标题名称 += "正在审核"
+	// 增加要求: 点谁,谁的标题就加上(正在审核)
+</script>

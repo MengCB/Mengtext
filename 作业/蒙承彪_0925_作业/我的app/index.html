@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+	<body>
+		<button type="button" class="mui-btn mui-btn-outlined">默认</button>
+		<button type="button" class="mui-btn mui-btn-primary mui-btn-outlined">蓝色</button>
+		<button type="button" class="mui-btn mui-btn-success mui-btn-outlined">绿色</button>
+		<button type="button" class="mui-btn mui-btn-warning mui-btn-outlined">黄色</button>
+		<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">红色</button>
+		<button type="button" class="mui-btn mui-btn-royal mui-btn-outlined">紫色</button> 
+		<div id="" class="mui-btn-royal" style="height: 30px;font-size: 24px;text-align: center;">
+			蒙承彪_0925_作业
+		</div>
+		<br>
+		<div class="mui-slider">
+			<div class="mui-slider-group mui-slider-loop">
+				<!--支持循环，需要重复图片节点-->
+				<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/3.jpg" /></a>
+				</div>
+				<div class="mui-slider-item">
+					<div id="" style="height: 30px;text-align: center; font-size: 24px;color: darkcyan;">
+						王大锤
+					</div>
+					<a href="#"><img src="images/1.jpg" /></a>
+					<div id="" style="height: 24px;text-align: center;font-size: 24px;color: blue;" onclick="wan()">
+						tel:10086
+					</div>
+				</div>
+				<div class="mui-slider-item">
+					<div id="" style="height: 30px;text-align: center; font-size: 24px;color: darkcyan;">
+						张三
+					</div><a href="#"><img src="images/2.jpg" /></a>
+					<div id="" style="height: 24px;text-align: center; font-size: 24px;color: blue;" onclick="zhang()">
+						tel:1008611
+					</div>
+				</div>
+				<div class="mui-slider-item">
+					<div id="" style="height: 30px;text-align: center; font-size: 24px;color: darkcyan;" >
+						李四
+					</div><a href="#"><img src="images/3.jpg" /></a>
+					<div id="" style="height: 24px;text-align: center;font-size: 24px;color: blue;" onclick="li()">
+						tel:10085
+					</div>
+				</div>
+				<!--支持循环，需要重复图片节点-->
+				<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/1.jpg" /></a></div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	//获得slider插件对象
+	var gallery = mui('.mui-slider');
+	gallery.slider({
+		interval: 2000 //自动轮播周期，若为0则不自动播放，默认为0；
+	});
+	
+	//拨打电话
+	function wan() {
+		plus.device.dial("10086", false);
+	}
+
+	function zhang() {
+		plus.device.dial("1008611", false);
+	}
+
+	function li() {
+		plus.device.dial("10085", false);
+	}
+</script>

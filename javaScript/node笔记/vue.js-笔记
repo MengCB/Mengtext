@@ -87,10 +87,22 @@ var data2update = new window.FormData();
 
 组件是可复用的VUE实例
 
+一个组件的 data 选项必须是一个函数
+
 每个组件必须只有一个根元素
+------------------------------------------------
+------vue绑定样式
+  :style 等于 v-bind:style  ---- vue绑定样式
+  
+ vue组件向外传值 使用$emit 和 $event (查看vue-demo7)
 
 
 
+-----------------先有数据再有组件
+因为他依赖数据去渲染自己
+
+注意那些 prop 会在一个组件实例创建之前进行验证，所以实例的属性 
+(如 data、computed 等) 在 default 或 validator 函数中是不可用的。
 
 
 
